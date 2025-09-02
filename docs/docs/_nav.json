@@ -1,0 +1,12 @@
+[
+  {
+    "text": "Docs",
+    "link": "/docs/getting-started/quick-start",
+    "activeMatch": "/docs/getting-started/quick-start"
+  },
+  {
+    "text": "API",
+    "link": "/api/",
+    "activeMatch": "/api/"
+  }
+]

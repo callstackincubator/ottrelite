@@ -1,0 +1,1 @@
+export { DevSpanProcessorInterceptor } from './DevSpanProcessorInterceptor';

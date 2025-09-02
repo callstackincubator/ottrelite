@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "backend-platform",
+    "label": "Platform Backend"
+  },
+  {
+    "type": "file",
+    "name": "backend-wrapper-tracy",
+    "label": "Tracy Wrapper Backend"
+  }
+]

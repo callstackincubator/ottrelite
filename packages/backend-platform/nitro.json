@@ -1,0 +1,17 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["ottrelite", "backend", "platform"],
+  "ios": {
+    "iosModuleName": "ReactNativeOttreliteBackendPlatform"
+  },
+  "android": {
+    "androidNamespace": ["ottrelite", "backend", "platform"],
+    "androidCxxLibName": "ReactNativeOttrelite_BackendPlatform"
+  },
+  "autolinking": {
+    "ReactNativeOttreliteBackendPlatform": {
+      "cpp": "ReactNativeOttreliteBackendPlatform"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

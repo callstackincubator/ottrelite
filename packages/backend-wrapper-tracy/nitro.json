@@ -1,0 +1,17 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["ottrelite", "backend", "tracy"],
+  "ios": {
+    "iosModuleName": "ReactNativeOttreliteBackendTracy"
+  },
+  "android": {
+    "androidNamespace": ["ottrelite", "backend", "tracy"],
+    "androidCxxLibName": "ReactNativeOttrelite_BackendTracy"
+  },
+  "autolinking": {
+    "ReactNativeOttreliteBackendTracy": {
+      "cpp": "ReactNativeOttreliteBackendTracy"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

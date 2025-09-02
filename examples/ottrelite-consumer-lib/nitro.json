@@ -1,0 +1,21 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["ottreliteconsumerlib"],
+  "ios": {
+    "iosModuleName": "NitroOttreliteConsumerLib"
+  },
+  "android": {
+    "androidNamespace": ["ottreliteconsumerlib"],
+    "androidCxxLibName": "NitroOttreliteConsumerLib"
+  },
+  "autolinking": {
+    "NitroOttreliteConsumerLibCpp": {
+      "cpp": "NitroOttreliteConsumerLibCpp"
+    },
+    "NitroOttreliteConsumerLibPlatform": {
+      "kotlin": "NitroOttreliteConsumerLibPlatform",
+      "swift": "NitroOttreliteConsumerLibPlatform"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}
