@@ -1,0 +1,169 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  merge_group:
+    types:
+      - checks_requested
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint files
+        run: pnpm run lint
+
+      - name: Typecheck files
+        run: pnpm run typecheck
+
+  build-packages:
+    name: Build packages
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build packages
+        run: pnpm run build
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    needs: build-packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run unit tests
+        run: pnpm run test --maxWorkers=2 --coverage
+
+  docs:
+    name: Build and deploy docs
+    runs-on: ubuntu-latest
+    needs: build-packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build docs
+        run: pnpm run build:docs
+
+      # TODO: publish docs
+
+  # TODO: enable building demo apps
+  # build-android:
+  #   name: Build Android demo app
+  #   runs-on: ubuntu-latest
+  #   needs: [build-packages]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         submodules: 'true'
+
+  #     - name: Setup
+  #       uses: ./.github/actions/setup
+
+  #     - name: Build packages
+  #       run: pnpm run build
+
+  #     - name: Install JDK
+  #       uses: actions/setup-java@v4
+  #       with:
+  #         distribution: 'zulu'
+  #         java-version: '17'
+
+  #     - name: Finalize Android SDK
+  #       run: |
+  #         /bin/bash -c "yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null"
+
+  #     - name: Cache Gradle
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: |
+  #           ~/.gradle/wrapper
+  #           ~/.gradle/caches
+  #         key: ${{ runner.os }}-gradle-${{ hashFiles('examples/rn-app/android/gradle/wrapper/gradle-wrapper.properties') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-gradle-
+
+  #     - name: Build example for Android
+  #       env:
+  #         JAVA_OPTS: '-XX:MaxHeapSize=6g'
+  #       run: |
+  #         pnpm run build:demo:android
+
+  # build-ios:
+  #   name: Build iOS demo app
+  #   runs-on: macos-latest
+  #   needs: [build-packages]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         submodules: 'true'
+
+  #     - name: Setup
+  #       uses: ./.github/actions/setup
+
+  #     - name: Build packages
+  #       run: pnpm run build
+
+  #     - name: Restore Cocoapods
+  #       id: cocoapods-cache
+  #       uses: actions/cache/restore@v4
+  #       with:
+  #         path: |
+  #           **/ios/Pods
+  #         key: ${{ runner.os }}-cocoapods-${{ hashFiles('examples/rn-app/ios/Podfile.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-cocoapods-
+
+  #     - name: Install Cocoapods
+  #       run: |
+  #         cd examples/rn-app/ios
+  #         pod install
+  #       env:
+  #         NO_FLIPPER: 1
+
+  #     - name: Cache Cocoapods
+  #       uses: actions/cache/save@v4
+  #       with:
+  #         path: |
+  #           **/ios/Pods
+  #         key: ${{ steps.cocoapods-cache.outputs.cache-key }}
+
+  #     - name: Build example for iOS
+  #       run: |
+  #         pnpm run build:demo:ios

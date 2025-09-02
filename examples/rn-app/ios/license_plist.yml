@@ -1,0 +1,2137 @@
+# BEGIN Generated NPM license entries
+rename:
+  "@opentelemetry_api@1.9.0": '@opentelemetry/api'
+  "@opentelemetry_instrumentation@0.203.0": '@opentelemetry/instrumentation'
+  "@opentelemetry_api-logs@0.203.0": '@opentelemetry/api-logs'
+  "import-in-the-middle@1.14.2": import-in-the-middle
+  "acorn@8.15.0": acorn
+  "acorn-import-attributes@1.9.5": acorn-import-attributes
+  "cjs-module-lexer@1.4.3": cjs-module-lexer
+  "module-details-from-path@1.0.4": module-details-from-path
+  "require-in-the-middle@7.5.2": require-in-the-middle
+  "debug@4.4.1": debug
+  "ms@2.1.3": ms
+  "resolve@1.22.10": resolve
+  "is-core-module@2.16.1": is-core-module
+  "hasown@2.0.2": hasown
+  "function-bind@1.1.2": function-bind
+  "path-parse@1.0.7": path-parse
+  "supports-preserve-symlinks-flag@1.0.0": supports-preserve-symlinks-flag
+  "@opentelemetry_instrumentation-fetch@0.203.0": '@opentelemetry/instrumentation-fetch'
+  "@opentelemetry_core@2.0.1": '@opentelemetry/core'
+  "@opentelemetry_semantic-conventions@1.36.0": '@opentelemetry/semantic-conventions'
+  "@opentelemetry_sdk-trace-web@2.0.1": '@opentelemetry/sdk-trace-web'
+  "@opentelemetry_sdk-trace-base@2.0.1": '@opentelemetry/sdk-trace-base'
+  "@opentelemetry_resources@2.0.1": '@opentelemetry/resources'
+  "@opentelemetry_instrumentation-xml-http-request@0.203.0": '@opentelemetry/instrumentation-xml-http-request'
+  "@ottrelite_backend-platform@0.1.0": '@ottrelite/backend-platform'
+  "@ottrelite_backend-wrapper-tracy@0.1.0": '@ottrelite/backend-wrapper-tracy'
+  "@ottrelite_core@0.1.0": '@ottrelite/core'
+  "@opentelemetry_sdk-metrics@2.0.1": '@opentelemetry/sdk-metrics'
+  "@react-native-community_slider@5.0.1": '@react-native-community/slider'
+  "@react-native-vector-icons_material-design-icons@12.2.0": '@react-native-vector-icons/material-design-icons'
+  "@react-native-vector-icons_common@12.2.0": '@react-native-vector-icons/common'
+  "@react-native-community_cli-tools@17.0.0": '@react-native-community/cli-tools'
+  "@vscode_sudo-prompt@9.3.1": '@vscode/sudo-prompt'
+  "appdirsjs@1.2.7": appdirsjs
+  "chalk@4.1.2": chalk
+  "ansi-styles@4.3.0": ansi-styles
+  "color-convert@2.0.1": color-convert
+  "color-name@1.1.4": color-name
+  "supports-color@7.2.0": supports-color
+  "has-flag@4.0.0": has-flag
+  "execa@5.1.1": execa
+  "cross-spawn@7.0.6": cross-spawn
+  "path-key@3.1.1": path-key
+  "shebang-command@2.0.0": shebang-command
+  "shebang-regex@3.0.0": shebang-regex
+  "which@2.0.2": which
+  "isexe@2.0.0": isexe
+  "get-stream@6.0.1": get-stream
+  "human-signals@2.1.0": human-signals
+  "is-stream@2.0.1": is-stream
+  "merge-stream@2.0.0": merge-stream
+  "npm-run-path@4.0.1": npm-run-path
+  "onetime@5.1.2": onetime
+  "mimic-fn@2.1.0": mimic-fn
+  "signal-exit@3.0.7": signal-exit
+  "strip-final-newline@2.0.0": strip-final-newline
+  "find-up@5.0.0": find-up
+  "locate-path@6.0.0": locate-path
+  "p-locate@5.0.0": p-locate
+  "p-limit@3.1.0": p-limit
+  "yocto-queue@0.1.0": yocto-queue
+  "path-exists@4.0.0": path-exists
+  "launch-editor@2.10.0": launch-editor
+  "picocolors@1.1.1": picocolors
+  "shell-quote@1.8.3": shell-quote
+  "mime@2.6.0": mime
+  "ora@5.4.1": ora
+  "bl@4.1.0": bl
+  "buffer@5.7.1": buffer
+  "base64-js@1.5.1": base64-js
+  "ieee754@1.2.1": ieee754
+  "inherits@2.0.4": inherits
+  "readable-stream@3.6.2": readable-stream
+  "string_decoder@1.3.0": string_decoder
+  "safe-buffer@5.2.1": safe-buffer
+  "util-deprecate@1.0.2": util-deprecate
+  "cli-cursor@3.1.0": cli-cursor
+  "restore-cursor@3.1.0": restore-cursor
+  "cli-spinners@2.9.2": cli-spinners
+  "is-interactive@1.0.0": is-interactive
+  "is-unicode-supported@0.1.0": is-unicode-supported
+  "log-symbols@4.1.0": log-symbols
+  "strip-ansi@6.0.1": strip-ansi
+  "ansi-regex@5.0.1": ansi-regex
+  "wcwidth@1.0.1": wcwidth
+  "defaults@1.0.4": defaults
+  "clone@1.0.4": clone
+  "prompts@2.4.2": prompts
+  "kleur@3.0.3": kleur
+  "sisteransi@1.0.5": sisteransi
+  "semver@7.7.2": semver
+  "plist@3.1.0": plist
+  "@xmldom_xmldom@0.8.10": '@xmldom/xmldom'
+  "xmlbuilder@15.1.1": xmlbuilder
+  "@react-navigation_native@7.1.16": '@react-navigation/native'
+  "@react-navigation_core@7.12.3": '@react-navigation/core'
+  "@react-navigation_routers@7.5.1": '@react-navigation/routers'
+  "nanoid@3.3.11": nanoid
+  "escape-string-regexp@4.0.0": escape-string-regexp
+  "query-string@7.1.3": query-string
+  "decode-uri-component@0.2.2": decode-uri-component
+  "filter-obj@1.1.0": filter-obj
+  "split-on-first@1.1.0": split-on-first
+  "strict-uri-encode@2.0.0": strict-uri-encode
+  "react-is@19.1.0": react-is
+  "use-latest-callback@0.2.4": use-latest-callback
+  "use-sync-external-store@1.5.0": use-sync-external-store
+  "fast-deep-equal@3.1.3": fast-deep-equal
+  "@react-navigation_native-stack@7.3.23": '@react-navigation/native-stack'
+  "@react-navigation_elements@2.6.1": '@react-navigation/elements'
+  "color@4.2.3": color
+  "color-string@1.9.1": color-string
+  "simple-swizzle@0.2.2": simple-swizzle
+  "is-arrayish@0.3.2": is-arrayish
+  "warn-once@0.1.1": warn-once
+  "@shopify_react-native-skia@2.1.1": '@shopify/react-native-skia'
+  "canvaskit-wasm@0.40.0": canvaskit-wasm
+  "@webgpu_types@0.1.21": '@webgpu/types'
+  "react-reconciler@0.31.0": react-reconciler
+  "scheduler@0.25.0": scheduler
+  "@uidotdev_usehooks@2.4.1": '@uidotdev/usehooks'
+  "lodash@4.17.21": lodash
+  "moment@2.30.1": moment
+  "react@19.1.0": react
+  "react-native@0.81.0": react-native
+  "@jest_create-cache-key-function@29.7.0": '@jest/create-cache-key-function'
+  "@jest_types@29.6.3": '@jest/types'
+  "@jest_schemas@29.6.3": '@jest/schemas'
+  "@sinclair_typebox@0.27.8": '@sinclair/typebox'
+  "@types_istanbul-lib-coverage@2.0.6": '@types/istanbul-lib-coverage'
+  "@types_istanbul-reports@3.0.4": '@types/istanbul-reports'
+  "@types_istanbul-lib-report@3.0.3": '@types/istanbul-lib-report'
+  "@types_node@24.1.0": '@types/node'
+  "undici-types@7.8.0": undici-types
+  "@types_yargs@17.0.33": '@types/yargs'
+  "@types_yargs-parser@21.0.3": '@types/yargs-parser'
+  "@react-native_assets-registry@0.81.0": '@react-native/assets-registry'
+  "@react-native_codegen@0.81.0": '@react-native/codegen'
+  "glob@7.2.3": glob
+  "fs.realpath@1.0.0": fs.realpath
+  "inflight@1.0.6": inflight
+  "once@1.4.0": once
+  "wrappy@1.0.2": wrappy
+  "minimatch@3.1.2": minimatch
+  "brace-expansion@1.1.12": brace-expansion
+  "balanced-match@1.0.2": balanced-match
+  "concat-map@0.0.1": concat-map
+  "path-is-absolute@1.0.1": path-is-absolute
+  "hermes-parser@0.29.1": hermes-parser
+  "hermes-estree@0.29.1": hermes-estree
+  "invariant@2.2.4": invariant
+  "loose-envify@1.4.0": loose-envify
+  "js-tokens@4.0.0": js-tokens
+  "nullthrows@1.1.1": nullthrows
+  "yargs@17.7.2": yargs
+  "cliui@8.0.1": cliui
+  "string-width@4.2.3": string-width
+  "emoji-regex@8.0.0": emoji-regex
+  "is-fullwidth-code-point@3.0.0": is-fullwidth-code-point
+  "wrap-ansi@7.0.0": wrap-ansi
+  "escalade@3.2.0": escalade
+  "get-caller-file@2.0.5": get-caller-file
+  "require-directory@2.1.1": require-directory
+  "y18n@5.0.8": y18n
+  "yargs-parser@21.1.1": yargs-parser
+  "@react-native_community-cli-plugin@0.81.0": '@react-native/community-cli-plugin'
+  "@react-native_dev-middleware@0.81.0": '@react-native/dev-middleware'
+  "@isaacs_ttlcache@1.4.1": '@isaacs/ttlcache'
+  "@react-native_debugger-frontend@0.81.0": '@react-native/debugger-frontend'
+  "chrome-launcher@0.15.2": chrome-launcher
+  "is-wsl@2.2.0": is-wsl
+  "is-docker@2.2.1": is-docker
+  "lighthouse-logger@1.4.2": lighthouse-logger
+  "debug@2.6.9": debug
+  "ms@2.0.0": ms
+  "marky@1.3.0": marky
+  "chromium-edge-launcher@0.2.0": chromium-edge-launcher
+  "mkdirp@1.0.4": mkdirp
+  "rimraf@3.0.2": rimraf
+  "connect@3.7.0": connect
+  "finalhandler@1.1.2": finalhandler
+  "encodeurl@1.0.2": encodeurl
+  "escape-html@1.0.3": escape-html
+  "on-finished@2.3.0": on-finished
+  "ee-first@1.1.1": ee-first
+  "parseurl@1.3.3": parseurl
+  "statuses@1.5.0": statuses
+  "unpipe@1.0.0": unpipe
+  "utils-merge@1.0.1": utils-merge
+  "open@7.4.2": open
+  "serve-static@1.16.2": serve-static
+  "encodeurl@2.0.0": encodeurl
+  "send@0.19.0": send
+  "depd@2.0.0": depd
+  "destroy@1.2.0": destroy
+  "etag@1.8.1": etag
+  "fresh@0.5.2": fresh
+  "http-errors@2.0.0": http-errors
+  "setprototypeof@1.2.0": setprototypeof
+  "statuses@2.0.1": statuses
+  "toidentifier@1.0.1": toidentifier
+  "mime@1.6.0": mime
+  "on-finished@2.4.1": on-finished
+  "range-parser@1.2.1": range-parser
+  "ws@6.2.3": ws
+  "async-limiter@1.0.1": async-limiter
+  "metro@0.83.1": metro
+  "@babel_code-frame@7.27.1": '@babel/code-frame'
+  "@babel_helper-validator-identifier@7.27.1": '@babel/helper-validator-identifier'
+  "@babel_core@7.28.0": '@babel/core'
+  "@ampproject_remapping@2.3.0": '@ampproject/remapping'
+  "@jridgewell_gen-mapping@0.3.12": '@jridgewell/gen-mapping'
+  "@jridgewell_sourcemap-codec@1.5.4": '@jridgewell/sourcemap-codec'
+  "@jridgewell_trace-mapping@0.3.29": '@jridgewell/trace-mapping'
+  "@jridgewell_resolve-uri@3.1.2": '@jridgewell/resolve-uri'
+  "@babel_generator@7.28.0": '@babel/generator'
+  "@babel_parser@7.28.0": '@babel/parser'
+  "@babel_types@7.28.2": '@babel/types'
+  "@babel_helper-string-parser@7.27.1": '@babel/helper-string-parser'
+  "jsesc@3.1.0": jsesc
+  "@babel_helper-compilation-targets@7.27.2": '@babel/helper-compilation-targets'
+  "@babel_helper-validator-option@7.27.1": '@babel/helper-validator-option'
+  "browserslist@4.25.1": browserslist
+  "caniuse-lite@1.0.30001727": caniuse-lite
+  "electron-to-chromium@1.5.191": electron-to-chromium
+  "node-releases@2.0.19": node-releases
+  "update-browserslist-db@1.1.3": update-browserslist-db
+  "lru-cache@5.1.1": lru-cache
+  "yallist@3.1.1": yallist
+  "semver@6.3.1": semver
+  "@babel_helper-module-transforms@7.27.3": '@babel/helper-module-transforms'
+  "@babel_helper-module-imports@7.27.1": '@babel/helper-module-imports'
+  "@babel_traverse@7.28.0": '@babel/traverse'
+  "@babel_helper-globals@7.28.0": '@babel/helper-globals'
+  "@babel_template@7.27.2": '@babel/template'
+  "@babel_helpers@7.28.2": '@babel/helpers'
+  "convert-source-map@2.0.0": convert-source-map
+  "gensync@1.0.0-beta.2": gensync
+  "json5@2.2.3": json5
+  "accepts@1.3.8": accepts
+  "mime-types@2.1.35": mime-types
+  "mime-db@1.52.0": mime-db
+  "negotiator@0.6.3": negotiator
+  "ci-info@2.0.0": ci-info
+  "error-stack-parser@2.1.4": error-stack-parser
+  "stackframe@1.3.4": stackframe
+  "flow-enums-runtime@0.0.6": flow-enums-runtime
+  "graceful-fs@4.2.11": graceful-fs
+  "image-size@1.2.1": image-size
+  "queue@6.0.2": queue
+  "jest-worker@29.7.0": jest-worker
+  "jest-util@29.7.0": jest-util
+  "ci-info@3.9.0": ci-info
+  "picomatch@2.3.1": picomatch
+  "supports-color@8.1.1": supports-color
+  "jsc-safe-url@0.2.4": jsc-safe-url
+  "lodash.throttle@4.1.1": lodash.throttle
+  "metro-babel-transformer@0.83.1": metro-babel-transformer
+  "metro-cache@0.83.1": metro-cache
+  "exponential-backoff@3.1.2": exponential-backoff
+  "https-proxy-agent@7.0.6": https-proxy-agent
+  "agent-base@7.1.4": agent-base
+  "metro-core@0.83.1": metro-core
+  "metro-resolver@0.83.1": metro-resolver
+  "metro-cache-key@0.83.1": metro-cache-key
+  "metro-config@0.83.1": metro-config
+  "cosmiconfig@5.2.1": cosmiconfig
+  "import-fresh@2.0.0": import-fresh
+  "caller-path@2.0.0": caller-path
+  "caller-callsite@2.0.0": caller-callsite
+  "callsites@2.0.0": callsites
+  "resolve-from@3.0.0": resolve-from
+  "is-directory@0.3.1": is-directory
+  "js-yaml@3.14.1": js-yaml
+  "argparse@1.0.10": argparse
+  "sprintf-js@1.0.3": sprintf-js
+  "esprima@4.0.1": esprima
+  "parse-json@4.0.0": parse-json
+  "error-ex@1.3.2": error-ex
+  "is-arrayish@0.2.1": is-arrayish
+  "json-parse-better-errors@1.0.2": json-parse-better-errors
+  "jest-validate@29.7.0": jest-validate
+  "camelcase@6.3.0": camelcase
+  "jest-get-type@29.6.3": jest-get-type
+  "leven@3.1.0": leven
+  "pretty-format@29.7.0": pretty-format
+  "ansi-styles@5.2.0": ansi-styles
+  "react-is@18.3.1": react-is
+  "metro-file-map@0.83.1": metro-file-map
+  "fb-watchman@2.0.2": fb-watchman
+  "bser@2.1.1": bser
+  "node-int64@0.4.0": node-int64
+  "micromatch@4.0.8": micromatch
+  "braces@3.0.3": braces
+  "fill-range@7.1.1": fill-range
+  "to-regex-range@5.0.1": to-regex-range
+  "is-number@7.0.0": is-number
+  "walker@1.0.8": walker
+  "makeerror@1.0.12": makeerror
+  "tmpl@1.0.5": tmpl
+  "metro-runtime@0.83.1": metro-runtime
+  "@babel_runtime@7.28.2": '@babel/runtime'
+  "metro-source-map@0.83.1": metro-source-map
+  "@babel_traverse--for-generate-function-map@7.28.0": '@babel/traverse--for-generate-function-map'
+  "metro-symbolicate@0.83.1": metro-symbolicate
+  "source-map@0.5.7": source-map
+  "vlq@1.0.1": vlq
+  "ob1@0.83.1": ob1
+  "metro-transform-plugins@0.83.1": metro-transform-plugins
+  "metro-transform-worker@0.83.1": metro-transform-worker
+  "metro-minify-terser@0.83.1": metro-minify-terser
+  "terser@5.43.1": terser
+  "@jridgewell_source-map@0.3.10": '@jridgewell/source-map'
+  "commander@2.20.3": commander
+  "source-map-support@0.5.21": source-map-support
+  "buffer-from@1.1.2": buffer-from
+  "source-map@0.6.1": source-map
+  "serialize-error@2.1.0": serialize-error
+  "throat@5.0.0": throat
+  "ws@7.5.10": ws
+  "@react-native_gradle-plugin@0.81.0": '@react-native/gradle-plugin'
+  "@react-native_js-polyfills@0.81.0": '@react-native/js-polyfills'
+  "@react-native_normalize-colors@0.81.0": '@react-native/normalize-colors'
+  "@react-native_virtualized-lists@0.81.0": '@react-native/virtualized-lists'
+  "abort-controller@3.0.0": abort-controller
+  "event-target-shim@5.0.1": event-target-shim
+  "anser@1.4.10": anser
+  "babel-jest@29.7.0": babel-jest
+  "@jest_transform@29.7.0": '@jest/transform'
+  "babel-plugin-istanbul@6.1.1": babel-plugin-istanbul
+  "@babel_helper-plugin-utils@7.27.1": '@babel/helper-plugin-utils'
+  "@istanbuljs_load-nyc-config@1.1.0": '@istanbuljs/load-nyc-config'
+  "camelcase@5.3.1": camelcase
+  "find-up@4.1.0": find-up
+  "locate-path@5.0.0": locate-path
+  "p-locate@4.1.0": p-locate
+  "p-limit@2.3.0": p-limit
+  "p-try@2.2.0": p-try
+  "get-package-type@0.1.0": get-package-type
+  "resolve-from@5.0.0": resolve-from
+  "@istanbuljs_schema@0.1.3": '@istanbuljs/schema'
+  "istanbul-lib-instrument@5.2.1": istanbul-lib-instrument
+  "istanbul-lib-coverage@3.2.2": istanbul-lib-coverage
+  "test-exclude@6.0.0": test-exclude
+  "fast-json-stable-stringify@2.1.0": fast-json-stable-stringify
+  "jest-haste-map@29.7.0": jest-haste-map
+  "@types_graceful-fs@4.1.9": '@types/graceful-fs'
+  "anymatch@3.1.3": anymatch
+  "normalize-path@3.0.0": normalize-path
+  "jest-regex-util@29.6.3": jest-regex-util
+  "fsevents@2.3.3": fsevents
+  "pirates@4.0.7": pirates
+  "slash@3.0.0": slash
+  "write-file-atomic@4.0.2": write-file-atomic
+  "imurmurhash@0.1.4": imurmurhash
+  "@types_babel__core@7.20.5": '@types/babel__core'
+  "@types_babel__generator@7.27.0": '@types/babel__generator'
+  "@types_babel__template@7.4.4": '@types/babel__template'
+  "@types_babel__traverse@7.20.7": '@types/babel__traverse'
+  "babel-preset-jest@29.6.3": babel-preset-jest
+  "babel-plugin-jest-hoist@29.6.3": babel-plugin-jest-hoist
+  "babel-preset-current-node-syntax@1.1.0": babel-preset-current-node-syntax
+  "@babel_plugin-syntax-async-generators@7.8.4": '@babel/plugin-syntax-async-generators'
+  "@babel_plugin-syntax-bigint@7.8.3": '@babel/plugin-syntax-bigint'
+  "@babel_plugin-syntax-class-properties@7.12.13": '@babel/plugin-syntax-class-properties'
+  "@babel_plugin-syntax-class-static-block@7.14.5": '@babel/plugin-syntax-class-static-block'
+  "@babel_plugin-syntax-import-attributes@7.27.1": '@babel/plugin-syntax-import-attributes'
+  "@babel_plugin-syntax-import-meta@7.10.4": '@babel/plugin-syntax-import-meta'
+  "@babel_plugin-syntax-json-strings@7.8.3": '@babel/plugin-syntax-json-strings'
+  "@babel_plugin-syntax-logical-assignment-operators@7.10.4": '@babel/plugin-syntax-logical-assignment-operators'
+  "@babel_plugin-syntax-nullish-coalescing-operator@7.8.3": '@babel/plugin-syntax-nullish-coalescing-operator'
+  "@babel_plugin-syntax-numeric-separator@7.10.4": '@babel/plugin-syntax-numeric-separator'
+  "@babel_plugin-syntax-object-rest-spread@7.8.3": '@babel/plugin-syntax-object-rest-spread'
+  "@babel_plugin-syntax-optional-catch-binding@7.8.3": '@babel/plugin-syntax-optional-catch-binding'
+  "@babel_plugin-syntax-optional-chaining@7.8.3": '@babel/plugin-syntax-optional-chaining'
+  "@babel_plugin-syntax-private-property-in-object@7.14.5": '@babel/plugin-syntax-private-property-in-object'
+  "@babel_plugin-syntax-top-level-await@7.14.5": '@babel/plugin-syntax-top-level-await'
+  "babel-plugin-syntax-hermes-parser@0.29.1": babel-plugin-syntax-hermes-parser
+  "commander@12.1.0": commander
+  "jest-environment-node@29.7.0": jest-environment-node
+  "@jest_environment@29.7.0": '@jest/environment'
+  "@jest_fake-timers@29.7.0": '@jest/fake-timers'
+  "@sinonjs_fake-timers@10.3.0": '@sinonjs/fake-timers'
+  "@sinonjs_commons@3.0.1": '@sinonjs/commons'
+  "type-detect@4.0.8": type-detect
+  "jest-message-util@29.7.0": jest-message-util
+  "@types_stack-utils@2.0.3": '@types/stack-utils'
+  "stack-utils@2.0.6": stack-utils
+  "escape-string-regexp@2.0.0": escape-string-regexp
+  "jest-mock@29.7.0": jest-mock
+  "memoize-one@5.2.1": memoize-one
+  "promise@8.3.0": promise
+  "asap@2.0.6": asap
+  "react-devtools-core@6.1.5": react-devtools-core
+  "react-refresh@0.14.2": react-refresh
+  "regenerator-runtime@0.13.11": regenerator-runtime
+  "scheduler@0.26.0": scheduler
+  "stacktrace-parser@0.1.11": stacktrace-parser
+  "type-fest@0.7.1": type-fest
+  "whatwg-fetch@3.6.20": whatwg-fetch
+  "@react-native_new-app-screen@0.81.0": '@react-native/new-app-screen'
+  "react-native-device-info@14.0.4": react-native-device-info
+  "react-native-legal@1.5.2": react-native-legal
+  "@callstack_licenses@0.3.0": '@callstack/licenses'
+  "xcode@3.0.1": xcode
+  "simple-plist@1.3.1": simple-plist
+  "bplist-creator@0.1.0": bplist-creator
+  "stream-buffers@2.2.0": stream-buffers
+  "bplist-parser@0.3.1": bplist-parser
+  "big-integer@1.6.52": big-integer
+  "uuid@7.0.3": uuid
+  "xml2js@0.6.2": xml2js
+  "sax@1.4.1": sax
+  "xmlbuilder@11.0.1": xmlbuilder
+  "react-native-nitro-modules@0.29.2": react-native-nitro-modules
+  "react-native-paper@5.14.5": react-native-paper
+  "@callstack_react-theme-provider@3.0.9": '@callstack/react-theme-provider'
+  "deepmerge@3.3.0": deepmerge
+  "hoist-non-react-statics@3.3.2": hoist-non-react-statics
+  "react-is@16.13.1": react-is
+  "color@3.2.1": color
+  "color-convert@1.9.3": color-convert
+  "color-name@1.1.3": color-name
+  "react-native-safe-area-context@5.5.2": react-native-safe-area-context
+  "react-native-screens@4.13.1": react-native-screens
+  "react-freeze@1.0.4": react-freeze
+  "react-native-is-edge-to-edge@1.2.1": react-native-is-edge-to-edge
+manual:
+  - name: '@opentelemetry_api@1.9.0'
+    version: '1.9.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/api/LICENSE'
+  - name: '@opentelemetry_instrumentation@0.203.0'
+    version: '0.203.0'
+    source: https://github.com/open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/instrumentation/LICENSE'
+  - name: '@opentelemetry_api-logs@0.203.0'
+    version: '0.203.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/api-logs/LICENSE'
+  - name: import-in-the-middle@1.14.2
+    version: '1.14.2'
+    source: https://github.com/nodejs/import-in-the-middle
+    file: '../../../node_modules/import-in-the-middle/LICENSE'
+  - name: acorn@8.15.0
+    version: '8.15.0'
+    source: https://github.com/acornjs/acorn
+    file: '../../../node_modules/acorn/LICENSE'
+  - name: acorn-import-attributes@1.9.5
+    version: '1.9.5'
+    source: https://github.com/xtuc/acorn-import-attributes
+    file: '../../../node_modules/acorn-import-attributes/LICENSE'
+  - name: cjs-module-lexer@1.4.3
+    version: '1.4.3'
+    source: https://github.com/nodejs/cjs-module-lexer
+    file: '../../../node_modules/cjs-module-lexer/LICENSE'
+  - name: module-details-from-path@1.0.4
+    version: '1.0.4'
+    source: https://github.com/watson/module-details-from-path
+    file: '../../../node_modules/module-details-from-path/LICENSE'
+  - name: require-in-the-middle@7.5.2
+    version: '7.5.2'
+    source: https://github.com/nodejs/require-in-the-middle
+    file: '../../../node_modules/require-in-the-middle/LICENSE'
+  - name: debug@4.4.1
+    version: '4.4.1'
+    source: https://github.com/debug-js/debug
+    file: '../../../node_modules/debug/LICENSE'
+  - name: ms@2.1.3
+    version: '2.1.3'
+    source: vercel/ms
+    file: '../../../node_modules/ms/license.md'
+  - name: resolve@1.22.10
+    version: '1.22.10'
+    source: https://github.com/browserify/resolve
+    file: '../../../node_modules/resolve/LICENSE'
+  - name: is-core-module@2.16.1
+    version: '2.16.1'
+    source: https://github.com/inspect-js/is-core-module
+    file: '../../../node_modules/is-core-module/LICENSE'
+  - name: hasown@2.0.2
+    version: '2.0.2'
+    source: https://github.com/inspect-js/hasOwn
+    file: '../../../node_modules/hasown/LICENSE'
+  - name: function-bind@1.1.2
+    version: '1.1.2'
+    source: https://github.com/Raynos/function-bind
+    file: '../../../node_modules/function-bind/LICENSE'
+  - name: path-parse@1.0.7
+    version: '1.0.7'
+    source: https://github.com/jbgutierrez/path-parse
+    file: '../../../node_modules/path-parse/LICENSE'
+  - name: supports-preserve-symlinks-flag@1.0.0
+    version: '1.0.0'
+    source: https://github.com/inspect-js/node-supports-preserve-symlinks-flag
+    file: '../../../node_modules/supports-preserve-symlinks-flag/LICENSE'
+  - name: '@opentelemetry_instrumentation-fetch@0.203.0'
+    version: '0.203.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/instrumentation-fetch/LICENSE'
+  - name: '@opentelemetry_core@2.0.1'
+    version: '2.0.1'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/core/LICENSE'
+  - name: '@opentelemetry_semantic-conventions@1.36.0'
+    version: '1.36.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
+  - name: '@opentelemetry_sdk-trace-web@2.0.1'
+    version: '2.0.1'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-trace-web/LICENSE'
+  - name: '@opentelemetry_sdk-trace-base@2.0.1'
+    version: '2.0.1'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
+  - name: '@opentelemetry_resources@2.0.1'
+    version: '2.0.1'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/resources/LICENSE'
+  - name: '@opentelemetry_instrumentation-xml-http-request@0.203.0'
+    version: '0.203.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/instrumentation-xml-http-request/LICENSE'
+  - name: '@ottrelite_backend-platform@0.1.0'
+    version: '0.1.0'
+    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    file: '../../../packages/backend-platform/LICENSE'
+  - name: '@ottrelite_backend-wrapper-tracy@0.1.0'
+    version: '0.1.0'
+    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    file: '../../../packages/backend-wrapper-tracy/LICENSE'
+  - name: '@ottrelite_core@0.1.0'
+    version: '0.1.0'
+    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    file: '../../../packages/core/LICENSE'
+  - name: '@opentelemetry_sdk-metrics@2.0.1'
+    version: '2.0.1'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/.pnpm/@opentelemetry+sdk-metrics@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-metrics/LICENSE'
+  - name: '@react-native-community_slider@5.0.1'
+    version: '5.0.1'
+    source: https://github.com/callstack/react-native-slider
+    body: MIT
+  - name: '@react-native-vector-icons_material-design-icons@12.2.0'
+    version: '12.2.0'
+    source: https://github.com/oblador/react-native-vector-icons
+    file: '../../../node_modules/@react-native-vector-icons/material-design-icons/LICENSE'
+  - name: '@react-native-vector-icons_common@12.2.0'
+    version: '12.2.0'
+    source: https://github.com/oblador/react-native-vector-icons
+    file: '../../../node_modules/@react-native-vector-icons/common/LICENSE'
+  - name: '@react-native-community_cli-tools@17.0.0'
+    version: '17.0.0'
+    source: https://github.com/react-native-community/cli
+    file: '../../../node_modules/@react-native-vector-icons/common/node_modules/@react-native-community/cli-tools/LICENSE'
+  - name: '@vscode_sudo-prompt@9.3.1'
+    version: '9.3.1'
+    source: https://github.com/bpasero/sudo-prompt
+    file: '../../../node_modules/@vscode/sudo-prompt/LICENSE'
+  - name: appdirsjs@1.2.7
+    version: '1.2.7'
+    source: https://github.com/codingjerk/appdirsjs
+    body: MIT
+  - name: chalk@4.1.2
+    version: '4.1.2'
+    source: chalk/chalk
+    file: '../../../node_modules/chalk/license'
+  - name: ansi-styles@4.3.0
+    version: '4.3.0'
+    source: chalk/ansi-styles
+    file: '../../../node_modules/ansi-styles/license'
+  - name: color-convert@2.0.1
+    version: '2.0.1'
+    source: Qix-/color-convert
+    file: '../../../node_modules/color-convert/LICENSE'
+  - name: color-name@1.1.4
+    version: '1.1.4'
+    source: https://github.com/colorjs/color-name
+    file: '../../../node_modules/color-name/LICENSE'
+  - name: supports-color@7.2.0
+    version: '7.2.0'
+    source: chalk/supports-color
+    file: '../../../node_modules/chalk/node_modules/supports-color/license'
+  - name: has-flag@4.0.0
+    version: '4.0.0'
+    source: sindresorhus/has-flag
+    file: '../../../node_modules/has-flag/license'
+  - name: execa@5.1.1
+    version: '5.1.1'
+    source: sindresorhus/execa
+    file: '../../../node_modules/execa/license'
+  - name: cross-spawn@7.0.6
+    version: '7.0.6'
+    source: https://github.com/moxystudio/node-cross-spawn
+    file: '../../../node_modules/cross-spawn/LICENSE'
+  - name: path-key@3.1.1
+    version: '3.1.1'
+    source: sindresorhus/path-key
+    file: '../../../node_modules/path-key/license'
+  - name: shebang-command@2.0.0
+    version: '2.0.0'
+    source: kevva/shebang-command
+    file: '../../../node_modules/shebang-command/license'
+  - name: shebang-regex@3.0.0
+    version: '3.0.0'
+    source: sindresorhus/shebang-regex
+    file: '../../../node_modules/shebang-regex/license'
+  - name: which@2.0.2
+    version: '2.0.2'
+    source: https://github.com/isaacs/node-which
+    file: '../../../node_modules/which/LICENSE'
+  - name: isexe@2.0.0
+    version: '2.0.0'
+    source: https://github.com/isaacs/isexe
+    file: '../../../node_modules/isexe/LICENSE'
+  - name: get-stream@6.0.1
+    version: '6.0.1'
+    source: sindresorhus/get-stream
+    file: '../../../node_modules/get-stream/license'
+  - name: human-signals@2.1.0
+    version: '2.1.0'
+    source: ehmicky/human-signals
+    file: '../../../node_modules/human-signals/LICENSE'
+  - name: is-stream@2.0.1
+    version: '2.0.1'
+    source: sindresorhus/is-stream
+    file: '../../../node_modules/is-stream/license'
+  - name: merge-stream@2.0.0
+    version: '2.0.0'
+    source: grncdr/merge-stream
+    file: '../../../node_modules/merge-stream/LICENSE'
+  - name: npm-run-path@4.0.1
+    version: '4.0.1'
+    source: sindresorhus/npm-run-path
+    file: '../../../node_modules/npm-run-path/license'
+  - name: onetime@5.1.2
+    version: '5.1.2'
+    source: sindresorhus/onetime
+    file: '../../../node_modules/onetime/license'
+  - name: mimic-fn@2.1.0
+    version: '2.1.0'
+    source: sindresorhus/mimic-fn
+    file: '../../../node_modules/mimic-fn/license'
+  - name: signal-exit@3.0.7
+    version: '3.0.7'
+    source: https://github.com/tapjs/signal-exit
+    body: ISC
+  - name: strip-final-newline@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/strip-final-newline
+    file: '../../../node_modules/strip-final-newline/license'
+  - name: find-up@5.0.0
+    version: '5.0.0'
+    source: sindresorhus/find-up
+    file: '../../../node_modules/find-up/license'
+  - name: locate-path@6.0.0
+    version: '6.0.0'
+    source: sindresorhus/locate-path
+    file: '../../../node_modules/locate-path/license'
+  - name: p-locate@5.0.0
+    version: '5.0.0'
+    source: sindresorhus/p-locate
+    file: '../../../node_modules/p-locate/license'
+  - name: p-limit@3.1.0
+    version: '3.1.0'
+    source: sindresorhus/p-limit
+    file: '../../../node_modules/p-limit/license'
+  - name: yocto-queue@0.1.0
+    version: '0.1.0'
+    source: sindresorhus/yocto-queue
+    file: '../../../node_modules/yocto-queue/license'
+  - name: path-exists@4.0.0
+    version: '4.0.0'
+    source: sindresorhus/path-exists
+    file: '../../../node_modules/path-exists/license'
+  - name: launch-editor@2.10.0
+    version: '2.10.0'
+    source: https://github.com/yyx990803/launch-editor
+    file: '../../../node_modules/launch-editor/LICENSE'
+  - name: picocolors@1.1.1
+    version: '1.1.1'
+    source: alexeyraspopov/picocolors
+    file: '../../../node_modules/picocolors/LICENSE'
+  - name: shell-quote@1.8.3
+    version: '1.8.3'
+    source: http://github.com/ljharb/shell-quote
+    file: '../../../node_modules/shell-quote/LICENSE'
+  - name: mime@2.6.0
+    version: '2.6.0'
+    source: https://github.com/broofa/mime
+    file: '../../../node_modules/mime/LICENSE'
+  - name: ora@5.4.1
+    version: '5.4.1'
+    source: sindresorhus/ora
+    file: '../../../node_modules/ora/license'
+  - name: bl@4.1.0
+    version: '4.1.0'
+    source: https://github.com/rvagg/bl
+    file: '../../../node_modules/bl/LICENSE.md'
+  - name: buffer@5.7.1
+    version: '5.7.1'
+    source: https://github.com/feross/buffer
+    file: '../../../node_modules/buffer/LICENSE'
+  - name: base64-js@1.5.1
+    version: '1.5.1'
+    source: https://github.com/beatgammit/base64-js
+    file: '../../../node_modules/base64-js/LICENSE'
+  - name: ieee754@1.2.1
+    version: '1.2.1'
+    source: https://github.com/feross/ieee754
+    file: '../../../node_modules/ieee754/LICENSE'
+  - name: inherits@2.0.4
+    version: '2.0.4'
+    source: https://github.com/isaacs/inherits
+    file: '../../../node_modules/inherits/LICENSE'
+  - name: readable-stream@3.6.2
+    version: '3.6.2'
+    source: https://github.com/nodejs/readable-stream
+    file: '../../../node_modules/readable-stream/LICENSE'
+  - name: string_decoder@1.3.0
+    version: '1.3.0'
+    source: https://github.com/nodejs/string_decoder
+    file: '../../../node_modules/string_decoder/LICENSE'
+  - name: safe-buffer@5.2.1
+    version: '5.2.1'
+    source: https://github.com/feross/safe-buffer
+    file: '../../../node_modules/safe-buffer/LICENSE'
+  - name: util-deprecate@1.0.2
+    version: '1.0.2'
+    source: https://github.com/TooTallNate/util-deprecate
+    file: '../../../node_modules/util-deprecate/LICENSE'
+  - name: cli-cursor@3.1.0
+    version: '3.1.0'
+    source: sindresorhus/cli-cursor
+    file: '../../../node_modules/ora/node_modules/cli-cursor/license'
+  - name: restore-cursor@3.1.0
+    version: '3.1.0'
+    source: sindresorhus/restore-cursor
+    file: '../../../node_modules/ora/node_modules/restore-cursor/license'
+  - name: cli-spinners@2.9.2
+    version: '2.9.2'
+    source: sindresorhus/cli-spinners
+    file: '../../../node_modules/cli-spinners/license'
+  - name: is-interactive@1.0.0
+    version: '1.0.0'
+    source: sindresorhus/is-interactive
+    file: '../../../node_modules/ora/node_modules/is-interactive/license'
+  - name: is-unicode-supported@0.1.0
+    version: '0.1.0'
+    source: sindresorhus/is-unicode-supported
+    file: '../../../node_modules/is-unicode-supported/license'
+  - name: log-symbols@4.1.0
+    version: '4.1.0'
+    source: sindresorhus/log-symbols
+    file: '../../../node_modules/ora/node_modules/log-symbols/license'
+  - name: strip-ansi@6.0.1
+    version: '6.0.1'
+    source: chalk/strip-ansi
+    file: '../../../node_modules/strip-ansi/license'
+  - name: ansi-regex@5.0.1
+    version: '5.0.1'
+    source: chalk/ansi-regex
+    file: '../../../node_modules/ansi-regex/license'
+  - name: wcwidth@1.0.1
+    version: '1.0.1'
+    source: https://github.com/timoxley/wcwidth
+    file: '../../../node_modules/wcwidth/LICENSE'
+  - name: defaults@1.0.4
+    version: '1.0.4'
+    source: https://github.com/sindresorhus/node-defaults
+    file: '../../../node_modules/defaults/LICENSE'
+  - name: clone@1.0.4
+    version: '1.0.4'
+    source: https://github.com/pvorb/node-clone
+    file: '../../../node_modules/clone/LICENSE'
+  - name: prompts@2.4.2
+    version: '2.4.2'
+    source: terkelg/prompts
+    file: '../../../node_modules/prompts/license'
+  - name: kleur@3.0.3
+    version: '3.0.3'
+    source: lukeed/kleur
+    file: '../../../node_modules/kleur/license'
+  - name: sisteransi@1.0.5
+    version: '1.0.5'
+    source: https://github.com/terkelg/sisteransi
+    file: '../../../node_modules/sisteransi/license'
+  - name: semver@7.7.2
+    version: '7.7.2'
+    source: https://github.com/npm/node-semver
+    file: '../../../node_modules/semver/LICENSE'
+  - name: plist@3.1.0
+    version: '3.1.0'
+    source: https://github.com/TooTallNate/node-plist
+    file: '../../../node_modules/plist/LICENSE'
+  - name: '@xmldom_xmldom@0.8.10'
+    version: '0.8.10'
+    source: https://github.com/xmldom/xmldom
+    file: '../../../node_modules/@xmldom/xmldom/LICENSE'
+  - name: xmlbuilder@15.1.1
+    version: '15.1.1'
+    source: https://github.com/oozcitak/xmlbuilder-js
+    file: '../../../node_modules/xmlbuilder/LICENSE'
+  - name: '@react-navigation_native@7.1.16'
+    version: '7.1.16'
+    source: https://github.com/react-navigation/react-navigation
+    file: '../../../node_modules/@react-navigation/native/LICENSE'
+  - name: '@react-navigation_core@7.12.3'
+    version: '7.12.3'
+    source: https://github.com/react-navigation/react-navigation
+    file: '../../../node_modules/@react-navigation/core/LICENSE'
+  - name: '@react-navigation_routers@7.5.1'
+    version: '7.5.1'
+    source: https://github.com/react-navigation/react-navigation
+    file: '../../../node_modules/@react-navigation/routers/LICENSE'
+  - name: nanoid@3.3.11
+    version: '3.3.11'
+    source: ai/nanoid
+    file: '../../../node_modules/nanoid/LICENSE'
+  - name: escape-string-regexp@4.0.0
+    version: '4.0.0'
+    source: sindresorhus/escape-string-regexp
+    file: '../../../node_modules/escape-string-regexp/license'
+  - name: query-string@7.1.3
+    version: '7.1.3'
+    source: sindresorhus/query-string
+    file: '../../../node_modules/query-string/license'
+  - name: decode-uri-component@0.2.2
+    version: '0.2.2'
+    source: SamVerschueren/decode-uri-component
+    file: '../../../node_modules/decode-uri-component/license'
+  - name: filter-obj@1.1.0
+    version: '1.1.0'
+    source: sindresorhus/filter-obj
+    file: '../../../node_modules/filter-obj/license'
+  - name: split-on-first@1.1.0
+    version: '1.1.0'
+    source: sindresorhus/split-on-first
+    file: '../../../node_modules/split-on-first/license'
+  - name: strict-uri-encode@2.0.0
+    version: '2.0.0'
+    source: kevva/strict-uri-encode
+    file: '../../../node_modules/strict-uri-encode/license'
+  - name: react-is@19.1.0
+    version: '19.1.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/react-is/LICENSE'
+  - name: use-latest-callback@0.2.4
+    version: '0.2.4'
+    source: https://github.com/satya164/use-latest-callback
+    body: MIT
+  - name: use-sync-external-store@1.5.0
+    version: '1.5.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/use-sync-external-store/LICENSE'
+  - name: fast-deep-equal@3.1.3
+    version: '3.1.3'
+    source: https://github.com/epoberezkin/fast-deep-equal
+    file: '../../../node_modules/fast-deep-equal/LICENSE'
+  - name: '@react-navigation_native-stack@7.3.23'
+    version: '7.3.23'
+    source: https://github.com/react-navigation/react-navigation
+    file: '../../../node_modules/@react-navigation/native-stack/LICENSE'
+  - name: '@react-navigation_elements@2.6.1'
+    version: '2.6.1'
+    source: https://github.com/react-navigation/react-navigation
+    file: '../../../node_modules/@react-navigation/elements/LICENSE'
+  - name: color@4.2.3
+    version: '4.2.3'
+    source: Qix-/color
+    file: '../../../node_modules/color/LICENSE'
+  - name: color-string@1.9.1
+    version: '1.9.1'
+    source: Qix-/color-string
+    file: '../../../node_modules/color-string/LICENSE'
+  - name: simple-swizzle@0.2.2
+    version: '0.2.2'
+    source: qix-/node-simple-swizzle
+    file: '../../../node_modules/simple-swizzle/LICENSE'
+  - name: is-arrayish@0.3.2
+    version: '0.3.2'
+    source: https://github.com/qix-/node-is-arrayish
+    file: '../../../node_modules/simple-swizzle/node_modules/is-arrayish/LICENSE'
+  - name: warn-once@0.1.1
+    version: '0.1.1'
+    source: https://github.com/satya164/warn-once
+    file: '../../../node_modules/warn-once/LICENSE'
+  - name: '@shopify_react-native-skia@2.1.1'
+    version: '2.1.1'
+    source: https://github.com/Shopify/react-native-skia
+    file: '../../../node_modules/@shopify/react-native-skia/LICENSE.md'
+  - name: canvaskit-wasm@0.40.0
+    version: '0.40.0'
+    file: '../../../node_modules/canvaskit-wasm/LICENSE'
+  - name: '@webgpu_types@0.1.21'
+    version: '0.1.21'
+    source: gpuweb/types
+    file: '../../../node_modules/@webgpu/types/LICENSE'
+  - name: react-reconciler@0.31.0
+    version: '0.31.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/react-reconciler/LICENSE'
+  - name: scheduler@0.25.0
+    version: '0.25.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/react-reconciler/node_modules/scheduler/LICENSE'
+  - name: '@uidotdev_usehooks@2.4.1'
+    version: '2.4.1'
+    source: uidotdev/usehooks
+    file: '../../../node_modules/@uidotdev/usehooks/LICENSE'
+  - name: lodash@4.17.21
+    version: '4.17.21'
+    source: lodash/lodash
+    file: '../../../node_modules/lodash/LICENSE'
+  - name: moment@2.30.1
+    version: '2.30.1'
+    source: https://github.com/moment/moment
+    file: '../../../node_modules/moment/LICENSE'
+  - name: react@19.1.0
+    version: '19.1.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/react/LICENSE'
+  - name: react-native@0.81.0
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    file: '../../../node_modules/react-native/LICENSE'
+  - name: '@jest_create-cache-key-function@29.7.0'
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/@jest/create-cache-key-function/LICENSE'
+  - name: '@jest_types@29.6.3'
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/@jest/create-cache-key-function/node_modules/@jest/types/LICENSE'
+  - name: '@jest_schemas@29.6.3'
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/@jest/create-cache-key-function/node_modules/@jest/schemas/LICENSE'
+  - name: '@sinclair_typebox@0.27.8'
+    version: '0.27.8'
+    source: https://github.com/sinclairzx81/typebox
+    file: '../node_modules/@sinclair/typebox/license'
+  - name: '@types_istanbul-lib-coverage@2.0.6'
+    version: '2.0.6'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/istanbul-lib-coverage/LICENSE'
+  - name: '@types_istanbul-reports@3.0.4'
+    version: '3.0.4'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/istanbul-reports/LICENSE'
+  - name: '@types_istanbul-lib-report@3.0.3'
+    version: '3.0.3'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/istanbul-lib-report/LICENSE'
+  - name: '@types_node@24.1.0'
+    version: '24.1.0'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/node/LICENSE'
+  - name: undici-types@7.8.0
+    version: '7.8.0'
+    source: https://github.com/nodejs/undici
+    file: '../../../node_modules/undici-types/LICENSE'
+  - name: '@types_yargs@17.0.33'
+    version: '17.0.33'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/yargs/LICENSE'
+  - name: '@types_yargs-parser@21.0.3'
+    version: '21.0.3'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/yargs-parser/LICENSE'
+  - name: '@react-native_assets-registry@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@react-native_codegen@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: glob@7.2.3
+    version: '7.2.3'
+    source: https://github.com/isaacs/node-glob
+    file: '../../../node_modules/glob/LICENSE'
+  - name: fs.realpath@1.0.0
+    version: '1.0.0'
+    source: https://github.com/isaacs/fs.realpath
+    file: '../../../node_modules/fs.realpath/LICENSE'
+  - name: inflight@1.0.6
+    version: '1.0.6'
+    source: https://github.com/npm/inflight
+    file: '../../../node_modules/inflight/LICENSE'
+  - name: once@1.4.0
+    version: '1.4.0'
+    source: https://github.com/isaacs/once
+    file: '../../../node_modules/once/LICENSE'
+  - name: wrappy@1.0.2
+    version: '1.0.2'
+    source: https://github.com/npm/wrappy
+    file: '../../../node_modules/wrappy/LICENSE'
+  - name: minimatch@3.1.2
+    version: '3.1.2'
+    source: https://github.com/isaacs/minimatch
+    file: '../../../node_modules/minimatch/LICENSE'
+  - name: brace-expansion@1.1.12
+    version: '1.1.12'
+    source: https://github.com/juliangruber/brace-expansion
+    file: '../../../node_modules/minimatch/node_modules/brace-expansion/LICENSE'
+  - name: balanced-match@1.0.2
+    version: '1.0.2'
+    source: https://github.com/juliangruber/balanced-match
+    file: '../../../node_modules/balanced-match/LICENSE.md'
+  - name: concat-map@0.0.1
+    version: '0.0.1'
+    source: https://github.com/substack/node-concat-map
+    file: '../../../node_modules/concat-map/LICENSE'
+  - name: path-is-absolute@1.0.1
+    version: '1.0.1'
+    source: sindresorhus/path-is-absolute
+    file: '../../../node_modules/path-is-absolute/license'
+  - name: hermes-parser@0.29.1
+    version: '0.29.1'
+    source: https://github.com/facebook/hermes
+    file: '../../../node_modules/hermes-parser/LICENSE'
+  - name: hermes-estree@0.29.1
+    version: '0.29.1'
+    source: https://github.com/facebook/hermes
+    file: '../../../node_modules/hermes-parser/node_modules/hermes-estree/LICENSE'
+  - name: invariant@2.2.4
+    version: '2.2.4'
+    source: https://github.com/zertosh/invariant
+    file: '../../../node_modules/invariant/LICENSE'
+  - name: loose-envify@1.4.0
+    version: '1.4.0'
+    source: https://github.com/zertosh/loose-envify
+    file: '../../../node_modules/loose-envify/LICENSE'
+  - name: js-tokens@4.0.0
+    version: '4.0.0'
+    source: lydell/js-tokens
+    file: '../../../node_modules/js-tokens/LICENSE'
+  - name: nullthrows@1.1.1
+    version: '1.1.1'
+    source: https://github.com/zertosh/nullthrows
+    file: '../../../node_modules/nullthrows/LICENSE'
+  - name: yargs@17.7.2
+    version: '17.7.2'
+    source: https://github.com/yargs/yargs
+    file: '../../../node_modules/yargs/LICENSE'
+  - name: cliui@8.0.1
+    version: '8.0.1'
+    source: yargs/cliui
+    body: ISC
+  - name: string-width@4.2.3
+    version: '4.2.3'
+    source: sindresorhus/string-width
+    file: '../../../node_modules/string-width/license'
+  - name: emoji-regex@8.0.0
+    version: '8.0.0'
+    source: https://github.com/mathiasbynens/emoji-regex
+    body: MIT
+  - name: is-fullwidth-code-point@3.0.0
+    version: '3.0.0'
+    source: sindresorhus/is-fullwidth-code-point
+    file: '../../../node_modules/is-fullwidth-code-point/license'
+  - name: wrap-ansi@7.0.0
+    version: '7.0.0'
+    source: chalk/wrap-ansi
+    file: '../../../node_modules/cliui/node_modules/wrap-ansi/license'
+  - name: escalade@3.2.0
+    version: '3.2.0'
+    source: lukeed/escalade
+    file: '../../../node_modules/escalade/license'
+  - name: get-caller-file@2.0.5
+    version: '2.0.5'
+    source: https://github.com/stefanpenner/get-caller-file
+    file: '../../../node_modules/get-caller-file/LICENSE.md'
+  - name: require-directory@2.1.1
+    version: '2.1.1'
+    source: https://github.com/troygoode/node-require-directory
+    file: '../../../node_modules/require-directory/LICENSE'
+  - name: y18n@5.0.8
+    version: '5.0.8'
+    source: yargs/y18n
+    file: '../../../node_modules/y18n/LICENSE'
+  - name: yargs-parser@21.1.1
+    version: '21.1.1'
+    source: https://github.com/yargs/yargs-parser
+    body: ISC
+  - name: '@react-native_community-cli-plugin@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@react-native_dev-middleware@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@isaacs_ttlcache@1.4.1'
+    version: '1.4.1'
+    source: https://github.com/isaacs/ttlcache
+    file: '../../../node_modules/@isaacs/ttlcache/LICENSE'
+  - name: '@react-native_debugger-frontend@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: BSD-3-Clause
+  - name: chrome-launcher@0.15.2
+    version: '0.15.2'
+    source: https://github.com/GoogleChrome/chrome-launcher/
+    file: '../../../node_modules/chrome-launcher/LICENSE'
+  - name: is-wsl@2.2.0
+    version: '2.2.0'
+    source: sindresorhus/is-wsl
+    file: '../../../node_modules/is-wsl/license'
+  - name: is-docker@2.2.1
+    version: '2.2.1'
+    source: sindresorhus/is-docker
+    file: '../../../node_modules/is-docker/license'
+  - name: lighthouse-logger@1.4.2
+    version: '1.4.2'
+    file: '../../../node_modules/lighthouse-logger/LICENSE'
+  - name: debug@2.6.9
+    version: '2.6.9'
+    source: https://github.com/visionmedia/debug
+    file: '../../../node_modules/lighthouse-logger/node_modules/debug/LICENSE'
+  - name: ms@2.0.0
+    version: '2.0.0'
+    source: zeit/ms
+    file: '../../../node_modules/lighthouse-logger/node_modules/ms/license.md'
+  - name: marky@1.3.0
+    version: '1.3.0'
+    source: https://github.com/nolanlawson/marky
+    file: '../../../node_modules/marky/LICENSE'
+  - name: chromium-edge-launcher@0.2.0
+    version: '0.2.0'
+    source: https://github.com/cezaraugusto/chromium-edge-launcher/
+    file: '../../../node_modules/chromium-edge-launcher/LICENSE'
+  - name: mkdirp@1.0.4
+    version: '1.0.4'
+    source: https://github.com/isaacs/node-mkdirp
+    file: '../../../node_modules/mkdirp/LICENSE'
+  - name: rimraf@3.0.2
+    version: '3.0.2'
+    source: https://github.com/isaacs/rimraf
+    file: '../../../node_modules/rimraf/LICENSE'
+  - name: connect@3.7.0
+    version: '3.7.0'
+    source: senchalabs/connect
+    file: '../../../node_modules/connect/LICENSE'
+  - name: finalhandler@1.1.2
+    version: '1.1.2'
+    source: pillarjs/finalhandler
+    file: '../../../node_modules/finalhandler/LICENSE'
+  - name: encodeurl@1.0.2
+    version: '1.0.2'
+    source: pillarjs/encodeurl
+    file: '../../../node_modules/encodeurl/LICENSE'
+  - name: escape-html@1.0.3
+    version: '1.0.3'
+    source: component/escape-html
+    file: '../../../node_modules/escape-html/LICENSE'
+  - name: on-finished@2.3.0
+    version: '2.3.0'
+    source: jshttp/on-finished
+    file: '../../../node_modules/finalhandler/node_modules/on-finished/LICENSE'
+  - name: ee-first@1.1.1
+    version: '1.1.1'
+    source: jonathanong/ee-first
+    file: '../../../node_modules/ee-first/LICENSE'
+  - name: parseurl@1.3.3
+    version: '1.3.3'
+    source: pillarjs/parseurl
+    file: '../../../node_modules/parseurl/LICENSE'
+  - name: statuses@1.5.0
+    version: '1.5.0'
+    source: jshttp/statuses
+    file: '../../../node_modules/finalhandler/node_modules/statuses/LICENSE'
+  - name: unpipe@1.0.0
+    version: '1.0.0'
+    source: stream-utils/unpipe
+    file: '../../../node_modules/unpipe/LICENSE'
+  - name: utils-merge@1.0.1
+    version: '1.0.1'
+    source: https://github.com/jaredhanson/utils-merge
+    file: '../../../node_modules/utils-merge/LICENSE'
+  - name: open@7.4.2
+    version: '7.4.2'
+    source: sindresorhus/open
+    file: '../../../node_modules/@react-native/dev-middleware/node_modules/open/license'
+  - name: serve-static@1.16.2
+    version: '1.16.2'
+    source: expressjs/serve-static
+    file: '../../../node_modules/serve-static/LICENSE'
+  - name: encodeurl@2.0.0
+    version: '2.0.0'
+    source: pillarjs/encodeurl
+    file: '../../../node_modules/serve-static/node_modules/encodeurl/LICENSE'
+  - name: send@0.19.0
+    version: '0.19.0'
+    source: pillarjs/send
+    file: '../../../node_modules/send/LICENSE'
+  - name: depd@2.0.0
+    version: '2.0.0'
+    source: dougwilson/nodejs-depd
+    file: '../../../node_modules/depd/LICENSE'
+  - name: destroy@1.2.0
+    version: '1.2.0'
+    source: stream-utils/destroy
+    file: '../../../node_modules/destroy/LICENSE'
+  - name: etag@1.8.1
+    version: '1.8.1'
+    source: jshttp/etag
+    file: '../../../node_modules/etag/LICENSE'
+  - name: fresh@0.5.2
+    version: '0.5.2'
+    source: jshttp/fresh
+    file: '../../../node_modules/fresh/LICENSE'
+  - name: http-errors@2.0.0
+    version: '2.0.0'
+    source: jshttp/http-errors
+    file: '../../../node_modules/http-errors/LICENSE'
+  - name: setprototypeof@1.2.0
+    version: '1.2.0'
+    source: https://github.com/wesleytodd/setprototypeof
+    file: '../../../node_modules/setprototypeof/LICENSE'
+  - name: statuses@2.0.1
+    version: '2.0.1'
+    source: jshttp/statuses
+    file: '../../../node_modules/statuses/LICENSE'
+  - name: toidentifier@1.0.1
+    version: '1.0.1'
+    source: component/toidentifier
+    file: '../../../node_modules/toidentifier/LICENSE'
+  - name: mime@1.6.0
+    version: '1.6.0'
+    source: https://github.com/broofa/node-mime
+    file: '../../../node_modules/send/node_modules/mime/LICENSE'
+  - name: on-finished@2.4.1
+    version: '2.4.1'
+    source: jshttp/on-finished
+    file: '../../../node_modules/on-finished/LICENSE'
+  - name: range-parser@1.2.1
+    version: '1.2.1'
+    source: jshttp/range-parser
+    file: '../../../node_modules/range-parser/LICENSE'
+  - name: ws@6.2.3
+    version: '6.2.3'
+    source: websockets/ws
+    file: '../../../node_modules/ws/LICENSE'
+  - name: async-limiter@1.0.1
+    version: '1.0.1'
+    source: https://github.com/strml/async-limiter
+    file: '../../../node_modules/async-limiter/LICENSE'
+  - name: metro@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: '@babel_code-frame@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/code-frame/LICENSE'
+  - name: '@babel_helper-validator-identifier@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-validator-identifier/LICENSE'
+  - name: '@babel_core@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/core/LICENSE'
+  - name: '@ampproject_remapping@2.3.0'
+    version: '2.3.0'
+    source: https://github.com/ampproject/remapping
+    file: '../../../node_modules/@ampproject/remapping/LICENSE'
+  - name: '@jridgewell_gen-mapping@0.3.12'
+    version: '0.3.12'
+    source: https://github.com/jridgewell/sourcemaps
+    file: '../../../node_modules/@jridgewell/gen-mapping/LICENSE'
+  - name: '@jridgewell_sourcemap-codec@1.5.4'
+    version: '1.5.4'
+    source: https://github.com/jridgewell/sourcemaps
+    file: '../../../node_modules/@jridgewell/sourcemap-codec/LICENSE'
+  - name: '@jridgewell_trace-mapping@0.3.29'
+    version: '0.3.29'
+    source: https://github.com/jridgewell/sourcemaps
+    file: '../../../node_modules/@jridgewell/trace-mapping/LICENSE'
+  - name: '@jridgewell_resolve-uri@3.1.2'
+    version: '3.1.2'
+    source: https://github.com/jridgewell/resolve-uri
+    file: '../../../node_modules/@jridgewell/resolve-uri/LICENSE'
+  - name: '@babel_generator@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/generator/LICENSE'
+  - name: '@babel_parser@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/parser/LICENSE'
+  - name: '@babel_types@7.28.2'
+    version: '7.28.2'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/types/LICENSE'
+  - name: '@babel_helper-string-parser@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-string-parser/LICENSE'
+  - name: jsesc@3.1.0
+    version: '3.1.0'
+    source: https://github.com/mathiasbynens/jsesc
+    body: MIT
+  - name: '@babel_helper-compilation-targets@7.27.2'
+    version: '7.27.2'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-compilation-targets/LICENSE'
+  - name: '@babel_helper-validator-option@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-validator-option/LICENSE'
+  - name: browserslist@4.25.1
+    version: '4.25.1'
+    source: browserslist/browserslist
+    file: '../../../node_modules/browserslist/LICENSE'
+  - name: caniuse-lite@1.0.30001727
+    version: '1.0.30001727'
+    source: browserslist/caniuse-lite
+    file: '../../../node_modules/caniuse-lite/LICENSE'
+  - name: electron-to-chromium@1.5.191
+    version: '1.5.191'
+    source: https://github.com/kilian/electron-to-chromium/
+    file: '../../../node_modules/electron-to-chromium/LICENSE'
+  - name: node-releases@2.0.19
+    version: '2.0.19'
+    source: https://github.com/chicoxyzzy/node-releases
+    file: '../../../node_modules/node-releases/LICENSE'
+  - name: update-browserslist-db@1.1.3
+    version: '1.1.3'
+    source: browserslist/update-db
+    file: '../../../node_modules/update-browserslist-db/LICENSE'
+  - name: lru-cache@5.1.1
+    version: '5.1.1'
+    source: https://github.com/isaacs/node-lru-cache
+    file: '../../../node_modules/@babel/helper-compilation-targets/node_modules/lru-cache/LICENSE'
+  - name: yallist@3.1.1
+    version: '3.1.1'
+    source: https://github.com/isaacs/yallist
+    file: '../../../node_modules/yallist/LICENSE'
+  - name: semver@6.3.1
+    version: '6.3.1'
+    source: https://github.com/npm/node-semver
+    file: '../../../node_modules/@babel/helper-compilation-targets/node_modules/semver/LICENSE'
+  - name: '@babel_helper-module-transforms@7.27.3'
+    version: '7.27.3'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-module-transforms/LICENSE'
+  - name: '@babel_helper-module-imports@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-module-imports/LICENSE'
+  - name: '@babel_traverse@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/traverse/LICENSE'
+  - name: '@babel_helper-globals@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-globals/LICENSE'
+  - name: '@babel_template@7.27.2'
+    version: '7.27.2'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/template/LICENSE'
+  - name: '@babel_helpers@7.28.2'
+    version: '7.28.2'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helpers/LICENSE'
+  - name: convert-source-map@2.0.0
+    version: '2.0.0'
+    source: https://github.com/thlorenz/convert-source-map
+    file: '../../../node_modules/convert-source-map/LICENSE'
+  - name: gensync@1.0.0-beta.2
+    version: '1.0.0-beta.2'
+    source: https://github.com/loganfsmyth/gensync
+    file: '../../../node_modules/gensync/LICENSE'
+  - name: json5@2.2.3
+    version: '2.2.3'
+    source: https://github.com/json5/json5
+    file: '../../../node_modules/json5/LICENSE.md'
+  - name: accepts@1.3.8
+    version: '1.3.8'
+    source: jshttp/accepts
+    file: '../../../node_modules/accepts/LICENSE'
+  - name: mime-types@2.1.35
+    version: '2.1.35'
+    source: jshttp/mime-types
+    file: '../../../node_modules/mime-types/LICENSE'
+  - name: mime-db@1.52.0
+    version: '1.52.0'
+    source: jshttp/mime-db
+    file: '../../../node_modules/mime-types/node_modules/mime-db/LICENSE'
+  - name: negotiator@0.6.3
+    version: '0.6.3'
+    source: jshttp/negotiator
+    file: '../../../node_modules/negotiator/LICENSE'
+  - name: ci-info@2.0.0
+    version: '2.0.0'
+    source: https://github.com/watson/ci-info
+    file: '../../../node_modules/metro/node_modules/ci-info/LICENSE'
+  - name: error-stack-parser@2.1.4
+    version: '2.1.4'
+    source: https://github.com/stacktracejs/error-stack-parser
+    file: '../../../node_modules/error-stack-parser/LICENSE'
+  - name: stackframe@1.3.4
+    version: '1.3.4'
+    source: https://github.com/stacktracejs/stackframe
+    file: '../../../node_modules/stackframe/LICENSE'
+  - name: flow-enums-runtime@0.0.6
+    version: '0.0.6'
+    source: https://github.com/facebook/flow
+    file: '../../../node_modules/flow-enums-runtime/LICENSE'
+  - name: graceful-fs@4.2.11
+    version: '4.2.11'
+    source: https://github.com/isaacs/node-graceful-fs
+    file: '../../../node_modules/graceful-fs/LICENSE'
+  - name: image-size@1.2.1
+    version: '1.2.1'
+    source: https://github.com/image-size/image-size
+    file: '../../../node_modules/image-size/LICENSE'
+  - name: queue@6.0.2
+    version: '6.0.2'
+    source: https://github.com/jessetane/queue
+    file: '../../../node_modules/queue/LICENSE'
+  - name: jest-worker@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-worker/LICENSE'
+  - name: jest-util@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-worker/node_modules/jest-util/LICENSE'
+  - name: ci-info@3.9.0
+    version: '3.9.0'
+    source: https://github.com/watson/ci-info
+    file: '../../../node_modules/jest-worker/node_modules/ci-info/LICENSE'
+  - name: picomatch@2.3.1
+    version: '2.3.1'
+    source: micromatch/picomatch
+    file: '../../../node_modules/picomatch/LICENSE'
+  - name: supports-color@8.1.1
+    version: '8.1.1'
+    source: chalk/supports-color
+    file: '../../../node_modules/supports-color/license'
+  - name: jsc-safe-url@0.2.4
+    version: '0.2.4'
+    source: https://github.com/robhogan/jsc-safe-url
+    file: '../../../node_modules/jsc-safe-url/LICENSE'
+  - name: lodash.throttle@4.1.1
+    version: '4.1.1'
+    source: lodash/lodash
+    file: '../../../node_modules/lodash.throttle/LICENSE'
+  - name: metro-babel-transformer@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-cache@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: exponential-backoff@3.1.2
+    version: '3.1.2'
+    source: https://github.com/coveooss/exponential-backoff
+    file: '../../../node_modules/exponential-backoff/LICENSE'
+  - name: https-proxy-agent@7.0.6
+    version: '7.0.6'
+    source: https://github.com/TooTallNate/proxy-agents
+    file: '../../../node_modules/https-proxy-agent/LICENSE'
+  - name: agent-base@7.1.4
+    version: '7.1.4'
+    source: https://github.com/TooTallNate/proxy-agents
+    file: '../../../node_modules/agent-base/LICENSE'
+  - name: metro-core@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-resolver@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-cache-key@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-config@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: cosmiconfig@5.2.1
+    version: '5.2.1'
+    source: https://github.com/davidtheclark/cosmiconfig
+    file: '../../../node_modules/metro-config/node_modules/cosmiconfig/LICENSE'
+  - name: import-fresh@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/import-fresh
+    file: '../../../node_modules/metro-config/node_modules/import-fresh/license'
+  - name: caller-path@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/caller-path
+    file: '../../../node_modules/caller-path/license'
+  - name: caller-callsite@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/caller-callsite
+    file: '../../../node_modules/caller-callsite/license'
+  - name: callsites@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/callsites
+    file: '../../../node_modules/caller-callsite/node_modules/callsites/license'
+  - name: resolve-from@3.0.0
+    version: '3.0.0'
+    source: sindresorhus/resolve-from
+    file: '../../../node_modules/metro-config/node_modules/resolve-from/license'
+  - name: is-directory@0.3.1
+    version: '0.3.1'
+    source: jonschlinkert/is-directory
+    file: '../../../node_modules/is-directory/LICENSE'
+  - name: js-yaml@3.14.1
+    version: '3.14.1'
+    source: nodeca/js-yaml
+    file: '../../../node_modules/metro-config/node_modules/js-yaml/LICENSE'
+  - name: argparse@1.0.10
+    version: '1.0.10'
+    source: nodeca/argparse
+    file: '../../../node_modules/metro-config/node_modules/argparse/LICENSE'
+  - name: sprintf-js@1.0.3
+    version: '1.0.3'
+    source: https://github.com/alexei/sprintf.js
+    file: '../../../node_modules/sprintf-js/LICENSE'
+  - name: esprima@4.0.1
+    version: '4.0.1'
+    source: https://github.com/jquery/esprima
+    body: BSD-2-Clause
+  - name: parse-json@4.0.0
+    version: '4.0.0'
+    source: sindresorhus/parse-json
+    file: '../../../node_modules/metro-config/node_modules/parse-json/license'
+  - name: error-ex@1.3.2
+    version: '1.3.2'
+    source: qix-/node-error-ex
+    file: '../../../node_modules/error-ex/LICENSE'
+  - name: is-arrayish@0.2.1
+    version: '0.2.1'
+    source: https://github.com/qix-/node-is-arrayish
+    file: '../../../node_modules/is-arrayish/LICENSE'
+  - name: json-parse-better-errors@1.0.2
+    version: '1.0.2'
+    source: https://github.com/zkat/json-parse-better-errors
+    file: '../../../node_modules/json-parse-better-errors/LICENSE.md'
+  - name: jest-validate@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/metro-config/node_modules/jest-validate/LICENSE'
+  - name: camelcase@6.3.0
+    version: '6.3.0'
+    source: sindresorhus/camelcase
+    file: '../../../node_modules/metro-config/node_modules/camelcase/license'
+  - name: jest-get-type@29.6.3
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-get-type/LICENSE'
+  - name: leven@3.1.0
+    version: '3.1.0'
+    source: sindresorhus/leven
+    file: '../../../node_modules/leven/license'
+  - name: pretty-format@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/pretty-format/LICENSE'
+  - name: ansi-styles@5.2.0
+    version: '5.2.0'
+    source: chalk/ansi-styles
+    file: '../../../node_modules/pretty-format/node_modules/ansi-styles/license'
+  - name: react-is@18.3.1
+    version: '18.3.1'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
+  - name: metro-file-map@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: fb-watchman@2.0.2
+    version: '2.0.2'
+    source: https://github.com/facebook/watchman
+    body: Apache-2.0
+  - name: bser@2.1.1
+    version: '2.1.1'
+    source: https://github.com/facebook/watchman
+    body: Apache-2.0
+  - name: node-int64@0.4.0
+    version: '0.4.0'
+    source: https://github.com/broofa/node-int64
+    file: '../../../node_modules/node-int64/LICENSE'
+  - name: micromatch@4.0.8
+    version: '4.0.8'
+    source: micromatch/micromatch
+    file: '../../../node_modules/micromatch/LICENSE'
+  - name: braces@3.0.3
+    version: '3.0.3'
+    source: micromatch/braces
+    file: '../../../node_modules/braces/LICENSE'
+  - name: fill-range@7.1.1
+    version: '7.1.1'
+    source: jonschlinkert/fill-range
+    file: '../../../node_modules/fill-range/LICENSE'
+  - name: to-regex-range@5.0.1
+    version: '5.0.1'
+    source: micromatch/to-regex-range
+    file: '../../../node_modules/to-regex-range/LICENSE'
+  - name: is-number@7.0.0
+    version: '7.0.0'
+    source: jonschlinkert/is-number
+    file: '../../../node_modules/is-number/LICENSE'
+  - name: walker@1.0.8
+    version: '1.0.8'
+    source: https://github.com/daaku/nodejs-walker
+    file: '../../../node_modules/walker/LICENSE'
+  - name: makeerror@1.0.12
+    version: '1.0.12'
+    source: https://github.com/daaku/nodejs-makeerror
+    file: '../../../node_modules/makeerror/license'
+  - name: tmpl@1.0.5
+    version: '1.0.5'
+    source: https://github.com/daaku/nodejs-tmpl
+    file: '../../../node_modules/tmpl/license'
+  - name: metro-runtime@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: '@babel_runtime@7.28.2'
+    version: '7.28.2'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/runtime/LICENSE'
+  - name: metro-source-map@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: '@babel_traverse--for-generate-function-map@7.28.0'
+    version: '7.28.0'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/traverse--for-generate-function-map/LICENSE'
+  - name: metro-symbolicate@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: source-map@0.5.7
+    version: '0.5.7'
+    source: http://github.com/mozilla/source-map
+    file: '../../../node_modules/metro-symbolicate/node_modules/source-map/LICENSE'
+  - name: vlq@1.0.1
+    version: '1.0.1'
+    source: https://github.com/Rich-Harris/vlq
+    file: '../../../node_modules/vlq/LICENSE'
+  - name: ob1@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-transform-plugins@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-transform-worker@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: metro-minify-terser@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: terser@5.43.1
+    version: '5.43.1'
+    source: https://github.com/terser/terser
+    file: '../../../node_modules/terser/LICENSE'
+  - name: '@jridgewell_source-map@0.3.10'
+    version: '0.3.10'
+    source: https://github.com/jridgewell/sourcemaps
+    file: '../../../node_modules/@jridgewell/source-map/LICENSE'
+  - name: commander@2.20.3
+    version: '2.20.3'
+    source: https://github.com/tj/commander.js
+    file: '../../../node_modules/terser/node_modules/commander/LICENSE'
+  - name: source-map-support@0.5.21
+    version: '0.5.21'
+    source: https://github.com/evanw/node-source-map-support
+    file: '../../../node_modules/terser/node_modules/source-map-support/LICENSE.md'
+  - name: buffer-from@1.1.2
+    version: '1.1.2'
+    source: LinusU/buffer-from
+    file: '../../../node_modules/buffer-from/LICENSE'
+  - name: source-map@0.6.1
+    version: '0.6.1'
+    source: http://github.com/mozilla/source-map
+    file: '../../../node_modules/source-map/LICENSE'
+  - name: serialize-error@2.1.0
+    version: '2.1.0'
+    source: sindresorhus/serialize-error
+    file: '../../../node_modules/serialize-error/license'
+  - name: throat@5.0.0
+    version: '5.0.0'
+    source: https://github.com/ForbesLindesay/throat
+    file: '../../../node_modules/throat/LICENSE'
+  - name: ws@7.5.10
+    version: '7.5.10'
+    source: websockets/ws
+    file: '../../../node_modules/metro/node_modules/ws/LICENSE'
+  - name: '@react-native_gradle-plugin@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@react-native_js-polyfills@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@react-native_normalize-colors@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: '@react-native_virtualized-lists@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: abort-controller@3.0.0
+    version: '3.0.0'
+    source: https://github.com/mysticatea/abort-controller
+    file: '../../../node_modules/abort-controller/LICENSE'
+  - name: event-target-shim@5.0.1
+    version: '5.0.1'
+    source: https://github.com/mysticatea/event-target-shim
+    file: '../../../node_modules/event-target-shim/LICENSE'
+  - name: anser@1.4.10
+    version: '1.4.10'
+    source: https://github.com/IonicaBizau/anser
+    file: '../../../node_modules/anser/LICENSE'
+  - name: babel-jest@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/babel-jest/LICENSE'
+  - name: '@jest_transform@29.7.0'
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/@jest/transform/LICENSE'
+  - name: babel-plugin-istanbul@6.1.1
+    version: '6.1.1'
+    source: https://github.com/istanbuljs/babel-plugin-istanbul
+    file: '../../../node_modules/react-native/node_modules/babel-plugin-istanbul/LICENSE'
+  - name: '@babel_helper-plugin-utils@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/helper-plugin-utils/LICENSE'
+  - name: '@istanbuljs_load-nyc-config@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/istanbuljs/load-nyc-config
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/LICENSE'
+  - name: camelcase@5.3.1
+    version: '5.3.1'
+    source: sindresorhus/camelcase
+    file: '../../../node_modules/camelcase/license'
+  - name: find-up@4.1.0
+    version: '4.1.0'
+    source: sindresorhus/find-up
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/find-up/license'
+  - name: locate-path@5.0.0
+    version: '5.0.0'
+    source: sindresorhus/locate-path
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/locate-path/license'
+  - name: p-locate@4.1.0
+    version: '4.1.0'
+    source: sindresorhus/p-locate
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/p-locate/license'
+  - name: p-limit@2.3.0
+    version: '2.3.0'
+    source: sindresorhus/p-limit
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/p-limit/license'
+  - name: p-try@2.2.0
+    version: '2.2.0'
+    source: sindresorhus/p-try
+    file: '../../../node_modules/p-try/license'
+  - name: get-package-type@0.1.0
+    version: '0.1.0'
+    source: https://github.com/cfware/get-package-type
+    file: '../../../node_modules/get-package-type/LICENSE'
+  - name: resolve-from@5.0.0
+    version: '5.0.0'
+    source: sindresorhus/resolve-from
+    file: '../../../node_modules/resolve-from/license'
+  - name: '@istanbuljs_schema@0.1.3'
+    version: '0.1.3'
+    source: https://github.com/istanbuljs/schema
+    file: '../../../node_modules/@istanbuljs/schema/LICENSE'
+  - name: istanbul-lib-instrument@5.2.1
+    version: '5.2.1'
+    source: https://github.com/istanbuljs/istanbuljs
+    file: '../../../node_modules/react-native/node_modules/istanbul-lib-instrument/LICENSE'
+  - name: istanbul-lib-coverage@3.2.2
+    version: '3.2.2'
+    source: https://github.com/istanbuljs/istanbuljs
+    file: '../../../node_modules/istanbul-lib-coverage/LICENSE'
+  - name: test-exclude@6.0.0
+    version: '6.0.0'
+    source: https://github.com/istanbuljs/test-exclude
+    body: ISC
+  - name: fast-json-stable-stringify@2.1.0
+    version: '2.1.0'
+    source: https://github.com/epoberezkin/fast-json-stable-stringify
+    file: '../../../node_modules/fast-json-stable-stringify/LICENSE'
+  - name: jest-haste-map@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/jest-haste-map/LICENSE'
+  - name: '@types_graceful-fs@4.1.9'
+    version: '4.1.9'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/graceful-fs/LICENSE'
+  - name: anymatch@3.1.3
+    version: '3.1.3'
+    source: https://github.com/micromatch/anymatch
+    file: '../../../node_modules/anymatch/LICENSE'
+  - name: normalize-path@3.0.0
+    version: '3.0.0'
+    source: jonschlinkert/normalize-path
+    file: '../../../node_modules/normalize-path/LICENSE'
+  - name: jest-regex-util@29.6.3
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/jest-regex-util/LICENSE'
+  - name: fsevents@2.3.3
+    version: '2.3.3'
+    source: https://github.com/fsevents/fsevents
+    file: '../../../node_modules/fsevents/LICENSE'
+  - name: pirates@4.0.7
+    version: '4.0.7'
+    source: https://github.com/danez/pirates
+    file: '../../../node_modules/pirates/LICENSE'
+  - name: slash@3.0.0
+    version: '3.0.0'
+    source: sindresorhus/slash
+    file: '../../../node_modules/slash/license'
+  - name: write-file-atomic@4.0.2
+    version: '4.0.2'
+    source: https://github.com/npm/write-file-atomic
+    file: '../../../node_modules/react-native/node_modules/write-file-atomic/LICENSE.md'
+  - name: imurmurhash@0.1.4
+    version: '0.1.4'
+    source: https://github.com/jensyt/imurmurhash-js
+    body: MIT
+  - name: '@types_babel__core@7.20.5'
+    version: '7.20.5'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/babel__core/LICENSE'
+  - name: '@types_babel__generator@7.27.0'
+    version: '7.27.0'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/babel__generator/LICENSE'
+  - name: '@types_babel__template@7.4.4'
+    version: '7.4.4'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/babel__template/LICENSE'
+  - name: '@types_babel__traverse@7.20.7'
+    version: '7.20.7'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/babel__traverse/LICENSE'
+  - name: babel-preset-jest@29.6.3
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/babel-preset-jest/LICENSE'
+  - name: babel-plugin-jest-hoist@29.6.3
+    version: '29.6.3'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/react-native/node_modules/babel-plugin-jest-hoist/LICENSE'
+  - name: babel-preset-current-node-syntax@1.1.0
+    version: '1.1.0'
+    source: https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax
+    file: '../../../node_modules/babel-preset-current-node-syntax/LICENSE'
+  - name: '@babel_plugin-syntax-async-generators@7.8.4'
+    version: '7.8.4'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-async-generators
+    file: '../../../node_modules/@babel/plugin-syntax-async-generators/LICENSE'
+  - name: '@babel_plugin-syntax-bigint@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-bigint
+    file: '../../../node_modules/@babel/plugin-syntax-bigint/LICENSE'
+  - name: '@babel_plugin-syntax-class-properties@7.12.13'
+    version: '7.12.13'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-class-properties/LICENSE'
+  - name: '@babel_plugin-syntax-class-static-block@7.14.5'
+    version: '7.14.5'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-class-static-block/LICENSE'
+  - name: '@babel_plugin-syntax-import-attributes@7.27.1'
+    version: '7.27.1'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-import-attributes/LICENSE'
+  - name: '@babel_plugin-syntax-import-meta@7.10.4'
+    version: '7.10.4'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-import-meta/LICENSE'
+  - name: '@babel_plugin-syntax-json-strings@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-json-strings
+    file: '../../../node_modules/@babel/plugin-syntax-json-strings/LICENSE'
+  - name: '@babel_plugin-syntax-logical-assignment-operators@7.10.4'
+    version: '7.10.4'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-logical-assignment-operators/LICENSE'
+  - name: '@babel_plugin-syntax-nullish-coalescing-operator@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-nullish-coalescing-operator
+    file: '../../../node_modules/@babel/plugin-syntax-nullish-coalescing-operator/LICENSE'
+  - name: '@babel_plugin-syntax-numeric-separator@7.10.4'
+    version: '7.10.4'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-numeric-separator/LICENSE'
+  - name: '@babel_plugin-syntax-object-rest-spread@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread
+    file: '../../../node_modules/@babel/plugin-syntax-object-rest-spread/LICENSE'
+  - name: '@babel_plugin-syntax-optional-catch-binding@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-optional-catch-binding
+    file: '../../../node_modules/@babel/plugin-syntax-optional-catch-binding/LICENSE'
+  - name: '@babel_plugin-syntax-optional-chaining@7.8.3'
+    version: '7.8.3'
+    source: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-optional-chaining
+    file: '../../../node_modules/@babel/plugin-syntax-optional-chaining/LICENSE'
+  - name: '@babel_plugin-syntax-private-property-in-object@7.14.5'
+    version: '7.14.5'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-private-property-in-object/LICENSE'
+  - name: '@babel_plugin-syntax-top-level-await@7.14.5'
+    version: '7.14.5'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/plugin-syntax-top-level-await/LICENSE'
+  - name: babel-plugin-syntax-hermes-parser@0.29.1
+    version: '0.29.1'
+    source: https://github.com/facebook/hermes
+    file: '../../../node_modules/babel-plugin-syntax-hermes-parser/LICENSE'
+  - name: commander@12.1.0
+    version: '12.1.0'
+    source: https://github.com/tj/commander.js
+    file: '../../../node_modules/commander/LICENSE'
+  - name: jest-environment-node@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-environment-node/LICENSE'
+  - name: '@jest_environment@29.7.0'
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-environment-node/node_modules/@jest/environment/LICENSE'
+  - name: '@jest_fake-timers@29.7.0'
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-environment-node/node_modules/@jest/fake-timers/LICENSE'
+  - name: '@sinonjs_fake-timers@10.3.0'
+    version: '10.3.0'
+    source: https://github.com/sinonjs/fake-timers
+    file: '../../../node_modules/jest-environment-node/node_modules/@sinonjs/fake-timers/LICENSE'
+  - name: '@sinonjs_commons@3.0.1'
+    version: '3.0.1'
+    source: https://github.com/sinonjs/commons
+    file: '../../../node_modules/@sinonjs/commons/LICENSE'
+  - name: type-detect@4.0.8
+    version: '4.0.8'
+    source: https://github.com/chaijs/type-detect
+    file: '../../../node_modules/type-detect/LICENSE'
+  - name: jest-message-util@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-environment-node/node_modules/jest-message-util/LICENSE'
+  - name: '@types_stack-utils@2.0.3'
+    version: '2.0.3'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/stack-utils/LICENSE'
+  - name: stack-utils@2.0.6
+    version: '2.0.6'
+    source: tapjs/stack-utils
+    file: '../../../node_modules/stack-utils/LICENSE.md'
+  - name: escape-string-regexp@2.0.0
+    version: '2.0.0'
+    source: sindresorhus/escape-string-regexp
+    file: '../../../node_modules/stack-utils/node_modules/escape-string-regexp/license'
+  - name: jest-mock@29.7.0
+    version: '29.7.0'
+    source: https://github.com/jestjs/jest
+    file: '../../../node_modules/jest-environment-node/node_modules/jest-mock/LICENSE'
+  - name: memoize-one@5.2.1
+    version: '5.2.1'
+    source: https://github.com/alexreardon/memoize-one
+    file: '../../../node_modules/memoize-one/LICENSE'
+  - name: promise@8.3.0
+    version: '8.3.0'
+    source: https://github.com/then/promise
+    file: '../../../node_modules/promise/LICENSE'
+  - name: asap@2.0.6
+    version: '2.0.6'
+    source: https://github.com/kriskowal/asap
+    file: '../../../node_modules/asap/LICENSE.md'
+  - name: react-devtools-core@6.1.5
+    version: '6.1.5'
+    source: https://github.com/facebook/react
+    body: MIT
+  - name: react-refresh@0.14.2
+    version: '0.14.2'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/react-refresh/LICENSE'
+  - name: regenerator-runtime@0.13.11
+    version: '0.13.11'
+    source: https://github.com/facebook/regenerator/tree/main/packages/runtime
+    file: '../../../node_modules/regenerator-runtime/LICENSE'
+  - name: scheduler@0.26.0
+    version: '0.26.0'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/scheduler/LICENSE'
+  - name: stacktrace-parser@0.1.11
+    version: '0.1.11'
+    source: https://github.com/errwischt/stacktrace-parser
+    file: '../../../node_modules/stacktrace-parser/LICENSE'
+  - name: type-fest@0.7.1
+    version: '0.7.1'
+    source: sindresorhus/type-fest
+    file: '../../../node_modules/stacktrace-parser/node_modules/type-fest/license'
+  - name: whatwg-fetch@3.6.20
+    version: '3.6.20'
+    source: github/fetch
+    file: '../../../node_modules/whatwg-fetch/LICENSE'
+  - name: '@react-native_new-app-screen@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
+  - name: react-native-device-info@14.0.4
+    version: '14.0.4'
+    source: https://github.com/react-native-device-info/react-native-device-info
+    file: '../../../node_modules/react-native-device-info/LICENSE'
+  - name: react-native-legal@1.5.2
+    version: '1.5.2'
+    source: https://github.com/callstackincubator/react-native-legal
+    file: '../../../node_modules/react-native-legal/LICENSE'
+  - name: '@callstack_licenses@0.3.0'
+    version: '0.3.0'
+    source: https://github.com/callstackincubator/react-native-legal
+    file: '../../../node_modules/@callstack/licenses/LICENSE'
+  - name: xcode@3.0.1
+    version: '3.0.1'
+    source: https://github.com/apache/cordova-node-xcode
+    file: '../../../node_modules/xcode/LICENSE'
+  - name: simple-plist@1.3.1
+    version: '1.3.1'
+    source: https://github.com/wollardj/simple-plist
+    file: '../../../node_modules/simple-plist/LICENSE'
+  - name: bplist-creator@0.1.0
+    version: '0.1.0'
+    source: https://github.com/nearinfinity/node-bplist-creator
+    file: '../../../node_modules/bplist-creator/LICENSE'
+  - name: stream-buffers@2.2.0
+    version: '2.2.0'
+    source: https://github.com/samcday/node-stream-buffer
+    body: Unlicense
+  - name: bplist-parser@0.3.1
+    version: '0.3.1'
+    source: https://github.com/nearinfinity/node-bplist-parser
+    body: MIT
+  - name: big-integer@1.6.52
+    version: '1.6.52'
+    source: https://github.com/peterolson/BigInteger.js
+    file: '../../../node_modules/big-integer/LICENSE'
+  - name: uuid@7.0.3
+    version: '7.0.3'
+    source: https://github.com/uuidjs/uuid
+    file: '../../../node_modules/uuid/LICENSE.md'
+  - name: xml2js@0.6.2
+    version: '0.6.2'
+    source: https://github.com/Leonidas-from-XIV/node-xml2js
+    file: '../../../node_modules/xml2js/LICENSE'
+  - name: sax@1.4.1
+    version: '1.4.1'
+    source: https://github.com/isaacs/sax-js
+    file: '../../../node_modules/sax/LICENSE'
+  - name: xmlbuilder@11.0.1
+    version: '11.0.1'
+    source: https://github.com/oozcitak/xmlbuilder-js
+    file: '../../../node_modules/xml2js/node_modules/xmlbuilder/LICENSE'
+  - name: react-native-nitro-modules@0.29.2
+    version: '0.29.2'
+    source: https://github.com/mrousavy/nitro
+    body: MIT
+  - name: react-native-paper@5.14.5
+    version: '5.14.5'
+    source: https://github.com/callstack/react-native-paper
+    file: '../../../node_modules/react-native-paper/LICENSE.md'
+  - name: '@callstack_react-theme-provider@3.0.9'
+    version: '3.0.9'
+    source: https://github.com/callstack/react-theme-provider
+    file: '../../../node_modules/@callstack/react-theme-provider/LICENSE'
+  - name: deepmerge@3.3.0
+    version: '3.3.0'
+    source: https://github.com/TehShrike/deepmerge
+    body: MIT
+  - name: hoist-non-react-statics@3.3.2
+    version: '3.3.2'
+    source: https://github.com/mridgway/hoist-non-react-statics
+    file: '../../../node_modules/hoist-non-react-statics/LICENSE.md'
+  - name: react-is@16.13.1
+    version: '16.13.1'
+    source: https://github.com/facebook/react
+    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
+  - name: color@3.2.1
+    version: '3.2.1'
+    source: Qix-/color
+    file: '../../../node_modules/react-native-paper/node_modules/color/LICENSE'
+  - name: color-convert@1.9.3
+    version: '1.9.3'
+    source: Qix-/color-convert
+    file: '../../../node_modules/react-native-paper/node_modules/color-convert/LICENSE'
+  - name: color-name@1.1.3
+    version: '1.1.3'
+    source: https://github.com/dfcreative/color-name
+    file: '../../../node_modules/react-native-paper/node_modules/color-name/LICENSE'
+  - name: react-native-safe-area-context@5.5.2
+    version: '5.5.2'
+    source: https://github.com/th3rdwave/react-native-safe-area-context
+    file: '../../../node_modules/react-native-safe-area-context/LICENSE'
+  - name: react-native-screens@4.13.1
+    version: '4.13.1'
+    source: https://github.com/software-mansion/react-native-screens
+    file: '../../../node_modules/react-native-screens/LICENSE'
+  - name: react-freeze@1.0.4
+    version: '1.0.4'
+    source: software-mansion/react-freeze
+    file: '../../../node_modules/react-freeze/LICENSE'
+  - name: react-native-is-edge-to-edge@1.2.1
+    version: '1.2.1'
+    source: https://github.com/zoontek/react-native-edge-to-edge
+    file: '../../../node_modules/react-native-is-edge-to-edge/LICENSE'
+# END Generated NPM license entries

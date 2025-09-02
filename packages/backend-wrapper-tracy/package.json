@@ -1,0 +1,77 @@
+{
+  "name": "@ottrelite/backend-wrapper-tracy",
+  "version": "0.1.0",
+  "description": "Tracy wrapper backend implementation for @ottrelite/core React Native tracing framework",
+  "main": "lib/index",
+  "module": "lib/index",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "author": "Callstack <hello@callstack.com>",
+  "files": [
+    "src",
+    "react-native.config.js",
+    "lib",
+    "nitrogen",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "android/CMakeLists.txt",
+    "android/src",
+    "ios/**/*.h",
+    "ios/**/*.m",
+    "ios/**/*.mm",
+    "ios/**/*.cpp",
+    "ios/**/*.swift",
+    "app.plugin.js",
+    "*.podspec",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "pnpm run typescript || exit 0;",
+    "typecheck": "tsc --noEmit",
+    "clean": "del-cli android/build node_modules/**/android/build lib",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
+    "typescript": "tsc",
+    "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react-native",
+    "tracing",
+    "trace",
+    "otel",
+    "opentelemetry",
+    "observability",
+    "performance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callstackincubator/ReactNativeOttrelite.git"
+  },
+  "license": "(MIT AND BSD-3-Clause)",
+  "bugs": {
+    "url": "https://github.com/callstackincubator/ReactNativeOttrelite/issues"
+  },
+  "homepage": "https://github.com/callstackincubator/ReactNativeOttrelite#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@ottrelite/core": "workspace:^",
+    "@babel/runtime": "^7.25.0",
+    "del-cli": "^6.0.0",
+    "eslint": "^8.57.1",
+    "jest": "^30.0.4",
+    "nitro-codegen": "^0.27.2",
+    "react-native-nitro-modules": "0.29.2",
+    "release-it": "^19.0.3",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@ottrelite/core": "workspace:^",
+    "react": "19.1.0",
+    "react-native": "^0.81.0",
+    "react-native-nitro-modules": "0.29.2"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["ottrelite"],
+  "ios": {
+    "iosModuleName": "ReactNativeOttrelite"
+  },
+  "android": {
+    "androidNamespace": ["ottrelite"],
+    "androidCxxLibName": "ReactNativeOttrelite"
+  },
+  "autolinking": {
+    "ReactNativeOttrelite": {
+      "cpp": "ReactNativeOttrelite"
+    },
+    "ReactNativeOttreliteExporterOTLP": {
+      "cpp": "ReactNativeOttreliteExporterOTLP"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@ottrelite/ottrelite-consumer-lib",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Example library consuming Ottrelite APIs in C++, Swift & Kotlin",
+  "main": "lib/index",
+  "module": "lib/index",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "author": "Callstack <hello@callstack.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/callstackincubator/ReactNativeOttrelite#readme",
+  "scripts": {
+    "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
+    "clean": "rm -rf android/build node_modules/**/android/build lib",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
+    "postinstall": "pnpm run typescript || exit 0;",
+    "typecheck": "tsc --noEmit",
+    "typescript": "tsc"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.25.0",
+    "@ottrelite/core": "workspace:^",
+    "@react-native/eslint-config": "0.78.2",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.1.0",
+    "eslint": "^8.57.1",
+    "nitro-codegen": "^0.27.2",
+    "react": "19.1.0",
+    "react-native": "^0.81.0",
+    "react-native-nitro-modules": "0.29.2",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "@ottrelite/core": "workspace:^",
+    "react": "19.1.0",
+    "react-native": "^0.81.0",
+    "react-native-nitro-modules": "0.29.2"
+  }
+}

@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Ottrelite Babel Plugin Transform tests should handle function with complex body and destructured props with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent(_ref) {
+  var show = _ref.show;
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent(_ref) {
+    var x = 1;
+    var y = 2;
+    console.log(x + y);
+    if (show) {
+      return (0, _jsxRuntime.jsx)("div", {
+        children: x + y
+      });
+    }
+    return null;
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should handle function with complex body with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent(props) {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent(props) {
+    var x = 1;
+    var y = 2;
+    console.log(x + y);
+    if (props.show) {
+      return (0, _jsxRuntime.jsx)("div", {
+        children: x + y
+      });
+    }
+    return null;
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent(props);
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should not transform function without use trace directive 1`] = `
+"var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent() {
+  'use strict';
+
+  return (0, _jsxRuntime.jsx)("div", {
+    children: "Hello"
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should not transform when no directive is present 1`] = `
+"var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent() {
+  var x = 1;
+  return (0, _jsxRuntime.jsx)("div", {
+    children: x
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform a complex component with implicit tracer name 1`] = `
+"var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MyComponent = MyComponent;
+var _core = require("@ottrelite/core");
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _useSubheading2 = require("@hooks/useSubheading");
+var _react = require("react");
+var _reactNative = require("react-native");
+var _reactNativePaper = require("react-native-paper");
+var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent(_ref) {
+  var heading = _ref.heading;
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent(_ref) {
+    var _res$count;
+    var _ref2 = _react.useState < {
+        count: number
+      } | null > null,
+      _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+      res = _ref3[0],
+      setRes = _ref3[1];
+    var _useSubheading = (0, _useSubheading2.useSubheading)(),
+      subheading = _useSubheading.subheading;
+    (0, _react.useEffect)(function () {
+      fetch('http://api.test.com/data').then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        return setRes(data);
+      }).catch(function (error) {
+        return console.error(error);
+      });
+    }, []);
+    return (0, _jsxRuntime.jsxs)(_reactNative.View, {
+      children: [(0, _jsxRuntime.jsx)(_reactNativePaper.Text, {
+        variant: "titleLarge",
+        children: heading
+      }), (0, _jsxRuntime.jsx)(_reactNativePaper.Text, {
+        variant: "titleSmall",
+        children: subheading
+      }), (0, _jsxRuntime.jsx)(_reactNativePaper.Text, {
+        children: (_res$count = res == null ? void 0 : res.count) != null ? _res$count : 'Loading...'
+      })]
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform arrow function assigned to variable with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+var MyComponent = function MyComponent() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent() {
+    return (0, _jsxRuntime.jsx)("div", {
+      children: "Hello"
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+};"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform arrow function in object property with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var obj = {
+  MyMethod: function MyMethod() {
+    var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+    function OttreliteInstrumentationReactWrappedMyMethod() {
+      return 'result';
+    }
+    return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyMethod", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+      var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyMethod();
+      ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+      return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+    });
+  }
+};"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform class methods with implicit tracer name 1`] = `
+"var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _core = require("@ottrelite/core");
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var MyClass = function () {
+  function MyClass() {
+    (0, _classCallCheck2.default)(this, MyClass);
+  }
+  return (0, _createClass2.default)(MyClass, [{
+    key: "myMethod",
+    value: function myMethod() {
+      var _this = this;
+      var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.vanillaTracerFactory)("ottrelite-instrumentation-react");
+      function OttreliteInstrumentationReactWrappedMyClass() {
+        return 'result';
+      }
+      return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyClass", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+        var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyClass.call(_this);
+        ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+        return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+      });
+    }
+  }]);
+}();"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform function declaration with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent() {
+    var x = 1;
+    return (0, _jsxRuntime.jsx)("div", {
+      children: x
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform function expression assigned to variable with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+var MyComponent = function MyComponent() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedMyComponent() {
+    return (0, _jsxRuntime.jsx)("div", {
+      children: "Hello"
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyComponent", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyComponent();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+};"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform function in object property with implicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var obj = {
+  MyMethod: function MyMethod() {
+    var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+    function OttreliteInstrumentationReactWrappedMyMethod() {
+      return 'result';
+    }
+    return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("MyMethod", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+      var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedMyMethod();
+      ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+      return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+    });
+  }
+};"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform function with explicit tracer name 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+function MyComponent() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedCustomName() {
+    return (0, _jsxRuntime.jsx)("div", {
+      children: "Hello"
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("CustomName", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedCustomName();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;
+
+exports[`Ottrelite Babel Plugin Transform tests should transform multiple functions in same file with implicit tracer names 1`] = `
+"var _core = require("@ottrelite/core");
+var _jsxRuntime = require("react/jsx-runtime");
+function ComponentA() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedComponentA() {
+    return (0, _jsxRuntime.jsx)("div", {
+      children: "A"
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("ComponentA", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedComponentA();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}
+function ComponentB() {
+  var ottreliteTracer_UUID_PLACEHOLDER = (0, _core.useTracer)("ottrelite-instrumentation-react");
+  function OttreliteInstrumentationReactWrappedComponentB() {
+    return (0, _jsxRuntime.jsx)("div", {
+      children: "B"
+    });
+  }
+  return ottreliteTracer_UUID_PLACEHOLDER.startActiveSpan("ComponentB", function (ottreliteComponentSpan_UUID_PLACEHOLDER) {
+    var ottreliteComponentOriginalResult_UUID_PLACEHOLDER = OttreliteInstrumentationReactWrappedComponentB();
+    ottreliteComponentSpan_UUID_PLACEHOLDER.end();
+    return ottreliteComponentOriginalResult_UUID_PLACEHOLDER;
+  });
+}"
+`;

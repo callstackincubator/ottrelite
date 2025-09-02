@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2.9.0
+    ports:
+      - '16686:16686' # Jaeger UI
+      - '4317:4317' # OTLP gRPC receiver
+      - '4318:4318' # OTLP HTTP receiver
+    environment:
+      - LOG_LEVEL=debug

@@ -1,0 +1,12 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Getting Started"
+  },
+  {
+    "type": "dir",
+    "name": "backends",
+    "label": "Backends"
+  }
+]

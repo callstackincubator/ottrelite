@@ -1,0 +1,111 @@
+# This patch modifies opentelemetry-cpp's the CMake configuration to use manually linked dependencies so as for iOS build to work correctly and not find MacOS libraries instead.
+diff --git a/cmake/curl.cmake b/cmake/curl.cmake
+index 994c1fbd..b34ffe56 100644
+--- a/cmake/curl.cmake
++++ b/cmake/curl.cmake
+@@ -1,6 +1,8 @@
+ # Copyright The OpenTelemetry Authors
+ # SPDX-License-Identifier: Apache-2.0
+ 
++# Changes to the file made from Ottrelite project, configuring build for iOS
++
+ # Import the curl target (CURL::libcurl).
+ # 1. Find an installed curl package
+ # 2. Use FetchContent to fetch and build curl from GitHub
+@@ -33,7 +35,7 @@ if(NOT CURL_FOUND)
+   set(BUILD_LIBCURL_DOCS OFF CACHE BOOL "" FORCE)
+   set(BUILD_MISC_DOCS OFF CACHE BOOL "" FORCE)
+   set(ENABLE_CURL_MANUAL OFF CACHE BOOL "" FORCE)
+-  set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
++  #set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
+ 
+   FetchContent_MakeAvailable(curl)
+ 
+diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
+index 9bdcac91..6fa2b127 100644
+--- a/cmake/protobuf.cmake
++++ b/cmake/protobuf.cmake
+@@ -1,6 +1,7 @@
+ # Copyright The OpenTelemetry Authors
+ # SPDX-License-Identifier: Apache-2.0
+ 
++# Changes to the file made from Ottrelite project, configuring build for iOS
+ 
+ # Import Protobuf targets (protobuf::libprotobuf and protobuf::protoc) and set PROTOBUF_PROTOC_EXECUTABLE.
+ # 1. If gRPC was fetched from github then use the Protobuf submodule built with gRPC
+@@ -25,11 +26,11 @@ else()
+   # Search for an installed Protobuf package explicitly using the CONFIG search mode first followed by the MODULE search mode.
+   # Protobuf versions < 3.22.0 may be found using the module mode and some protobuf apt packages do not support the CONFIG search.
+ 
+-  find_package(Protobuf CONFIG QUIET)
++  #find_package(Protobuf CONFIG QUIET)
+   set(Protobuf_PROVIDER "find_package")
+ 
+   if(NOT Protobuf_FOUND)
+-    find_package(Protobuf MODULE QUIET)
++    #find_package(Protobuf MODULE QUIET)
+   endif()
+ 
+   if(NOT Protobuf_FOUND)
+@@ -57,24 +58,24 @@ else()
+   endif()
+ endif()
+ 
+-if(NOT TARGET protobuf::libprotobuf)
+-  message(FATAL_ERROR "A required protobuf target (protobuf::libprotobuf) was not imported")
+-endif()
++# if(NOT TARGET protobuf::libprotobuf)
++#   message(FATAL_ERROR "A required protobuf target (protobuf::libprotobuf) was not imported")
++# endif()
+ 
+-if(PROTOBUF_PROTOC_EXECUTABLE AND NOT Protobuf_PROTOC_EXECUTABLE)
+-  message(WARNING "Use of PROTOBUF_PROTOC_EXECUTABLE is deprecated. Please use Protobuf_PROTOC_EXECUTABLE instead.")
+-  set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_PROTOC_EXECUTABLE}")
+-endif()
++# if(PROTOBUF_PROTOC_EXECUTABLE AND NOT Protobuf_PROTOC_EXECUTABLE)
++#   message(WARNING "Use of PROTOBUF_PROTOC_EXECUTABLE is deprecated. Please use Protobuf_PROTOC_EXECUTABLE instead.")
++#   set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_PROTOC_EXECUTABLE}")
++# endif()
+ 
+-if(CMAKE_CROSSCOMPILING)
+-  find_program(Protobuf_PROTOC_EXECUTABLE protoc)
+-else()
+-  if(NOT TARGET protobuf::protoc)
+-    message(FATAL_ERROR "A required protobuf target (protobuf::protoc) was not imported")
+-  endif()
+-  set(Protobuf_PROTOC_EXECUTABLE "$<TARGET_FILE:protobuf::protoc>")
+-endif()
++# if(CMAKE_CROSSCOMPILING)
++#   find_program(Protobuf_PROTOC_EXECUTABLE protoc)
++# else()
++#   if(NOT TARGET protobuf::protoc)
++#     message(FATAL_ERROR "A required protobuf target (protobuf::protoc) was not imported")
++#   endif()
++#   set(Protobuf_PROTOC_EXECUTABLE "$<TARGET_FILE:protobuf::protoc>")
++# endif()
+ 
+-set(PROTOBUF_PROTOC_EXECUTABLE "${Protobuf_PROTOC_EXECUTABLE}")
++# set(PROTOBUF_PROTOC_EXECUTABLE "${Protobuf_PROTOC_EXECUTABLE}")
+ 
+-message(STATUS "PROTOBUF_PROTOC_EXECUTABLE=${PROTOBUF_PROTOC_EXECUTABLE}")
++# message(STATUS "PROTOBUF_PROTOC_EXECUTABLE=${PROTOBUF_PROTOC_EXECUTABLE}")
+diff --git a/cmake/zlib.cmake b/cmake/zlib.cmake
+index ad616e0d..ac351410 100644
+--- a/cmake/zlib.cmake
++++ b/cmake/zlib.cmake
+@@ -1,12 +1,14 @@
+ # Copyright The OpenTelemetry Authors
+ # SPDX-License-Identifier: Apache-2.0
+ 
++# Changes to the file made from Ottrelite project, configuring build for iOS
++
+ # ZLIB must be found as an installed package for now.
+ # Fetching ZLIB and building in-tree is not supported.
+ # Protobuf, gRPC, prometheus-cpp, civetweb, CURL, and other dependencies require ZLIB and import its target.
+ # When ZLIB::ZLIB is an alias of the shared library then inconsistent linking may occur.
+ 
+-find_package(ZLIB REQUIRED)
++#find_package(ZLIB REQUIRED)
+ set(ZLIB_PROVIDER "find_package")
+ 
+ # Set the ZLIB_VERSION from the legacy ZLIB_VERSION_STRING Required for CMake

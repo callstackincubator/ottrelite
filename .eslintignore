@@ -1,0 +1,4 @@
+node_modules/
+lib/
+react-native.config.js
+**/third_party/

@@ -1,0 +1,69 @@
+{
+  "name": "@ottrelite/instrumentation-react",
+  "version": "0.1.0",
+  "description": "Pluggable tracing framework for React Native plugin for Babel - autoinstrumention",
+  "main": "lib/index",
+  "module": "lib/index",
+  "types": "lib/index.d.ts",
+  "source": "src/index",
+  "author": "Callstack <hello@callstack.com>",
+  "files": [
+    "src",
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "pnpm run typescript || exit 0;",
+    "typecheck": "tsc --noEmit",
+    "clean": "del-cli android/build node_modules/**/android/build lib",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
+    "typescript": "tsc",
+    "build": "pnpm run typescript",
+    "build:watch": "tsc --watch",
+    "dev": "concurrently \"pnpm run build:watch\" \"pnpm run test:watch\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:update-snapshots": "jest --updateSnapshot",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react-native",
+    "babel",
+    "telemetry",
+    "tracing",
+    "trace",
+    "observability",
+    "performance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callstackincubator/ReactNativeOttrelite.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/callstackincubator/ReactNativeOttrelite/issues"
+  },
+  "homepage": "https://github.com/callstackincubator/ReactNativeOttrelite#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@babel/types": "^7.28.2",
+    "eslint": "^8.57.1",
+    "jest": "^30.0.4",
+    "typescript": "^5.8.3",
+    "uuid": "^11.1.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.28.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/generator": "^7.28.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__generator": "^7.27.0",
+    "@types/node": "^24.1.0",
+    "concurrently": "^9.2.0"
+  }
+}

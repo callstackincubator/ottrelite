@@ -1,0 +1,41 @@
+name: Setup
+description: Setup Node.js and install dependencies
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        run_install: false
+
+    - name: Restore dependencies
+      id: pnpm-cache
+      uses: actions/cache/restore@v4
+      with:
+        path: |
+          **/node_modules
+          pnpm-lock.yaml
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm.lock') }}-${{ hashFiles('**/package.json', '!node_modules/**') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-${{ hashFiles('pnpm.lock') }}
+          ${{ runner.os }}-pnpm-
+
+    - name: Install dependencies
+      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      run: pnpm install --frozen-lockfile
+      shell: bash
+
+    - name: Cache dependencies
+      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: |
+          **/node_modules
+          pnpm-lock.yaml
+        key: ${{ steps.pnpm-cache.outputs.cache-primary-key }}
