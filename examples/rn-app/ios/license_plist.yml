@@ -539,7 +539,7 @@ manual:
   - name: '@opentelemetry_sdk-metrics@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/.pnpm/@opentelemetry+sdk-metrics@2.0.1_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/sdk-metrics/LICENSE'
+    file: '../../../node_modules/@opentelemetry/sdk-metrics/LICENSE'
   - name: '@react-native-community_slider@5.0.1'
     version: '5.0.1'
     source: https://github.com/callstack/react-native-slider
@@ -1681,7 +1681,7 @@ manual:
   - name: commander@2.20.3
     version: '2.20.3'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/terser/node_modules/commander/LICENSE'
+    file: '../../../node_modules/commander/LICENSE'
   - name: source-map-support@0.5.21
     version: '0.5.21'
     source: https://github.com/evanw/node-source-map-support
@@ -1941,7 +1941,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest

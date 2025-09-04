@@ -6,7 +6,11 @@ packages:
 nodeLinker: hoisted
 
 onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@evilmartians/lefthook'
+  - core-js
   - esbuild
   - nitro-codegen
   - node-pty
   - react-native-nitro-modules
+  - unrs-resolver

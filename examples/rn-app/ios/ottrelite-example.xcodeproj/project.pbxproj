@@ -12,6 +12,7 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D410E1A8A7878985640D08B5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		59F21F8927D7433DB835433E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33007D938D8C4288B101C28E /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "ottrelite-example/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		C99C15BC2D28CEC0D0EC281F /* Pods-ottrelite-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ottrelite-example.release.xcconfig"; path = "Target Support Files/Pods-ottrelite-example/Pods-ottrelite-example.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		33007D938D8C4288B101C28E /* Settings.bundle */ = {isa = PBXFileReference; name = "Settings.bundle"; path = "Settings.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				33007D938D8C4288B101C28E /* Settings.bundle */,
 			);
 			name = "ottrelite-example";
 			sourceTree = "<group>";
@@ -106,7 +109,7 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ottrelite-example" */;
 			buildPhases = (
 				7E2E43A796E2E7A560F9E60E /* [CP] Check Pods Manifest.lock */,
-				746927F4F19D42F8B02E6FDB /* Generate licenses with LicensePlist */,
+				5CF1F556B5C640F7A4A4BD48 /* Generate licenses with LicensePlist */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -162,6 +165,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D410E1A8A7878985640D08B5 /* PrivacyInfo.xcprivacy in Resources */,
+				59F21F8927D7433DB835433E /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +205,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ottrelite-example/Pods-ottrelite-example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		746927F4F19D42F8B02E6FDB /* Generate licenses with LicensePlist */ = {
+		5CF1F556B5C640F7A4A4BD48 /* Generate licenses with LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
