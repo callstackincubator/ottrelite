@@ -63,7 +63,7 @@ jobs:
       - name: Run unit tests
         run: pnpm run test --maxWorkers=2 --coverage
 
-  docs:
+  build-docs:
     name: Build and deploy docs
     runs-on: ubuntu-latest
     needs: build-packages
@@ -79,7 +79,26 @@ jobs:
       - name: Build docs
         run: pnpm run build:docs
 
-      # TODO: publish docs
+      - name: Upload docs artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/doc_build
+
+  deploy-docs:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build-docs
+    runs-on: ubuntu-latest
+    name: Deploy docs
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   # TODO: enable building demo apps
   # build-android:
