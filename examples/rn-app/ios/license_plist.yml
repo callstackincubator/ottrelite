@@ -1681,7 +1681,7 @@ manual:
   - name: commander@2.20.3
     version: '2.20.3'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/terser/node_modules/commander/LICENSE'
   - name: source-map-support@0.5.21
     version: '0.5.21'
     source: https://github.com/evanw/node-source-map-support
@@ -1941,7 +1941,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
+    file: '../../../node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest
