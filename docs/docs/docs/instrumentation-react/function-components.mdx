@@ -1,4 +1,10 @@
-# Function components
+import CommonDirectiveDoc from './__common-directive.mdx';
+
+## The autoinstrumentation directive
+
+<CommonDirectiveDoc />
+
+## Function components
 
 > [!NOTE]
 > As seen in the examples below, the components are wrapped in `memo` to prevent unnecessary re-renders. This is a common practice in React to optimize performance, but it is not compulsory - the instrumentation would still work without it. However, in such case, it would be expected that most likely the instrumentation would produce many entries, for invocations of the component which didn't actually result in an update to the shadow tree.
@@ -34,7 +40,7 @@ With an explicit Tracer name:
 
 ```typescript
 export const MyComponent = memo(function MyComponent(){
-    "use trace TestLibMyComponent";
+    "use trace dev TestLibMyComponent";
 
     ...
 
@@ -55,9 +61,9 @@ export const MyComponent = memo(function MyComponent(){
 > });
 > ```
 >
-> Would result in an **error**, since the Babel plugin would not know the name of the component; for this reason, you need to either make the function a named function, or add an explicit name to the `"use trace Name"` directive.
+> Would result in an **error**, since the Babel plugin would not know the name of the component; for this reason, you need to either make the function a named function, or add an explicit name to the `"use trace API Name"` directive.
 
-## What will be the name of the tracer?
+### What will be the name of the tracer?
 
 | Declaration style                                   | Name                                     |
 | --------------------------------------------------- | ---------------------------------------- |

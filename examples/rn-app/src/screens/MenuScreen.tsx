@@ -8,6 +8,7 @@ import {
   RouteDescriptions,
   RouteIcons,
   RouteNames,
+  RouteSubtitles,
   Routes,
 } from '../router/routes';
 
@@ -32,14 +33,14 @@ export function MenuScreen() {
       {(
         [
           ...[
-            Routes.JSDevelopmentAPIDemo,
+            Routes.JSDemosListing,
             Routes.CPPTracingDemo,
             Routes.PlatformTracingDemo,
             Routes.OTELDemosListing,
           ].map<IMenuItem>((route) => ({
             key: route,
             title: RouteNames[route],
-            subtitle: 'Demo',
+            subtitle: RouteSubtitles[route] ?? 'Demo',
             contents: RouteDescriptions[route],
             icon: RouteIcons[route],
             action: () => {
@@ -89,7 +90,7 @@ export function MenuScreen() {
 const styles = StyleSheet.create({
   scrollViewContainer: {
     gap: 30,
-    paddingHorizontal: 12,
+    paddingHorizontal: 4,
     paddingVertical: 22,
   },
   actionButtonRight: { marginRight: 12 },

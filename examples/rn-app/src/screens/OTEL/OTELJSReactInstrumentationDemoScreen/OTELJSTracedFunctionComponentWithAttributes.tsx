@@ -3,16 +3,15 @@ import { memo } from 'react';
 import { Card, Text } from 'react-native-paper';
 
 import { commonStyles } from '../../../commonStyles';
+import type { ExternallyDrivenComponentProps } from '../../../types/ExternallyDrivenComponentProps';
 
-import type { ExternallyDrivenComponentProps } from './types/ExternallyDrivenComponentProps';
-
-export const TracedFunctionComponentWithAttributes = memo(
-  function TracedFunctionComponentWithAttributes({
+export const OTELJSTracedFunctionComponentWithAttributes = memo(
+  function OTELJSTracedFunctionComponentWithAttributes({
     formattedDate,
     rerenderCount,
   }: ExternallyDrivenComponentProps) {
     const { markJSRenderEnd } = useComponentRenderTracing(
-      'TracedFunctionComponentWithAttributes',
+      'OTELJSTracedFunctionComponentWithAttributes',
       {
         formattedDate,
         rerenderCount: rerenderCount.toString(),

@@ -2,14 +2,13 @@ import { memo } from 'react';
 import { Card, Text } from 'react-native-paper';
 
 import { commonStyles } from '../../../commonStyles';
+import type { ExternallyDrivenComponentProps } from '../../../types/ExternallyDrivenComponentProps';
 
-import type { ExternallyDrivenComponentProps } from './types/ExternallyDrivenComponentProps';
-
-export const TracedFunctionComponent = memo(function TracedFunctionComponent({
+export const JSTracedFunctionComponent = memo(function TracedFunctionComponent({
   formattedDate,
   rerenderCount,
 }: ExternallyDrivenComponentProps) {
-  'use trace';
+  'use trace dev';
 
   return (
     <Card mode="outlined">

@@ -1,14 +1,14 @@
 import { GenericDemosListingScreen } from '../../components/GenericDemosListingScreen';
 import { Routes } from '../../router/routes';
 
-export function OTELDemosListing() {
+export function JSDemosListing() {
   return (
     <GenericDemosListingScreen
       routes={[
-        Routes.OTELJSNestedSpansDemo,
-        Routes.OttreliteReactInstrumentationWithOTEL,
+        Routes.JSDevelopmentAPIDemo,
+        Routes.JSAutoinstrumentationDevelopmentAPIDemo,
       ]}
-      defaultSubtitle="OTEL API Demo"
+      defaultSubtitle="JS API Demo"
     />
   );
 }

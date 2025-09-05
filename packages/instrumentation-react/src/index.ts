@@ -1,42 +1,171 @@
-import type { PluginObj } from '@babel/core';
+import type { NodePath, PluginObj, PluginPass } from '@babel/core';
 import { generate } from '@babel/generator';
 import * as t from '@babel/types';
+import type { TracingAPI } from '@ottrelite/core';
 
 import {
   CORE_PACKAGE_NAME,
-  OTEL_TRACER_DEFAULT_NAME,
-  USE_TRACER_HOOK_NAME,
-  VANILLA_TRACER_FACTORY_NAME,
+  TRACE_COMPONENT_LIFECYCLE_HOC_NAME,
+  TRACE_COMPONENT_LIFECYCLE_HOOK_NAME,
+  UNKNOWN_COMPONENT_NAME_PLACEHOLDER,
 } from './constants';
-import { uniqueVarName } from './utils';
+import { isEnvBoolVarTrue, uniqueVarName } from './utils';
 
-const LOG_DEBUG = process.env.DEBUG === '1' || process.env.DEBUG === 'true';
-const PRINT_GENERATED_CODE =
-  process.env.PRINT_GENERATED_CODE === '1' ||
-  process.env.PRINT_GENERATED_CODE === 'true';
+const LOG_DEBUG = isEnvBoolVarTrue('DEBUG');
+const PRINT_GENERATED_CODE = isEnvBoolVarTrue('PRINT_GENERATED_CODE');
+
+type AugmentedProgramNode = NodePath<t.Program> & {
+  __hasUseTraceDirective: boolean;
+  __hasClassComponent: boolean;
+  __hasFunctionComponent: boolean;
+};
+
+function parseDirective(
+  path: NodePath<t.Function | t.Class>,
+  traceDirective: t.Directive,
+  locationDescription: string
+) {
+  // extract the component name from "use trace ..."
+  const maybeMatches = traceDirective.value.value
+    .match(/use trace\s+(\S+)(?:\s+(\S+))?$/)
+    ?.filter((x) => x !== undefined);
+
+  let componentName: string | undefined;
+  let apiToUse: TracingAPI = 'dev';
+
+  if (maybeMatches) {
+    // case 1: 'use trace <api/name>'; give priority to api (if valid) over name
+    if (maybeMatches.length === 2) {
+      const apiName = maybeMatches[1]?.trim();
+
+      if (apiName === 'dev' || apiName === 'otel') {
+        apiToUse = apiName;
+      } else {
+        componentName = apiName;
+      }
+    }
+
+    // case 2: 'use trace <api> <name>'
+    if (maybeMatches.length === 3) {
+      const apiName = maybeMatches[1]?.trim();
+      componentName = maybeMatches[2]?.trim();
+
+      if (apiName === 'dev' || apiName === 'otel') {
+        apiToUse = apiName;
+      } else {
+        throw new Error(
+          `[Ottrelite] Invalid tracing API specified: "${apiName}". Supported APIs are "dev" and "otel". Localization: ${locationDescription}.`
+        );
+      }
+    }
+  }
+
+  let isFunctionComponent = true;
+
+  if ('id' in path.node && path.node.id?.name) {
+    // function or class declaration
+    componentName ??= path.node.id.name;
+  } else if (
+    path.parent.type === 'VariableDeclarator' &&
+    path.parent.id.type === 'Identifier'
+  ) {
+    // variable assignment
+    componentName ??= path.parent.id.name;
+  } else if (
+    path.parent.type === 'ObjectProperty' &&
+    path.parent.key.type === 'Identifier'
+  ) {
+    // object property assignment
+    componentName ??= path.parent.key.name;
+  } else if (
+    path.parent.type === 'ClassMethod' &&
+    path.parent.key.type === 'Identifier'
+  ) {
+    // class method
+    isFunctionComponent = false;
+    componentName ??= path.parent.key.name;
+  } else if (path.parent.type === 'ExportDefaultDeclaration') {
+    // anonymous export default
+    throw new Error(
+      `[Ottrelite] Identifier is an anonymous default export, which is not supported! The tracer must be given a unique name. Localization: ${locationDescription}.`
+    );
+  }
+
+  // /**
+  //  * important notice: the above works for ES6, but if the code passed to Babel is already ES5, then it will look like the following:
+  //  *
+  //  * return _createClass(ClassComponentName, [{
+  //  *   key: "render",
+  //  *   value: function render() {
+  //  *     ...
+  //  *   },
+  //  *   ...
+  //  * ]);
+  //  *
+  //  * to handle this properly, we need to check if there exists a _createClass parent
+  //  */
+  // const maybeClassCreationExpression = path.findParent(
+  //   (p) =>
+  //     t.isCallExpression(p.node) &&
+  //     t.isIdentifier(p.node.callee, { name: '_createClass' })
+  // );
+  // if (maybeClassCreationExpression) {
+  //   isFunctionComponent = false;
+  //   // so far, the componentName would be 'render'
+  //   try {
+  //     componentName = (
+  //       (maybeClassCreationExpression.node as t.CallExpression)
+  //         .arguments[0] as t.Identifier
+  //     ).name;
+  //   } catch {
+  //     // it's not critical if a more precise name is impossible to extract
+  //   }
+  // }
+
+  return {
+    componentName: componentName ?? UNKNOWN_COMPONENT_NAME_PLACEHOLDER,
+    isFunctionComponent,
+    apiToUse,
+  };
+}
+
+function getLocationDescription(
+  path: NodePath | t.ClassMethod,
+  pluginPass: PluginPass
+) {
+  const loc =
+    path.type === 'ClassMethod' ? (path as t.ClassMethod).loc : path.node.loc;
+  return `${pluginPass.filename}:${loc?.start.line}:${loc?.start.column} through ${loc?.end.line}:${loc?.end.column}`;
+}
 
 export default function ottrelitePlugin(): PluginObj {
   return {
     visitor: {
       Program: {
-        enter(path) {
-          (path as any).__hasUseTraceDirective = false;
+        // @ts-ignore-next-line - purposeful type override
+        enter(path: AugmentedProgramNode) {
+          path.__hasUseTraceDirective = false;
         },
-        exit(path, state) {
-          if ((path as any).__hasUseTraceDirective) {
+        // @ts-ignore-next-line - purposeful type override
+        exit(path: AugmentedProgramNode, state) {
+          if (path.__hasUseTraceDirective) {
             const tracerProducerIdentifiers: string[] = [];
 
-            if ((path as any).__hasClassComponent) {
-              tracerProducerIdentifiers.push(VANILLA_TRACER_FACTORY_NAME);
+            if (path.__hasClassComponent) {
+              tracerProducerIdentifiers.push(
+                TRACE_COMPONENT_LIFECYCLE_HOC_NAME
+              );
             }
 
-            if ((path as any).__hasFunctionComponent) {
-              tracerProducerIdentifiers.push(USE_TRACER_HOOK_NAME);
+            if (path.__hasFunctionComponent) {
+              tracerProducerIdentifiers.push(
+                TRACE_COMPONENT_LIFECYCLE_HOOK_NAME
+              );
             }
 
             if (LOG_DEBUG) {
               console.log(
-                `[tracePlugin] Program ${state.filename} has use trace directive & requires import of the following tracer producers: ${tracerProducerIdentifiers.join(', ')}.`
+                `[tracePlugin] Program ${state.filename} has 'use trace' directive & requires import of the following tracer producers: ${tracerProducerIdentifiers.join(', ')}.`
               );
             }
 
@@ -90,7 +219,7 @@ export default function ottrelitePlugin(): PluginObj {
         },
       },
 
-      Function(path) {
+      Function(path, pluginPass) {
         if (!('directives' in path.node.body)) return;
 
         const traceDirective = path.node.body.directives.find(({ value }) =>
@@ -106,82 +235,15 @@ export default function ottrelitePlugin(): PluginObj {
 
         // mark for import
         const program = path.findParent((p) => p.isProgram())!;
-        (program as any).__hasUseTraceDirective = true;
+        (program as AugmentedProgramNode).__hasUseTraceDirective = true;
 
-        const locationDescription = `'${path.node.loc?.filename ?? program.state?.filename ?? 'unknown'}' at ${path.node.loc?.start.index}:${path.node.loc?.end.index}`;
+        const locationDescription = getLocationDescription(path, pluginPass);
 
-        // extract the component name from "use trace ..."
-        const maybeExplicitNameMatch =
-          traceDirective.value.value.match(/use trace\s+(.+)$/);
-
-        let componentName: string | undefined;
-
-        if (maybeExplicitNameMatch) {
-          componentName = maybeExplicitNameMatch[1]?.trim();
-        }
-
-        let isFunctionComponent = true;
-
-        if ('id' in path.node && path.node.id?.name) {
-          // function declaration
-          componentName ??= path.node.id.name;
-        } else if (
-          path.parent.type === 'VariableDeclarator' &&
-          path.parent.id.type === 'Identifier'
-        ) {
-          // variable assignment
-          componentName ??= path.parent.id.name;
-        } else if (
-          path.parent.type === 'ObjectProperty' &&
-          path.parent.key.type === 'Identifier'
-        ) {
-          // object property assignment
-          componentName ??= path.parent.key.name;
-        } else if (
-          path.parent.type === 'ClassMethod' &&
-          path.parent.key.type === 'Identifier'
-        ) {
-          // class method
-          isFunctionComponent = false;
-          componentName ??= path.parent.key.name;
-        } else if (path.parent.type === 'ExportDefaultDeclaration') {
-          // anonymous export default
-          throw new Error(
-            `Identifier ${locationDescription} is an anonymous default export, which is not supported! The tracer must be given a unique name.`
-          );
-        }
-
-        /**
-         * important notice: the above works for ES6, but if the code passed to Babel is already ES5, then it will look like the following:
-         *
-         * return _createClass(ClassComponentName, [{
-         *   key: "render",
-         *   value: function render() {
-         *     ...
-         *   }
-         *   },
-         *   ...
-         * ]);
-         *
-         * to handle this properly, we need to check if there exists a _createClass parent
-         */
-        const maybeClassCreationExpression = path.findParent(
-          (p) =>
-            t.isCallExpression(p.node) &&
-            t.isIdentifier(p.node.callee, { name: '_createClass' })
+        const { apiToUse, componentName, isFunctionComponent } = parseDirective(
+          path,
+          traceDirective,
+          locationDescription
         );
-        if (maybeClassCreationExpression) {
-          isFunctionComponent = false;
-          // so far, the componentName would be 'render'
-          try {
-            componentName = (
-              (maybeClassCreationExpression.node as t.CallExpression)
-                .arguments[0] as t.Identifier
-            ).name;
-          } catch {
-            // it's not critical if a more precise name is impossible to extract
-          }
-        }
 
         if (LOG_DEBUG) {
           console.log(
@@ -196,122 +258,93 @@ export default function ottrelitePlugin(): PluginObj {
           return;
         }
 
-        // create variable names
-        const tracerId = uniqueVarName('ottreliteTracer');
-        const spanId = uniqueVarName('ottreliteComponentSpan');
-        const componentResultId = uniqueVarName(
-          'ottreliteComponentOriginalResult'
-        );
-
-        const tracerProducerIdentifier = isFunctionComponent
-          ? USE_TRACER_HOOK_NAME
-          : VANILLA_TRACER_FACTORY_NAME;
-
-        // below: important - never unset, a single file could contain both an FC & a CC; instead only set to positive
         if (isFunctionComponent) {
-          (program as any).__hasFunctionComponent = true;
-        } else {
-          (program as any).__hasClassComponent = true;
-        }
+          (program as AugmentedProgramNode).__hasFunctionComponent = true;
 
-        // 1. declare tracer variable
-        const tracerDeclaration = t.variableDeclaration('const', [
-          t.variableDeclarator(
-            t.identifier(tracerId),
-            t.callExpression(t.identifier(tracerProducerIdentifier), [
-              t.stringLiteral(OTEL_TRACER_DEFAULT_NAME),
-            ])
-          ),
-        ]);
+          // 1. declare useComponentRenderTracing() result storage identifier
+          const useComponentRenderTracingResultIdentifier = t.identifier(
+            uniqueVarName('__ottreliteUseComponentRenderTracingResult')
+          );
+          const useComponentRenderTracingResDeclaration = t.variableDeclaration(
+            'const',
+            [
+              t.variableDeclarator(
+                useComponentRenderTracingResultIdentifier,
+                t.callExpression(
+                  t.identifier(TRACE_COMPONENT_LIFECYCLE_HOOK_NAME),
+                  [
+                    t.stringLiteral(componentName), // eventName
+                    t.identifier('undefined'), // additionalEventArgs
+                    t.stringLiteral(apiToUse), // api
+                  ]
+                )
+              ),
+            ]
+          );
 
-        // 2. extract original function body (after directive) and wrap in a function named as the component
-        const originalBody = path.node.body.body;
-        const originalParams = path.node.params as t.FunctionParameter[];
-        const renderFuncOrFCWrappedIdentifier = t.identifier(
-          `OttreliteInstrumentationReactWrapped${componentName}`
-        );
-        const wrappedComponentFunction = t.functionDeclaration(
-          renderFuncOrFCWrappedIdentifier,
-          originalParams,
-          t.blockStatement(originalBody)
-        );
+          // 2. extract original function body (after directive) and wrap in a function named as the component
+          const originalBody = path.node.body.body;
+          const originalParams = path.node.params as t.FunctionParameter[];
+          const wrappedFCIdentifier = t.identifier(
+            `OttreliteWrapped${componentName}`
+          );
+          const wrappedComponentFunction = t.functionDeclaration(
+            wrappedFCIdentifier,
+            originalParams,
+            t.blockStatement(originalBody)
+          );
 
-        // 3. lambda that invokes the wrapped component function
-        const lambdaParam = t.identifier(spanId);
-        const originalParamsIdentifiers = originalParams
-          .map((param) => {
-            if (t.isIdentifier(param)) {
-              return t.identifier(param.name);
-            } else if (
-              t.isAssignmentPattern(param) &&
-              t.isIdentifier(param.left)
-            ) {
-              return t.identifier(param.left.name);
-            } else if (
-              t.isRestElement(param) &&
-              t.isIdentifier(param.argument)
-            ) {
-              return t.identifier(param.argument.name);
-            }
+          // 3. lambda that invokes the wrapped component function
+          const originalParamsIdentifiers = originalParams
+            .map((param) => {
+              if (t.isIdentifier(param)) {
+                return t.identifier(param.name);
+              } else if (
+                t.isAssignmentPattern(param) &&
+                t.isIdentifier(param.left)
+              ) {
+                return t.identifier(param.left.name);
+              } else if (
+                t.isRestElement(param) &&
+                t.isIdentifier(param.argument)
+              ) {
+                return t.identifier(param.argument.name);
+              }
 
-            return undefined;
-          })
-          .filter((p) => p !== undefined);
-        const wrappedCallback = t.arrowFunctionExpression(
-          [lambdaParam],
-          t.blockStatement([
-            // invoke the component function and store result
+              return undefined;
+            })
+            .filter((p) => p !== undefined);
+
+          const componentResultId = uniqueVarName('__ottreliteCompOrigResult');
+
+          // 3. replace function body: keep only directive + new lines
+          (path.node.body as any).body = [
+            // I. invoke the hook and store the result
+            useComponentRenderTracingResDeclaration,
+            // II. declare the original function as a wrapped function inside the new component body's scope
+            wrappedComponentFunction,
+            // III. invoke the original component function and store result
             t.variableDeclaration('const', [
               t.variableDeclarator(
                 t.identifier(componentResultId),
 
-                isFunctionComponent
-                  ? // FunctionComponent: simply invoke the wrapped function with the span as this
-                    t.callExpression(
-                      renderFuncOrFCWrappedIdentifier,
-                      originalParamsIdentifiers
-                    )
-                  : // ClassComponent: invoke call( ... ) on the wrapped render function identifier,
-                    // NECESSARILY with this bound to the caller's scope (otherwise, e.g. this.props would be broke)
-                    t.callExpression(
-                      t.memberExpression(
-                        renderFuncOrFCWrappedIdentifier,
-                        t.identifier('call')
-                      ),
-
-                      // this, ...args
-                      [t.thisExpression(), ...originalParamsIdentifiers]
-                    )
+                t.callExpression(wrappedFCIdentifier, originalParamsIdentifiers)
               ),
             ]),
-            // call span.end()
+            // IV. call useComponentRenderTracingResultIdentifier.markJSRenderEnd() to finalize the trace
             t.expressionStatement(
               t.callExpression(
-                t.memberExpression(t.identifier(spanId), t.identifier('end')),
+                t.memberExpression(
+                  useComponentRenderTracingResultIdentifier,
+                  t.identifier('markJSRenderEnd')
+                ),
                 []
               )
             ),
-            // return the temp result
+            // V. return the temp result (of the original component)
             t.returnStatement(t.identifier(componentResultId)),
-          ])
-        );
-
-        const tracedComponentBodyWrapper = t.returnStatement(
-          t.callExpression(
-            t.memberExpression(
-              t.identifier(tracerId),
-              t.identifier('startActiveSpan')
-            ),
-            [t.stringLiteral(componentName), wrappedCallback]
-          )
-        );
-
-        // replace function body: keep only directive + new lines
-        (path.node.body as any).body = [
-          tracerDeclaration,
-          wrappedComponentFunction,
-          tracedComponentBodyWrapper,
-        ];
+          ];
+        }
 
         if (LOG_DEBUG && PRINT_GENERATED_CODE) {
           console.log(
@@ -319,6 +352,92 @@ export default function ottrelitePlugin(): PluginObj {
           );
           console.log();
           console.log();
+        }
+      },
+
+      Class(classPath, pluginPass) {
+        for (const path of classPath.node.body.body) {
+          if (!t.isClassMethod(path)) {
+            return;
+          }
+
+          const traceDirective = path.body.directives.find(({ value }) =>
+            value.value.startsWith('use trace')
+          );
+
+          if (!traceDirective) return;
+
+          // remove that directive
+          path.body.directives = path.body.directives.filter(
+            (d) => d !== traceDirective
+          );
+
+          // mark for import
+          const program = classPath.findParent((p) => p.isProgram())!;
+          (program as AugmentedProgramNode).__hasUseTraceDirective = true;
+
+          const locationDescription = getLocationDescription(path, pluginPass);
+
+          const { apiToUse, componentName } = parseDirective(
+            classPath,
+            traceDirective,
+            locationDescription
+          );
+
+          (program as AugmentedProgramNode).__hasClassComponent = true;
+
+          // wrap the class component inside the HOC
+          if (classPath.isClassDeclaration()) {
+            const classNode = classPath.node;
+
+            // turn class declaration into a class expression
+            const classExpr = t.classExpression(
+              classNode.id, // may be null if anonymous
+              classNode.superClass,
+              classNode.body,
+              classNode.decorators || []
+            );
+
+            // wrap the class expression in your HOC
+            const hocCall = t.callExpression(
+              t.identifier(TRACE_COMPONENT_LIFECYCLE_HOC_NAME),
+              [
+                t.stringLiteral(componentName),
+                t.stringLiteral(apiToUse),
+                classExpr,
+              ]
+            );
+
+            // if the class was declared like `class CC {}`,
+            // replace it with: `const CC = hoc("CC", class CC {});`
+            const declarationReplacement = t.variableDeclaration('const', [
+              t.variableDeclarator(classNode.id!, hocCall),
+            ]);
+
+            classPath.replaceWith(declarationReplacement);
+          } else if (classPath.isClassExpression()) {
+            const hocCall = t.callExpression(
+              t.identifier(TRACE_COMPONENT_LIFECYCLE_HOC_NAME),
+              [
+                t.stringLiteral(componentName),
+                t.stringLiteral(apiToUse),
+                classPath.node,
+              ]
+            );
+            classPath.replaceWith(hocCall);
+          } else {
+            throw new Error(
+              `[Ottrelite] Unhandled class variant found in processed code. This is a missing feature in Ottrelite. Localization: ${locationDescription}.`
+            );
+          }
+
+          if (LOG_DEBUG && PRINT_GENERATED_CODE) {
+            console.log(
+              `[tracePlugin] Generated code for component '${componentName}':\n${generate(classPath.node).code}`
+            );
+            console.log();
+            console.log();
+          }
         }
       },
     },

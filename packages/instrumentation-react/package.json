@@ -53,7 +53,8 @@
     "eslint": "^8.57.1",
     "jest": "^30.0.4",
     "typescript": "^5.8.3",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "@ottrelite/core": "workspace:^"
   },
   "peerDependencies": {
     "@babel/core": "^7.28.0"
@@ -64,6 +65,7 @@
     "@types/babel__core": "^7.20.5",
     "@types/babel__generator": "^7.27.0",
     "@types/node": "^24.1.0",
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.0",
+    "@ottrelite/core": "workspace:^"
   }
 }

@@ -15,8 +15,8 @@ const factorialCounter = meter.createCounter('factorial_value', {
   description: 'Factorial value',
 });
 
-const targetCounter = meter.createCounter('target_value', {
-  description: 'Factorial number',
+const targetCounter = meter.createCounter('target', {
+  description: 'Factorial argument',
 });
 
 export function OTELJSNestedSpansDemoScreen() {

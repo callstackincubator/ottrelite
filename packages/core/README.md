@@ -4,7 +4,7 @@ This is the core package of the Ottrelite library for React Native, which provid
 
 ## Documentation
 
-All the features, usage & installation of this package are documented in the [documentation](https://callstackincubator.github.io/ottrelite/docs/core.html).
+All the features, usage & installation of this package are documented in the [documentation](https://callstackincubator.github.io/ottrelite/docs/core/quick-start.html).
 
 ## Development
 

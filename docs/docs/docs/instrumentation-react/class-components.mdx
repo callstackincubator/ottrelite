@@ -1,4 +1,10 @@
-# Class components
+import CommonDirectiveDoc from './__common-directive.mdx';
+
+## The autoinstrumentation directive
+
+<CommonDirectiveDoc />
+
+## Class components
 
 > [!NOTE]
 > As seen in the examples below, the components include an explicit implementation of `shouldComponentUpdate` to prevent unnecessary re-renders. This is a common practice in React to optimize performance, but it is not compulsory - the instrumentation would still work without it. However, in such case, it would be expected that most likely the instrumentation would produce many entries, for invocations of the component which didn't actually result in an update to the shadow tree.
@@ -44,7 +50,7 @@ import { Component } from 'react';
 
 export class TracedClassComponent extends Component<ExternallyDrivenComponentProps> {
   render() {
-    'use trace TestLibTracedClassComponent';
+    'use trace dev TestLibTracedClassComponent';
 
     ...
 
@@ -68,7 +74,7 @@ export class TracedClassComponent extends Component<ExternallyDrivenComponentPro
 }
 ```
 
-## What will be the name of the tracer?
+### What will be the name of the tracer?
 
 | Declaration style                                   | Name                                     |
 | --------------------------------------------------- | ---------------------------------------- |

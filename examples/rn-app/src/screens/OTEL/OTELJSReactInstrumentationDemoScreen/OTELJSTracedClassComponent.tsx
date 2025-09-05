@@ -3,12 +3,11 @@ import { Component } from 'react';
 import { Card, Text } from 'react-native-paper';
 
 import { commonStyles } from '../../../commonStyles';
+import type { ExternallyDrivenComponentProps } from '../../../types/ExternallyDrivenComponentProps';
 
-import type { ExternallyDrivenComponentProps } from './types/ExternallyDrivenComponentProps';
-
-export class TracedClassComponent extends Component<ExternallyDrivenComponentProps> {
+export class OTELJSTracedClassComponent extends Component<ExternallyDrivenComponentProps> {
   render() {
-    'use trace';
+    'use trace otel';
 
     const { formattedDate, rerenderCount } = this.props;
 
@@ -37,7 +36,7 @@ export class TracedClassComponent extends Component<ExternallyDrivenComponentPro
     nextState: Readonly<{}>,
     nextContext: any
   ): boolean {
-    // only rerender if props have changed
+    // only rerender if props have changed; this implementation is suboptimal, it's there just for the sake of an example
     return (
       !_.isEqual(this.props, nextProps) ||
       !_.isEqual(this.state, nextState) ||

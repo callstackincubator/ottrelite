@@ -1,6 +1,10 @@
 import { transform } from '@babel/core';
 
-import { CORE_PACKAGE_NAME, USE_TRACER_HOOK_NAME } from '../src/constants';
+import {
+  CORE_PACKAGE_NAME,
+  TRACE_COMPONENT_LIFECYCLE_HOC_NAME,
+  TRACE_COMPONENT_LIFECYCLE_HOOK_NAME,
+} from '../src/constants';
 import ottrelitePlugin from '../src/index';
 
 function transformCode(code: string) {
@@ -116,41 +120,127 @@ describe('Ottrelite Babel Plugin', () => {
       expect(normalizeCode(result)).toMatchSnapshot();
     });
 
-    test('should transform function in object property with implicit tracer name', () => {
-      const code = `
-        const obj = {
-          MyMethod: function() {
-            'use trace';
-            return 'result';
-          }
-        };
-      `;
-
-      const result = transformCode(code);
-      expect(normalizeCode(result)).toMatchSnapshot();
-    });
-
-    test('should transform arrow function in object property with implicit tracer name', () => {
-      const code = `
-        const obj = {
-          MyMethod: () => {
-            'use trace';
-            return 'result';
-          }
-        };
-      `;
-
-      const result = transformCode(code);
-      expect(normalizeCode(result)).toMatchSnapshot();
-    });
-
     test('should transform class methods with implicit tracer name', () => {
       const code = `
         class MyClass {
-          myMethod() {
+          render() {
             'use trace';
             return 'result';
           }
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform class component with unary explicit dev API', () => {
+      const code = `
+        class MyClass {
+          render() {
+            'use trace dev';
+            return 'result';
+          }
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform class component with unary explicit otel API', () => {
+      const code = `
+        class MyClass {
+          render() {
+            'use trace otel';
+            return 'result';
+          }
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform class component with unary custom component name', () => {
+      const code = `
+        class MyClass {
+          render() {
+            'use trace CustomTestName';
+            return 'result';
+          }
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform class components with two parameters: API and component name, for both APIs specified', () => {
+      const code = `
+        class MyClass {
+          render() {
+            'use trace dev CustomTestName1';
+            return 'result';
+          }
+        }
+        class MyClass2 {
+          render() {
+            'use trace otel CustomTestName2';
+            return 'result';
+          }
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform function component with unary explicit dev API', () => {
+      const code = `
+        function MyComponent() {
+          'use trace dev';
+          return 'result';
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform function component with unary explicit otel API', () => {
+      const code = `
+        function MyComponent() {
+          'use trace otel';
+          return 'result';
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform function component with unary custom component name', () => {
+      const code = `
+        function MyComponent() {
+          'use trace CustomTestName';
+          return 'result';
+        }
+      `;
+
+      const result = transformCode(code);
+      expect(normalizeCode(result)).toMatchSnapshot();
+    });
+
+    test('should transform function components with two parameters: API and component name', () => {
+      const code = `
+        function MyComponent() {
+          'use trace dev CustomTestName';
+          return 'result';
+        }
+        function MyComponent2() {
+          'use trace otel CustomTestName';
+          return 'result';
         }
       `;
 
@@ -238,75 +328,98 @@ describe('Ottrelite Babel Plugin', () => {
     describe('Error handling', () => {
       test('should throw error for anonymous default export', () => {
         const code = `
-        export default function() {
-          'use trace';
-          return <div>Hello</div>;
-        }
-      `;
+          export default function() {
+            'use trace';
+            return <div>Hello</div>;
+          }
+        `;
 
         expect(() => transformCode(code)).toThrow(
           /is an anonymous default export, which is not supported/
         );
       });
-
-      test('should handle invalid component name gracefully', () => {
-        const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
-
-        const code = `
-        const obj = {};
-        obj['dynamic'] = function() {
-          'use trace';
-          return 'result';
-        };
-      `;
-
-        const result = transformCode(code);
-
-        // Should not transform the function
-        expect(result).not.toContain('startActiveSpan');
-        expect(consoleSpy).toHaveBeenCalledWith(
-          expect.stringContaining('Invalid component name in directive')
-        );
-
-        consoleSpy.mockRestore();
-      });
     });
 
     describe('Import behavior', () => {
-      test(`should add ${USE_TRACER_HOOK_NAME} import when use trace directive is found`, () => {
+      test(`should add ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} import when use trace directive is found in an FC`, () => {
         const code = `
-        function MyComponent() {
-          'use trace';
-          return <div>Hello</div>;
-        }
-      `;
+          function MyComponent() {
+            'use trace';
+            return <div>Hello</div>;
+          }
+        `;
 
         const result = transformCode(code);
         expect(result).toContain(CORE_PACKAGE_NAME);
-        expect(result).toContain(USE_TRACER_HOOK_NAME);
+        expect(result).toContain(TRACE_COMPONENT_LIFECYCLE_HOOK_NAME);
       });
 
-      test(`should not add duplicate import if ${USE_TRACER_HOOK_NAME} is already imported`, () => {
+      test(`should not add duplicate import if ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} is already imported an FC`, () => {
         const code = `
-        import { ${USE_TRACER_HOOK_NAME} } from '${CORE_PACKAGE_NAME}';
-        
-        function MyComponent() {
-          'use trace';
-          return <div>Hello</div>;
-        }
-      `;
+          import { ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} } from '${CORE_PACKAGE_NAME}';
+          
+          function MyComponent() {
+            'use trace';
+            return <div>Hello</div>;
+          }
+        `;
 
         const result = transformCode(code);
         const importMatches = result.match(/@ottrelite\/core/g);
         expect(importMatches).toHaveLength(1);
       });
 
-      test('should not add import when no use trace directive is found', () => {
+      test('should not add import when no use trace directive is found an FC', () => {
         const code = `
-        function MyComponent() {
-          return <div>Hello</div>;
-        }
-      `;
+          function MyComponent() {
+            return <div>Hello</div>;
+          }
+        `;
+
+        const result = transformCode(code);
+        expect(result).not.toContain(CORE_PACKAGE_NAME);
+      });
+
+      test(`should add ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} import when use trace directive is found in a class component`, () => {
+        const code = `
+          class MyComponent {
+            render() {
+              'use trace';
+              return <div>Hello</div>;
+            }
+          }
+        `;
+
+        const result = transformCode(code);
+        expect(result).toContain(CORE_PACKAGE_NAME);
+        expect(result).toContain(TRACE_COMPONENT_LIFECYCLE_HOC_NAME);
+      });
+
+      test(`should not add duplicate import if ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} is already imported in a class component`, () => {
+        const code = `
+          import { ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} } from '${CORE_PACKAGE_NAME}';
+          
+          class MyComponent {
+            render() {
+              'use trace';
+              return <div>Hello</div>;
+            }
+          }
+        `;
+
+        const result = transformCode(code);
+        const importMatches = result.match(/@ottrelite\/core/g);
+        expect(importMatches).toHaveLength(1);
+      });
+
+      test('should not add import when no use trace directive is found in a class component', () => {
+        const code = `
+          class MyComponent {
+            render() {
+              return <div>Hello</div>;
+            }
+          }
+        `;
 
         const result = transformCode(code);
         expect(result).not.toContain(CORE_PACKAGE_NAME);

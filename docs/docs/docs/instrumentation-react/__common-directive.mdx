@@ -1,0 +1,14 @@
+The React instrumentation offers a directive allowing you to easily instrument your functional components, class components and hooks.
+
+The directive's schema is `"use trace [API] [Name]"` such that:
+
+- `[API]` (default value: `dev`) which must be either:
+  - `dev` (which would cause the instrumentation to call into the Ottrelite Development API from the core package)
+  - `otel`, which would cause it to use the OpenTelemetry JS SDK; in such case, you need to set up the OpenTelemetry SDK in your application and then probably you will also want to set up [Ottrelite Interop layer with OTEL](../otel-interop/quick-start)
+- `[Name]`, which is optional and is the name of the component being traced; if not passed, Ottrelite will attempt to use your component's name - the details of how it is resolved are described in the [function components](./function-components.mdx), [hooks](./hooks.mdx) and [class components](./class-components.mdx) doc pages
+
+> [!TIP]
+>
+> Both parameters are optional, meaning that the shortest you can do is `"use trace"` which is equivalent to `"use trace dev <resolved component name>"`.
+>
+> If you pass **only one** parameter, the hook will first give priority to the `[API]` parameter; if the values does not match the possible options, then this argument will be treated as the `[Name]` parameter.

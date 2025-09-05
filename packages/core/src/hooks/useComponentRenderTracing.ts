@@ -1,9 +1,9 @@
 import type { Span } from '@opentelemetry/api';
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Ottrelite } from '../../Ottrelite';
-
-import { useTracer } from './useTracer';
+import { Ottrelite } from '../Ottrelite';
+import { useTracer } from '../otel/hooks/useTracer';
+import type { TracingAPI } from '../types/TracingAPI';
 
 /**
  * Helper for getting current epoch time, with sub-millisecond precision if `performance.now()`
@@ -26,17 +26,17 @@ function now(): number {
  *
  * @param eventName - The name of the event to trace.
  * @param additionalEventArgs - Additional arguments to include in the trace. In case of both APIs, they will be set at event start.
- * @param api - The API to use for tracing (default is 'otel').
+ * @param api - The API to use for tracing (default is 'dev').
  * @returns An object containing the markJSRenderEnd function.
  */
 export function useComponentRenderTracing(
   eventName: string,
   additionalEventArgs?: Record<string, string>,
-  api: 'dev' | 'otel' = 'otel'
+  api: TracingAPI = 'dev'
 ) {
   const { startSpan } = useTracer(eventName);
   const jsLogicStartTimestampRef = useRef<number | null>(null);
-
+  console.log(api);
   jsLogicStartTimestampRef.current = now();
 
   const jsLogicRenderEndTimeRef = useRef<number | null>(null);

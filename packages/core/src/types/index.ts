@@ -7,3 +7,4 @@ export * from './OTLPExporterConfig';
 export * from './CPPMetricReaderOptions';
 export * from './CPPBatchLogRecordProcessorOptions';
 export * from './CPPTraceBatchSpanProcessorOptions';
+export * from './TracingAPI';

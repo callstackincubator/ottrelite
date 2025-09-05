@@ -6,7 +6,7 @@ import { Switch, Text } from 'react-native-paper';
 import { commonStyles } from '../commonStyles';
 import { factorial } from '../utils/factorial';
 
-export function JsDevelopmentAPIDemoScreen() {
+export function JSDevelopmentAPIDemoScreen() {
   const [running, setRunning] = useState(false);
   const [value, setValue] = useState(0);
   const [n, setN] = useState(0);

@@ -10,7 +10,9 @@ import { useTheme } from 'react-native-paper';
 
 import { withLayout } from '../decorators/withLayout';
 import CPPTracingDemoScreen from '../screens/CPPTracingDemoScreen';
-import { JsDevelopmentAPIDemoScreen } from '../screens/JsDevelopmentAPIDemoScreen';
+import { JSAutoinstrumentationDevelopmentAPIDemoScreen } from '../screens/JS/JSAutoinstrumentationDevelopmentAPIDemoScreen';
+import { JSDemosListing } from '../screens/JS/JSDemosListing';
+import { JSDevelopmentAPIDemoScreen } from '../screens/JsDevelopmentAPIDemoScreen';
 import { MenuScreen } from '../screens/MenuScreen';
 import { OTELDemosListing } from '../screens/OTEL/OTELDemosListing';
 import { OTELJSNestedSpansDemoScreen } from '../screens/OTEL/OTELJSNestedSpansDemoScreen';
@@ -22,7 +24,11 @@ import { RouteNames, Routes } from './routes';
 const Stack = createNativeStackNavigator({
   screens: {
     [Routes.Menu]: withLayout(MenuScreen),
-    [Routes.JSDevelopmentAPIDemo]: withLayout(JsDevelopmentAPIDemoScreen),
+    [Routes.JSDemosListing]: withLayout(JSDemosListing),
+    [Routes.JSDevelopmentAPIDemo]: withLayout(JSDevelopmentAPIDemoScreen),
+    [Routes.JSAutoinstrumentationDevelopmentAPIDemo]: withLayout(
+      JSAutoinstrumentationDevelopmentAPIDemoScreen
+    ),
     [Routes.CPPTracingDemo]: withLayout(CPPTracingDemoScreen),
     [Routes.PlatformTracingDemo]: withLayout(PlatformTracingDemoScreen),
     [Routes.OTELDemosListing]: withLayout(OTELDemosListing),
@@ -31,7 +37,7 @@ const Stack = createNativeStackNavigator({
     [Routes.OTELJSNestedSpansDemo]: withLayout(
       withLayout(OTELJSNestedSpansDemoScreen)
     ),
-    [Routes.OTELJSInstrumentationReactDemo]: withLayout(
+    [Routes.OttreliteReactInstrumentationWithOTEL]: withLayout(
       OTELJSReactInstrumentationDemoScreen
     ),
   },
