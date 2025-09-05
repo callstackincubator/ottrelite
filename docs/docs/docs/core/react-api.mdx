@@ -1,0 +1,33 @@
+# React API
+
+Ottrelite offers features simplifying integration with React. You can use the below hooks and other utilities to enhance your React applications.
+
+## `useComponentRenderTracing`
+
+This hook traces a component's render lifecycle (i.e., any - first or subsequent - render), however in a different way than you might expect - please read the following explanation.
+
+The start & end of the span (event) in the trace results is **not** the start & end time of JS render logic execution due to limitations coming from the concurrent root feature of React starting from v18 ([more about that here](https://legacy.reactjs.org/blog/2022/03/29/react-v18.html)). Concurrent rendering makes it possible for React to interrupt a render, effectively making this redundant. Since the Development API **must** maintain integrity within calls to begin/end event methods (e.g. orphaning a started event could cause all sorts of different problems, which could happen if the render was interrupted), it is not possible to simply synchronously start/end events within the render function.
+
+Therefore, instead we capture the JS logic start and end times in a ref, trace the event from `useEffect` / `useLayoutEffect` hooks to produce a span that starts after its JS render logic finishes running, and ends after the component has been rendered to the tree. The measured JS logic render time is reported as an attribute named `jsLogicDuration` within that span.
+
+Additional event arguments can be passed as the optional second argument to `useComponentRenderTracing`.
+
+> [!WARNING]
+> The hook **must** be called first in the component to mark the JS logic start time undelayed. Any components you render & return **must** first be stored in a variable, and returned **after** calling the hook's returned `markJSRenderEnd` function.
+
+```typescript
+function MyComponent() {
+  const { markJSRenderEnd } = useComponentRenderTracing(heading, {
+    attr1: "...",
+    ...
+  });
+
+  // ...
+
+  const contents = <View>{/* ... */}</View>;
+
+  markJSRenderEnd();
+
+  return contents;
+}
+```

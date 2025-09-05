@@ -1,0 +1,38 @@
+# OTEL interoperability
+
+Ottrelite provides interoperability integration points with OpenTelemetry SDKs.
+
+## `useTracer`
+
+This hook simply wraps the OTEL `trace.getTracer` API.
+
+```typescript
+const tracer = useTracer('my-trace-unit');
+```
+
+## `vanillaTracerFactory`
+
+This function (not a hook, though) is meant for internal consumption in `useTracer`, or for Class Components. It wraps the OTEL `trace.getTracer` API but also performs a sanity check whether the global `TracerProvider` is actually Ottrelite's implementation, otherwise logging a warning.
+
+```typescript
+class MyComponent {
+  private tracer = vanillaTracerFactory('MyComponent');
+
+  ...
+}
+```
+
+# OpenTelemetry (OTEL) API - production and development
+
+To use the package in production, you can use OpenTelemetry as you would normally do in any project. With Ottrelite, all the spans are processed by JS processor but finally land in exporter(s) only from the `@ottrelite/` packages. Naturally, if you include non-ottrelite's exporters, the JS events will be properly exported via them, yet the events captured in C++, Java/Kotlin, Swift or Objective-C code would not reach these exporters. The main design objective of Ottrelite is to have a common sink (i.e., set of exporters), configured once from JS, implemented in C++ as a native module (current implementation uses Nitro Modules).
+
+> [!NOTE]
+> The above implies a limitation of Ottrelite: to leverage a cross-language single exporter(s) sink, all exporters that are configured must be ottrelite-compatible native exporter packages. What we offer has full parity with the exporters offered by OTEL JS and can be freely extended; contributions are always welcome.
+
+## Ottrelite cross-language exporters
+
+TODO: write this!
+
+## Ottrelite React / Native Instrumentations
+
+Apart from the [OTEL community instrumentations for JS](https://github.com/open-telemetry/opentelemetry-js-contrib) you can use, Ottrelite provides its own set of instrumentations specifically designed for React and React Native applications.

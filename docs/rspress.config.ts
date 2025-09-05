@@ -24,6 +24,9 @@ export default defineConfig({
       message: `Copyright © ${new Date().getFullYear()} Callstack Open Source`,
     },
   },
+  markdown: {
+    checkDeadLinks: true,
+  },
   base: '/ottrelite/',
   plugins: [
     pluginCallstackTheme(),

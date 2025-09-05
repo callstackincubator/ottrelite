@@ -2,16 +2,6 @@
 
 This plugin is the platform-specific backend implementation for RN Ottrelite Core. On Android, it utilizes [ATrace](https://developer.android.com/ndk/reference/group/tracing) (Android tracing API), on iOS it utilizes the [OSSignposter API](https://developer.apple.com/documentation/os/ossignposter).
 
-- [@ottrelite/backend-platform](#ottrelitebackend-platform)
-  - [Supported features](#supported-features)
-  - [Use case coverage](#use-case-coverage)
-  - [Installation](#installation)
-  - [Recording the trace](#recording-the-trace)
-    - [Android](#android)
-    - [iOS](#ios)
-
----
-
 ## Supported features
 
 | Feature                                       | Support level                                  |
@@ -48,9 +38,7 @@ import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
 import { Ottrelite } from '@ottrelite/core';
 
 // register the platform backend
-if (__DEV__) {
-  Ottrelite.install([OttreliteBackendPlatform, ...]);
-}
+Ottrelite.install([OttreliteBackendPlatform, ...]);
 
 import { AppRegistry } from 'react-native';
 import App from './src/App';

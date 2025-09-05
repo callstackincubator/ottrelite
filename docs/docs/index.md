@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: Quick Start
-      link: /quick-start/
+      link: /docs/core/quick-start
     - theme: brand
       text: API docs
       link: /api/
@@ -16,7 +16,7 @@ hero:
       link: https://github.com/web-infra-dev/rspress
   image:
     src: /logo.png
-    alt: Logo
+    alt: Ottrelite Logo
 features:
   - title: Unified API
     details: All functionalities are accessible through a single API, regardless of the backend used. If a backend does not support a specific feature, it will simply be ignored by calls to that feature.

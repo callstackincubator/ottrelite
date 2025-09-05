@@ -1,0 +1,36 @@
+# Ottrelite Instrumentation for React Babel Plugin
+
+This Babel plugin autoinstruments React components' and hooks' lifecycle in your code, adding tracing to components & hooks using the `"use trace ..."` directive.
+
+It is meant to be used strictly in conjunction with `@ottrelite/core`, which is required to be added as a runtime dependency & configured as you would normally do. Please consult its docs for first setup.
+
+## Installation
+
+First, ensure you are already using `@ottrelite/core`. Then, add this package as a dev-dependency:
+
+```bash
+npm i -D @ottrelite/instrumentation-react
+# or
+yarn add -D @ottrelite/instrumentation-react
+# or
+pnpm add -D @ottrelite/instrumentation-react
+```
+
+## Usage
+
+First, add the plugin to your Babel configuration. If you are using a `babel.config.js` file, it should look like this:
+
+```javascript
+module.exports = {
+  ...,
+  plugins: ['module:@ottrelite/instrumentation-react'],
+  ...
+};
+```
+
+Basically, at the very first line of the functions you would like to autoinstrument tracing for, add the `"use trace"` directive. For function components, this is the first line of your component's function body, the same applies to hooks & for class components this is the first line of the class component's `render` function body.
+
+Optionally, you may specify a name for the tracer manually (especially if the function does not carry a name).
+
+> [!TIP]
+> The implicit name or name specified explicitly after `use trace` is the name of the OTEL tracer that will be created and used for tracing. Make sure it is unique, otherwise you may obtain misleading, mixed traces.

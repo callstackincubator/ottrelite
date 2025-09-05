@@ -1,16 +1,6 @@
 # @ottrelite/backend-wrapper-tracy
 
-This plugin is the [Tracy profiler client](https://github.com/wolfpld/tracy) backend implementation for RN Ottrelite Core, which brings tracing using Tracy to Ottrelite.
-
-- [@ottrelite/backend-wrapper-tracy](#ottrelitebackend-wrapper-tracy)
-  - [Supported features](#supported-features)
-  - [Use case coverage](#use-case-coverage)
-  - [Installation](#installation)
-  - [Recording the trace](#recording-the-trace)
-  - [Limitations](#limitations)
-  - [Additional information](#additional-information)
-
----
+This plugin is a wrapper around the [open-source Tracy profiler](https://github.com/wolfpld/tracy) client, which brings tracing using Tracy to Ottrelite.
 
 ## Supported features
 
@@ -50,9 +40,7 @@ import { OttreliteBackendTracy } from '@ottrelite/backend-wrapper-tracy';
 import { Ottrelite } from '@ottrelite/core';
 
 // register the Tracy wrapper backend
-if (__DEV__) {
-  Ottrelite.install([OttreliteBackendTracy, ...]);
-}
+Ottrelite.install([OttreliteBackendTracy, ...]);
 
 import { AppRegistry } from 'react-native';
 import App from './src/App';

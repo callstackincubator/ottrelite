@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "quick-start.mdx",
+    "label": "Quick Start"
+  },
+  {
+    "type": "file",
+    "name": "function-components.mdx",
+    "label": "Function Components"
+  },
+  {
+    "type": "file",
+    "name": "hooks.mdx",
+    "label": "Hooks"
+  },
+  {
+    "type": "file",
+    "name": "class-components.mdx",
+    "label": "Class Components"
+  }
+]

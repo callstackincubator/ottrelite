@@ -1,12 +1,22 @@
 [
   {
     "type": "dir",
-    "name": "getting-started",
-    "label": "Getting Started"
+    "name": "core",
+    "label": "Core"
   },
   {
     "type": "dir",
     "name": "backends",
     "label": "Backends"
+  },
+  {
+    "type": "dir",
+    "name": "instrumentation-react",
+    "label": "React Instrumentation"
+  },
+  {
+    "type": "dir",
+    "name": "otel-interop",
+    "label": "OTEL Interoperability"
   }
 ]
