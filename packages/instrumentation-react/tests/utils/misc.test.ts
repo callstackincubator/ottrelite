@@ -1,4 +1,4 @@
-import { uniqueVarName } from '../src/utils';
+import { uniqueVarName } from '../../src/utils/misc';
 
 describe('Utils', () => {
   describe('uniqueVarName', () => {
