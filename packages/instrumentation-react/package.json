@@ -22,9 +22,9 @@
     "build": "pnpm run typescript",
     "build:watch": "tsc --watch",
     "dev": "concurrently \"pnpm run build:watch\" \"pnpm run test:watch\"",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:update-snapshots": "jest --updateSnapshot",
+    "test": "jest --config ../../jest.config.ts",
+    "test:watch": "jest --watch --config ../../jest.config.ts",
+    "test:update-snapshots": "jest --updateSnapshot --config ../../jest.config.ts",
     "release": "release-it"
   },
   "keywords": [
