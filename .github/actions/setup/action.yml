@@ -38,3 +38,7 @@ runs:
           **/node_modules
           pnpm-lock.yaml
         key: ${{ steps.pnpm-cache.outputs.cache-primary-key }}
+
+    - name: Build packages
+      run: pnpm run build
+      shell: bash

@@ -13,8 +13,8 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  build-packages-and-lint:
-    name: Build packages and lint
+  build-lint-test:
+    name: Build packages, lint & run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,9 +24,6 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
-
-      - name: Build packages
-        run: pnpm run build
 
       - name: Lint files
         run: pnpm run lint
@@ -34,26 +31,13 @@ jobs:
       - name: Typecheck files
         run: pnpm run typecheck
 
-  test:
-    name: Run tests
-    runs-on: ubuntu-latest
-    needs: build-packages-and-lint
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: 'true'
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
       - name: Run unit tests
         run: pnpm run test --maxWorkers=2 --coverage
 
   build-docs:
     name: Build docs
     runs-on: ubuntu-latest
-    needs: build-packages-and-lint
+    needs: build-lint-test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
