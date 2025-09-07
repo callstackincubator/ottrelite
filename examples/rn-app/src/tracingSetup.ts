@@ -10,13 +10,13 @@ import {
 } from '@opentelemetry/semantic-conventions';
 import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
 import { OttreliteBackendTracy } from '@ottrelite/backend-wrapper-tracy';
+import { Ottrelite } from '@ottrelite/core';
 import {
   DevSpanProcessorInterceptor,
-  Ottrelite,
   OttreliteExporterOTLP,
   OttreliteMeterProvider,
   OttreliteTracerProvider,
-} from '@ottrelite/core';
+} from '@ottrelite/interop-otel';
 import { Platform } from 'react-native';
 import {
   getDeviceId,

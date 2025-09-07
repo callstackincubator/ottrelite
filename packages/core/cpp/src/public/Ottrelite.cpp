@@ -5,7 +5,6 @@
 #include <ranges>
 
 #include "OttreliteBackendRegistrar.hpp"
-#include "OttreliteOTELInterop.hpp"
 
 namespace ottrelite
 {
@@ -119,11 +118,6 @@ namespace ottrelite
             });
 
         return {result.begin(), result.end()};
-    }
-
-    ExportResult Ottrelite::exportSpans(const std::vector<SerializedReadableSpan> &spans)
-    {
-        return otel::OttreliteOTELInterop::exportSpans(spans);
     }
 
     logging::Logger Ottrelite::logger_{"Ottrelite"};

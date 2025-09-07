@@ -5,11 +5,9 @@
 #include <vector>
 
 #include "CircularToken.hpp"
-#include "ExportResult.hpp"
 #include "HybridReactNativeOttreliteSpec.hpp"
 #include "Logger.hpp"
 #include "NonCppStackTraceEntry.hpp"
-#include "SerializedReadableSpan.hpp"
 #include "constants.hpp"
 #include "types.hpp"
 
@@ -108,15 +106,6 @@ namespace ottrelite
          * @return List of details of installed backends
          */
         static std::vector<OttreliteBackendInfo> listInstalledBackends();
-
-        /**
-         * Exports a batch of spans to the configured OTEL exporter.
-         *
-         * @param spans The spans to export
-         * @return Result of the export operation: success if all exporters reported success, failure if at least one
-         * exporter failed; the error code will be assigned the last failed exporter's error value
-         */
-        ExportResult exportSpans(const std::vector<SerializedReadableSpan> &spans);
 
       protected:
         /**

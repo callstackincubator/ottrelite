@@ -1,0 +1,89 @@
+{
+  "name": "@ottrelite/interop-otel",
+  "version": "0.1.0",
+  "description": "Interoperability layer integrating Ottrelite with OTEL SDKs",
+  "main": "lib/index",
+  "module": "lib/index",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "author": "Callstack <hello@callstack.com>",
+  "files": [
+    "src",
+    "react-native.config.js",
+    "lib",
+    "nitrogen",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "android/CMakeLists.txt",
+    "android/src",
+    "ios/**/*.h",
+    "ios/**/*.m",
+    "ios/**/*.mm",
+    "ios/**/*.cpp",
+    "ios/**/*.swift",
+    "app.plugin.js",
+    "*.podspec",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "pnpm run build || exit 0;",
+    "typecheck": "tsc --noEmit",
+    "clean": "del-cli android/build node_modules/**/android/build lib",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
+    "typescript": "tsc",
+    "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
+    "build:watch": "tsc --watch",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react-native",
+    "tracing",
+    "trace",
+    "otel",
+    "opentelemetry",
+    "observability",
+    "performance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callstackincubator/ottrelite.git"
+  },
+  "license": "(MIT AND Apache-2.0 AND BSD-3-Clause AND LicenseRef-Zlib AND LicenseRef-OpenSSL AND LicenseRef-Curl)",
+  "bugs": {
+    "url": "https://github.com/callstackincubator/ottrelite/issues"
+  },
+  "homepage": "https://github.com/callstackincubator/ottrelite#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.25.0",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/core": "^2.0.1",
+    "@opentelemetry/sdk-trace-base": "^2.0.1",
+    "del-cli": "^6.0.0",
+    "eslint": "^8.57.1",
+    "jest": "^30.0.4",
+    "nitro-codegen": "^0.27.2",
+    "react-native-nitro-modules": "0.29.2",
+    "release-it": "^19.0.3",
+    "typescript": "^5.8.3",
+    "@ottrelite/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/core": "^2.0.1",
+    "@opentelemetry/sdk-trace-base": "^2.0.1",
+    "react": "19.1.0",
+    "react-native": "^0.81.0",
+    "react-native-nitro-modules": "0.29.2",
+    "@ottrelite/core": "workspace:^"
+  },
+  "dependencies": {
+    "@opentelemetry/resources": "^2.0.1",
+    "@opentelemetry/sdk-metrics": "^2.0.1",
+    "@opentelemetry/sdk-trace-web": "^2.0.1"
+  }
+}

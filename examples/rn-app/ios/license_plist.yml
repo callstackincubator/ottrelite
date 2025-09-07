@@ -27,6 +27,7 @@ rename:
   "@ottrelite_backend-platform@0.1.0": '@ottrelite/backend-platform'
   "@ottrelite_backend-wrapper-tracy@0.1.0": '@ottrelite/backend-wrapper-tracy'
   "@ottrelite_core@0.1.0": '@ottrelite/core'
+  "@ottrelite_interop-otel@0.1.0": '@ottrelite/interop-otel'
   "@opentelemetry_sdk-metrics@2.0.1": '@opentelemetry/sdk-metrics'
   "@react-native-community_slider@5.0.1": '@react-native-community/slider'
   "@react-native-vector-icons_material-design-icons@12.2.0": '@react-native-vector-icons/material-design-icons'
@@ -526,16 +527,20 @@ manual:
     file: '../../../node_modules/@opentelemetry/instrumentation-xml-http-request/LICENSE'
   - name: '@ottrelite_backend-platform@0.1.0'
     version: '0.1.0'
-    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/backend-platform/LICENSE'
   - name: '@ottrelite_backend-wrapper-tracy@0.1.0'
     version: '0.1.0'
-    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/backend-wrapper-tracy/LICENSE'
   - name: '@ottrelite_core@0.1.0'
     version: '0.1.0'
-    source: https://github.com/callstackincubator/ReactNativeOttrelite
+    source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/core/LICENSE'
+  - name: '@ottrelite_interop-otel@0.1.0'
+    version: '0.1.0'
+    source: https://github.com/callstackincubator/ottrelite
+    file: '../../../packages/interop-otel/LICENSE'
   - name: '@opentelemetry_sdk-metrics@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
@@ -1941,7 +1946,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest

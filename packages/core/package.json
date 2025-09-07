@@ -1,7 +1,7 @@
 {
   "name": "@ottrelite/core",
   "version": "0.1.0",
-  "description": "Pluggable tracing framework for React Native, compatible with OpenTelemetry",
+  "description": "Extensible, unified tracing framework for React Native",
   "main": "lib/index",
   "module": "lib/index",
   "types": "lib/index.d.ts",
@@ -27,7 +27,7 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "pnpm run typescript || exit 0;",
+    "postinstall": "pnpm run build || exit 0;",
     "typecheck": "tsc --noEmit",
     "clean": "del-cli android/build node_modules/**/android/build lib",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
@@ -41,28 +41,24 @@
     "react-native",
     "tracing",
     "trace",
-    "otel",
-    "opentelemetry",
     "observability",
     "performance"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/callstackincubator/ReactNativeOttrelite.git"
+    "url": "git+https://github.com/callstackincubator/ottrelite.git"
   },
-  "license": "(MIT AND Apache-2.0 AND BSD-3-Clause AND LicenseRef-Zlib AND LicenseRef-OpenSSL AND LicenseRef-Curl)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/callstackincubator/ReactNativeOttrelite/issues"
+    "url": "https://github.com/callstackincubator/ottrelite/issues"
   },
-  "homepage": "https://github.com/callstackincubator/ReactNativeOttrelite#readme",
+  "homepage": "https://github.com/callstackincubator/ottrelite#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/runtime": "^7.25.0",
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/core": "^2.0.1",
-    "@opentelemetry/sdk-trace-base": "^2.0.1",
     "del-cli": "^6.0.0",
     "eslint": "^8.57.1",
     "jest": "^30.0.4",
@@ -72,16 +68,8 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/core": "^2.0.1",
-    "@opentelemetry/sdk-trace-base": "^2.0.1",
     "react": "19.1.0",
     "react-native": "^0.81.0",
     "react-native-nitro-modules": "0.29.2"
-  },
-  "dependencies": {
-    "@opentelemetry/resources": "^2.0.1",
-    "@opentelemetry/sdk-metrics": "^2.0.1",
-    "@opentelemetry/sdk-trace-web": "^2.0.1"
   }
 }

@@ -33,6 +33,30 @@ export default defineConfig({
     pluginTypeDoc({
       entryPoints: [
         path.join(__dirname, '..', 'packages', 'core', 'src', 'index.ts'),
+        path.join(
+          __dirname,
+          '..',
+          'packages',
+          'backend-wrapper-tracy',
+          'src',
+          'index.ts'
+        ),
+        path.join(
+          __dirname,
+          '..',
+          'packages',
+          'backend-platform',
+          'src',
+          'index.ts'
+        ),
+        path.join(
+          __dirname,
+          '..',
+          'packages',
+          'interop-otel',
+          'src',
+          'index.ts'
+        ),
       ],
       outDir: 'api',
     }),

@@ -50,5 +50,5 @@
     "postinstall": "npx lefthook install && (pnpm run build || exit 0;)",
     "pod:install": "cd examples/rn-app && pod install"
   },
-  "packageManager": "pnpm@10.15.0"
+  "packageManager": "pnpm@10.15.1"
 }

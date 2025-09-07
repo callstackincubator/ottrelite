@@ -6,7 +6,6 @@
 #include "JSIUtils.hpp"
 #include "Logger.hpp"
 #include "OttreliteBackendRegistrar.hpp"
-#include "OttreliteOTELInterop.hpp"
 
 using namespace ::ottrelite;
 using namespace ::ottrelite::backend;
@@ -79,88 +78,6 @@ namespace margelo::nitro::ottrelite
         {
             reviveSystraceAPI();
         }
-
-        if (options.cppTraceBatchSpanProcessorOptions.has_value())
-        {
-            const auto &traceBatchSpanProcessorOptions = options.cppTraceBatchSpanProcessorOptions.value();
-
-            if (traceBatchSpanProcessorOptions.maxBatchSize.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchSpanProcessorOptions_.max_export_batch_size =
-                    traceBatchSpanProcessorOptions.maxBatchSize.value();
-            }
-
-            if (traceBatchSpanProcessorOptions.maxQueueSize.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchSpanProcessorOptions_.max_queue_size =
-                    traceBatchSpanProcessorOptions.maxQueueSize.value();
-            }
-
-            if (traceBatchSpanProcessorOptions.scheduleDelayMs.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchSpanProcessorOptions_.schedule_delay_millis =
-                    std::chrono::milliseconds(
-                        static_cast<uint32_t>(traceBatchSpanProcessorOptions.scheduleDelayMs.value()));
-            }
-        }
-
-        if (options.cppMetricReaderOptions.has_value())
-        {
-            const auto &cppMetricReaderOptions = options.cppMetricReaderOptions.value();
-
-            if (cppMetricReaderOptions.exportIntervalMillis.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelMetricReaderOptions_.export_interval_millis =
-                    std::chrono::milliseconds(
-                        static_cast<uint32_t>(cppMetricReaderOptions.exportIntervalMillis.value()));
-            }
-
-            if (cppMetricReaderOptions.exportTimeoutMillis.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelMetricReaderOptions_.export_timeout_millis =
-                    std::chrono::milliseconds(
-                        static_cast<uint32_t>(cppMetricReaderOptions.exportTimeoutMillis.value()));
-            }
-        }
-
-        if (options.cppBatchLogRecordProcessorOptions.has_value())
-        {
-            const auto &batchLogRecordProcessorOptions = options.cppBatchLogRecordProcessorOptions.value();
-
-            if (batchLogRecordProcessorOptions.maxBatchSize.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchLogRecordProcessorOptions_.max_export_batch_size =
-                    batchLogRecordProcessorOptions.maxBatchSize.value();
-            }
-
-            if (batchLogRecordProcessorOptions.maxQueueSize.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchLogRecordProcessorOptions_.max_queue_size =
-                    batchLogRecordProcessorOptions.maxQueueSize.value();
-            }
-
-            if (batchLogRecordProcessorOptions.exportIntervalMillis.has_value())
-            {
-                ::ottrelite::otel::OttreliteOTELInterop::otelBatchLogRecordProcessorOptions_.schedule_delay_millis =
-                    std::chrono::milliseconds(
-                        static_cast<uint32_t>(batchLogRecordProcessorOptions.exportIntervalMillis.value()));
-            }
-        }
-    }
-
-    void ReactNativeOttrelite::installGlobalOTELCPPTracerProvider()
-    {
-        ::ottrelite::otel::OttreliteOTELInterop::installGlobalOTELTracerProvider();
-    }
-
-    void ReactNativeOttrelite::installGlobalOTELCPPMeterProvider()
-    {
-        ::ottrelite::otel::OttreliteOTELInterop::installGlobalOTELMeterProvider();
-    }
-
-    void ReactNativeOttrelite::installGlobalOTELCPPLoggerProvider()
-    {
-        ::ottrelite::otel::OttreliteOTELInterop::installGlobalOTELLoggerProvider();
     }
 
     void ReactNativeOttrelite::reviveSystraceAPI()

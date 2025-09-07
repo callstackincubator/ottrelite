@@ -25,7 +25,7 @@ namespace ottrelite::backend::platform
           tracingLog_(OS_LOG_DEFAULT), counter_events_signpost_id_(os_signpost_id_generate(tracingLog_))
 #endif
     {
-        constexpr auto usedAPI = IS_IOS_GTE_12 ? "OSSignpost" : "ATrace";
+        constexpr auto usedAPI = IS_IOS_GTE_12 ? "OSSignposter" : "ATrace";
         logger_.info("Ottrelite Backend Platform is using the ") << usedAPI << " API";
     }
 

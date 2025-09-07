@@ -1,9 +1,29 @@
-import type { Span } from '@opentelemetry/api';
+import type { Span, Tracer } from '@opentelemetry/api';
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 
 import { Ottrelite } from '../Ottrelite';
-import { useTracer } from '../otel/hooks/useTracer';
 import type { TracingAPI } from '../types/TracingAPI';
+
+let maybeUseTracer: (name: string, version?: string) => Tracer;
+try {
+  maybeUseTracer = require('@ottrelite/interop-otel/hooks/useTracer').useTracer;
+} catch {
+  maybeUseTracer = () => {
+    console.warn(
+      '[useComponentRenderTracing] Invalid setup - @ottrelite/interop-otel interop package is not installed, falling back to no-op tracer. Please install @ottrelite/interop-otel to enable OTEL tracing.'
+    );
+
+    const spanMock = {
+      setAttribute: () => {},
+      end: () => {},
+    } as any as Span;
+
+    return {
+      startSpan: () => spanMock,
+      startActiveSpan: () => spanMock,
+    };
+  };
+}
 
 /**
  * Helper for getting current epoch time, with sub-millisecond precision if `performance.now()`
@@ -34,9 +54,9 @@ export function useComponentRenderTracing(
   additionalEventArgs?: Record<string, string>,
   api: TracingAPI = 'dev'
 ) {
-  const { startSpan } = useTracer(eventName);
+  const { startSpan } = maybeUseTracer(eventName);
   const jsLogicStartTimestampRef = useRef<number | null>(null);
-  console.log(api);
+
   jsLogicStartTimestampRef.current = now();
 
   const jsLogicRenderEndTimeRef = useRef<number | null>(null);

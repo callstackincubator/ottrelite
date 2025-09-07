@@ -1,5 +1,5 @@
 import { context, metrics, trace } from '@opentelemetry/api';
-import { useTracer } from '@ottrelite/core';
+import { useTracer } from '@ottrelite/interop-otel';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';

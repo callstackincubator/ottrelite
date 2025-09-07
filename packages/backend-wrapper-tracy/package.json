@@ -27,7 +27,7 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "pnpm run typescript || exit 0;",
+    "postinstall": "pnpm run build || exit 0;",
     "typecheck": "tsc --noEmit",
     "clean": "del-cli android/build node_modules/**/android/build lib",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
@@ -47,13 +47,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/callstackincubator/ReactNativeOttrelite.git"
+    "url": "git+https://github.com/callstackincubator/ottrelite.git"
   },
   "license": "(MIT AND BSD-3-Clause)",
   "bugs": {
-    "url": "https://github.com/callstackincubator/ReactNativeOttrelite/issues"
+    "url": "https://github.com/callstackincubator/ottrelite/issues"
   },
-  "homepage": "https://github.com/callstackincubator/ReactNativeOttrelite#readme",
+  "homepage": "https://github.com/callstackincubator/ottrelite#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

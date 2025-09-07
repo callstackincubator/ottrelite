@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:docs": "rspress build",
-    "check": "biome check --write",
+    "lint": "biome check",
     "dev": "rspress dev",
     "format": "biome format --write",
     "preview": "rspress preview"

@@ -11,9 +11,6 @@
   "autolinking": {
     "ReactNativeOttrelite": {
       "cpp": "ReactNativeOttrelite"
-    },
-    "ReactNativeOttreliteExporterOTLP": {
-      "cpp": "ReactNativeOttreliteExporterOTLP"
     }
   },
   "ignorePaths": ["**/node_modules"]

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["ottrelite", "interop", "otel"],
+  "ios": {
+    "iosModuleName": "ReactNativeOttreliteInteropOTEL"
+  },
+  "android": {
+    "androidNamespace": ["ottrelite", "interop", "otel"],
+    "androidCxxLibName": "ReactNativeOttreliteInteropOTEL"
+  },
+  "autolinking": {
+    "ReactNativeOttreliteInteropOTEL": {
+      "cpp": "ReactNativeOttreliteInteropOTEL"
+    },
+    "ReactNativeOttreliteInteropOTELExporterOTLP": {
+      "cpp": "ReactNativeOttreliteInteropOTELExporterOTLP"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

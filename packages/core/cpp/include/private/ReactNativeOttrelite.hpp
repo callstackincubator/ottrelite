@@ -108,10 +108,6 @@ namespace margelo::nitro::ottrelite
          */
         void loadHybridMethods() override;
 
-        void installGlobalOTELCPPTracerProvider() override;
-        void installGlobalOTELCPPMeterProvider() override;
-        void installGlobalOTELCPPLoggerProvider() override;
-
       private:
         jsi::Runtime *runtimePtr_ = nullptr;
 

@@ -29,6 +29,7 @@ target_include_directories(
         ${PACKAGE_NAME}
         PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/include/private/
+        ${CMAKE_CURRENT_LIST_DIR}/include/private/utils
         PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/include/public/
         ${CMAKE_CURRENT_LIST_DIR}/include/public/backend/

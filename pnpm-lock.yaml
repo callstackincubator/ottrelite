@@ -183,6 +183,9 @@ importers:
       '@ottrelite/core':
         specifier: workspace:^
         version: link:../../packages/core
+      '@ottrelite/interop-otel':
+        specifier: workspace:^
+        version: link:../../packages/interop-otel
       '@ottrelite/ottrelite-consumer-lib':
         specifier: workspace:^
         version: link:../ottrelite-consumer-lib
@@ -378,15 +381,6 @@ importers:
 
   packages/core:
     dependencies:
-      '@opentelemetry/resources':
-        specifier: ^2.0.1
-        version: 2.0.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/sdk-metrics':
-        specifier: ^2.0.1
-        version: 2.0.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/sdk-trace-web':
-        specifier: ^2.0.1
-        version: 2.0.1(@opentelemetry/api@1.9.0)
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -400,12 +394,6 @@ importers:
       '@opentelemetry/api':
         specifier: ^1.9.0
         version: 1.9.0
-      '@opentelemetry/core':
-        specifier: ^2.0.1
-        version: 2.0.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/sdk-trace-base':
-        specifier: ^2.0.1
-        version: 2.0.1(@opentelemetry/api@1.9.0)
       del-cli:
         specifier: ^6.0.0
         version: 6.0.0
@@ -467,6 +455,61 @@ importers:
       concurrently:
         specifier: ^9.2.0
         version: 9.2.0
+
+  packages/interop-otel:
+    dependencies:
+      '@opentelemetry/resources':
+        specifier: ^2.0.1
+        version: 2.0.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-metrics':
+        specifier: ^2.0.1
+        version: 2.0.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-trace-web':
+        specifier: ^2.0.1
+        version: 2.0.1(@opentelemetry/api@1.9.0)
+      react:
+        specifier: 19.1.0
+        version: 19.1.0
+      react-native:
+        specifier: ^0.81.0
+        version: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0)
+    devDependencies:
+      '@babel/runtime':
+        specifier: ^7.25.0
+        version: 7.28.2
+      '@opentelemetry/api':
+        specifier: ^1.9.0
+        version: 1.9.0
+      '@opentelemetry/core':
+        specifier: ^2.0.1
+        version: 2.0.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-trace-base':
+        specifier: ^2.0.1
+        version: 2.0.1(@opentelemetry/api@1.9.0)
+      '@ottrelite/core':
+        specifier: workspace:^
+        version: link:../core
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
+      eslint:
+        specifier: ^8.57.1
+        version: 8.57.1
+      jest:
+        specifier: ^30.0.4
+        version: 30.0.5(@types/node@24.1.0)
+      nitro-codegen:
+        specifier: ^0.27.2
+        version: 0.27.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
+      react-native-nitro-modules:
+        specifier: 0.29.2
+        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
+      release-it:
+        specifier: ^19.0.3
+        version: 19.0.4(@types/node@24.1.0)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
 
 packages:
 
