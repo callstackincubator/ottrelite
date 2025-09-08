@@ -6,7 +6,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
 import com.facebook.react.TurboReactPackage;
-import com.margelo.nitro.ottrelite.ReactNativeOttreliteInteropOTELOnLoad;
+import com.margelo.nitro.ottrelite.interop.otel.ReactNativeOttreliteInteropOTELOnLoad;
 
 import java.util.HashMap;
 

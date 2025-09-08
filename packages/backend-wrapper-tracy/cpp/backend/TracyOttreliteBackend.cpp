@@ -1,5 +1,18 @@
 #include "TracyOttreliteBackend.hpp"
 
+// pthread_getname_np is available on Android API >= 26
+#if defined(__ANDROID__) && __ANDROID_API__ >= __ANDROID_API_O__
+#define ANDROID_HAS_PTHREAD_GETNAME_NP 1
+#else
+#define ANDROID_HAS_PTHREAD_GETNAME_NP 0
+#endif
+
+// if pthread_getname_np and we are on Android, fall back to using prctl(PR_GET_NAME)
+#if !ANDROID_HAS_PTHREAD_GETNAME_NP && defined(__ANDROID__)
+#include <array>
+#include <linux/prctl.h>
+#include <sys/prctl.h>
+#endif
 #include <pthread.h>
 #include <sstream>
 #include <thread>
@@ -14,10 +27,18 @@ namespace ottrelite::backend::tracy
     {
         std::optional<std::string> threadName;
 
+#if ANDROID_HAS_PTHREAD_GETNAME_NP || defined(__APPLE__)
         char name[128];
         pthread_t thread = pthread_self();
         int result = pthread_getname_np(thread, name, sizeof(name));
         threadName = result == 0 ? std::make_optional(std::string(name)) : std::nullopt;
+#elif defined(__ANDROID__)
+        std::array<char, 16> name{};
+        threadName = prctl(PR_GET_NAME, name.data(), 0, 0, 0) == -1 ? std::nullopt
+                                                                    : std::make_optional(std::string(name.data()));
+#else
+        threadName = std::nullopt;
+#endif
 
         if (threadName.has_value())
         {
@@ -43,7 +64,7 @@ namespace ottrelite::backend::tracy
                 maybeIt = threadIdToSyncApiZones_.insert({thisThreadId, {}}).first;
             }
 
-            maybeIt->second.push(std::move(tracyCZoneCtx));
+            maybeIt->second.push(tracyCZoneCtx);
         }
 
         logger_.debug() << "beginEvent(" << eventName << ")";
@@ -62,7 +83,8 @@ namespace ottrelite::backend::tracy
 
             if (stack.empty())
             {
-                logger_.error("endEvent() called without a matching beginEvent() for thread ") << std::hash<std::thread::id>()(thisThreadId);
+                logger_.error("endEvent() called without a matching beginEvent() for thread ")
+                    << std::hash<std::thread::id>()(thisThreadId);
                 return;
             }
 

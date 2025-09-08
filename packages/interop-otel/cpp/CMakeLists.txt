@@ -18,11 +18,6 @@ file(GLOB_RECURSE COMMON_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_LIST_DIR}/src/*.cpp"
 )
 
-target_link_libraries(
-        ${PACKAGE_NAME}
-        ${SHARED_LIBRARIES}
-)
-
 target_sources(${PACKAGE_NAME} PUBLIC ${COMMON_SOURCES})
 
 target_include_directories(
@@ -33,4 +28,12 @@ target_include_directories(
         ${CMAKE_CURRENT_LIST_DIR}/include/private/helpers
         PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/include/public/
+)
+
+# Find RN Ottrelite Core package
+find_package(ottrelite_core REQUIRED)
+
+target_link_libraries(
+        ${PACKAGE_NAME}
+        ottrelite_core::ReactNativeOttrelite  # <-- Ottrelite core
 )

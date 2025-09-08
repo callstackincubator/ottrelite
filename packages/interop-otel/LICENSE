@@ -421,10 +421,6 @@ This project uses opentelemetry-cpp library:
    See the License for the specific language governing permissions and
    limitations under the License.
 
-This project carries a file ./third_party/wrapper/patches/useLocalOTELDeps.patch that
-contains changes to opentelemetry-cpp that disable CMake instructions causing the build to fail on iOS
-when libraries for the MacOS platform are discovered by CMake instead.
-
 ---
 
 This project uses zlib library:

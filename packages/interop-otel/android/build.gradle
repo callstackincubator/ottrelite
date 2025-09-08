@@ -150,7 +150,6 @@ repositories {
     google()
 }
 
-
 dependencies {
     // For < 0.71, this will be from the local maven repo
     // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
@@ -159,7 +158,26 @@ dependencies {
 
     // Add a dependency on NitroModules
     implementation project(":react-native-nitro-modules")
+
+    // Depend on Ottrelite core
+    implementation project(":ottrelite_core")
+
+    // CURL dependency for OTEL
+    implementation 'com.android.ndk.thirdparty:curl:7.85.0-beta-1'
+
+    // OpenSSL dependency for OTEL
+    implementation 'com.android.ndk.thirdparty:openssl:1.1.1q-beta-1'
 }
+
+def isReleaseBuild = project.hasProperty("buildType") && project.buildType == "release"
+def cxxBuildVariantDirName = isReleaseBuild ? "Release" : "Debug"
+def thirdPartySourceDir = file("${project.projectDir}/../third_party").absolutePath
+def otelSourceDir = "$thirdPartySourceDir/opentelemetry-cpp"
+def protobufSourceDir = "$thirdPartySourceDir/third_party/protobuf"
+def wrapperRootDir = "$thirdPartySourceDir/wrapper"
+def getWrapperBuildDir = { String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi" }
+def getProtobufBuildDir = { String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi/protobuf" }
+def getCmakeInstallDir = { String abi -> "$wrapperRootDir/android/install/$abi" }
 
 def prepareOttreliteHeadersTask = tasks.register('prepareOttreliteHeaders', Copy) {
     from files(
@@ -172,4 +190,126 @@ def prepareOttreliteHeadersTask = tasks.register('prepareOttreliteHeaders', Copy
     includeEmptyDirs = false
 }
 
+// depend on Ottrelite Core
 preBuild.dependsOn(prepareOttreliteHeadersTask)
+
+// TODO: OpenSSL - like buildAndInstallProtobuf
+
+// TODO: Brotli - like buildAndInstallProtobuf
+
+// TODO: Zlib - like buildAndInstallProtobuf
+
+// TODO: CURL - like buildAndInstallProtobuf
+
+// Protobuf
+tasks.register("buildAndInstallProtobuf") {
+    doFirst {
+        if (!new File(protobufSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning Protobuf to ${protobufSourceDir}...")
+
+            file(protobufSourceDir).mkdirs()
+            exec {
+                commandLine "git", "clone", "--depth", "1", "--branch", "v26.1", "--recurse-submodules", "--shallow-submodules", "https://github.com/protocolbuffers/protobuf.git", protobufSourceDir
+            }
+        } else {
+            println("[@ottrelite/interop-otel] OpenTelemetry Protobuf already cloned in ${protobufSourceDir}")
+        }
+    }
+
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            def protobufBuildDir = getProtobufBuildDir(abi)
+            def cmakeInstallDir = getCmakeInstallDir(abi)
+
+            println("[@ottrelite/interop-otel] Building & installing Protobuf artifacts for ABI $abi, this may take a while...")
+
+            if (!new File(protobufBuildDir).exists()) {
+                file(protobufBuildDir).mkdirs()
+            }
+
+            exec {
+                println("[@ottrelite/interop-otel] Configuring Protobuf for ABI $abi from ${protobufSourceDir} and writing to ${protobufBuildDir}...")
+
+                commandLine "cmake", "-S", protobufSourceDir, "-B", protobufBuildDir,
+                        "-DANDROID_ABI=$abi",
+                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                        "-Dprotobuf_BUILD_TESTS=OFF"
+            }
+
+            println("[@ottrelite/interop-otel] Building for ABI $abi ${protobufBuildDir}...")
+
+            exec {
+                commandLine "cmake", "--build", protobufBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
+            }
+
+            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+            exec {
+                commandLine "cmake", "--install", protobufBuildDir, "--prefix", cmakeInstallDir
+            }
+
+            println("[@ottrelite/interop-otel] Protobuf build & install finished for ABI $abi")
+        }
+    }
+}
+
+// CPP wrapper + OTEL CPP SDK
+tasks.register("buildAndInstallCppWrapper") {
+    doFirst {
+        if (!new File(otelSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning OpenTelemetry C++ SDK to ${otelSourceDir}...")
+
+            file(otelSourceDir).mkdirs()
+            exec {
+                commandLine "git", "clone", "--depth", "1", "--branch", "v1.22.0", "https://github.com/open-telemetry/opentelemetry-cpp.git", otelSourceDir
+            }
+        } else {
+            println("[@ottrelite/interop-otel] OpenTelemetry C++ SDK already cloned in ${otelSourceDir}")
+        }
+    }
+
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            def wrapperBuildDir = getWrapperBuildDir(abi)
+            def cmakeInstallDir = getCmakeInstallDir(abi)
+
+            println("[@ottrelite/interop-otel] Building & installing artifacts for ABI $abi, this may take a while...")
+
+            if (!new File(wrapperBuildDir).exists()) {
+                file(wrapperBuildDir).mkdirs()
+            }
+
+            exec {
+                println("[@ottrelite/interop-otel] Configuring for ABI $abi from ${thirdPartySourceDir} and writing to ${wrapperBuildDir}...")
+
+                commandLine "cmake", "-S", thirdPartySourceDir, "-B", wrapperBuildDir,
+                        "-DANDROID_ABI=$abi",
+                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                        "-DProtobuf_DIR=$cmakeInstallDir/lib/cmake/protobuf",
+                        "-Dabsl_DIR=$cmakeInstallDir/lib/cmake/absl",
+                        "-Dutf8_range_DIR=$cmakeInstallDir/lib/cmake/utf8_range"
+            }
+
+            println("[@ottrelite/interop-otel] Building for ABI $abi ${wrapperBuildDir}...")
+
+            exec {
+                commandLine "cmake", "--build", wrapperBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
+            }
+
+            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+            exec {
+                commandLine "cmake", "--install", wrapperBuildDir, "--prefix", cmakeInstallDir
+            }
+
+            println("[@ottrelite/interop-otel] Build & install finished for ABI $abi")
+        }
+    }
+}
+buildAndInstallCppWrapper.dependsOn(buildAndInstallProtobuf)
+
+preBuild.dependsOn(buildAndInstallCppWrapper)

@@ -44,25 +44,6 @@ fi
 
 THIS_BUILD_INFO="$CMAKE_IOS_PLATFORM"
 
-# === Protobuf ===
-
-echo "➡️ Preparing Protobuf compiler binary..."
-
-# prepare the protoc binary
-if [ ! -d protoc ]; then
-    echo "⏳ Downloading protoc binary..."
-    PROTOC_URL="https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-osx-universal_binary.zip"
-    curl -L "${PROTOC_URL}" -o protoc.zip
-    unzip protoc.zip -d protoc
-    rm protoc.zip
-    chmod +x protoc/bin/protoc
-else
-    echo "➡️ Using existing protoc binary..."
-fi
-
-PROTOC_BINARY="$(realpath protoc/bin/protoc)"
-echo "ℹ️ Protobuf compiler binary: ${PROTOC_BINARY}"
-
 # === OpenSSL ===
 
 if [ ! -d openssl-apple ]; then
@@ -103,13 +84,8 @@ OPENSSL_ROOT_DIR=$(realpath ${first_openssl_sdk_dir})
 
 if [ ! -d "opentelemetry-cpp" ]; then
     echo "⏳ Cloning opentelemetry-cpp..."
-    git clone --branch v1.22.0 https://github.com/open-telemetry/opentelemetry-cpp.git
+    git clone --depth 1 --branch v1.22.0 https://github.com/open-telemetry/opentelemetry-cpp.git
 fi
-
-for patch in wrapper/patches/*.patch; do
-    echo "✍️ Applying patch: $patch"
-    git -C $(realpath ./opentelemetry-cpp/) apply "$(realpath $patch)" 2>/dev/null || true
-done
 
 echo "⏳ Preparing opentelemetry-cpp wrapper for iOS with CMake..."
 
@@ -319,7 +295,6 @@ if [ "$BUILD_WRAPPER" -eq 1 ]; then
         -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
         -DCMAKE_CXX_FLAGS_DEBUG="-g" \
-        -DPROTOBUF_PROTOC_EXECUTABLE:FILEPATH=${PROTOC_BINARY} \
         -DPLATFORM=${CMAKE_IOS_PLATFORM} \
         -DCMAKE_SYSTEM_NAME="iOS" \
         -DCMAKE_TOOLCHAIN_FILE=ios-cmake/ios.toolchain.cmake

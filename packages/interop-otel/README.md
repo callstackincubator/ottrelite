@@ -10,8 +10,6 @@ All the features, usage & installation of this package are documented in the [do
 
 For developer reference, this package utilizes the JS OpenTelemetry API as well as opentelemetry-cpp to integrate with OTEL's APIs. The CPP package requires libcurl and protobuf, which in turn depends on openssl, brotli, zlib. This complicates the build process, especially for iOS, where the packages are configured using CocoaPods while the primary build system for the listed C++ packages is CMake.
 
-For integration with opentelemetry-cpp, this project carries a file packages/interop-otel/third_party/wrapper/patches/useLocalOTELDeps.patch that contains changes to opentelemetry-cpp that disable CMake instructions causing the build to fail on iOS when libraries for the MacOS platform are discovered by CMake instead. The patch is applied during the build process to the local clone of opentelemetry-cpp.
-
 ### iOS
 
 Moreover, the aforementioned packages need to be compiled from source for the right architecture, using the right toolchain for iOS.
