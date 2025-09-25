@@ -10,8 +10,9 @@ export default defineConfig({
   title: 'React Native Ottrelite',
   description: 'React Native Ottrelite Documentation',
   logoText: 'React Native Ottrelite',
-  icon: '/img/logo.png',
-  logo: '/img/logo.png',
+  icon: '/img/favicon.svg',
+  logoDark: '/img/logo-dark.png',
+  logoLight: '/img/logo-light.png',
   themeConfig: {
     socialLinks: [
       {

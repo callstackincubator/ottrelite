@@ -15,8 +15,10 @@ hero:
       text: GitHub
       link: https://github.com/web-infra-dev/rspress
   image:
-    src: /logo.png
-    alt: Ottrelite Logo
+    src:
+      light: /img/logo-light.png
+      dark: /img/logo-dark.png
+    alt: Ottrelite logo
 features:
   - title: Unified API
     details: All functionalities are accessible through a single API, regardless of the backend used. If a backend does not support a specific feature, it will simply be ignored by calls to that feature.
