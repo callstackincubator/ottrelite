@@ -161,12 +161,6 @@ dependencies {
 
     // Depend on Ottrelite core
     implementation project(":ottrelite_core")
-
-    // CURL dependency for OTEL
-    implementation 'com.android.ndk.thirdparty:curl:7.85.0-beta-1'
-
-    // OpenSSL dependency for OTEL
-    implementation 'com.android.ndk.thirdparty:openssl:1.1.1q-beta-1'
 }
 
 def isReleaseBuild = project.hasProperty("buildType") && project.buildType == "release"
