@@ -43,11 +43,11 @@ target_include_directories(
 )
 
 # Find RN Ottrelite Core package
-find_package(ottrelite_core REQUIRED)
+find_package(ottrelite_core)
 
 # Find Protobuf C++ package
 set(Protobuf_DIR "${DEPS_INSTALL_DIR}/lib/cmake/protobuf/")
-find_package(Protobuf CONFIG REQUIRED)
+find_package(Protobuf CONFIG)
 
 # Find OpenSSL package
 set(OpenSSLArtifactsDir "${CMAKE_CURRENT_LIST_DIR}/../third_party/openssl_for_android/openssl_${OTTRELITE_OPENSSL_VERSION}_${ANDROID_ABI}")
@@ -70,11 +70,11 @@ set_target_properties(OpenSSL::Crypto PROPERTIES
 
 # Find CURL C++ package
 set(CURL_DIR "${DEPS_INSTALL_DIR}/lib/cmake/CURL/")
-find_package(CURL CONFIG REQUIRED)
+find_package(CURL CONFIG)
 
 # Find OpenTelemetry C++ package
 set(opentelemetry-cpp_DIR "${DEPS_INSTALL_DIR}/lib/cmake/opentelemetry-cpp/")
-find_package(opentelemetry-cpp CONFIG REQUIRED)
+find_package(opentelemetry-cpp CONFIG)
 
 target_link_libraries(
         ${PACKAGE_NAME}

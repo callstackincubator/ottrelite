@@ -1403,7 +1403,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1523,7 +1523,7 @@ manual:
   - name: commander@2.20.3
     version: '2.20.3'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/terser/node_modules/commander/LICENSE'
+    file: '../../../node_modules/commander/LICENSE'
   - name: source-map-support@0.5.21
     version: '0.5.21'
     source: https://github.com/evanw/node-source-map-support
@@ -1791,7 +1791,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest
@@ -1955,7 +1955,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color
