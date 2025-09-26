@@ -1,6 +1,10 @@
 protoc
+brotli
+curl
 third_party
 opentelemetry-cpp
 openssl-apple
 openssl_for_android
 openssl
+protobuf
+zlib
