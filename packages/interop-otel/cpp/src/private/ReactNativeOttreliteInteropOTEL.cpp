@@ -3,10 +3,10 @@
 #include <ranges>
 #include <vector>
 
-#include "JSIUtils.hpp"
-#include "Logger.hpp"
-#include "OttreliteBackendRegistrar.hpp"
 #include "OttreliteInteropOTEL.hpp"
+#include "ReactNativeOttrelite/JSIUtils.hpp"
+#include "ReactNativeOttrelite/Logger.hpp"
+#include "ReactNativeOttrelite/OttreliteBackendRegistrar.hpp"
 
 using namespace ::ottrelite;
 using namespace ::ottrelite::backend;

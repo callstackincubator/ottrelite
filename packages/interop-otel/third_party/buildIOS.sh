@@ -84,7 +84,7 @@ OPENSSL_ROOT_DIR=$(realpath ${first_openssl_sdk_dir})
 
 if [ ! -d "opentelemetry-cpp" ]; then
     echo "⏳ Cloning opentelemetry-cpp..."
-    git clone --depth 1 --branch v1.22.0 https://github.com/open-telemetry/opentelemetry-cpp.git
+    git clone --depth 1 --branch v1.23.0 https://github.com/open-telemetry/opentelemetry-cpp.git
 fi
 
 echo "⏳ Preparing opentelemetry-cpp wrapper for iOS with CMake..."
@@ -141,6 +141,7 @@ if [ "$BUILD_BROTLI" -eq 1 ]; then
         -DBROTLI_BUILD_TOOLS=OFF \
         -DPLATFORM=${CMAKE_IOS_PLATFORM} \
         -DCMAKE_SYSTEM_NAME="iOS" \
+        -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX="$(realpath ../install)" \
         -DCMAKE_TOOLCHAIN_FILE=../ios-cmake/ios.toolchain.cmake
 
@@ -206,7 +207,7 @@ mkdir -p curl
 
 if [ ! -d "curl" ]; then
     echo "⏳ Cloning curl..."
-    git clone --branch curl-8_15_0 https://github.com/curl/curl.git
+    git clone --depth 1 --branch curl-8_15_0 https://github.com/curl/curl.git
 fi
 
 echo "⏳ Building curl for iOS..."

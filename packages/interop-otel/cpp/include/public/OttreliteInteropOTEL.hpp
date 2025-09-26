@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-#include "Logger.hpp"
 #include "OTELExporterAdapterUtils.hpp"
+#include "ReactNativeOttrelite/Logger.hpp"
+#include "ReactNativeOttrelite/constants.hpp"
+#include "ReactNativeOttrelite/types.hpp"
 #include "SpanConverter.hpp"
-#include "constants.hpp"
-#include "types.hpp"
 
 #include "opentelemetry/sdk/logs/batch_log_record_processor_options.h"
 #include "opentelemetry/sdk/logs/exporter.h"

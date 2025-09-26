@@ -2,6 +2,8 @@ import groovy.json.JsonSlurper
 
 import java.nio.file.Files
 
+def opensslVersion = "3.5.3"
+
 buildscript {
     repositories {
         google()
@@ -66,7 +68,7 @@ android {
                 cppFlags "-frtti -fexceptions -Wall -Wextra -fstack-protector-all"
 
                 def enableDebugLogs = rootProject.hasProperty('OTTRELITE_DEBUG_LOGS') ? rootProject.property('OTTRELITE_DEBUG_LOGS').toBoolean() : false
-                arguments "-DANDROID_STL=c++_shared", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-DOTTRELITE_INTEROP_OTEL_VERSION=${packageVersion}", "-DOTTRELITE_DEBUG_LOGS=${enableDebugLogs}"
+                arguments "-DANDROID_STL=c++_shared", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-DOTTRELITE_INTEROP_OTEL_VERSION=${packageVersion}", "-DOTTRELITE_DEBUG_LOGS=${enableDebugLogs}", "-DOTTRELITE_OPENSSL_VERSION=${opensslVersion}"
                 abiFilters(*reactNativeArchitectures())
 
                 buildTypes {
@@ -165,8 +167,6 @@ dependencies {
     implementation project(":ottrelite_core")
 }
 
-def opensslVersion = "3.5.3"
-
 def isReleaseBuild = project.hasProperty("buildType") && project.buildType == "release"
 def cxxBuildVariantDirName = isReleaseBuild ? "Release" : "Debug"
 def thirdPartySourceDir = file("${project.projectDir}/../third_party").absolutePath
@@ -180,7 +180,7 @@ def wrapperRootDir = "$thirdPartySourceDir/wrapper"
 def getWrapperBuildDir = { String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi" }
 def getGeneric3PBuildDir = { String libName, String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi/$libName" }
 def getProtobufBuildDir = { String abi -> getGeneric3PBuildDir("protobuf", abi) }
-def getOpenSSLForAndroidBuildDir = { String abi -> getGeneric3PBuildDir("openssl_for_android", abi) }
+def getOpenSSLForAndroidBuildDir = { String abi -> new File(openSSLForAndroidSourceDir, "openssl_${opensslVersion}_${abi}").path }
 def getBrotliBuildDir = { String abi -> getGeneric3PBuildDir("brotli", abi) }
 def getZlibBuildDir = { String abi -> getGeneric3PBuildDir("zlib", abi) }
 def getCurlBuildDir = { String abi -> getGeneric3PBuildDir("curl", abi) }
@@ -200,14 +200,14 @@ def prepareOttreliteInteropHeadersTask = tasks.register('prepareOttreliteInterop
 preBuild.dependsOn(prepareOttreliteInteropHeadersTask)
 
 tasks.register("buildOpenSSL") {
+    def openSSLSourceDirFile = new File(openSSLForAndroidSourceDir, "openssl-${opensslVersion}")
+    def openSSLSourceDir = openSSLSourceDirFile.path
+
     def opensslTarName = "openssl-${opensslVersion}.tar.gz"
     def opensslUrl = "https://github.com/openssl/openssl/releases/download/openssl-${opensslVersion}/${opensslTarName}"
 
     doFirst {
         def tarFile = file("${temporaryDir}/${opensslTarName}")
-
-        def openSSLSourceDir = new File(openSSLForAndroidSourceDir, "openssl-${opensslVersion}").path
-
 
         def openSSLForAndroidSourceDirFile = file(openSSLForAndroidSourceDir)
         if (!openSSLForAndroidSourceDirFile.exists()) {
@@ -224,7 +224,6 @@ tasks.register("buildOpenSSL") {
             }
         }
 
-        def openSSLSourceDirFile = file(openSSLSourceDir)
         if (!openSSLSourceDirFile.exists()) {
             openSSLSourceDirFile.mkdirs()
 
@@ -256,24 +255,18 @@ tasks.register("buildOpenSSL") {
 
     doLast {
         reactNativeArchitectures().each { abi ->
-            def openSSLForAndroidBuildDir = getOpenSSLForAndroidBuildDir(abi)
+            if (new File(getCmakeInstallDir(abi), "lib/libssl.a").exists()) {
+                println("[@ottrelite/interop-otel] OpenSSL already built, skipping build.")
+            } else {
+                exec {
+                    println("[@ottrelite/interop-otel] Building OpenSSL using openssl_for_android for ABI $abi from ${openSSLForAndroidSourceDir} and writing to source dir...")
 
-            def openSSLForAndroidBuildDirFile = file(openSSLForAndroidBuildDir)
-            if (!openSSLForAndroidBuildDirFile.exists()) {
-                openSSLForAndroidBuildDirFile.mkdirs()
-            }
-
-            exec {
-                println("[@ottrelite/interop-otel] Building OpenSSL using openssl_for_android for ABI $abi from ${openSSLForAndroidSourceDir} and writing to ${openSSLForAndroidBuildDir}...")
-
-                commandLine "bash", new File(openSSLForAndroidSourceDir, "openssl_build_new.sh").path,
-                        "${android.defaultConfig.minSdkVersion.apiLevel}",
-                        "$abi",
-                        "$opensslVersion",
-                        "$android.ndkVersion"
-
-                // below: important, inputs (outputs) are read (written) by the script from (to) <cwd>/openssl-${opensslVersion} (<cwd>/openssl_${opensslVersion}_${abi})
-                workingDir = file(openSSLForAndroidBuildDir)
+                    commandLine "bash", new File(openSSLForAndroidSourceDir, "openssl_build_new.sh").path,
+                            "${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "$abi",
+                            "$opensslVersion",
+                            "$android.ndkVersion"
+                }
             }
         }
     }
@@ -285,12 +278,10 @@ tasks.register("copyOpenSSL") {
             def openSSLForAndroidBuildDir = getOpenSSLForAndroidBuildDir(abi)
             def cmakeInstallDir = getCmakeInstallDir(abi)
 
-            def openSSLArtifactsDir = new File(openSSLForAndroidBuildDir, "openssl_${opensslVersion}_${abi}")
-
-            println("[@ottrelite/interop-otel] Copying OpenSSL build artifacts for ABI $abi from ${openSSLArtifactsDir} to ${cmakeInstallDir}...")
+            println("[@ottrelite/interop-otel] Copying OpenSSL build artifacts for ABI $abi from ${openSSLForAndroidBuildDir} to ${cmakeInstallDir}...")
 
             copy {
-                from fileTree(openSSLArtifactsDir) {
+                from fileTree(openSSLForAndroidBuildDir) {
                     include "include/**"
                     include "lib/**"
                 }
@@ -301,13 +292,221 @@ tasks.register("copyOpenSSL") {
     }
 }
 
+copyOpenSSL.mustRunAfter(buildOpenSSL)
 copyOpenSSL.dependsOn(buildOpenSSL)
 
-// TODO: Brotli - like buildAndInstallProtobuf
+tasks.register("buildAndInstallBrotli") {
+    doFirst {
+        if (!new File(brotliSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning Brotli to ${brotliSourceDir}...")
 
-// TODO: Zlib - like buildAndInstallProtobuf
+            if (!file(brotliSourceDir).exists()) {
+                file(brotliSourceDir).mkdirs()
+                exec {
+                    commandLine "git", "clone", "--branch", "v1.1.0", "https://github.com/google/brotli.git", brotliSourceDir
+                }
+            }
+        } else {
+            println("[@ottrelite/interop-otel] Brotli already cloned in ${brotliSourceDir}")
+        }
+    }
 
-// TODO: CURL - like buildAndInstallProtobuf
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            if (new File(getCmakeInstallDir(abi), "lib/libbrotlienc.a").exists()) {
+                println("[@ottrelite/interop-otel] Brotli already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
+            } else {
+                def brotliBuildDir = getBrotliBuildDir(abi)
+                def cmakeInstallDir = getCmakeInstallDir(abi)
+
+                println("[@ottrelite/interop-otel] Building & installing Brotli artifacts for ABI $abi, this may take a while...")
+
+                if (!new File(brotliBuildDir).exists()) {
+                    file(brotliBuildDir).mkdirs()
+                }
+
+                exec {
+                    println("[@ottrelite/interop-otel] Configuring Brotli for ABI $abi from ${brotliSourceDir} and writing to ${brotliBuildDir}...")
+
+                    commandLine "cmake", "-S", brotliSourceDir, "-B", brotliBuildDir,
+                            "-DANDROID_ABI=$abi",
+                            "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                            "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+                            "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                            "-DBROTLI_BUILD_TOOLS=OFF",
+                            "-DBUILD_SHARED_LIBS=OFF"
+                }
+
+                println("[@ottrelite/interop-otel] Building for ABI $abi ${brotliBuildDir}...")
+
+                exec {
+                    commandLine "cmake", "--build", brotliBuildDir, "-j8"
+                }
+
+                println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+                exec {
+                    commandLine "cmake", "--install", brotliBuildDir, "--prefix", cmakeInstallDir
+                }
+
+                println("[@ottrelite/interop-otel] Brotli build & install finished for ABI $abi")
+            }
+        }
+    }
+}
+
+tasks.register("buildAndInstallZlib") {
+    doFirst {
+        if (!new File(zlibSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning zlib to ${zlibSourceDir}...")
+
+            if (!file(zlibSourceDir).exists()) {
+                file(zlibSourceDir).mkdirs()
+                exec {
+                    commandLine "git", "clone", "--depth", "1", "--branch", "v1.3.1", "https://github.com/madler/zlib.git", zlibSourceDir
+                }
+            }
+        } else {
+            println("[@ottrelite/interop-otel] zlib already cloned in ${zlibSourceDir}")
+        }
+    }
+
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            def cmakeInstallDir = getCmakeInstallDir(abi)
+
+            if (new File(cmakeInstallDir, "lib/libz.a").exists()) {
+                println("[@ottrelite/interop-otel] zlib already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
+            } else {
+                def zlibBuildDir = getZlibBuildDir(abi)
+                println("[@ottrelite/interop-otel] Building & installing zlib artifacts for ABI $abi, this may take a while...")
+
+                if (!new File(zlibBuildDir).exists()) {
+                    file(zlibBuildDir).mkdirs()
+                }
+
+                exec {
+                    println("[@ottrelite/interop-otel] Configuring zlib for ABI $abi from ${zlibSourceDir} and writing to ${zlibBuildDir}...")
+
+                    commandLine "cmake", "-S", zlibSourceDir, "-B", zlibBuildDir,
+                            "-DANDROID_ABI=$abi",
+                            "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                            "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+                            "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                            "-DZLIB_BUILD_TESTING=OFF",
+                            "-DZLIB_BUILD_SHARED=OFF",
+                            "-DZLIB_BUILD_STATIC=ON",
+                            "-DZLIB_BUILD_MINIZIP=OFF",
+                            "-DZLIB_INSTALL=ON",
+                            "-DCMAKE_INSTALL_PREFIX=${cmakeInstallDir}"
+                }
+
+                println("[@ottrelite/interop-otel] Building for ABI $abi ${zlibBuildDir}...")
+
+                exec {
+                    commandLine "cmake", "--build", zlibBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
+                }
+
+                println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+                exec {
+                    commandLine "cmake", "--install", zlibBuildDir, "--prefix", cmakeInstallDir
+                }
+
+                println("[@ottrelite/interop-otel] zlib build & install finished for ABI $abi")
+            }
+        }
+    }
+}
+
+tasks.register("buildAndInstallCURL") {
+    doFirst {
+        if (!new File(curlSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning CURL to ${curlSourceDir}...")
+
+            if (!file(curlSourceDir).exists()) {
+                file(curlSourceDir).mkdirs()
+                exec {
+                    commandLine "git", "clone", "--depth", "1", "--branch", "curl-8_15_0", "https://github.com/curl/curl.git", curlSourceDir
+                }
+            }
+        } else {
+            println("[@ottrelite/interop-otel] CURL already cloned in ${curlSourceDir}")
+        }
+    }
+
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            def cmakeInstallDir = getCmakeInstallDir(abi)
+
+            if (new File(cmakeInstallDir, "lib/libcurl${isReleaseBuild ? "" : "-d"}.a").exists()) {
+                println("[@ottrelite/interop-otel] CURL already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
+            } else {
+                def curlBuildDir = getCurlBuildDir(abi)
+                println("[@ottrelite/interop-otel] Building & installing CURL artifacts for ABI $abi, this may take a while...")
+
+                if (!new File(curlBuildDir).exists()) {
+                    file(curlBuildDir).mkdirs()
+                }
+
+                exec {
+                    println("[@ottrelite/interop-otel] Configuring CURL for ABI $abi from ${curlSourceDir} and writing to ${curlBuildDir}...")
+
+                    commandLine "cmake", "-S", curlSourceDir, "-B", curlBuildDir,
+                            "-DANDROID_ABI=$abi",
+                            "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                            "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+                            "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                            "-DZLIB_ROOT=\"$cmakeInstallDir\"",
+                            "-DOPENSSL_ROOT_DIR=${cmakeInstallDir}",
+                            "-DOPENSSL_SSL_LIBRARY=${cmakeInstallDir}/lib/libssl.a",
+                            "-DOPENSSL_CRYPTO_LIBRARY=${cmakeInstallDir}/lib/libcrypto.a",
+                            "-DOPENSSL_INCLUDE_DIR=${cmakeInstallDir}/include",
+                            "-DUSE_NGHTTP2=OFF",
+                            "-DCURL_ZSTD=OFF",
+                            "-DBUILD_SHARED_LIBS=OFF",
+                            "-DCMAKE_USE_OPENSSL=ON",
+                            "-DBUILD_CURL_EXE=OFF",
+                            "-DBUILD_TESTING=OFF",
+                            "-DUSE_LIBIDN2=OFF",
+                            "-DCURL_CA_PATH=none",
+                            "-DCURL_DISABLE_FTP=ON",
+                            "-DCURL_DISABLE_LDAP=ON",
+                            "-DCURL_DISABLE_LDAPS=ON",
+                            "-DCURL_DISABLE_TELNET=ON",
+                            "-DCURL_DISABLE_DICT=ON",
+                            "-DCURL_DISABLE_FILE=ON",
+                            "-DCURL_DISABLE_TFTP=ON",
+                            "-DCURL_DISABLE_RTSP=ON",
+                            "-DCURL_DISABLE_POP3=ON",
+                            "-DCURL_DISABLE_IMAP=ON",
+                            "-DCURL_DISABLE_SMTP=ON",
+                            "-DCURL_DISABLE_GOPHER=ON",
+                            "-DBUILD_EXAMPLES=OFF",
+                            "-DENABLE_CURL_MANUAL=OFF",
+                            "-DCURL_USE_LIBPSL=OFF"
+                }
+
+                println("[@ottrelite/interop-otel] Building for ABI $abi ${curlBuildDir}...")
+
+                exec {
+                    commandLine "cmake", "--build", curlBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
+                }
+
+                println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+                exec {
+                    commandLine "cmake", "--install", curlBuildDir, "--prefix", cmakeInstallDir
+                }
+
+                println("[@ottrelite/interop-otel] CURL build & install finished for ABI $abi")
+            }
+        }
+    }
+}
 
 // Protobuf
 tasks.register("buildAndInstallProtobuf") {
@@ -337,93 +536,116 @@ tasks.register("buildAndInstallProtobuf") {
                 file(protobufBuildDir).mkdirs()
             }
 
-            exec {
-                println("[@ottrelite/interop-otel] Configuring Protobuf for ABI $abi from ${protobufSourceDir} and writing to ${protobufBuildDir}...")
-
-                commandLine "cmake", "-S", protobufSourceDir, "-B", protobufBuildDir,
-                        "-DANDROID_ABI=$abi",
-                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
-                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
-                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
-                        "-Dprotobuf_BUILD_TESTS=OFF"
-            }
-
-            println("[@ottrelite/interop-otel] Building for ABI $abi ${protobufBuildDir}...")
-
-            exec {
-                commandLine "cmake", "--build", protobufBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
-            }
-
-            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
-
-            exec {
-                commandLine "cmake", "--install", protobufBuildDir, "--prefix", cmakeInstallDir
-            }
-
-            println("[@ottrelite/interop-otel] Protobuf build & install finished for ABI $abi")
-        }
-    }
-}
-
-// CPP wrapper + OTEL CPP SDK
-tasks.register("buildAndInstallCppWrapper") {
-    doFirst {
-        if (!new File(otelSourceDir, "CMakeLists.txt").exists()) {
-            println("[@ottrelite/interop-otel] Cloning OpenTelemetry C++ SDK to ${otelSourceDir}...")
-
-            if (!file(otelSourceDir).exists()) {
-                file(otelSourceDir).mkdirs()
+            if (new File(getCmakeInstallDir(abi), "lib/libprotobuf${isReleaseBuild ? "" : "d"}.a").exists()) {
+                println("[@ottrelite/interop-otel] Protobuf already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
+            } else {
                 exec {
-                    commandLine "git", "clone", "--depth", "1", "--branch", "v1.22.0", "https://github.com/open-telemetry/opentelemetry-cpp.git", otelSourceDir
+                    println("[@ottrelite/interop-otel] Configuring Protobuf for ABI $abi from ${protobufSourceDir} and writing to ${protobufBuildDir}...")
+
+                    commandLine "cmake", "-S", protobufSourceDir, "-B", protobufBuildDir,
+                            "-DANDROID_ABI=$abi",
+                            "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                            "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+                            "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                            "-Dprotobuf_BUILD_TESTS=OFF",
+                            "-Dprotobuf_BUILD_EXAMPLES=OFF",
+                            "-Dprotobuf_BUILD_PROTOC_BINARIES=OFF"
                 }
+
+                println("[@ottrelite/interop-otel] Building for ABI $abi ${protobufBuildDir}...")
+
+                exec {
+                    commandLine "cmake", "--build", protobufBuildDir, "-j8"
+                }
+
+                println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+                exec {
+                    commandLine "cmake", "--install", protobufBuildDir, "--prefix", cmakeInstallDir
+                }
+
+                println("[@ottrelite/interop-otel] Protobuf build & install finished for ABI $abi")
             }
-        } else {
-            println("[@ottrelite/interop-otel] OpenTelemetry C++ SDK already cloned in ${otelSourceDir}")
-        }
-    }
-
-    doLast {
-        reactNativeArchitectures().each { abi ->
-            def wrapperBuildDir = getWrapperBuildDir(abi)
-            def cmakeInstallDir = getCmakeInstallDir(abi)
-
-            println("[@ottrelite/interop-otel] Building & installing artifacts for ABI $abi, this may take a while...")
-
-            if (!new File(wrapperBuildDir).exists()) {
-                file(wrapperBuildDir).mkdirs()
-            }
-
-            exec {
-                println("[@ottrelite/interop-otel] Configuring for ABI $abi from ${thirdPartySourceDir} and writing to ${wrapperBuildDir}...")
-
-                commandLine "cmake", "-S", thirdPartySourceDir, "-B", wrapperBuildDir,
-                        "-DANDROID_ABI=$abi",
-                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
-                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
-                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
-                        "-DProtobuf_DIR=$cmakeInstallDir/lib/cmake/protobuf",
-                        "-Dabsl_DIR=$cmakeInstallDir/lib/cmake/absl",
-                        "-Dutf8_range_DIR=$cmakeInstallDir/lib/cmake/utf8_range"
-            }
-
-            println("[@ottrelite/interop-otel] Building for ABI $abi ${wrapperBuildDir}...")
-
-            exec {
-                commandLine "cmake", "--build", wrapperBuildDir, "--config", isReleaseBuild ? "Release" : "Debug", "-j8"
-            }
-
-            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
-
-            exec {
-                commandLine "cmake", "--install", wrapperBuildDir, "--prefix", cmakeInstallDir
-            }
-
-            println("[@ottrelite/interop-otel] Build & install finished for ABI $abi")
         }
     }
 }
 
-buildAndInstallCppWrapper.dependsOn(copyOpenSSL)
-buildAndInstallCppWrapper.dependsOn(buildAndInstallProtobuf)
+//// CPP wrapper + OTEL CPP SDK
+//tasks.register("buildAndInstallCppWrapper") {
+//    doFirst {
+//        if (!new File(otelSourceDir, "CMakeLists.txt").exists()) {
+//            println("[@ottrelite/interop-otel] Cloning OpenTelemetry C++ SDK to ${otelSourceDir}...")
+//
+//            if (!file(otelSourceDir).exists()) {
+//                file(otelSourceDir).mkdirs()
+//                exec {
+//                    commandLine "git", "clone", "--depth", "1", "--branch", "v1.23.0", "https://github.com/open-telemetry/opentelemetry-cpp.git", otelSourceDir
+//                }
+//            }
+//        } else {
+//            println("[@ottrelite/interop-otel] OpenTelemetry C++ SDK already cloned in ${otelSourceDir}")
+//        }
+//    }
+//
+//    doLast {
+//        reactNativeArchitectures().each { abi ->
+//            def wrapperBuildDir = getWrapperBuildDir(abi)
+//            def cmakeInstallDir = getCmakeInstallDir(abi)
+//
+//            println("[@ottrelite/interop-otel] Building & installing artifacts for ABI $abi, this may take a while...")
+//
+//            if (!new File(wrapperBuildDir).exists()) {
+//                file(wrapperBuildDir).mkdirs()
+//            }
+//
+//            exec {
+//                println("[@ottrelite/interop-otel] Configuring for ABI $abi from ${thirdPartySourceDir} and writing to ${wrapperBuildDir}...")
+//
+//                commandLine "cmake", "-S", thirdPartySourceDir, "-B", wrapperBuildDir,
+//                        "-DANDROID_ABI=$abi",
+//                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+//                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+//                        "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+//                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+//                        "-DProtobuf_DIR=$cmakeInstallDir/lib/cmake/protobuf",
+//                        "-Dabsl_DIR=$cmakeInstallDir/lib/cmake/absl",
+//                        "-Dutf8_range_DIR=$cmakeInstallDir/lib/cmake/utf8_range",
+//                        "-DCURL_DIR=$cmakeInstallDir/lib/cmake/CURL",
+//                        "-DOPENSSL_ROOT_DIR=${cmakeInstallDir}",
+//                        "-DOPENSSL_SSL_LIBRARY=${cmakeInstallDir}/lib/libssl.a",
+//                        "-DOPENSSL_CRYPTO_LIBRARY=${cmakeInstallDir}/lib/libcrypto.a",
+//                        "-DOPENSSL_INCLUDE_DIR=${cmakeInstallDir}/include"
+//            }
+//
+//            println("[@ottrelite/interop-otel] Building for ABI $abi ${wrapperBuildDir}...")
+//
+//            exec {
+//                commandLine "cmake", "--build", wrapperBuildDir, "-j8"
+//            }
+//
+//            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+//
+//            exec {
+//                commandLine "cmake", "--install", wrapperBuildDir, "--prefix", cmakeInstallDir
+//            }
+//
+//            println("[@ottrelite/interop-otel] Build & install finished for ABI $abi")
+//        }
+//    }
+//}
+//
+//buildAndInstallCppWrapper.dependsOn(copyOpenSSL)
+//buildAndInstallCppWrapper.dependsOn(buildAndInstallProtobuf)
+//buildAndInstallCppWrapper.dependsOn(buildAndInstallBrotli)
+//buildAndInstallCppWrapper.dependsOn(buildAndInstallZlib)
+//buildAndInstallCppWrapper.dependsOn(buildAndInstallCURL)
 
-preBuild.dependsOn(buildAndInstallCppWrapper)
+//tasks.matching { it.name.startsWith("buildCMake") }.all { task ->
+preBuild.dependsOn(copyOpenSSL)
+preBuild.dependsOn(buildAndInstallProtobuf)
+preBuild.dependsOn(buildAndInstallBrotli)
+preBuild.dependsOn(buildAndInstallZlib)
+preBuild.dependsOn(buildAndInstallCURL)
+//}
+

@@ -9,26 +9,32 @@ set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
 set(PROTOC_DIR "${CMAKE_BINARY_DIR}/protoc")
 set(PROTOC_ZIP "${CMAKE_BINARY_DIR}/protoc.zip")
 set(PROTOC_BINARY "${PROTOC_DIR}/bin/protoc")
-if(WIN32)
-    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+    if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
+        message(STATUS "Detected Windows x64 architecture")
         set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-win64.zip")
     else()
+        message(STATUS "Detected Windows x86 architecture")
         set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-win32.zip")
     endif()
     
     set(PROTOC_BINARY "${PROTOC_DIR}/bin/protoc.exe")
-elseif(APPLE)
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
+    message(STATUS "Detected macOS")
     set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-osx-universal_binary.zip")
-elseif(UNIX)
-    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64)$")
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
+    if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64)$")
+        message(STATUS "Detected Linux ARM64 architecture")
         set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-linux-aarch_64.zip")
-    elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
+    elseif(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
+        message(STATUS "Detected Linux x64 architecture")
         set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-linux-x86_64.zip")
     else()
+        message(STATUS "Detected Linux x86 architecture")
         set(PROTOC_URL "https://github.com/protocolbuffers/protobuf/releases/download/v21.6/protoc-21.6-linux-x86_32.zip")
     endif()
 else()
-    message(FATAL_ERROR "Unsupported host architecture '${CMAKE_SYSTEM_PROCESSOR}'")
+    message(FATAL_ERROR "Unsupported host architecture '${CMAKE_HOST_SYSTEM_PROCESSOR}'")
 endif()
 
 if(NOT EXISTS "${PROTOC_BINARY}")
@@ -57,7 +63,7 @@ endif()
 
 get_filename_component(PROTOC_BINARY_ABS "${PROTOC_BINARY}" REALPATH)
 message(STATUS "ℹ️ Protobuf compiler binary: ${PROTOC_BINARY_ABS}")
-set(PROTOBUF_PROTOC_EXECUTABLE "${PROTOC_BINARY_ABS}" CACHE FILEPATH "Path to the protoc compiler")
+set(Protobuf_PROTOC_EXECUTABLE "${PROTOC_BINARY_ABS}" CACHE FILEPATH "Path to the protoc compiler")
 
 # iOS configuration
 if (APPLE)
@@ -79,7 +85,9 @@ set(WITH_FUNC_TESTS OFF CACHE BOOL "Disable OpenTelemetry functional tests" FORC
 set(OPENTELEMETRY_INSTALL ON CACHE BOOL "Enable OpenTelemetry installation" FORCE)
 # below: config for opentelemetry-cpp deps
 set(CURL_ROOT "${CMAKE_BINARY_DIR}/install/lib/cmake/CURL/")
-# below: protoc can't be built for iOS, will get error 'cannot find crt0.o'
+# below: protoc can't be built for iOS, will get error 'cannot find crt0.o';
+# the protobuf project will be added to the build below via add_subdirectory(opentelemetry-cpp),
+# since it includes protobuf setup with FetchContent, we need to disable protoc build here
 set(protobuf_BUILD_PROTOC_BINARIES OFF CACHE BOOL "Disable protoc binary build" FORCE)
 
 # below: general config

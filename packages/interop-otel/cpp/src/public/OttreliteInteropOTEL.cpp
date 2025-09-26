@@ -4,7 +4,7 @@
 #include <memory>
 #include <ranges>
 
-#include "OttreliteBackendRegistrar.hpp"
+#include "ReactNativeOttrelite/OttreliteBackendRegistrar.hpp"
 
 #include "opentelemetry/sdk/trace/batch_span_processor.h"
 #include "opentelemetry/sdk/trace/batch_span_processor_factory.h"

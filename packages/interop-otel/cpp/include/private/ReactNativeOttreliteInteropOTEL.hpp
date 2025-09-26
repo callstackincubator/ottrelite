@@ -10,14 +10,14 @@
 #include <utility>
 #include <vector>
 
-#include "CircularToken.hpp"
-#include "HybridReactNativeOttreliteInteropOTELSpec.hpp"
-#include "Logger.hpp"
-#include "Ottrelite.hpp"
-#include "OttreliteBackend.hpp"
-#include "SerializedReadableSpan.hpp"
 #include "ExportResult.hpp"
-#include "constants.hpp"
+#include "HybridReactNativeOttreliteInteropOTELSpec.hpp"
+#include "ReactNativeOttrelite/CircularToken.hpp"
+#include "ReactNativeOttrelite/Logger.hpp"
+#include "ReactNativeOttrelite/Ottrelite.hpp"
+#include "ReactNativeOttrelite/OttreliteBackend.hpp"
+#include "ReactNativeOttrelite/constants.hpp"
+#include "SerializedReadableSpan.hpp"
 
 using namespace facebook;
 using namespace ::ottrelite;

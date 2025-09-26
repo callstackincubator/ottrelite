@@ -10,8 +10,8 @@
 #include <vector>
 
 #include "OTELExporterAdapterUtils.hpp"
-#include "Ottrelite.hpp"
 #include "OttreliteInteropOTEL.hpp"
+#include "ReactNativeOttrelite/Ottrelite.hpp"
 #include "SpanConverter.hpp"
 
 #include "ExportResult.hpp"
