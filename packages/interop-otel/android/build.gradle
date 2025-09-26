@@ -26,6 +26,7 @@ def isNewArchitectureEnabled() {
 
 apply plugin: "com.android.library"
 apply plugin: 'org.jetbrains.kotlin.android'
+apply from: new File(project(':react-native-nitro-modules').projectDir, "fix-prefab.gradle") // fix exported target being INTERFACE not SHARED, including the .so
 apply from: '../nitrogen/generated/android/ReactNativeOttreliteInteropOTEL+autolinking.gradle'
 
 if (isNewArchitectureEnabled()) {
@@ -68,7 +69,7 @@ android {
                 cppFlags "-frtti -fexceptions -Wall -Wextra -fstack-protector-all"
 
                 def enableDebugLogs = rootProject.hasProperty('OTTRELITE_DEBUG_LOGS') ? rootProject.property('OTTRELITE_DEBUG_LOGS').toBoolean() : false
-                arguments "-DANDROID_STL=c++_shared", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-DOTTRELITE_INTEROP_OTEL_VERSION=${packageVersion}", "-DOTTRELITE_DEBUG_LOGS=${enableDebugLogs}", "-DOTTRELITE_OPENSSL_VERSION=${opensslVersion}"
+                arguments "-DANDROID_STL=c++_shared", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-DOTTRELITE_INTEROP_OTEL_VERSION=${packageVersion}", "-DOTTRELITE_DEBUG_LOGS=${enableDebugLogs}"
                 abiFilters(*reactNativeArchitectures())
 
                 buildTypes {
@@ -170,23 +171,21 @@ dependencies {
 def isReleaseBuild = project.hasProperty("buildType") && project.buildType == "release"
 def cxxBuildVariantDirName = isReleaseBuild ? "Release" : "Debug"
 def thirdPartySourceDir = file("${project.projectDir}/../third_party").absolutePath
-def protobufSourceDir = "$thirdPartySourceDir/protobuf"
+def otelSourceDir = "$thirdPartySourceDir/opentelemetry-cpp"
 def openSSLForAndroidSourceDir = "$thirdPartySourceDir/openssl_for_android"
 def brotliSourceDir = "$thirdPartySourceDir/brotli"
 def zlibSourceDir = "$thirdPartySourceDir/zlib"
 def curlSourceDir = "$thirdPartySourceDir/curl"
 def wrapperRootDir = "$thirdPartySourceDir/wrapper"
-def wrapperBuildDir = "$wrapperRootDir/android"
-def getCmakeInstallDir = { String abi -> "$wrapperBuildDir/install/$abi" }
-def getGeneric3PBuildDir = { String libName, String abi -> "$wrapperBuildDir/$cxxBuildVariantDirName/$abi/$libName" }
-def getProtobufBuildDir = { String abi -> getGeneric3PBuildDir("protobuf", abi) }
+def getWrapperBuildDir = { String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi" }
+def getGeneric3PBuildDir = { String libName, String abi -> "$wrapperRootDir/android/$cxxBuildVariantDirName/$abi/$libName" }
 def getOpenSSLForAndroidBuildDir = { String abi -> new File(openSSLForAndroidSourceDir, "openssl_${opensslVersion}_${abi}").path }
 def getBrotliBuildDir = { String abi -> getGeneric3PBuildDir("brotli", abi) }
 def getZlibBuildDir = { String abi -> getGeneric3PBuildDir("zlib", abi) }
 def getCurlBuildDir = { String abi -> getGeneric3PBuildDir("curl", abi) }
+def getCmakeInstallDir = { String abi -> "$wrapperRootDir/android/install/$abi" }
 
 def prepareOttreliteInteropHeadersTask = tasks.register('prepareOttreliteInteropHeadersTask', Copy) {
-    println("Preparing Ottrelite Interop OTEL headers...")
     from files(
             fileTree('../cpp/include/public/'),
             fileTree('../nitrogen/generated/shared/c++/')
@@ -508,98 +507,72 @@ tasks.register("buildAndInstallCURL") {
     }
 }
 
-// Protobuf
-tasks.register("buildAndInstallProtobuf") {
+// CPP wrapper + OTEL CPP SDK
+tasks.register("buildAndInstallCppWrapper") {
     doFirst {
-        if (!new File(protobufSourceDir, "CMakeLists.txt").exists()) {
-            println("[@ottrelite/interop-otel] Cloning Protobuf to ${protobufSourceDir}...")
+        if (!new File(otelSourceDir, "CMakeLists.txt").exists()) {
+            println("[@ottrelite/interop-otel] Cloning OpenTelemetry C++ SDK to ${otelSourceDir}...")
 
-            if (!file(protobufSourceDir).exists()) {
-                file(protobufSourceDir).mkdirs()
+            if (!file(otelSourceDir).exists()) {
+                file(otelSourceDir).mkdirs()
                 exec {
-                    commandLine "git", "clone", "--depth", "1", "--branch", "v26.1", "--recurse-submodules", "--shallow-submodules", "https://github.com/protocolbuffers/protobuf.git", protobufSourceDir
+                    commandLine "git", "clone", "--depth", "1", "--branch", "v1.23.0", "https://github.com/open-telemetry/opentelemetry-cpp.git", otelSourceDir
                 }
             }
         } else {
-            println("[@ottrelite/interop-otel] Protobuf already cloned in ${protobufSourceDir}")
+            println("[@ottrelite/interop-otel] OpenTelemetry C++ SDK already cloned in ${otelSourceDir}")
         }
     }
 
     doLast {
         reactNativeArchitectures().each { abi ->
-            def protobufBuildDir = getProtobufBuildDir(abi)
+            def wrapperBuildDir = getWrapperBuildDir(abi)
             def cmakeInstallDir = getCmakeInstallDir(abi)
 
-            println("[@ottrelite/interop-otel] Building & installing Protobuf artifacts for ABI $abi, this may take a while...")
+            println("[@ottrelite/interop-otel] Building & installing artifacts for ABI $abi, this may take a while...")
 
-            if (!new File(protobufBuildDir).exists()) {
-                file(protobufBuildDir).mkdirs()
+            if (!new File(wrapperBuildDir).exists()) {
+                file(wrapperBuildDir).mkdirs()
             }
 
-            if (new File(getCmakeInstallDir(abi), "lib/libprotobuf${isReleaseBuild ? "" : "d"}.a").exists()) {
-                println("[@ottrelite/interop-otel] Protobuf already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
-            } else {
-                exec {
-                    println("[@ottrelite/interop-otel] Configuring Protobuf for ABI $abi from ${protobufSourceDir} and writing to ${protobufBuildDir}...")
+            exec {
+                println("[@ottrelite/interop-otel] Configuring for ABI $abi from ${thirdPartySourceDir} and writing to ${wrapperBuildDir}...")
 
-                    commandLine "cmake", "-S", protobufSourceDir, "-B", protobufBuildDir,
-                            "-DANDROID_ABI=$abi",
-                            "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
-                            "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
-                            "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
-                            "-DCMAKE_CXX_FLAGS_DEBUG=-g",
-                            "-Dprotobuf_BUILD_TESTS=OFF",
-                            "-Dprotobuf_BUILD_EXAMPLES=OFF",
-                            "-Dprotobuf_BUILD_PROTOC_BINARIES=OFF"
-                }
-
-                println("[@ottrelite/interop-otel] Building for ABI $abi ${protobufBuildDir}...")
-
-                exec {
-                    commandLine "cmake", "--build", protobufBuildDir, "-j8"
-                }
-
-                println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
-
-                exec {
-                    commandLine "cmake", "--install", protobufBuildDir, "--prefix", cmakeInstallDir
-                }
-
-                println("[@ottrelite/interop-otel] Protobuf build & install finished for ABI $abi")
+                commandLine "cmake", "-S", thirdPartySourceDir, "-B", wrapperBuildDir,
+                        "-DANDROID_ABI=$abi",
+                        "-DANDROID_PLATFORM=${android.defaultConfig.minSdkVersion.apiLevel}",
+                        "-DCMAKE_TOOLCHAIN_FILE=${android.ndkDirectory}/build/cmake/android.toolchain.cmake",
+                        "-DCMAKE_BUILD_TYPE=${cxxBuildVariantDirName}",
+                        "-DCMAKE_CXX_FLAGS_DEBUG=-g",
+                        "-Dabsl_DIR=$cmakeInstallDir/lib/cmake/absl",
+                        "-Dutf8_range_DIR=$cmakeInstallDir/lib/cmake/utf8_range",
+                        "-DCURL_DIR=$cmakeInstallDir/lib/cmake/CURL",
+                        "-DOPENSSL_ROOT_DIR=${cmakeInstallDir}",
+                        "-DOPENSSL_SSL_LIBRARY=${cmakeInstallDir}/lib/libssl.a",
+                        "-DOPENSSL_CRYPTO_LIBRARY=${cmakeInstallDir}/lib/libcrypto.a",
+                        "-DOPENSSL_INCLUDE_DIR=${cmakeInstallDir}/include"
             }
+
+            println("[@ottrelite/interop-otel] Building for ABI $abi ${wrapperBuildDir}...")
+
+            exec {
+                commandLine "cmake", "--build", wrapperBuildDir, "-j8"
+            }
+
+            println("[@ottrelite/interop-otel] Installing build artifacts for ABI $abi to ${cmakeInstallDir}...")
+
+            exec {
+                commandLine "cmake", "--install", wrapperBuildDir, "--prefix", cmakeInstallDir
+            }
+
+            println("[@ottrelite/interop-otel] Build & install finished for ABI $abi")
         }
     }
 }
 
-preBuild.dependsOn(copyOpenSSL)
-preBuild.dependsOn(buildAndInstallProtobuf)
-preBuild.dependsOn(buildAndInstallBrotli)
-preBuild.dependsOn(buildAndInstallZlib)
-preBuild.dependsOn(buildAndInstallCURL)
+buildAndInstallCppWrapper.dependsOn(copyOpenSSL)
+buildAndInstallCppWrapper.dependsOn(buildAndInstallBrotli)
+buildAndInstallCppWrapper.dependsOn(buildAndInstallZlib)
+buildAndInstallCppWrapper.dependsOn(buildAndInstallCURL)
 
-tasks.named('clean') {
-    doLast {
-        reactNativeArchitectures().each { abi ->
-            def wrapperBuildDirFile = new File(wrapperBuildDir)
-
-            if (wrapperBuildDirFile.exists()) {
-                println "Deleting wrapper build directory: ${wrapperBuildDirFile.path}"
-                delete(wrapperBuildDirFile)
-            }
-
-            def openSSLBuildDirFile = new File(getOpenSSLForAndroidBuildDir(abi))
-
-            if (openSSLBuildDirFile.exists()) {
-                println "Deleting OpenSSL build directory: ${openSSLBuildDirFile.path}"
-                delete(openSSLBuildDirFile)
-            }
-
-            def cmakeInstallDirFile = getCmakeInstallDir(abi)
-
-            if (cmakeInstallDirFile.exists()) {
-                println "Deleting dependencies install directory: ${cmakeInstallDirFile.path}"
-                delete(cmakeInstallDirFile)
-            }
-        }
-    }
-}
+preBuild.dependsOn(buildAndInstallCppWrapper)
