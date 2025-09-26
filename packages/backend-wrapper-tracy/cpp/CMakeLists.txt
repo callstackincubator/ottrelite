@@ -10,7 +10,7 @@ endif ()
 FetchContent_Declare(
     Tracy
     GIT_REPOSITORY https://github.com/wolfpld/tracy.git
-    GIT_TAG        v0.11.1
+    GIT_TAG        v0.12.2
 )
 FetchContent_MakeAvailable(Tracy)
 
