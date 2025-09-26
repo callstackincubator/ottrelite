@@ -9,7 +9,7 @@ PODS:
     - hermes-engine/Pre-built (= 0.81.0)
   - hermes-engine/Pre-built (0.81.0)
   - LicensePlist (3.27.1)
-  - NitroModules (0.29.2):
+  - NitroModules (0.29.6):
     - boost
     - DoubleConversion
     - fast_float
@@ -1780,7 +1780,7 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
-  - react-native-safe-area-context (5.5.2):
+  - react-native-safe-area-context (5.6.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -1798,8 +1798,8 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
-    - react-native-safe-area-context/common (= 5.5.2)
-    - react-native-safe-area-context/fabric (= 5.5.2)
+    - react-native-safe-area-context/common (= 5.6.1)
+    - react-native-safe-area-context/fabric (= 5.6.1)
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1810,7 +1810,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/common (5.5.2):
+  - react-native-safe-area-context/common (5.6.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -1838,7 +1838,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/fabric (5.5.2):
+  - react-native-safe-area-context/fabric (5.6.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -1867,7 +1867,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-skia (2.1.1):
+  - react-native-skia (2.2.19):
     - boost
     - DoubleConversion
     - fast_float
@@ -1954,7 +1954,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-vector-icons-material-design-icons (12.2.0)
+  - react-native-vector-icons-material-design-icons (12.3.0)
   - React-NativeModulesApple (0.81.0):
     - boost
     - DoubleConversion
@@ -2459,7 +2459,7 @@ PODS:
     - React-perflogger (= 0.81.0)
     - React-utils (= 0.81.0)
     - SocketRocket
-  - ReactNativeLegal (1.5.2):
+  - ReactNativeLegal (1.6.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2670,9 +2670,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNDeviceInfo (14.0.4):
+  - RNDeviceInfo (14.1.1):
     - React-Core
-  - RNScreens (4.13.1):
+  - RNScreens (4.16.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2699,10 +2699,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNScreens/common (= 4.13.1)
+    - RNScreens/common (= 4.16.0)
     - SocketRocket
     - Yoga
-  - RNScreens/common (4.13.1):
+  - RNScreens/common (4.16.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -3007,7 +3007,7 @@ SPEC CHECKSUMS:
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: e7491a2038f2618c8cd444ed411a6deb350a3742
   LicensePlist: 5a4ff2e9e038a1203cc058b6335d2eebd3313491
-  NitroModules: 33aca4acd8fd5c2a29dc99976680cd99e7263573
+  NitroModules: 7d693306799405ca141ef5c24efc0936f20a09c0
   NitroOttreliteConsumerLib: 2f1860e73bdf3f1aaa185241406a095e8291d811
   RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
   RCTDeprecation: 0735ab4f6b3ec93a7f98187b5da74d7916e2cf4c
@@ -3042,10 +3042,10 @@ SPEC CHECKSUMS:
   React-logger: 04ce9229cb57db2c2a8164eaec1105f89da7fb22
   React-Mapbuffer: e402e7a0535b2213c50727553621480fe8cd8ade
   React-microtasksnativemodule: a63ce5595016996a9bac1f10c70a7a7fe6506649
-  react-native-safe-area-context: 84a754cad3fbb25117482cde6b8defca6c6f6a53
-  react-native-skia: a3f5566cde7cad24c97b88739786b238c531b6db
+  react-native-safe-area-context: c6e2edd1c1da07bdce287fa9d9e60c5f7b514616
+  react-native-skia: 0284cd0e07444cde3b8dd11463da7effcfe4b587
   react-native-slider: 663776e5683e257de8df8091abc2d93ff6ec67db
-  react-native-vector-icons-material-design-icons: e406b4fc1787999a5d150c897837150543e90b9c
+  react-native-vector-icons-material-design-icons: c502df5b988ce85d6c7d2b7ee909818315760b82
   React-NativeModulesApple: b3766e1f87b08064ebc459b9e1538da2447ca874
   React-oscompat: 34f3d3c06cadcbc470bc4509c717fb9b919eaa8b
   React-perflogger: a1edb025fd5d44f61bf09307e248f7608d7b2dcf
@@ -3076,13 +3076,13 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: c91900fa724baee992f01c05eeb4c9e01a807f78
   ReactCodegen: 8125d6ee06ea06f48f156cbddec5c2ca576d62e6
   ReactCommon: 116d6ee71679243698620d8cd9a9042541e44aa6
-  ReactNativeLegal: 245741f8e5c1074632334ed3855f046366482a5a
+  ReactNativeLegal: e51f65c65dd6375d1c5f1a4615838ae86aea794f
   ReactNativeOttrelite: 8a38e46c9492df1473f5e1d853fd56e1ad239bfe
   ReactNativeOttreliteBackendPlatform: fba8c4dbea090d01d6e24cb39c239effae52fff5
   ReactNativeOttreliteBackendTracy: b7bb5b016abd2ea9a0c442d9c3d6996fa4fd4a17
   ReactNativeOttreliteInteropOTEL: 12ffbcfa0ba04ad891efda1c7efacab537c114fd
-  RNDeviceInfo: d863506092aef7e7af3a1c350c913d867d795047
-  RNScreens: 40264381e0eca3f0c368c78f192f547ef40caa39
+  RNDeviceInfo: bcce8752b5043a623fe3c26789679b473f705d3c
+  RNScreens: 0bbf16c074ae6bb1058a7bf2d1ae017f4306797c
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: b01392348aeea02064c21a2762a42893d82b60a7
 

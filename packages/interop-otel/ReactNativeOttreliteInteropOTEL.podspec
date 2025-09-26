@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
       # patch the umbrella header to fix Swift compilation - remove unnecessary headers, from which protobuf causes Swift errors
       UMBRELLA_HEADER_PATH="${PODS_ROOT}/Headers/Public/ReactNativeOttreliteInteropOTEL/ReactNativeOttreliteInteropOTEL-umbrella.h"
       if [ -f "$UMBRELLA_HEADER_PATH" ]; then
-        # replace all non-relative imports with commented-out lines
+        # comment out all files that should not be exposed to Swift compiler as they would break compilation
         sed -E '/^#import "(OttreliteInteropOTEL.hpp|SpanConverter.hpp|InstrumentationScopeStore.hpp|nlohmann|google|opentelemetry|curl|openssl|brotli|zconf|zlib)[^"]*"/ s@^#import @// #import @' "$UMBRELLA_HEADER_PATH" > new_umbrella.h
         mv new_umbrella.h "$UMBRELLA_HEADER_PATH"
 

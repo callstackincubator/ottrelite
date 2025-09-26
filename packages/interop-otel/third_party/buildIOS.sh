@@ -1,4 +1,4 @@
-set +e
+set -e
 
 # validate number of arguments
 if [ "$#" -ne 3 ]; then
@@ -44,11 +44,18 @@ fi
 
 THIS_BUILD_INFO="$CMAKE_IOS_PLATFORM"
 
+# === ios-cmake ===
+
+if [ ! -d "ios-cmake" ]; then
+    echo "⏳ Cloning ios-cmake..."
+    git clone --depth 1 --branch 4.5.0 https://github.com/leetal/ios-cmake.git
+fi
+
 # === OpenSSL ===
 
 if [ ! -d openssl-apple ]; then
     echo "⏳ Cloning openssl-apple..."
-    git clone --branch 3.5.200 https://github.com/passepartoutvpn/openssl-apple.git
+    git clone --depth 1 --branch 3.5.200 https://github.com/passepartoutvpn/openssl-apple.git
 fi
 
 if [ "$PLATFORM" = "iphonesimulator" ]; then
@@ -80,12 +87,37 @@ echo "ℹ️ OpenSSL prepared in ${first_openssl_sdk_dir}"
 
 OPENSSL_ROOT_DIR=$(realpath ${first_openssl_sdk_dir})
 
-# === OTEL wrapper ===
+# === OpenTelemetry C++ SDK ===
 
 if [ ! -d "opentelemetry-cpp" ]; then
     echo "⏳ Cloning opentelemetry-cpp..."
     git clone --depth 1 --branch v1.23.0 https://github.com/open-telemetry/opentelemetry-cpp.git
 fi
+
+# === Brotli ===
+
+if [ ! -d "brotli" ]; then
+    echo "⏳ Cloning Brotli..."
+    git clone --depth 1 --branch v1.1.0 https://github.com/google/brotli.git
+fi
+
+# === Zlib ===
+
+if [ ! -d "zlib" ]; then
+    echo "⏳ Cloning Zlib..."
+    git clone --depth 1 --branch v1.3.1 https://github.com/madler/zlib.git
+fi
+
+# === Curl ===
+
+if [ ! -d "curl" ]; then
+    echo "⏳ Cloning curl..."
+    git clone --depth 1 --branch curl-8_15_0 https://github.com/curl/curl.git
+fi
+
+### ========== End of dependency cloning section ==========
+
+# === Wrapper build ===
 
 echo "⏳ Preparing opentelemetry-cpp wrapper for iOS with CMake..."
 
@@ -100,27 +132,10 @@ cp -R ${OPENSSL_ROOT_DIR}/* install/
 
 # === Brotli ===
 
-if [ ! -d "brotli" ]; then
-    echo "⏳ Cloning Brotli..."
-    git clone --branch v1.1.0 https://github.com/google/brotli.git
-fi
-
-cd brotli
-
 echo "⏳ Building Brotli for iOS..."
 
 mkdir -p brotli
 cd brotli
-
-# === ios-cmake ===
-
-if [ ! -d "ios-cmake" ]; then
-    echo "⏳ Cloning ios-cmake..."
-    git clone --branch v4.5.0 https://github.com/leetal/ios-cmake.git
-    cd ios-cmake
-    git checkout 6fa909e133b92343db2d099e0478448c05ffec1a
-    cd ..
-fi
 
 # check if lastBuildInfo.txt has the current CMAKE_IOS_PLATFORM
 BUILD_BROTLI=$CMAKE_FORCE_REBUILD
@@ -143,10 +158,14 @@ if [ "$BUILD_BROTLI" -eq 1 ]; then
         -DCMAKE_SYSTEM_NAME="iOS" \
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX="$(realpath ../install)" \
-        -DCMAKE_TOOLCHAIN_FILE=../ios-cmake/ios.toolchain.cmake
+        -DCMAKE_TOOLCHAIN_FILE=../ios-cmake/ios.toolchain.cmake \
+        -DBROTLI_BUNDLED_MODE=ON # disable install, which is failing for iOS
 
     cmake --build . --config $BUILD_TYPE -j$(sysctl -n hw.ncpu)
-    cmake --install . --prefix "$(realpath ../install)"
+    # cmake --install . --prefix "$(realpath ../install)" - this won't do anything since BROTLI_BUNDLED_MODE=ON
+    # we need to manually copy the libs & headers instead
+    cp libbrotli*.a ../install/lib/
+    cp -R ../../../../brotli/c/include/ ../install/include/
 
     echo "$THIS_BUILD_INFO" > lastBuildInfo.txt
 else
@@ -156,11 +175,6 @@ fi
 cd ..
 
 # === Zlib ===
-
-if [ ! -d "zlib" ]; then
-    echo "⏳ Cloning Zlib..."
-    git clone --branch v1.3.1 https://github.com/madler/zlib.git
-fi
 
 echo "⏳ Building Zlib for iOS..."
 
@@ -188,6 +202,7 @@ if [ "$BUILD_ZLIB" -eq 1 ]; then
         -DZLIB_BUILD_SHARED=OFF \
         -DZLIB_BUILD_STATIC=ON \
         -DZLIB_BUILD_MINIZIP=OFF \
+        -DZLIB_BUILD_EXAMPLES=OFF \
         -DZLIB_INSTALL=ON \
         -DCMAKE_SYSTEM_NAME="iOS" \
         -DCMAKE_INSTALL_PREFIX="$(realpath ../install)" \
@@ -196,6 +211,10 @@ if [ "$BUILD_ZLIB" -eq 1 ]; then
     cmake --build . --config $BUILD_TYPE -j$(sysctl -n hw.ncpu)
     cmake --install . --prefix "$(realpath ../install)"
 
+    # to avoid issues with linker, remove .dylib files; the current release does not yet respect BUILD_SHARED=OFF
+    # TODO: remove the below as a new version is released (BUILD_SHARED=OFF is already on main branch)
+    rm -f ../install/lib/libz*.dylib
+
     echo "$THIS_BUILD_INFO" > lastBuildInfo.txt
 else
     echo "⏭️ Zlib already built for ${CMAKE_IOS_PLATFORM}, skipping..."
@@ -203,12 +222,9 @@ fi
 
 cd ..
 
-mkdir -p curl
+# === Curl ===
 
-if [ ! -d "curl" ]; then
-    echo "⏳ Cloning curl..."
-    git clone --depth 1 --branch curl-8_15_0 https://github.com/curl/curl.git
-fi
+mkdir -p curl
 
 echo "⏳ Building curl for iOS..."
 
@@ -265,11 +281,11 @@ if [ "$BUILD_CURL" -eq 1 ]; then
     cmake --build . --config $BUILD_TYPE -j$(sysctl -n hw.ncpu)
     cmake --install . --prefix "$(realpath ../install)"
 
-    if [ "$BUILD_TYPE" = "Debug" ]; then
-        # cocoapods would hardcode -llib*d flags if the debug files existed, which would break compilation
-        # when switching between configurations, therefore all *d libs are renamed to non-d-suffixed in Debug
-        mv ../install/lib/libcurl-d.a ../install/lib/libcurl.a
-    fi
+    # if [ "$BUILD_TYPE" = "Debug" ]; then
+    #     # cocoapods would hardcode -llib*d flags if the debug files existed, which would break compilation
+    #     # when switching between configurations, therefore all *d libs are renamed to non-d-suffixed in Debug
+    #     mv ../install/lib/libcurl-d.a ../install/lib/libcurl.a
+    # fi
 
     echo "$THIS_BUILD_INFO" > lastBuildInfo.txt
 else
@@ -277,6 +293,8 @@ else
 fi
 
 cd ..
+
+# === Wrapper build ===
 
 echo "⏳ Configuring wrapper for iOS with CMake..."
 
@@ -305,13 +323,6 @@ if [ "$BUILD_WRAPPER" -eq 1 ]; then
     cmake --build . --config $BUILD_TYPE -j$(sysctl -n hw.ncpu)
     cmake --install . --prefix ./install
 
-    if [ "$BUILD_TYPE" = "Debug" ]; then
-        # cocoapods would hardcode -llib*d flags if the debug files existed, which would break compilation
-        # when switching between configurations, therefore all *d libs are renamed to non-d-suffixed in Debug
-        mv ../install/lib/libprotobufd.a ../install/lib/libprotobuf.a
-        mv ../install/lib/libprotobuf-lited.a ../install/lib/libprotobuf-lite.a
-    fi
-
     echo "$THIS_BUILD_INFO" > lastBuildInfo.txt
 else
     echo "⏭️ Wrapper already built for ${CMAKE_IOS_PLATFORM}, skipping..."
@@ -322,5 +333,5 @@ if [ -d ../install ]; then
     rm -rf ../install
 fi
 
-echo "Creating install dir copy"
+echo "Copying this variant's install dir to ../install"
 cp -R "$(realpath ./install)" ../install

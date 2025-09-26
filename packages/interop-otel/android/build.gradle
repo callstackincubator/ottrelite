@@ -399,6 +399,7 @@ tasks.register("buildAndInstallZlib") {
                             "-DZLIB_BUILD_STATIC=ON",
                             "-DZLIB_BUILD_MINIZIP=OFF",
                             "-DZLIB_INSTALL=ON",
+                            "-DZLIB_BUILD_EXAMPLES=OFF",
                             "-DCMAKE_INSTALL_PREFIX=${cmakeInstallDir}"
                 }
 
