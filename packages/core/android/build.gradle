@@ -22,6 +22,7 @@ def isNewArchitectureEnabled() {
 
 apply plugin: "com.android.library"
 apply plugin: 'org.jetbrains.kotlin.android'
+apply from: new File(project(':react-native-nitro-modules').projectDir, "fix-prefab.gradle") // fix exported target being INTERFACE not SHARED, including the .so
 apply from: '../nitrogen/generated/android/ReactNativeOttrelite+autolinking.gradle'
 
 if (isNewArchitectureEnabled()) {
