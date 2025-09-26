@@ -75,8 +75,8 @@ importers:
         specifier: ^0.81.0
         version: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
       react-test-renderer:
         specifier: 19.0.0
         version: 19.0.0(react@19.1.0)
@@ -145,8 +145,8 @@ importers:
         specifier: ^0.81.0
         version: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
       typescript:
         specifier: ^5.5.4
         version: 5.8.3
@@ -229,8 +229,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
       react-native-paper:
         specifier: ^5.14.5
         version: 5.14.5(react-native-safe-area-context@5.6.1(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0))(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
@@ -330,8 +330,8 @@ importers:
         specifier: ^0.27.2
         version: 0.27.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       release-it:
         specifier: ^19.0.3
         version: 19.0.4(@types/node@24.1.0)
@@ -370,8 +370,8 @@ importers:
         specifier: ^0.27.2
         version: 0.27.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       release-it:
         specifier: ^19.0.3
         version: 19.0.4(@types/node@24.1.0)
@@ -407,8 +407,8 @@ importers:
         specifier: ^0.27.2
         version: 0.27.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       release-it:
         specifier: ^19.0.3
         version: 19.0.4(@types/node@24.1.0)
@@ -502,8 +502,8 @@ importers:
         specifier: ^0.27.2
         version: 0.27.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       react-native-nitro-modules:
-        specifier: 0.29.2
-        version: 0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
+        specifier: 0.29.6
+        version: 0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
       release-it:
         specifier: ^19.0.3
         version: 19.0.4(@types/node@24.1.0)
@@ -6322,8 +6322,8 @@ packages:
       react: '*'
       react-native: '*'
 
-  react-native-nitro-modules@0.29.2:
-    resolution: {integrity: sha512-MdBiM+Rt/8T3xtstm1V7nkpwTEIXENjoU5Rb01Pkc4/tqP/6YQ3W0ZtVtZ6RwbRzBv9rJ12+7bgHeNNZ7WoRNw==}
+  react-native-nitro-modules@0.29.6:
+    resolution: {integrity: sha512-Zm7x7DPx2bYc/eMfJ4lg2CCyXRCEm6as1ZyVU/2vCqMskiQxQquL3INqjne+tEJw+/h+mrnKrb7z7PiUitzEQw==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -15257,12 +15257,12 @@ snapshots:
       react: 19.1.0
       react-native: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0)
 
-  react-native-nitro-modules@0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0):
+  react-native-nitro-modules@0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-native: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.13)(react@19.1.0)
 
-  react-native-nitro-modules@0.29.2(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0):
+  react-native-nitro-modules@0.29.6(react-native@0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-native: 0.81.0(@babel/core@7.28.0)(@react-native-community/cli@20.0.0(typescript@5.8.3))(@react-native/metro-config@0.81.0(@babel/core@7.28.0))(@types/react@19.1.8)(react@19.1.0)

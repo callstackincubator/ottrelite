@@ -47,6 +47,7 @@ rename:
   "@xmldom_xmldom@0.8.10": '@xmldom/xmldom'
   "base64-js@1.5.1": base64-js
   "xmlbuilder@15.1.1": xmlbuilder
+  "@react-native_new-app-screen@0.81.0": '@react-native/new-app-screen'
   "@react-navigation_native@7.1.17": '@react-navigation/native'
   "@react-navigation_core@7.12.4": '@react-navigation/core'
   "@react-navigation_routers@7.5.1": '@react-navigation/routers'
@@ -370,7 +371,6 @@ rename:
   "stacktrace-parser@0.1.11": stacktrace-parser
   "type-fest@0.7.1": type-fest
   "whatwg-fetch@3.6.20": whatwg-fetch
-  "@react-native_new-app-screen@0.81.0": '@react-native/new-app-screen'
   "react-native-device-info@14.1.1": react-native-device-info
   "react-native-legal@1.6.0": react-native-legal
   "@callstack_licenses@0.3.0": '@callstack/licenses'
@@ -384,7 +384,7 @@ rename:
   "xml2js@0.6.2": xml2js
   "sax@1.4.1": sax
   "xmlbuilder@11.0.1": xmlbuilder
-  "react-native-nitro-modules@0.29.2": react-native-nitro-modules
+  "react-native-nitro-modules@0.29.6": react-native-nitro-modules
   "react-native-paper@5.14.5": react-native-paper
   "@callstack_react-theme-provider@3.0.9": '@callstack/react-theme-provider'
   "deepmerge@3.3.0": deepmerge
@@ -586,6 +586,10 @@ manual:
     version: '15.1.1'
     source: https://github.com/oozcitak/xmlbuilder-js
     file: '../../../node_modules/xmlbuilder/LICENSE'
+  - name: '@react-native_new-app-screen@0.81.0'
+    version: '0.81.0'
+    source: https://github.com/facebook/react-native
+    body: MIT
   - name: '@react-navigation_native@7.1.17'
     version: '7.1.17'
     source: https://github.com/react-navigation/react-navigation
@@ -1876,10 +1880,6 @@ manual:
     version: '3.6.20'
     source: github/fetch
     file: '../../../node_modules/whatwg-fetch/LICENSE'
-  - name: '@react-native_new-app-screen@0.81.0'
-    version: '0.81.0'
-    source: https://github.com/facebook/react-native
-    body: MIT
   - name: react-native-device-info@14.1.1
     version: '14.1.1'
     source: https://github.com/react-native-device-info/react-native-device-info
@@ -1932,8 +1932,8 @@ manual:
     version: '11.0.1'
     source: https://github.com/oozcitak/xmlbuilder-js
     file: '../../../node_modules/xml2js/node_modules/xmlbuilder/LICENSE'
-  - name: react-native-nitro-modules@0.29.2
-    version: '0.29.2'
+  - name: react-native-nitro-modules@0.29.6
+    version: '0.29.6'
     source: https://github.com/mrousavy/nitro
     body: MIT
   - name: react-native-paper@5.14.5

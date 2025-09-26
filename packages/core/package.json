@@ -63,13 +63,13 @@
     "eslint": "^8.57.1",
     "jest": "^30.0.4",
     "nitro-codegen": "^0.27.2",
-    "react-native-nitro-modules": "0.29.2",
+    "react-native-nitro-modules": "0.29.6",
     "release-it": "^19.0.3",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "react": "19.1.0",
     "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.29.2"
+    "react-native-nitro-modules": "0.29.6"
   }
 }
