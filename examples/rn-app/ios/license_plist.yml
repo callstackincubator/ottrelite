@@ -19,84 +19,36 @@ rename:
   "supports-preserve-symlinks-flag@1.0.0": supports-preserve-symlinks-flag
   "@opentelemetry_instrumentation-fetch@0.203.0": '@opentelemetry/instrumentation-fetch'
   "@opentelemetry_core@2.0.1": '@opentelemetry/core'
-  "@opentelemetry_semantic-conventions@1.36.0": '@opentelemetry/semantic-conventions'
+  "@opentelemetry_semantic-conventions@1.37.0": '@opentelemetry/semantic-conventions'
   "@opentelemetry_sdk-trace-web@2.0.1": '@opentelemetry/sdk-trace-web'
   "@opentelemetry_sdk-trace-base@2.0.1": '@opentelemetry/sdk-trace-base'
   "@opentelemetry_resources@2.0.1": '@opentelemetry/resources'
   "@opentelemetry_instrumentation-xml-http-request@0.203.0": '@opentelemetry/instrumentation-xml-http-request'
+  "@opentelemetry_resources@2.1.0": '@opentelemetry/resources'
+  "@opentelemetry_core@2.1.0": '@opentelemetry/core'
+  "@opentelemetry_sdk-trace-base@2.1.0": '@opentelemetry/sdk-trace-base'
   "@ottrelite_backend-platform@0.1.0": '@ottrelite/backend-platform'
   "@ottrelite_backend-wrapper-tracy@0.1.0": '@ottrelite/backend-wrapper-tracy'
   "@ottrelite_core@0.1.0": '@ottrelite/core'
   "@ottrelite_interop-otel@0.1.0": '@ottrelite/interop-otel'
   "@opentelemetry_sdk-metrics@2.0.1": '@opentelemetry/sdk-metrics'
   "@react-native-community_slider@5.0.1": '@react-native-community/slider'
-  "@react-native-vector-icons_material-design-icons@12.2.0": '@react-native-vector-icons/material-design-icons'
-  "@react-native-vector-icons_common@12.2.0": '@react-native-vector-icons/common'
-  "@react-native-community_cli-tools@17.0.0": '@react-native-community/cli-tools'
-  "@vscode_sudo-prompt@9.3.1": '@vscode/sudo-prompt'
-  "appdirsjs@1.2.7": appdirsjs
-  "chalk@4.1.2": chalk
-  "ansi-styles@4.3.0": ansi-styles
-  "color-convert@2.0.1": color-convert
-  "color-name@1.1.4": color-name
-  "supports-color@7.2.0": supports-color
-  "has-flag@4.0.0": has-flag
-  "execa@5.1.1": execa
-  "cross-spawn@7.0.6": cross-spawn
-  "path-key@3.1.1": path-key
-  "shebang-command@2.0.0": shebang-command
-  "shebang-regex@3.0.0": shebang-regex
-  "which@2.0.2": which
-  "isexe@2.0.0": isexe
-  "get-stream@6.0.1": get-stream
-  "human-signals@2.1.0": human-signals
-  "is-stream@2.0.1": is-stream
-  "merge-stream@2.0.0": merge-stream
-  "npm-run-path@4.0.1": npm-run-path
-  "onetime@5.1.2": onetime
-  "mimic-fn@2.1.0": mimic-fn
-  "signal-exit@3.0.7": signal-exit
-  "strip-final-newline@2.0.0": strip-final-newline
-  "find-up@5.0.0": find-up
+  "@react-native-vector-icons_material-design-icons@12.3.0": '@react-native-vector-icons/material-design-icons'
+  "@react-native-vector-icons_common@12.3.0": '@react-native-vector-icons/common'
+  "find-up@7.0.0": find-up
   "locate-path@6.0.0": locate-path
   "p-locate@5.0.0": p-locate
   "p-limit@3.1.0": p-limit
   "yocto-queue@0.1.0": yocto-queue
   "path-exists@4.0.0": path-exists
-  "launch-editor@2.10.0": launch-editor
+  "unicorn-magic@0.1.0": unicorn-magic
   "picocolors@1.1.1": picocolors
-  "shell-quote@1.8.3": shell-quote
-  "mime@2.6.0": mime
-  "ora@5.4.1": ora
-  "bl@4.1.0": bl
-  "buffer@5.7.1": buffer
-  "base64-js@1.5.1": base64-js
-  "ieee754@1.2.1": ieee754
-  "inherits@2.0.4": inherits
-  "readable-stream@3.6.2": readable-stream
-  "string_decoder@1.3.0": string_decoder
-  "safe-buffer@5.2.1": safe-buffer
-  "util-deprecate@1.0.2": util-deprecate
-  "cli-cursor@3.1.0": cli-cursor
-  "restore-cursor@3.1.0": restore-cursor
-  "cli-spinners@2.9.2": cli-spinners
-  "is-interactive@1.0.0": is-interactive
-  "is-unicode-supported@0.1.0": is-unicode-supported
-  "log-symbols@4.1.0": log-symbols
-  "strip-ansi@6.0.1": strip-ansi
-  "ansi-regex@5.0.1": ansi-regex
-  "wcwidth@1.0.1": wcwidth
-  "defaults@1.0.4": defaults
-  "clone@1.0.4": clone
-  "prompts@2.4.2": prompts
-  "kleur@3.0.3": kleur
-  "sisteransi@1.0.5": sisteransi
-  "semver@7.7.2": semver
   "plist@3.1.0": plist
   "@xmldom_xmldom@0.8.10": '@xmldom/xmldom'
+  "base64-js@1.5.1": base64-js
   "xmlbuilder@15.1.1": xmlbuilder
-  "@react-navigation_native@7.1.16": '@react-navigation/native'
-  "@react-navigation_core@7.12.3": '@react-navigation/core'
+  "@react-navigation_native@7.1.17": '@react-navigation/native'
+  "@react-navigation_core@7.12.4": '@react-navigation/core'
   "@react-navigation_routers@7.5.1": '@react-navigation/routers'
   "nanoid@3.3.11": nanoid
   "escape-string-regexp@4.0.0": escape-string-regexp
@@ -105,18 +57,20 @@ rename:
   "filter-obj@1.1.0": filter-obj
   "split-on-first@1.1.0": split-on-first
   "strict-uri-encode@2.0.0": strict-uri-encode
-  "react-is@19.1.0": react-is
+  "react-is@19.1.1": react-is
   "use-latest-callback@0.2.4": use-latest-callback
   "use-sync-external-store@1.5.0": use-sync-external-store
   "fast-deep-equal@3.1.3": fast-deep-equal
-  "@react-navigation_native-stack@7.3.23": '@react-navigation/native-stack'
-  "@react-navigation_elements@2.6.1": '@react-navigation/elements'
+  "@react-navigation_native-stack@7.3.26": '@react-navigation/native-stack'
+  "@react-navigation_elements@2.6.4": '@react-navigation/elements'
   "color@4.2.3": color
+  "color-convert@2.0.1": color-convert
+  "color-name@1.1.4": color-name
   "color-string@1.9.1": color-string
   "simple-swizzle@0.2.2": simple-swizzle
   "is-arrayish@0.3.2": is-arrayish
   "warn-once@0.1.1": warn-once
-  "@shopify_react-native-skia@2.1.1": '@shopify/react-native-skia'
+  "@shopify_react-native-skia@2.2.19": '@shopify/react-native-skia'
   "canvaskit-wasm@0.40.0": canvaskit-wasm
   "@webgpu_types@0.1.21": '@webgpu/types'
   "react-reconciler@0.31.0": react-reconciler
@@ -137,6 +91,10 @@ rename:
   "undici-types@7.8.0": undici-types
   "@types_yargs@17.0.33": '@types/yargs'
   "@types_yargs-parser@21.0.3": '@types/yargs-parser'
+  "chalk@4.1.2": chalk
+  "ansi-styles@4.3.0": ansi-styles
+  "supports-color@7.2.0": supports-color
+  "has-flag@4.0.0": has-flag
   "@react-native_assets-registry@0.81.0": '@react-native/assets-registry'
   "@react-native_codegen@0.81.0": '@react-native/codegen'
   "glob@7.2.3": glob
@@ -144,6 +102,7 @@ rename:
   "inflight@1.0.6": inflight
   "once@1.4.0": once
   "wrappy@1.0.2": wrappy
+  "inherits@2.0.4": inherits
   "minimatch@3.1.2": minimatch
   "brace-expansion@1.1.12": brace-expansion
   "balanced-match@1.0.2": balanced-match
@@ -160,6 +119,8 @@ rename:
   "string-width@4.2.3": string-width
   "emoji-regex@8.0.0": emoji-regex
   "is-fullwidth-code-point@3.0.0": is-fullwidth-code-point
+  "strip-ansi@6.0.1": strip-ansi
+  "ansi-regex@5.0.1": ansi-regex
   "wrap-ansi@7.0.0": wrap-ansi
   "escalade@3.2.0": escalade
   "get-caller-file@2.0.5": get-caller-file
@@ -255,6 +216,7 @@ rename:
   "jest-util@29.7.0": jest-util
   "ci-info@3.9.0": ci-info
   "picomatch@2.3.1": picomatch
+  "merge-stream@2.0.0": merge-stream
   "supports-color@8.1.1": supports-color
   "jsc-safe-url@0.2.4": jsc-safe-url
   "lodash.throttle@4.1.1": lodash.throttle
@@ -304,7 +266,10 @@ rename:
   "metro-runtime@0.83.1": metro-runtime
   "@babel_runtime@7.28.2": '@babel/runtime'
   "metro-source-map@0.83.1": metro-source-map
-  "@babel_traverse--for-generate-function-map@7.28.0": '@babel/traverse--for-generate-function-map'
+  "@babel_traverse--for-generate-function-map@7.28.4": '@babel/traverse--for-generate-function-map'
+  "@babel_generator@7.28.3": '@babel/generator'
+  "@babel_parser@7.28.4": '@babel/parser'
+  "@babel_types@7.28.4": '@babel/types'
   "metro-symbolicate@0.83.1": metro-symbolicate
   "source-map@0.5.7": source-map
   "vlq@1.0.1": vlq
@@ -314,6 +279,7 @@ rename:
   "metro-minify-terser@0.83.1": metro-minify-terser
   "terser@5.43.1": terser
   "@jridgewell_source-map@0.3.10": '@jridgewell/source-map'
+  "@jridgewell_trace-mapping@0.3.31": '@jridgewell/trace-mapping'
   "commander@2.20.3": commander
   "source-map-support@0.5.21": source-map-support
   "buffer-from@1.1.2": buffer-from
@@ -321,6 +287,7 @@ rename:
   "serialize-error@2.1.0": serialize-error
   "throat@5.0.0": throat
   "ws@7.5.10": ws
+  "semver@7.7.2": semver
   "@react-native_gradle-plugin@0.81.0": '@react-native/gradle-plugin'
   "@react-native_js-polyfills@0.81.0": '@react-native/js-polyfills'
   "@react-native_normalize-colors@0.81.0": '@react-native/normalize-colors'
@@ -356,6 +323,7 @@ rename:
   "slash@3.0.0": slash
   "write-file-atomic@4.0.2": write-file-atomic
   "imurmurhash@0.1.4": imurmurhash
+  "signal-exit@3.0.7": signal-exit
   "@types_babel__core@7.20.5": '@types/babel__core'
   "@types_babel__generator@7.27.0": '@types/babel__generator'
   "@types_babel__template@7.4.4": '@types/babel__template'
@@ -395,6 +363,7 @@ rename:
   "promise@8.3.0": promise
   "asap@2.0.6": asap
   "react-devtools-core@6.1.5": react-devtools-core
+  "shell-quote@1.8.3": shell-quote
   "react-refresh@0.14.2": react-refresh
   "regenerator-runtime@0.13.11": regenerator-runtime
   "scheduler@0.26.0": scheduler
@@ -402,8 +371,8 @@ rename:
   "type-fest@0.7.1": type-fest
   "whatwg-fetch@3.6.20": whatwg-fetch
   "@react-native_new-app-screen@0.81.0": '@react-native/new-app-screen'
-  "react-native-device-info@14.0.4": react-native-device-info
-  "react-native-legal@1.5.2": react-native-legal
+  "react-native-device-info@14.1.1": react-native-device-info
+  "react-native-legal@1.6.0": react-native-legal
   "@callstack_licenses@0.3.0": '@callstack/licenses'
   "xcode@3.0.1": xcode
   "simple-plist@1.3.1": simple-plist
@@ -424,8 +393,8 @@ rename:
   "color@3.2.1": color
   "color-convert@1.9.3": color-convert
   "color-name@1.1.3": color-name
-  "react-native-safe-area-context@5.5.2": react-native-safe-area-context
-  "react-native-screens@4.13.1": react-native-screens
+  "react-native-safe-area-context@5.6.1": react-native-safe-area-context
+  "react-native-screens@4.16.0": react-native-screens
   "react-freeze@1.0.4": react-freeze
   "react-native-is-edge-to-edge@1.2.1": react-native-is-edge-to-edge
 manual:
@@ -505,8 +474,8 @@ manual:
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
     file: '../../../node_modules/@opentelemetry/core/LICENSE'
-  - name: '@opentelemetry_semantic-conventions@1.36.0'
-    version: '1.36.0'
+  - name: '@opentelemetry_semantic-conventions@1.37.0'
+    version: '1.37.0'
     source: open-telemetry/opentelemetry-js
     file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
   - name: '@opentelemetry_sdk-trace-web@2.0.1'
@@ -525,6 +494,18 @@ manual:
     version: '0.203.0'
     source: open-telemetry/opentelemetry-js
     file: '../../../node_modules/@opentelemetry/instrumentation-xml-http-request/LICENSE'
+  - name: '@opentelemetry_resources@2.1.0'
+    version: '2.1.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../node_modules/@opentelemetry/resources/LICENSE'
+  - name: '@opentelemetry_core@2.1.0'
+    version: '2.1.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../node_modules/@opentelemetry/core/LICENSE'
+  - name: '@opentelemetry_sdk-trace-base@2.1.0'
+    version: '2.1.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
   - name: '@ottrelite_backend-platform@0.1.0'
     version: '0.1.0'
     source: https://github.com/callstackincubator/ottrelite
@@ -549,118 +530,18 @@ manual:
     version: '5.0.1'
     source: https://github.com/callstack/react-native-slider
     body: MIT
-  - name: '@react-native-vector-icons_material-design-icons@12.2.0'
-    version: '12.2.0'
+  - name: '@react-native-vector-icons_material-design-icons@12.3.0'
+    version: '12.3.0'
     source: https://github.com/oblador/react-native-vector-icons
     file: '../../../node_modules/@react-native-vector-icons/material-design-icons/LICENSE'
-  - name: '@react-native-vector-icons_common@12.2.0'
-    version: '12.2.0'
+  - name: '@react-native-vector-icons_common@12.3.0'
+    version: '12.3.0'
     source: https://github.com/oblador/react-native-vector-icons
     file: '../../../node_modules/@react-native-vector-icons/common/LICENSE'
-  - name: '@react-native-community_cli-tools@17.0.0'
-    version: '17.0.0'
-    source: https://github.com/react-native-community/cli
-    file: '../../../node_modules/@react-native-vector-icons/common/node_modules/@react-native-community/cli-tools/LICENSE'
-  - name: '@vscode_sudo-prompt@9.3.1'
-    version: '9.3.1'
-    source: https://github.com/bpasero/sudo-prompt
-    file: '../../../node_modules/@vscode/sudo-prompt/LICENSE'
-  - name: appdirsjs@1.2.7
-    version: '1.2.7'
-    source: https://github.com/codingjerk/appdirsjs
-    body: MIT
-  - name: chalk@4.1.2
-    version: '4.1.2'
-    source: chalk/chalk
-    file: '../../../node_modules/chalk/license'
-  - name: ansi-styles@4.3.0
-    version: '4.3.0'
-    source: chalk/ansi-styles
-    file: '../../../node_modules/ansi-styles/license'
-  - name: color-convert@2.0.1
-    version: '2.0.1'
-    source: Qix-/color-convert
-    file: '../../../node_modules/color-convert/LICENSE'
-  - name: color-name@1.1.4
-    version: '1.1.4'
-    source: https://github.com/colorjs/color-name
-    file: '../../../node_modules/color-name/LICENSE'
-  - name: supports-color@7.2.0
-    version: '7.2.0'
-    source: chalk/supports-color
-    file: '../../../node_modules/chalk/node_modules/supports-color/license'
-  - name: has-flag@4.0.0
-    version: '4.0.0'
-    source: sindresorhus/has-flag
-    file: '../../../node_modules/has-flag/license'
-  - name: execa@5.1.1
-    version: '5.1.1'
-    source: sindresorhus/execa
-    file: '../../../node_modules/execa/license'
-  - name: cross-spawn@7.0.6
-    version: '7.0.6'
-    source: https://github.com/moxystudio/node-cross-spawn
-    file: '../../../node_modules/cross-spawn/LICENSE'
-  - name: path-key@3.1.1
-    version: '3.1.1'
-    source: sindresorhus/path-key
-    file: '../../../node_modules/path-key/license'
-  - name: shebang-command@2.0.0
-    version: '2.0.0'
-    source: kevva/shebang-command
-    file: '../../../node_modules/shebang-command/license'
-  - name: shebang-regex@3.0.0
-    version: '3.0.0'
-    source: sindresorhus/shebang-regex
-    file: '../../../node_modules/shebang-regex/license'
-  - name: which@2.0.2
-    version: '2.0.2'
-    source: https://github.com/isaacs/node-which
-    file: '../../../node_modules/which/LICENSE'
-  - name: isexe@2.0.0
-    version: '2.0.0'
-    source: https://github.com/isaacs/isexe
-    file: '../../../node_modules/isexe/LICENSE'
-  - name: get-stream@6.0.1
-    version: '6.0.1'
-    source: sindresorhus/get-stream
-    file: '../../../node_modules/get-stream/license'
-  - name: human-signals@2.1.0
-    version: '2.1.0'
-    source: ehmicky/human-signals
-    file: '../../../node_modules/human-signals/LICENSE'
-  - name: is-stream@2.0.1
-    version: '2.0.1'
-    source: sindresorhus/is-stream
-    file: '../../../node_modules/is-stream/license'
-  - name: merge-stream@2.0.0
-    version: '2.0.0'
-    source: grncdr/merge-stream
-    file: '../../../node_modules/merge-stream/LICENSE'
-  - name: npm-run-path@4.0.1
-    version: '4.0.1'
-    source: sindresorhus/npm-run-path
-    file: '../../../node_modules/npm-run-path/license'
-  - name: onetime@5.1.2
-    version: '5.1.2'
-    source: sindresorhus/onetime
-    file: '../../../node_modules/onetime/license'
-  - name: mimic-fn@2.1.0
-    version: '2.1.0'
-    source: sindresorhus/mimic-fn
-    file: '../../../node_modules/mimic-fn/license'
-  - name: signal-exit@3.0.7
-    version: '3.0.7'
-    source: https://github.com/tapjs/signal-exit
-    body: ISC
-  - name: strip-final-newline@2.0.0
-    version: '2.0.0'
-    source: sindresorhus/strip-final-newline
-    file: '../../../node_modules/strip-final-newline/license'
-  - name: find-up@5.0.0
-    version: '5.0.0'
+  - name: find-up@7.0.0
+    version: '7.0.0'
     source: sindresorhus/find-up
-    file: '../../../node_modules/find-up/license'
+    file: '../../../node_modules/@react-native-vector-icons/common/node_modules/find-up/license'
   - name: locate-path@6.0.0
     version: '6.0.0'
     source: sindresorhus/locate-path
@@ -681,122 +562,14 @@ manual:
     version: '4.0.0'
     source: sindresorhus/path-exists
     file: '../../../node_modules/path-exists/license'
-  - name: launch-editor@2.10.0
-    version: '2.10.0'
-    source: https://github.com/yyx990803/launch-editor
-    file: '../../../node_modules/launch-editor/LICENSE'
+  - name: unicorn-magic@0.1.0
+    version: '0.1.0'
+    source: sindresorhus/unicorn-magic
+    file: '../../../node_modules/unicorn-magic/license'
   - name: picocolors@1.1.1
     version: '1.1.1'
     source: alexeyraspopov/picocolors
     file: '../../../node_modules/picocolors/LICENSE'
-  - name: shell-quote@1.8.3
-    version: '1.8.3'
-    source: http://github.com/ljharb/shell-quote
-    file: '../../../node_modules/shell-quote/LICENSE'
-  - name: mime@2.6.0
-    version: '2.6.0'
-    source: https://github.com/broofa/mime
-    file: '../../../node_modules/mime/LICENSE'
-  - name: ora@5.4.1
-    version: '5.4.1'
-    source: sindresorhus/ora
-    file: '../../../node_modules/ora/license'
-  - name: bl@4.1.0
-    version: '4.1.0'
-    source: https://github.com/rvagg/bl
-    file: '../../../node_modules/bl/LICENSE.md'
-  - name: buffer@5.7.1
-    version: '5.7.1'
-    source: https://github.com/feross/buffer
-    file: '../../../node_modules/buffer/LICENSE'
-  - name: base64-js@1.5.1
-    version: '1.5.1'
-    source: https://github.com/beatgammit/base64-js
-    file: '../../../node_modules/base64-js/LICENSE'
-  - name: ieee754@1.2.1
-    version: '1.2.1'
-    source: https://github.com/feross/ieee754
-    file: '../../../node_modules/ieee754/LICENSE'
-  - name: inherits@2.0.4
-    version: '2.0.4'
-    source: https://github.com/isaacs/inherits
-    file: '../../../node_modules/inherits/LICENSE'
-  - name: readable-stream@3.6.2
-    version: '3.6.2'
-    source: https://github.com/nodejs/readable-stream
-    file: '../../../node_modules/readable-stream/LICENSE'
-  - name: string_decoder@1.3.0
-    version: '1.3.0'
-    source: https://github.com/nodejs/string_decoder
-    file: '../../../node_modules/string_decoder/LICENSE'
-  - name: safe-buffer@5.2.1
-    version: '5.2.1'
-    source: https://github.com/feross/safe-buffer
-    file: '../../../node_modules/safe-buffer/LICENSE'
-  - name: util-deprecate@1.0.2
-    version: '1.0.2'
-    source: https://github.com/TooTallNate/util-deprecate
-    file: '../../../node_modules/util-deprecate/LICENSE'
-  - name: cli-cursor@3.1.0
-    version: '3.1.0'
-    source: sindresorhus/cli-cursor
-    file: '../../../node_modules/ora/node_modules/cli-cursor/license'
-  - name: restore-cursor@3.1.0
-    version: '3.1.0'
-    source: sindresorhus/restore-cursor
-    file: '../../../node_modules/ora/node_modules/restore-cursor/license'
-  - name: cli-spinners@2.9.2
-    version: '2.9.2'
-    source: sindresorhus/cli-spinners
-    file: '../../../node_modules/cli-spinners/license'
-  - name: is-interactive@1.0.0
-    version: '1.0.0'
-    source: sindresorhus/is-interactive
-    file: '../../../node_modules/ora/node_modules/is-interactive/license'
-  - name: is-unicode-supported@0.1.0
-    version: '0.1.0'
-    source: sindresorhus/is-unicode-supported
-    file: '../../../node_modules/is-unicode-supported/license'
-  - name: log-symbols@4.1.0
-    version: '4.1.0'
-    source: sindresorhus/log-symbols
-    file: '../../../node_modules/ora/node_modules/log-symbols/license'
-  - name: strip-ansi@6.0.1
-    version: '6.0.1'
-    source: chalk/strip-ansi
-    file: '../../../node_modules/strip-ansi/license'
-  - name: ansi-regex@5.0.1
-    version: '5.0.1'
-    source: chalk/ansi-regex
-    file: '../../../node_modules/ansi-regex/license'
-  - name: wcwidth@1.0.1
-    version: '1.0.1'
-    source: https://github.com/timoxley/wcwidth
-    file: '../../../node_modules/wcwidth/LICENSE'
-  - name: defaults@1.0.4
-    version: '1.0.4'
-    source: https://github.com/sindresorhus/node-defaults
-    file: '../../../node_modules/defaults/LICENSE'
-  - name: clone@1.0.4
-    version: '1.0.4'
-    source: https://github.com/pvorb/node-clone
-    file: '../../../node_modules/clone/LICENSE'
-  - name: prompts@2.4.2
-    version: '2.4.2'
-    source: terkelg/prompts
-    file: '../../../node_modules/prompts/license'
-  - name: kleur@3.0.3
-    version: '3.0.3'
-    source: lukeed/kleur
-    file: '../../../node_modules/kleur/license'
-  - name: sisteransi@1.0.5
-    version: '1.0.5'
-    source: https://github.com/terkelg/sisteransi
-    file: '../../../node_modules/sisteransi/license'
-  - name: semver@7.7.2
-    version: '7.7.2'
-    source: https://github.com/npm/node-semver
-    file: '../../../node_modules/semver/LICENSE'
   - name: plist@3.1.0
     version: '3.1.0'
     source: https://github.com/TooTallNate/node-plist
@@ -805,16 +578,20 @@ manual:
     version: '0.8.10'
     source: https://github.com/xmldom/xmldom
     file: '../../../node_modules/@xmldom/xmldom/LICENSE'
+  - name: base64-js@1.5.1
+    version: '1.5.1'
+    source: https://github.com/beatgammit/base64-js
+    file: '../../../node_modules/base64-js/LICENSE'
   - name: xmlbuilder@15.1.1
     version: '15.1.1'
     source: https://github.com/oozcitak/xmlbuilder-js
     file: '../../../node_modules/xmlbuilder/LICENSE'
-  - name: '@react-navigation_native@7.1.16'
-    version: '7.1.16'
+  - name: '@react-navigation_native@7.1.17'
+    version: '7.1.17'
     source: https://github.com/react-navigation/react-navigation
     file: '../../../node_modules/@react-navigation/native/LICENSE'
-  - name: '@react-navigation_core@7.12.3'
-    version: '7.12.3'
+  - name: '@react-navigation_core@7.12.4'
+    version: '7.12.4'
     source: https://github.com/react-navigation/react-navigation
     file: '../../../node_modules/@react-navigation/core/LICENSE'
   - name: '@react-navigation_routers@7.5.1'
@@ -849,10 +626,10 @@ manual:
     version: '2.0.0'
     source: kevva/strict-uri-encode
     file: '../../../node_modules/strict-uri-encode/license'
-  - name: react-is@19.1.0
-    version: '19.1.0'
+  - name: react-is@19.1.1
+    version: '19.1.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/@react-navigation/core/node_modules/react-is/LICENSE'
   - name: use-latest-callback@0.2.4
     version: '0.2.4'
     source: https://github.com/satya164/use-latest-callback
@@ -865,18 +642,26 @@ manual:
     version: '3.1.3'
     source: https://github.com/epoberezkin/fast-deep-equal
     file: '../../../node_modules/fast-deep-equal/LICENSE'
-  - name: '@react-navigation_native-stack@7.3.23'
-    version: '7.3.23'
+  - name: '@react-navigation_native-stack@7.3.26'
+    version: '7.3.26'
     source: https://github.com/react-navigation/react-navigation
     file: '../../../node_modules/@react-navigation/native-stack/LICENSE'
-  - name: '@react-navigation_elements@2.6.1'
-    version: '2.6.1'
+  - name: '@react-navigation_elements@2.6.4'
+    version: '2.6.4'
     source: https://github.com/react-navigation/react-navigation
     file: '../../../node_modules/@react-navigation/elements/LICENSE'
   - name: color@4.2.3
     version: '4.2.3'
     source: Qix-/color
     file: '../../../node_modules/color/LICENSE'
+  - name: color-convert@2.0.1
+    version: '2.0.1'
+    source: Qix-/color-convert
+    file: '../../../node_modules/color-convert/LICENSE'
+  - name: color-name@1.1.4
+    version: '1.1.4'
+    source: https://github.com/colorjs/color-name
+    file: '../../../node_modules/color-name/LICENSE'
   - name: color-string@1.9.1
     version: '1.9.1'
     source: Qix-/color-string
@@ -893,8 +678,8 @@ manual:
     version: '0.1.1'
     source: https://github.com/satya164/warn-once
     file: '../../../node_modules/warn-once/LICENSE'
-  - name: '@shopify_react-native-skia@2.1.1'
-    version: '2.1.1'
+  - name: '@shopify_react-native-skia@2.2.19'
+    version: '2.2.19'
     source: https://github.com/Shopify/react-native-skia
     file: '../../../node_modules/@shopify/react-native-skia/LICENSE.md'
   - name: canvaskit-wasm@0.40.0
@@ -976,6 +761,22 @@ manual:
     version: '21.0.3'
     source: https://github.com/DefinitelyTyped/DefinitelyTyped
     file: '../../../node_modules/@types/yargs-parser/LICENSE'
+  - name: chalk@4.1.2
+    version: '4.1.2'
+    source: chalk/chalk
+    file: '../../../node_modules/chalk/license'
+  - name: ansi-styles@4.3.0
+    version: '4.3.0'
+    source: chalk/ansi-styles
+    file: '../../../node_modules/ansi-styles/license'
+  - name: supports-color@7.2.0
+    version: '7.2.0'
+    source: chalk/supports-color
+    file: '../../../node_modules/chalk/node_modules/supports-color/license'
+  - name: has-flag@4.0.0
+    version: '4.0.0'
+    source: sindresorhus/has-flag
+    file: '../../../node_modules/has-flag/license'
   - name: '@react-native_assets-registry@0.81.0'
     version: '0.81.0'
     source: https://github.com/facebook/react-native
@@ -1004,6 +805,10 @@ manual:
     version: '1.0.2'
     source: https://github.com/npm/wrappy
     file: '../../../node_modules/wrappy/LICENSE'
+  - name: inherits@2.0.4
+    version: '2.0.4'
+    source: https://github.com/isaacs/inherits
+    file: '../../../node_modules/inherits/LICENSE'
   - name: minimatch@3.1.2
     version: '3.1.2'
     source: https://github.com/isaacs/minimatch
@@ -1068,6 +873,14 @@ manual:
     version: '3.0.0'
     source: sindresorhus/is-fullwidth-code-point
     file: '../../../node_modules/is-fullwidth-code-point/license'
+  - name: strip-ansi@6.0.1
+    version: '6.0.1'
+    source: chalk/strip-ansi
+    file: '../../../node_modules/strip-ansi/license'
+  - name: ansi-regex@5.0.1
+    version: '5.0.1'
+    source: chalk/ansi-regex
+    file: '../../../node_modules/ansi-regex/license'
   - name: wrap-ansi@7.0.0
     version: '7.0.0'
     source: chalk/wrap-ansi
@@ -1238,7 +1051,7 @@ manual:
   - name: mime@1.6.0
     version: '1.6.0'
     source: https://github.com/broofa/node-mime
-    file: '../../../node_modules/send/node_modules/mime/LICENSE'
+    file: '../../../node_modules/mime/LICENSE'
   - name: on-finished@2.4.1
     version: '2.4.1'
     source: jshttp/on-finished
@@ -1447,6 +1260,10 @@ manual:
     version: '2.3.1'
     source: micromatch/picomatch
     file: '../../../node_modules/picomatch/LICENSE'
+  - name: merge-stream@2.0.0
+    version: '2.0.0'
+    source: grncdr/merge-stream
+    file: '../../../node_modules/merge-stream/LICENSE'
   - name: supports-color@8.1.1
     version: '8.1.1'
     source: chalk/supports-color
@@ -1643,10 +1460,22 @@ manual:
     version: '0.83.1'
     source: https://github.com/facebook/metro
     body: MIT
-  - name: '@babel_traverse--for-generate-function-map@7.28.0'
-    version: '7.28.0'
+  - name: '@babel_traverse--for-generate-function-map@7.28.4'
+    version: '7.28.4'
     source: https://github.com/babel/babel
     file: '../../../node_modules/@babel/traverse--for-generate-function-map/LICENSE'
+  - name: '@babel_generator@7.28.3'
+    version: '7.28.3'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/traverse--for-generate-function-map/node_modules/@babel/generator/LICENSE'
+  - name: '@babel_parser@7.28.4'
+    version: '7.28.4'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/traverse--for-generate-function-map/node_modules/@babel/parser/LICENSE'
+  - name: '@babel_types@7.28.4'
+    version: '7.28.4'
+    source: https://github.com/babel/babel
+    file: '../../../node_modules/@babel/traverse--for-generate-function-map/node_modules/@babel/types/LICENSE'
   - name: metro-symbolicate@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1683,6 +1512,10 @@ manual:
     version: '0.3.10'
     source: https://github.com/jridgewell/sourcemaps
     file: '../../../node_modules/@jridgewell/source-map/LICENSE'
+  - name: '@jridgewell_trace-mapping@0.3.31'
+    version: '0.3.31'
+    source: https://github.com/jridgewell/sourcemaps
+    file: '../../../node_modules/@jridgewell/source-map/node_modules/@jridgewell/trace-mapping/LICENSE'
   - name: commander@2.20.3
     version: '2.20.3'
     source: https://github.com/tj/commander.js
@@ -1711,6 +1544,10 @@ manual:
     version: '7.5.10'
     source: websockets/ws
     file: '../../../node_modules/metro/node_modules/ws/LICENSE'
+  - name: semver@7.7.2
+    version: '7.7.2'
+    source: https://github.com/npm/node-semver
+    file: '../../../node_modules/semver/LICENSE'
   - name: '@react-native_gradle-plugin@0.81.0'
     version: '0.81.0'
     source: https://github.com/facebook/react-native
@@ -1851,6 +1688,10 @@ manual:
     version: '0.1.4'
     source: https://github.com/jensyt/imurmurhash-js
     body: MIT
+  - name: signal-exit@3.0.7
+    version: '3.0.7'
+    source: https://github.com/tapjs/signal-exit
+    body: ISC
   - name: '@types_babel__core@7.20.5'
     version: '7.20.5'
     source: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -1946,7 +1787,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
+    file: '../../../node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest
@@ -2007,6 +1848,10 @@ manual:
     version: '6.1.5'
     source: https://github.com/facebook/react
     body: MIT
+  - name: shell-quote@1.8.3
+    version: '1.8.3'
+    source: http://github.com/ljharb/shell-quote
+    file: '../../../node_modules/shell-quote/LICENSE'
   - name: react-refresh@0.14.2
     version: '0.14.2'
     source: https://github.com/facebook/react
@@ -2035,12 +1880,12 @@ manual:
     version: '0.81.0'
     source: https://github.com/facebook/react-native
     body: MIT
-  - name: react-native-device-info@14.0.4
-    version: '14.0.4'
+  - name: react-native-device-info@14.1.1
+    version: '14.1.1'
     source: https://github.com/react-native-device-info/react-native-device-info
     file: '../../../node_modules/react-native-device-info/LICENSE'
-  - name: react-native-legal@1.5.2
-    version: '1.5.2'
+  - name: react-native-legal@1.6.0
+    version: '1.6.0'
     source: https://github.com/callstackincubator/react-native-legal
     file: '../../../node_modules/react-native-legal/LICENSE'
   - name: '@callstack_licenses@0.3.0'
@@ -2110,7 +1955,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color
@@ -2123,12 +1968,12 @@ manual:
     version: '1.1.3'
     source: https://github.com/dfcreative/color-name
     file: '../../../node_modules/react-native-paper/node_modules/color-name/LICENSE'
-  - name: react-native-safe-area-context@5.5.2
-    version: '5.5.2'
+  - name: react-native-safe-area-context@5.6.1
+    version: '5.6.1'
     source: https://github.com/th3rdwave/react-native-safe-area-context
     file: '../../../node_modules/react-native-safe-area-context/LICENSE'
-  - name: react-native-screens@4.13.1
-    version: '4.13.1'
+  - name: react-native-screens@4.16.0
+    version: '4.16.0'
     source: https://github.com/software-mansion/react-native-screens
     file: '../../../node_modules/react-native-screens/LICENSE'
   - name: react-freeze@1.0.4
