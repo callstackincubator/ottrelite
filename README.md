@@ -39,9 +39,6 @@ For **production use cases**, Ottrelite [integrates with OpenTelemetry (OTEL) JS
 | Java/Kotlin API | ✅               |
 | RN integration  | ✅               |
 
-> [!WARNING]
-> Currently, Android builds are not working *yet*. This is because we didn't integrate the native C++ code builds into Gradle yet. Please stay tuned for new updates soon. If you want to try out the Android API with RN internals tracing, please switch to the `feature/gradle-plugin` branch.
-
 ### OTEL Interoperability
 
 | Feature            | Status |
