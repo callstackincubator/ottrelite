@@ -1,0 +1,67 @@
+name: iOS example app
+
+on:
+  workflow_run:
+    workflows: ['Build, lint & test (JS)']
+    types:
+      - completed
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build-ios:
+    name: Build iOS demo app
+    environment: manual-approval
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Restore Cocoapods
+        id: cocoapods-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            **/ios/Pods
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('examples/rn-app/ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
+
+      - name: Restore interop-otel/third_party/
+        id: interop-otel-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            packages/interop-otel/third_party
+          key: ${{ runner.os }}-interop-otel-${{ hashFiles('packages/interop-otel/third_party/buildIOS.sh,packages/interop-otel/third_party/CMakeLists.txt') }}
+
+      - name: Install Cocoapods
+        run: |
+          cd examples/rn-app/ios
+          pod install
+
+      - name: Cache Cocoapods
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            **/ios/Pods
+          key: ${{ steps.cocoapods-cache.outputs.cache-key }}
+
+      - name: Build example for iOS
+        run: |
+          pnpm run build:demo:ios
+
+      - name: Cache interop-otel/third_party/
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            packages/interop-otel/third_party
+          key: ${{ steps.interop-otel-cache.outputs.cache-key }}

@@ -1,0 +1,67 @@
+name: Android example app
+
+on:
+  workflow_run:
+    workflows: ['Build, lint & test (JS)']
+    types:
+      - completed
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build-android:
+    name: Build Android demo app
+    environment: manual-approval
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Install JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Finalize Android SDK
+        run: |
+          /bin/bash -c "yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null"
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/wrapper
+            ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('examples/rn-app/android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Restore interop-otel/third_party/
+        id: interop-otel-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            packages/interop-otel/third_party
+          key: ${{ runner.os }}-interop-otel-${{ hashFiles('packages/interop-otel/third_party/CMakeLists.txt') }}
+
+      - name: Build example for Android
+        env:
+          JAVA_OPTS: '-XX:MaxHeapSize=6g'
+        run: |
+          pnpm run build:demo:android
+
+      - name: Cache interop-otel/third_party/
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            packages/interop-otel/third_party
+          key: ${{ steps.interop-otel-cache.outputs.cache-key }}

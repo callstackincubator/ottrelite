@@ -1,0 +1,36 @@
+name: Build, lint & test (JS)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  merge_group:
+    types:
+      - checks_requested
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build-lint-test:
+    name: Build, lint & test JS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint files
+        run: pnpm run lint
+
+      - name: Typecheck files
+        run: pnpm run typecheck
+
+      - name: Run unit tests
+        run: pnpm run test --maxWorkers=2 --coverage
