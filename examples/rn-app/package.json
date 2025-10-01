@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "build:demo:android": "react-native build-android --mode release",
-    "build:demo:ios": "react-native build-ios --mode Release",
+    "android:release": "react-native build-android --mode release",
     "ios": "react-native run-ios",
+    "ios:release": "react-native build-ios --mode Release",
     "lint": "eslint .",
     "start": "react-native start",
     "postinstall": "pnpm exec react-native legal-generate"

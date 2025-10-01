@@ -57,7 +57,7 @@ jobs:
 
       - name: Build example for iOS
         run: |
-          pnpm run build:demo:ios
+          pnpm run ios:release
 
       - name: Cache interop-otel/third_party/
         uses: actions/cache/save@v4

@@ -10,8 +10,9 @@
 
 ---
 
-[![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg?job=build-lint-test)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
-[![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg?job=build-lint-test)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
+[![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
+[![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
+[![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
 [![npm downloads](https://img.shields.io/npm/dm/ottrelite.svg)](https://www.npmjs.com/package/ottrelite)
 
 

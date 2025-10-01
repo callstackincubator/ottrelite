@@ -57,7 +57,7 @@ jobs:
         env:
           JAVA_OPTS: '-XX:MaxHeapSize=6g'
         run: |
-          pnpm run build:demo:android
+          pnpm run android:release
 
       - name: Cache interop-otel/third_party/
         uses: actions/cache/save@v4

@@ -226,6 +226,7 @@ rename:
   "exponential-backoff@3.1.2": exponential-backoff
   "https-proxy-agent@7.0.6": https-proxy-agent
   "agent-base@7.1.4": agent-base
+  "debug@4.4.3": debug
   "metro-core@0.83.1": metro-core
   "metro-resolver@0.83.1": metro-resolver
   "metro-cache-key@0.83.1": metro-cache-key
@@ -888,7 +889,7 @@ manual:
   - name: wrap-ansi@7.0.0
     version: '7.0.0'
     source: chalk/wrap-ansi
-    file: '../../../node_modules/cliui/node_modules/wrap-ansi/license'
+    file: '../../../node_modules/wrap-ansi/license'
   - name: escalade@3.2.0
     version: '3.2.0'
     source: lukeed/escalade
@@ -1007,7 +1008,7 @@ manual:
   - name: open@7.4.2
     version: '7.4.2'
     source: sindresorhus/open
-    file: '../../../node_modules/@react-native/dev-middleware/node_modules/open/license'
+    file: '../../../node_modules/open/license'
   - name: serve-static@1.16.2
     version: '1.16.2'
     source: expressjs/serve-static
@@ -1159,7 +1160,7 @@ manual:
   - name: lru-cache@5.1.1
     version: '5.1.1'
     source: https://github.com/isaacs/node-lru-cache
-    file: '../../../node_modules/@babel/helper-compilation-targets/node_modules/lru-cache/LICENSE'
+    file: '../../../node_modules/lru-cache/LICENSE'
   - name: yallist@3.1.1
     version: '3.1.1'
     source: https://github.com/isaacs/yallist
@@ -1215,7 +1216,7 @@ manual:
   - name: mime-db@1.52.0
     version: '1.52.0'
     source: jshttp/mime-db
-    file: '../../../node_modules/mime-types/node_modules/mime-db/LICENSE'
+    file: '../../../node_modules/mime-db/LICENSE'
   - name: negotiator@0.6.3
     version: '0.6.3'
     source: jshttp/negotiator
@@ -1259,7 +1260,7 @@ manual:
   - name: ci-info@3.9.0
     version: '3.9.0'
     source: https://github.com/watson/ci-info
-    file: '../../../node_modules/jest-worker/node_modules/ci-info/LICENSE'
+    file: '../../../node_modules/ci-info/LICENSE'
   - name: picomatch@2.3.1
     version: '2.3.1'
     source: micromatch/picomatch
@@ -1300,6 +1301,10 @@ manual:
     version: '7.1.4'
     source: https://github.com/TooTallNate/proxy-agents
     file: '../../../node_modules/agent-base/LICENSE'
+  - name: debug@4.4.3
+    version: '4.4.3'
+    source: https://github.com/debug-js/debug
+    file: '../../../node_modules/https-proxy-agent/node_modules/debug/LICENSE'
   - name: metro-core@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1347,11 +1352,11 @@ manual:
   - name: js-yaml@3.14.1
     version: '3.14.1'
     source: nodeca/js-yaml
-    file: '../../../node_modules/metro-config/node_modules/js-yaml/LICENSE'
+    file: '../../../node_modules/js-yaml/LICENSE'
   - name: argparse@1.0.10
     version: '1.0.10'
     source: nodeca/argparse
-    file: '../../../node_modules/metro-config/node_modules/argparse/LICENSE'
+    file: '../../../node_modules/js-yaml/node_modules/argparse/LICENSE'
   - name: sprintf-js@1.0.3
     version: '1.0.3'
     source: https://github.com/alexei/sprintf.js
@@ -1403,7 +1408,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1523,7 +1528,7 @@ manual:
   - name: commander@2.20.3
     version: '2.20.3'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/terser/node_modules/commander/LICENSE'
   - name: source-map-support@0.5.21
     version: '0.5.21'
     source: https://github.com/evanw/node-source-map-support
@@ -1607,19 +1612,19 @@ manual:
   - name: find-up@4.1.0
     version: '4.1.0'
     source: sindresorhus/find-up
-    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/find-up/license'
+    file: '../../../node_modules/find-up/license'
   - name: locate-path@5.0.0
     version: '5.0.0'
     source: sindresorhus/locate-path
-    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/locate-path/license'
+    file: '../../../node_modules/find-up/node_modules/locate-path/license'
   - name: p-locate@4.1.0
     version: '4.1.0'
     source: sindresorhus/p-locate
-    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/p-locate/license'
+    file: '../../../node_modules/find-up/node_modules/p-locate/license'
   - name: p-limit@2.3.0
     version: '2.3.0'
     source: sindresorhus/p-limit
-    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/p-limit/license'
+    file: '../../../node_modules/find-up/node_modules/p-limit/license'
   - name: p-try@2.2.0
     version: '2.2.0'
     source: sindresorhus/p-try
@@ -1791,7 +1796,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
+    file: '../../../node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest
@@ -1955,7 +1960,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color

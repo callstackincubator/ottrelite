@@ -6,8 +6,6 @@
     "@evilmartians/lefthook": "^1.11.16",
     "@react-native/babel-preset": "^0.81.0",
     "@react-native/eslint-config": "^0.81.0",
-    "@release-it-plugins/workspaces": "^4.2.0",
-    "@release-it/conventional-changelog": "^10.0.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.1.0",
@@ -25,10 +23,10 @@
     "react-native": "^0.81.0",
     "react-native-nitro-modules": "0.29.6",
     "react-test-renderer": "19.0.0",
-    "release-it": "^19.0.3",
     "ts-jest": "^29.4.0",
     "turbo": "^1.13.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@changesets/cli": "^2.29.7"
   },
   "engines": {
     "node": ">=18"
@@ -37,18 +35,20 @@
     "build": "pnpm run -r build",
     "build:watch": "pnpm run -r --parallel build:watch",
     "build:docs": "pnpm -F @ottrelite/docs run build:docs",
-    "build:demo:android": "pnpm run -r build:demo:android",
-    "build:demo:ios": "pnpm run -r build:demo:ios",
     "lint": "pnpm run -r lint",
     "typecheck": "pnpm run -r typecheck",
     "test": "pnpm run -r test",
     "docs:dev": "pnpm -F @ottrelite/docs run dev",
     "clean": "pnpm run -r --parallel run clean",
-    "release": "pnpm run -r --filter \"!private\" pnpm publish",
+    "release": "npx changeset publish",
+    "version": "npx changeset version && pnpm install --lockfile-only",
+    "changeset": "npx changeset",
     "example:android": "pnpm -F @ottrelite/example run android",
     "example:ios": "pnpm -F @ottrelite/example run ios",
     "postinstall": "npx lefthook install && (pnpm run build || exit 0;)",
-    "pod:install": "cd examples/rn-app && pod install"
+    "pod:install": "cd examples/rn-app && pod install",
+    "publish:npm": "pnpm -r publish:npm",
+    "publish:yalc": "pnpm -r publish:yalc"
   },
   "packageManager": "pnpm@10.15.1"
 }

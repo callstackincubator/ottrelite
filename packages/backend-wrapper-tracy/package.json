@@ -34,7 +34,8 @@
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
     "typescript": "tsc",
     "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
-    "release": "release-it"
+    "publish:npm": "npm publish --access public",
+    "publish:yalc": "yalc publish"
   },
   "keywords": [
     "react-native",
@@ -65,7 +66,6 @@
     "jest": "^30.0.4",
     "nitro-codegen": "^0.27.2",
     "react-native-nitro-modules": "0.29.6",
-    "release-it": "^19.0.3",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {

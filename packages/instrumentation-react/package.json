@@ -25,7 +25,8 @@
     "test": "jest --config ../../jest.config.ts",
     "test:watch": "jest --watch --config ../../jest.config.ts",
     "test:update-snapshots": "jest --updateSnapshot --config ../../jest.config.ts",
-    "release": "release-it"
+    "publish:npm": "npm publish --access public",
+    "publish:yalc": "yalc publish"
   },
   "keywords": [
     "react-native",
