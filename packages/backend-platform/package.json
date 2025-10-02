@@ -34,7 +34,7 @@
     "postinstall": "pnpm run build || exit 0;",
     "typecheck": "tsc --noEmit",
     "typescript": "tsc",
-    "publish:npm": "npm publish --access public",
+    "publish:npm": "pnpm publish --access public",
     "publish:yalc": "yalc publish"
   },
   "keywords": [
@@ -66,13 +66,15 @@
     "nitro-codegen": "^0.27.2",
     "react-native-nitro-modules": "0.29.6",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@babel/runtime": "^7.25.0",
+    "react": "19.1.0",
+    "react-native": "^0.81.0"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.25.0",
-    "@ottrelite/core": "workspace:^",
-    "react": "19.1.0",
-    "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.29.6"
+    "react": ">=17",
+    "react-native": ">=0.76",
+    "react-native-nitro-modules": ">=0.29",
+    "@ottrelite/core": "workspace:~"
   }
 }

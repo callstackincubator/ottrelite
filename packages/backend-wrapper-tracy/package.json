@@ -34,7 +34,7 @@
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
     "typescript": "tsc",
     "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
-    "publish:npm": "npm publish --access public",
+    "publish:npm": "pnpm publish --access public",
     "publish:yalc": "yalc publish"
   },
   "keywords": [
@@ -66,12 +66,14 @@
     "jest": "^30.0.4",
     "nitro-codegen": "^0.27.2",
     "react-native-nitro-modules": "0.29.6",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "react": "19.1.0",
+    "react-native": "^0.81.0"
   },
   "peerDependencies": {
-    "@ottrelite/core": "workspace:^",
-    "react": "19.1.0",
-    "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.29.6"
+    "react": ">=17",
+    "react-native": ">=0.76",
+    "react-native-nitro-modules": ">=0.29",
+    "@ottrelite/core": "workspace:~"
   }
 }

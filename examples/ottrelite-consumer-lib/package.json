@@ -34,9 +34,9 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "@ottrelite/core": "workspace:^",
-    "react": "19.1.0",
-    "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.29.6"
+    "react": "*",
+    "react-native": "*",
+    "react-native-nitro-modules": "*",
+    "@ottrelite/core": "workspace:~"
   }
 }
