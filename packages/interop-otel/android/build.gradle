@@ -508,6 +508,8 @@ tasks.register("buildAndInstallCURL") {
     }
 }
 
+buildAndInstallCURL.dependsOn(copyOpenSSL)
+
 // CPP wrapper + OTEL CPP SDK
 tasks.register("buildAndInstallCppWrapper") {
     doFirst {
