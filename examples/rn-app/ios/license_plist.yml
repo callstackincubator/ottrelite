@@ -36,10 +36,10 @@ rename:
   "@react-native-vector-icons_material-design-icons@12.3.0": '@react-native-vector-icons/material-design-icons'
   "@react-native-vector-icons_common@12.3.0": '@react-native-vector-icons/common'
   "find-up@7.0.0": find-up
-  "locate-path@6.0.0": locate-path
-  "p-locate@5.0.0": p-locate
-  "p-limit@3.1.0": p-limit
-  "yocto-queue@0.1.0": yocto-queue
+  "locate-path@5.0.0": locate-path
+  "p-locate@4.1.0": p-locate
+  "p-limit@2.3.0": p-limit
+  "p-try@2.2.0": p-try
   "path-exists@4.0.0": path-exists
   "unicorn-magic@0.1.0": unicorn-magic
   "picocolors@1.1.1": picocolors
@@ -304,10 +304,6 @@ rename:
   "@istanbuljs_load-nyc-config@1.1.0": '@istanbuljs/load-nyc-config'
   "camelcase@5.3.1": camelcase
   "find-up@4.1.0": find-up
-  "locate-path@5.0.0": locate-path
-  "p-locate@4.1.0": p-locate
-  "p-limit@2.3.0": p-limit
-  "p-try@2.2.0": p-try
   "get-package-type@0.1.0": get-package-type
   "resolve-from@5.0.0": resolve-from
   "@istanbuljs_schema@0.1.3": '@istanbuljs/schema'
@@ -543,22 +539,22 @@ manual:
     version: '7.0.0'
     source: sindresorhus/find-up
     file: '../../../node_modules/@react-native-vector-icons/common/node_modules/find-up/license'
-  - name: locate-path@6.0.0
-    version: '6.0.0'
+  - name: locate-path@5.0.0
+    version: '5.0.0'
     source: sindresorhus/locate-path
     file: '../../../node_modules/locate-path/license'
-  - name: p-locate@5.0.0
-    version: '5.0.0'
+  - name: p-locate@4.1.0
+    version: '4.1.0'
     source: sindresorhus/p-locate
     file: '../../../node_modules/p-locate/license'
-  - name: p-limit@3.1.0
-    version: '3.1.0'
+  - name: p-limit@2.3.0
+    version: '2.3.0'
     source: sindresorhus/p-limit
-    file: '../../../node_modules/p-limit/license'
-  - name: yocto-queue@0.1.0
-    version: '0.1.0'
-    source: sindresorhus/yocto-queue
-    file: '../../../node_modules/yocto-queue/license'
+    file: '../../../node_modules/p-locate/node_modules/p-limit/license'
+  - name: p-try@2.2.0
+    version: '2.2.0'
+    source: sindresorhus/p-try
+    file: '../../../node_modules/p-try/license'
   - name: path-exists@4.0.0
     version: '4.0.0'
     source: sindresorhus/path-exists
@@ -1008,7 +1004,7 @@ manual:
   - name: open@7.4.2
     version: '7.4.2'
     source: sindresorhus/open
-    file: '../../../node_modules/open/license'
+    file: '../../../node_modules/@react-native/dev-middleware/node_modules/open/license'
   - name: serve-static@1.16.2
     version: '1.16.2'
     source: expressjs/serve-static
@@ -1056,7 +1052,7 @@ manual:
   - name: mime@1.6.0
     version: '1.6.0'
     source: https://github.com/broofa/node-mime
-    file: '../../../node_modules/mime/LICENSE'
+    file: '../../../node_modules/send/node_modules/mime/LICENSE'
   - name: on-finished@2.4.1
     version: '2.4.1'
     source: jshttp/on-finished
@@ -1356,7 +1352,7 @@ manual:
   - name: argparse@1.0.10
     version: '1.0.10'
     source: nodeca/argparse
-    file: '../../../node_modules/js-yaml/node_modules/argparse/LICENSE'
+    file: '../../../node_modules/argparse/LICENSE'
   - name: sprintf-js@1.0.3
     version: '1.0.3'
     source: https://github.com/alexei/sprintf.js
@@ -1408,7 +1404,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1612,23 +1608,7 @@ manual:
   - name: find-up@4.1.0
     version: '4.1.0'
     source: sindresorhus/find-up
-    file: '../../../node_modules/find-up/license'
-  - name: locate-path@5.0.0
-    version: '5.0.0'
-    source: sindresorhus/locate-path
-    file: '../../../node_modules/find-up/node_modules/locate-path/license'
-  - name: p-locate@4.1.0
-    version: '4.1.0'
-    source: sindresorhus/p-locate
-    file: '../../../node_modules/find-up/node_modules/p-locate/license'
-  - name: p-limit@2.3.0
-    version: '2.3.0'
-    source: sindresorhus/p-limit
-    file: '../../../node_modules/find-up/node_modules/p-limit/license'
-  - name: p-try@2.2.0
-    version: '2.2.0'
-    source: sindresorhus/p-try
-    file: '../../../node_modules/p-try/license'
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/find-up/license'
   - name: get-package-type@0.1.0
     version: '0.1.0'
     source: https://github.com/cfware/get-package-type
@@ -1796,7 +1776,7 @@ manual:
   - name: commander@12.1.0
     version: '12.1.0'
     source: https://github.com/tj/commander.js
-    file: '../../../node_modules/commander/LICENSE'
+    file: '../../../node_modules/react-native/node_modules/commander/LICENSE'
   - name: jest-environment-node@29.7.0
     version: '29.7.0'
     source: https://github.com/jestjs/jest
@@ -1960,7 +1940,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color
