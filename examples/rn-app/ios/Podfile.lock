@@ -2488,7 +2488,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ReactNativeOttrelite (0.1.0):
+  - ReactNativeOttrelite (0.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2518,38 +2518,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ReactNativeOttreliteBackendPlatform (0.1.0):
-    - boost
-    - DoubleConversion
-    - fast_float
-    - fmt
-    - glog
-    - hermes-engine
-    - NitroModules
-    - RCT-Folly
-    - RCT-Folly/Fabric
-    - RCTRequired
-    - RCTTypeSafety
-    - React-callinvoker
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeOttrelite
-    - SocketRocket
-    - Yoga
-  - ReactNativeOttreliteBackendTracy (0.1.0):
+  - ReactNativeOttreliteBackendPlatform (0.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2580,7 +2549,38 @@ PODS:
     - ReactNativeOttrelite
     - SocketRocket
     - Yoga
-  - ReactNativeOttreliteInteropOTEL (0.1.0):
+  - ReactNativeOttreliteBackendTracy (0.0.1):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - NitroModules
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeOttrelite
+    - SocketRocket
+    - Yoga
+  - ReactNativeOttreliteInteropOTEL (0.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2607,11 +2607,11 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ReactNativeOttreliteInteropOTEL/ottrelite-core (= 0.1.0)
-    - ReactNativeOttreliteInteropOTEL/ottrelite-otel-wrapper (= 0.1.0)
+    - ReactNativeOttreliteInteropOTEL/ottrelite-core (= 0.0.1)
+    - ReactNativeOttreliteInteropOTEL/ottrelite-otel-wrapper (= 0.0.1)
     - SocketRocket
     - Yoga
-  - ReactNativeOttreliteInteropOTEL/ottrelite-core (0.1.0):
+  - ReactNativeOttreliteInteropOTEL/ottrelite-core (0.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2641,7 +2641,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ReactNativeOttreliteInteropOTEL/ottrelite-otel-wrapper (0.1.0):
+  - ReactNativeOttreliteInteropOTEL/ottrelite-otel-wrapper (0.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -3077,10 +3077,10 @@ SPEC CHECKSUMS:
   ReactCodegen: 8125d6ee06ea06f48f156cbddec5c2ca576d62e6
   ReactCommon: 116d6ee71679243698620d8cd9a9042541e44aa6
   ReactNativeLegal: e51f65c65dd6375d1c5f1a4615838ae86aea794f
-  ReactNativeOttrelite: 8a38e46c9492df1473f5e1d853fd56e1ad239bfe
-  ReactNativeOttreliteBackendPlatform: fba8c4dbea090d01d6e24cb39c239effae52fff5
-  ReactNativeOttreliteBackendTracy: 94d9bb09dde60c66ffeeb62a1172538796c39077
-  ReactNativeOttreliteInteropOTEL: 1da2293d653eb7052ef5757483753936ccf31784
+  ReactNativeOttrelite: fa4a1a24124afa6c366f5cda70ea454802f493fb
+  ReactNativeOttreliteBackendPlatform: 3b6ee4b5b1ddf880834182143e6988ebe1487f16
+  ReactNativeOttreliteBackendTracy: 12a8d0e2b8d9ea2cf00a388bfd2a1ae095a487f7
+  ReactNativeOttreliteInteropOTEL: 9947d6d253b0e1bf76e2d4f3f8ed4a51576780c9
   RNDeviceInfo: bcce8752b5043a623fe3c26789679b473f705d3c
   RNScreens: 0bbf16c074ae6bb1058a7bf2d1ae017f4306797c
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
