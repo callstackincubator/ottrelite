@@ -1,6 +1,6 @@
 {
   "name": "@ottrelite/interop-otel",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Interoperability layer integrating Ottrelite with OTEL SDKs",
   "main": "lib/index",
   "module": "lib/index",
@@ -17,12 +17,12 @@
     "android/gradle.properties",
     "android/CMakeLists.txt",
     "android/src",
+    "cpp",
     "ios/**/*.h",
     "ios/**/*.m",
     "ios/**/*.mm",
     "ios/**/*.cpp",
     "ios/**/*.swift",
-    "app.plugin.js",
     "*.podspec",
     "README.md"
   ],
