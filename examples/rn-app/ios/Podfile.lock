@@ -3079,8 +3079,8 @@ SPEC CHECKSUMS:
   ReactNativeLegal: e51f65c65dd6375d1c5f1a4615838ae86aea794f
   ReactNativeOttrelite: 8a38e46c9492df1473f5e1d853fd56e1ad239bfe
   ReactNativeOttreliteBackendPlatform: fba8c4dbea090d01d6e24cb39c239effae52fff5
-  ReactNativeOttreliteBackendTracy: b7bb5b016abd2ea9a0c442d9c3d6996fa4fd4a17
-  ReactNativeOttreliteInteropOTEL: 12ffbcfa0ba04ad891efda1c7efacab537c114fd
+  ReactNativeOttreliteBackendTracy: 94d9bb09dde60c66ffeeb62a1172538796c39077
+  ReactNativeOttreliteInteropOTEL: 1da2293d653eb7052ef5757483753936ccf31784
   RNDeviceInfo: bcce8752b5043a623fe3c26789679b473f705d3c
   RNScreens: 0bbf16c074ae6bb1058a7bf2d1ae017f4306797c
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
