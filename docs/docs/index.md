@@ -21,12 +21,12 @@ hero:
     alt: Ottrelite logo
 features:
   - title: Unified API
-    details: All functionalities are accessible through a single API, regardless of the backend used. If a backend does not support a specific feature, it will simply be ignored by calls to that feature.
+    details: All functionalities are accessible through a single API in all languages for developing in React Native.
     icon: 📦
-  - title: Backend plugin system
-    details: The implementations of tracing backends can be plugged in and out, allowing you to use multiple backends at once, or switch between them as needed.
+  - title: Pluggable
+    details: The sink for traces can be dynamically loaded. It's possible to implement a custom backend, there is no vendor lock-in.
     icon: 🔌
-  - title: Single API & sink for native & JS
+  - title: Single data sink
     details: 'The same API is provided both to JS/TS & native languages: Kotlin, Java, C++, Swift, Objective-C.'
-    icon: 🔥
+    icon: 📑
 ---

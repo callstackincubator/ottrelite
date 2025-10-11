@@ -1,6 +1,11 @@
 [
   {
     "type": "file",
+    "name": "introduction.mdx",
+    "label": "Introduction"
+  },
+  {
+    "type": "file",
     "name": "quick-start.mdx",
     "label": "Quick Start"
   },

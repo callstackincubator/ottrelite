@@ -104,3 +104,7 @@ TODO: write this section
 #### iOS
 
 TODO: write this section
+
+### Demo
+
+The `examples/backend-jaeger` directory contains a Docker Compose file for running the Jaeger backend service. To run it, execute `docker compose up -d`, which will start the Jaeger backend with an OTLP collector, as well as serve Jaeger UI on `http://localhost:16686/` to collect OTEL data from the example app. Then, just run the app on the device you've run Jaeger on (otherwise, you will need to adjust endpoint path to match your server's address) and you should start seeing traces in the Jaeger UI.

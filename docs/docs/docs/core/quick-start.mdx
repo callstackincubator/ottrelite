@@ -1,41 +1,4 @@
-# Ottrelite Core
-
-The core API of Ottrelite provides a set of base classes and common APIs that allow to integrate or extend the Ottrelite tracing framework.
-
-The aim of this project is to provide a unified API for performance tracing in React Native applications, allowing developers to easily instrument their apps with various backends for tracing, profiling, and performance monitoring.
-
-The core package - `@ottrelite/core` - provides a so-called [**Development API**](#development-api) (which is designed to be consumed by programmers) for instrumenting your application for purely **development use cases** (profiling your code, tracing performance issues, etc.). The actual implementation of recording / displaying / reporting of the data is provided by individual, pluggable packages (called **backends**). An arbitrary number of backends (0, 1 or more) can be installed simultaneously, allowing you to use multiple backends at once, or switch between them as needed.
-
-For **production use cases**, Ottrelite [integrates with OpenTelemetry (OTEL) JS API](#opentelemetry-otel-api---production--development), supporting all OTEL community instrumentations, custom processors, etc. The only limitation is that the setup must follow our guidelines, which are described in this README.
-
-## State of the project
-
-### Development API
-
-| Feature         | Status           |
-| --------------- | ---------------- |
-| C++ API         | ✅               |
-| JS API          | ✅               |
-| Swift API       | ⏳ (in progress) |
-| Java/Kotlin API | ✅               |
-| RN integration  | ✅               |
-
-### OTEL Interoperability
-
-| Feature            | Status |
-| ------------------ | ------ |
-| OTEL-JS interop    | ✅     |
-| OTEL-CPP interop   | ✅     |
-| OTEL-Java interop  | TBD    |
-| OTEL-Swift interop | TBD    |
-| RN integration     | ✅     |
-
-### RN internals integration
-
-| Platform | Status                          |
-| -------- | ------------------------------- |
-| iOS      | ⚠️ - only `Systrace.js` enabled |
-| Android  | ✅                              |
+# Ottrelite Core quickstart
 
 ## Installation
 
@@ -51,14 +14,7 @@ pnpm add @ottrelite/core
 
 Then, follow the instructions from the respective section(s) below, depending on whether your use case involves production-time telemetry, development-time tracing or both.
 
-## Available development backends
-
-| Backend Name                       | Description                                                                 | Platform(s)  | OTEL compatiblity                               | Documentation page |
-| ---------------------------------- | --------------------------------------------------------------------------- | ------------ | ----------------------------------------------- | ------------------ |
-| `@ottrelite/backend-platform`      | Platform-default tracing backend (ATrace for Android, OSSignposter for iOS) | Android, iOS | ✅ Yes                                          | here               |
-| `@ottrelite/backend-wrapper-tracy` | Tracy profiler backend for Android and iOS                                  | Android, iOS | ❌ Incompatible (lack of support for async API) | here               |
-
-# Development API
+## Development API
 
 The quickest way to use Ottrelite is via the Development API. This API resembles the [RN Systrace API](https://reactnative.dev/docs/systrace) and indeed 'revives' the no-op `Systrace` export of RN. Calls to this API are reported to Ottrelite backends and can be previewed .
 
@@ -155,9 +111,9 @@ Systrace.beginEvent('MyEvent');
 // ... do some work ...
 Systrace.endEvent('MyEvent');
 
-Systrace.beginAsyncEvent('MyAsyncEvent', 1);
+const token = Systrace.beginAsyncEvent('MyAsyncEvent');
 // ... do some work ...
-Systrace.endAsyncEvent('MyAsyncEvent', 1);
+Systrace.endAsyncEvent('MyAsyncEvent', token);
 
 Systrace.counterEvent('MyCounterEvent', 80);
 ```
@@ -175,15 +131,3 @@ The `examples/rn-app` directory contains an example app presenting most of the f
 ### Example consumer lib (C++, Kotlin and Swift APIs)
 
 The `examples/ottrelite-consumer-lib` directory contains an example native module (in this case, a Nitro Module, but this is not required) that consumes the Ottrelite C++ API, the Ottrelite Kotlin/Java API and the Ottrelite Swift/Objective-C API.
-
-### Jaeger backend Docker service
-
-The `examples/backend-jaeger` directory contains a Docker Compose file for running the Jaeger backend service. When run (`docker compose up -d`), it will start the Jaeger UI to collect OTEL data from the example app. Then, just run the app on the device you've run Jaeger on (otherwise, you will need to adjust endpoint path to match your server's address) and you should start seeing traces in the Jaeger UI.
-
-## Roadmap
-
-The roadmap for the nearest future includes the following:
-
-- integration of more OTEL C++ SDK exporters into Ottrelite's wrappers
-- integration with Swift OTEL SDK
-- integration with Java OTEL SDK
