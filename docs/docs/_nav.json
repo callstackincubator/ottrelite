@@ -1,8 +1,8 @@
 [
   {
     "text": "Docs",
-    "link": "/docs/core/quick-start",
-    "activeMatch": "/docs/core/quick-start"
+    "link": "/docs/introduction",
+    "activeMatch": "/docs/"
   },
   {
     "text": "API",
