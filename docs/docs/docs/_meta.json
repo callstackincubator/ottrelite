@@ -1,5 +1,10 @@
 [
   {
+    "type": "file",
+    "name": "introduction.mdx",
+    "label": "Introduction"
+  },
+  {
     "type": "dir",
     "name": "core",
     "label": "Core"

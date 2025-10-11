@@ -1,10 +1,20 @@
 # Ottrelite interoperability package with OTEL
 
-### OTEL interoperability
+## Status of the project
+
+| Feature            | Status |
+| ------------------ | ------ |
+| OTEL-JS interop    | ✅     |
+| OTEL-CPP interop   | ✅     |
+| OTEL-Java interop  | TBD    |
+| OTEL-Swift interop | TBD    |
+| RN integration     | ✅     |
+
+## OTEL interoperability
 
 Ottrelite provides interoperability with OpenTelemetry (OTEL) through a set of adapter facilities.
 
-#### Javascript
+### Javascript
 
 Firstly, Ottrelite provides its own `TracerProvider` ([`OttreliteTracerProvider.ts`](https://github.com/callstackincubator/ottrelite/blob/main/packages/interop-otel/src/otel/OttreliteTracerProvider.ts)) that provides adequate configuration for JS (configures the default resource to carry ottrelite's metadata, registers W3C & trace context baggage propagators, by default - `StackContextManager`). Invoking `register` on it, apart from the aforementioned, also calls invokes configuration of the global C++ API provider, described in the section below.
 
@@ -12,16 +22,16 @@ The analogous applies to [`OttreliteMeterProvider`](https://github.com/callstack
 
 The OTEL API is also hooked into by the [`DevSpanProcessorInterceptor.ts`](https://github.com/callstackincubator/ottrelite/blob/main/packages/interop-otel/src/otel/processor/DevSpanProcessorInterceptor.ts), which can be registered to propagate all OTEL spans live to the [Development API](https://callstackincubator.github.io/ottrelite/docs/core/quick-start.html#development-api-1).
 
-#### C++
+### C++
 
-##### Usage
+#### Usage
 
 The global C++ Tracer and Meter Providers are registered - respectively - from `installGlobalOTELCPPTracerProvider` and `installGlobalOTELCPPMeterProvider` Nitro Module methods. Calling each of those makes sense **only once**. At the first call, the Ottrelite tracer/meter exporters that have been instantiated and registered in JavaScript so far, will also be registered in the C++ API. This is the single-implementation, single-configuration approach that Ottrelite follows: create & configure all tracer/meter exporters in JS, use them from JS, C++, Kotlin/Java & Swift code.
 
 > [!WARNING]
 > Invoking the aforementioned install methods more than once will discard all previously registered C++ tracer/meter exporters. It is important to first register all the tracer/meter exporters in JS, and then call the `register()` methods of `OttreliteTracerProvider` and `OttreliteMeterProvider` in JS.
 
-##### Configuration
+#### Configuration
 
 The `Ottrelite.install` method accepts 3 C++ OTEL SDK - specific configuration options:
 
@@ -31,7 +41,7 @@ The `Ottrelite.install` method accepts 3 C++ OTEL SDK - specific configuration o
 
 Those can only be passed once and will be used to configure the C++ OTEL SDK, which is the data sink for OTEL traces from all interoperability layers in all languages. However, those options will only affect the C++ data export - other languages will process, report & provide the spans according to their own setup.
 
-##### Implementing a custom exporter
+#### Implementing a custom exporter
 
 To implement a custom exporter, first create a C++ Nitro Module spec:
 
@@ -97,14 +107,14 @@ resultCallback(::ottrelite::interop::otel::OTELExporterAdapterUtils::exportInter
     resourcesMemory, spans, otlpExporterPtr_));
 ```
 
-#### Android
+### Android
 
 TODO: write this section
 
-#### iOS
+### iOS
 
 TODO: write this section
 
-### Demo
+## Demo
 
 The `examples/backend-jaeger` directory contains a Docker Compose file for running the Jaeger backend service. To run it, execute `docker compose up -d`, which will start the Jaeger backend with an OTLP collector, as well as serve Jaeger UI on `http://localhost:16686/` to collect OTEL data from the example app. Then, just run the app on the device you've run Jaeger on (otherwise, you will need to adjust endpoint path to match your server's address) and you should start seeing traces in the Jaeger UI.

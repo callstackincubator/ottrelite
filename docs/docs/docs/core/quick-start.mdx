@@ -1,5 +1,31 @@
 # Ottrelite Core quickstart
 
+## Available development backends
+
+| Backend Name                       | Description                                                                 | Platform(s)  | OTEL-interop layer compatiblity                 | Documentation                                    |
+| ---------------------------------- | --------------------------------------------------------------------------- | ------------ | ----------------------------------------------- | ------------------------------------------------ |
+| `@ottrelite/backend-platform`      | Platform-default tracing backend (ATrace for Android, OSSignposter for iOS) | Android, iOS | ✅ Yes                                          | [open ➡️](../backends/backend-platform.mdx)      |
+| `@ottrelite/backend-wrapper-tracy` | Tracy profiler backend for Android and iOS                                  | Android, iOS | ❌ Incompatible (lack of support for async API) | [open ➡️](../backends/backend-wrapper-tracy.mdx) |
+
+## State of the project
+
+### Development API
+
+| Feature         | Status           |
+| --------------- | ---------------- |
+| C++ API         | ✅               |
+| JS API          | ✅               |
+| Swift API       | ⏳ (in progress) |
+| Java/Kotlin API | ✅               |
+| RN integration  | ✅               |
+
+### RN internals integration
+
+| Platform | Status                          |
+| -------- | ------------------------------- |
+| iOS      | ⚠️ - only `Systrace.js` enabled |
+| Android  | ✅                              |
+
 ## Installation
 
 First, install the package with:

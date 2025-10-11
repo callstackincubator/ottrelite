@@ -1,0 +1,21 @@
+# Ottrelite Core
+
+The core API of Ottrelite provides a set of base classes and common APIs that allow to integrate or extend the Ottrelite tracing framework.
+
+The aim of this project is to provide a unified API for performance tracing in React Native applications, allowing developers to easily instrument their apps with various backends for tracing, profiling, and performance monitoring.
+
+The core package - `@ottrelite/core` - provides a so-called [**Development API**](#development-api) (which is designed to be consumed by programmers) for instrumenting your application for purely **development use cases** (profiling your code, tracing performance issues, etc.). The actual implementation of recording / displaying / reporting of the data is provided by individual, pluggable packages (called **backends**). An arbitrary number of backends (0, 1 or more) can be installed simultaneously, allowing you to use multiple backends at once, or switch between them as needed.
+
+For **production use cases**, Ottrelite [integrates with OpenTelemetry (OTEL) JS API](#opentelemetry-otel-api---production--development), supporting all OTEL community instrumentations, custom processors, etc. The only limitation is that the setup must follow our guidelines, which are described in this README.
+
+## Getting started
+
+To get started, please follow the [Quick Start instructions](./quick-start.mdx).
+
+## Roadmap
+
+The roadmap for the nearest future includes the following:
+
+- integration of more OTEL C++ SDK exporters into Ottrelite's wrappers
+- integration with Swift OTEL SDK
+- integration with Java OTEL SDK

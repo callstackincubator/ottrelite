@@ -6,10 +6,10 @@ hero:
   text: Backend-agnostic React Native observability
   actions:
     - theme: brand
-      text: Quick Start
-      link: /docs/core/quick-start
+      text: Documentation
+      link: /docs/introduction
     - theme: brand
-      text: API docs
+      text: API
       link: /api/
     - theme: alt
       text: GitHub
