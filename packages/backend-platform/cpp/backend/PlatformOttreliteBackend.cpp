@@ -173,6 +173,12 @@ namespace ottrelite::backend::platform
 
         if (maybeEventArgs.has_value() && argsSize > 0)
         {
+            // if stream is not empty, prepend separator before metadata
+            if (stream.tellp() != std::streampos(0))
+            {
+                stream << " | ";
+            }
+
             stream << "Metadata: ";
 
             size_t i = 0;
