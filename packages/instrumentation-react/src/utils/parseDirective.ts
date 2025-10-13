@@ -7,7 +7,7 @@ export function parseDirective(
   traceDirective: t.Directive,
   locationDescription: string
 ) {
-  // extract the component name from "use trace ..."
+  // I. Extract the component name from "use trace ..."
   const maybeMatches = traceDirective.value.value
     .match(/use trace\s+(\S+)(?:\s+(\S+))?$/)
     ?.filter((x) => x !== undefined);
@@ -44,33 +44,64 @@ export function parseDirective(
 
   let isFunctionComponent = true;
 
-  if ('id' in path.node && path.node.id?.name) {
-    // function or class declaration
-    componentName ??= path.node.id.name;
-  } else if (
-    path.parent.type === 'VariableDeclarator' &&
-    path.parent.id.type === 'Identifier'
+  // II. Attempt to read displayName or name, if componentName is still undefined
+  if (
+    !componentName &&
+    (path.node.type === 'FunctionDeclaration' ||
+      path.node.type === 'FunctionExpression' ||
+      path.node.type === 'ArrowFunctionExpression')
   ) {
-    // variable assignment
-    componentName ??= path.parent.id.name;
-  } else if (
-    path.parent.type === 'ObjectProperty' &&
-    path.parent.key.type === 'Identifier'
-  ) {
-    // object property assignment
-    componentName ??= path.parent.key.name;
-  } else if (
-    path.parent.type === 'ClassMethod' &&
-    path.parent.key.type === 'Identifier'
-  ) {
-    // class method
-    isFunctionComponent = false;
-    componentName ??= path.parent.key.name;
-  } else if (path.parent.type === 'ExportDefaultDeclaration') {
-    // anonymous export default
-    throw new Error(
-      `[Ottrelite] Identifier is an anonymous default export, which is not supported! The tracer must be given a unique name. Localization: ${locationDescription}.`
+    // look for .displayName or .name assignments in parent scope
+    const parent = path.findParent(
+      (p) => p.isProgram() || p.isBlockStatement()
     );
+    if (parent) {
+      parent.traverse({
+        AssignmentExpression(assignPath) {
+          if (
+            assignPath.node.left.type === 'MemberExpression' &&
+            assignPath.node.left.property.type === 'Identifier' &&
+            (assignPath.node.left.property.name === 'displayName' ||
+              assignPath.node.left.property.name === 'name') &&
+            assignPath.node.right.type === 'StringLiteral'
+          ) {
+            componentName = assignPath.node.right.value;
+          }
+        },
+      });
+    }
+  }
+
+  // III. Infer the name from context, if componentName is still undefined
+  if (!componentName) {
+    if ('id' in path.node && path.node.id?.name) {
+      // function or class declaration
+      componentName ??= path.node.id.name;
+    } else if (
+      path.parent.type === 'VariableDeclarator' &&
+      path.parent.id.type === 'Identifier'
+    ) {
+      // variable assignment
+      componentName ??= path.parent.id.name;
+    } else if (
+      path.parent.type === 'ObjectProperty' &&
+      path.parent.key.type === 'Identifier'
+    ) {
+      // object property assignment
+      componentName ??= path.parent.key.name;
+    } else if (
+      path.parent.type === 'ClassMethod' &&
+      path.parent.key.type === 'Identifier'
+    ) {
+      // class method
+      isFunctionComponent = false;
+      componentName ??= path.parent.key.name;
+    } else if (path.parent.type === 'ExportDefaultDeclaration') {
+      // anonymous export default
+      throw new Error(
+        `[Ottrelite] Identifier is an anonymous default export, which is not supported! The tracer must be given a unique name. Localization: ${locationDescription}.`
+      );
+    }
   }
 
   return {

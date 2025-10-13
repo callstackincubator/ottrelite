@@ -65,9 +65,12 @@ export const MyComponent = memo(function MyComponent(){
 
 ### What will be the name of the tracer?
 
-| Declaration style                                   | Name                                     |
+The following is an in-order (by priority) list of how the name of the tracer is determined:
+
+| Declaration style / context                         | Name                                     |
 | --------------------------------------------------- | ---------------------------------------- |
 | _Explicit name from the string after `"use trace"`_ | The passed string                        |
+| component with `displayName` or `name`              | `displayName` or `name` property         |
 | named function                                      | Name of the function                     |
 | arrow function                                      | Name of the assignment target identifier |
 | anonymous function                                  | Name of the assignment target identifier |

@@ -76,8 +76,11 @@ export class TracedClassComponent extends Component<ExternallyDrivenComponentPro
 
 ### What will be the name of the tracer?
 
+The following is an in-order (by priority) list of how the name of the tracer is determined:
+
 | Declaration style                                   | Name                                     |
 | --------------------------------------------------- | ---------------------------------------- |
 | _Explicit name from the string after `"use trace"`_ | The passed string                        |
+| component with `displayName` or `name`              | `displayName` or `name` property         |
 | named class                                         | Name of the class                        |
 | anonymous class                                     | Name of the assignment target identifier |
