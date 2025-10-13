@@ -11,12 +11,12 @@
   },
   {
     "type": "file",
-    "name": "hooks.mdx",
-    "label": "Hooks"
+    "name": "class-components.mdx",
+    "label": "Class Components"
   },
   {
     "type": "file",
-    "name": "class-components.mdx",
-    "label": "Class Components"
+    "name": "hooks.mdx",
+    "label": "Hooks"
   }
 ]
