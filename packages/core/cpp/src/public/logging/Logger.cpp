@@ -62,7 +62,7 @@ namespace ottrelite::logging
 #endif
     }
 
-    AutoflushStreamWrapper Logger::debug(const char *message)
+    AutoflushStreamWrapper Logger::debug([[maybe_unused]] const char *message)
     {
 #if OTTRELITE_DEBUG_LOGS
         return _log(LogLevel::L_DEBUG, message);
