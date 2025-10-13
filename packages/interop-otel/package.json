@@ -23,6 +23,7 @@
     "ios/**/*.mm",
     "ios/**/*.cpp",
     "ios/**/*.swift",
+    "third_party",
     "*.podspec",
     "README.md"
   ],

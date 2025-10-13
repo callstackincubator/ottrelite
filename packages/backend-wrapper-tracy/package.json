@@ -23,6 +23,7 @@
     "ios/**/*.mm",
     "ios/**/*.cpp",
     "ios/**/*.swift",
+    "!ios/tracy/**/*",
     "*.podspec",
     "README.md"
   ],
