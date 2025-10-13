@@ -1,25 +1,31 @@
 import type { Span, Tracer } from '@opentelemetry/api';
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Ottrelite } from '../Ottrelite';
+import Ottrelite from '../Ottrelite';
 import type { TracingAPI } from '../types/TracingAPI';
 
-let maybeUseTracer: (name: string, version?: string) => Tracer;
+let maybeUseOTELTracer: (name: string, version?: string) => Tracer;
 try {
-  maybeUseTracer = require('@ottrelite/interop-otel/hooks/useTracer').useTracer;
+  maybeUseOTELTracer =
+    require('@ottrelite/interop-otel/hooks/useTracer').useTracer;
+  if (!maybeUseOTELTracer) {
+    throw new Error('package not installed');
+  }
 } catch {
-  maybeUseTracer = () => {
-    console.warn(
-      '[useComponentRenderTracing] Invalid setup - @ottrelite/interop-otel interop package is not installed, falling back to no-op tracer. Please install @ottrelite/interop-otel to enable OTEL tracing.'
-    );
-
+  maybeUseOTELTracer = () => {
     const spanMock = {
       setAttribute: () => {},
       end: () => {},
     } as any as Span;
 
     return {
-      startSpan: () => spanMock,
+      startSpan: () => {
+        console.warn(
+          '[useComponentRenderTracing] Invalid setup - @ottrelite/interop-otel interop package is not installed, falling back to no-op tracer. Please install @ottrelite/interop-otel to enable OTEL tracing.'
+        );
+
+        return spanMock;
+      },
       startActiveSpan: () => spanMock,
     };
   };
@@ -54,25 +60,25 @@ export function useComponentRenderTracing(
   additionalEventArgs?: Record<string, string>,
   api: TracingAPI = 'dev'
 ) {
-  const { startSpan } = maybeUseTracer(eventName);
+  const { startSpan: startOTELSpan } = maybeUseOTELTracer(eventName);
   const jsLogicStartTimestampRef = useRef<number | null>(null);
 
   jsLogicStartTimestampRef.current = now();
 
   const jsLogicRenderEndTimeRef = useRef<number | null>(null);
 
-  const tokenRef = useRef<number | null>(null);
-  const spanRef = useRef<Span | null>(null);
+  const devTokenRef = useRef<number | null>(null);
+  const otelSpanRef = useRef<Span | null>(null);
 
   // the below effect executes before shadow tree commit, but with the commit guaranteed
   useLayoutEffect(() => {
     if (api === 'dev') {
-      tokenRef.current = Ottrelite.beginAsyncEvent(
+      devTokenRef.current = Ottrelite.beginAsyncEvent(
         eventName,
         additionalEventArgs
       );
     } else {
-      spanRef.current = startSpan(eventName, {
+      otelSpanRef.current = startOTELSpan(eventName, {
         attributes: additionalEventArgs,
       });
     }
@@ -96,15 +102,15 @@ export function useComponentRenderTracing(
 
     const jsLogicDuration = `${jsLogicRenderEndTimeRef.current - jsLogicStartTimestampRef.current}ms`;
 
-    if (tokenRef.current !== null) {
-      Ottrelite.endAsyncEvent(eventName, tokenRef.current, {
+    if (devTokenRef.current !== null) {
+      Ottrelite.endAsyncEvent(eventName, devTokenRef.current, {
         jsLogicDuration,
       });
-      tokenRef.current = null;
-    } else if (spanRef.current) {
-      spanRef.current.setAttribute('jsLogicDuration', jsLogicDuration);
-      spanRef.current.end();
-      spanRef.current = null;
+      devTokenRef.current = null;
+    } else if (otelSpanRef.current) {
+      otelSpanRef.current.setAttribute('jsLogicDuration', jsLogicDuration);
+      otelSpanRef.current.end();
+      otelSpanRef.current = null;
     } else {
       console.warn(
         `[useComponentRenderTracing] Neither tokenRef nor spanRef is set for event: ${eventName}. Something went wrong, please report a bug.`
