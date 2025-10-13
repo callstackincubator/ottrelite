@@ -177,3 +177,5 @@ export class Ottrelite {
     );
   }
 }
+
+export default Ottrelite;
