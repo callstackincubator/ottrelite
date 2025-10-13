@@ -42,13 +42,16 @@ Pod::Spec.new do |s|
       # Implementation (Swift)
       "ios/**/*.{swift}",
       # Autolinking/Registration (Objective-C++)
-      "ios/**/*.{m,mm}",
+      "ios/**/*.{m,mm,hpp,h}",
       # Implementation (C++ objects)
-      "cpp/**/*.{hpp,cpp}"
+      "cpp/**/*.{h,hpp,c,cpp}"
     ]
 
-    # ss.public_header_files = "cpp/include/**/*.{h,hpp,inc}"
-    # ss.header_mappings_dir = "cpp/include/public"
+    # Expose headers
+    ss.public_header_files = [
+      "cpp/**/*.{h,hpp}",
+      "ios/**/*.{h,hpp}"
+    ]
 
     load 'nitrogen/generated/ios/ReactNativeOttreliteInteropOTEL+autolinking.rb'
     add_nitrogen_files(s)

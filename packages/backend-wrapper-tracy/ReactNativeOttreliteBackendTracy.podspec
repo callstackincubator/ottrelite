@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
     "cpp/**/*.{hpp,cpp}",
     # Tracy client library
     "ios/tracy/public/TracyClient.cpp",
+    "ios/tracy/public/**/*.{h,hpp}",
   ]
 
   s.exclude_files = 'ios/tracy/public/**/elf.cpp', 'ios/tracy/public/**/TracySourceView.cpp', 'ios/tracy/public/**/TracyCpuid.hpp', 'ios/tracy/public/**/TracySystem.cpp', 'ios/tracy/public/**/TracyRingBuffer.hpp', 'ios/tracy/public/**/TracyD3D*.hpp', 'ios/tracy/public/**/TracyLua.hpp', 'ios/tracy/public/**/TracyOpenCL.hpp', 'ios/tracy/public/**/TracyVulkan.hpp', 'ios/tracy/public/**/TracyCUDA.hpp'
@@ -30,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.pod_target_xcconfig = {
     # C++ compiler flags, mainly for folly.
-    "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) TRACY_ENABLE=ON TRACY_CALLSTACK=5 OTTRELITE_BACKEND_TRACY_VERSION=\\\"#{package["version"]}\\\" FOLLY_NO_CONFIG FOLLY_CFG_NO_COROUTINES"
+    "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) TRACY_ENABLE=ON TRACY_CALLSTACK=5 OTTRELITE_BACKEND_TRACY_VERSION=\\\"#{package["version"]}\\\" FOLLY_NO_CONFIG FOLLY_CFG_NO_COROUTINES",
   }
 
   project_dir = File.absolute_path("./ios/")

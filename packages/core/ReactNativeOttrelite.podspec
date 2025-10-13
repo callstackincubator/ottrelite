@@ -26,9 +26,15 @@ Pod::Spec.new do |s|
     # Implementation (Swift)
     "ios/**/*.{swift}",
     # Autolinking/Registration (Objective-C++)
-    "ios/**/*.{m,mm}",
+    "ios/**/*.{m,mm,hpp,h}",
     # Implementation (C++ objects)
-    "cpp/**/*.{hpp,cpp}"
+    "cpp/**/*.{h,hpp,c,cpp}"
+  ]
+
+  # Expose headers
+  s.public_header_files = [
+    "cpp/**/*.{h,hpp}",
+    "ios/**/*.{h,hpp}"
   ]
 
   load 'nitrogen/generated/ios/ReactNativeOttrelite+autolinking.rb'

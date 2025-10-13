@@ -8,7 +8,11 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#if defined(__APPLE__)
+#include <ReactNativeOttreliteBackendTracy/tracy/Tracy.hpp>
+#else
 #include <tracy/Tracy.hpp>
+#endif
 
 #include <ReactNativeOttrelite/Logger.hpp>
 #include <ReactNativeOttrelite/NonCppStackTraceEntry.hpp>
@@ -16,8 +20,12 @@
 
 namespace tracy
 {
+#if defined(__APPLE__)
+#include <ReactNativeOttreliteBackendTracy/tracy/TracyC.h>
+#else
 #include <tracy/TracyC.h>
-}
+#endif
+} // namespace tracy
 
 namespace ottrelite::backend::tracy
 {
