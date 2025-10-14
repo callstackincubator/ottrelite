@@ -45,12 +45,7 @@ export function parseDirective(
   let isFunctionComponent = true;
 
   // II. Attempt to read displayName or name, if componentName is still undefined
-  if (
-    !componentName &&
-    (path.node.type === 'FunctionDeclaration' ||
-      path.node.type === 'FunctionExpression' ||
-      path.node.type === 'ArrowFunctionExpression')
-  ) {
+  if (!componentName && t.isFunction(path.node)) {
     // look for .displayName or .name assignments in parent scope
     const parent = path.findParent(
       (p) => p.isProgram() || p.isBlockStatement()
@@ -72,6 +67,14 @@ export function parseDirective(
     }
   }
 
+  const isClassMember =
+    (path.parent.type === 'ClassMethod' &&
+      path.parent.key.type === 'Identifier') ||
+    (path.parent.type === 'ObjectProperty' && t.isFunction(path.node));
+  if (isClassMember) {
+    isFunctionComponent = false;
+  }
+
   // III. Infer the name from context, if componentName is still undefined
   if (!componentName) {
     if ('id' in path.node && path.node.id?.name) {
@@ -89,13 +92,10 @@ export function parseDirective(
     ) {
       // object property assignment
       componentName ??= path.parent.key.name;
-    } else if (
-      path.parent.type === 'ClassMethod' &&
-      path.parent.key.type === 'Identifier'
-    ) {
+    } else if (isClassMember) {
       // class method
-      isFunctionComponent = false;
-      componentName ??= path.parent.key.name;
+      componentName ??= ((path.parent as t.ClassMethod).key as t.Identifier)
+        .name;
     } else if (path.parent.type === 'ExportDefaultDeclaration') {
       // anonymous export default
       throw new Error(

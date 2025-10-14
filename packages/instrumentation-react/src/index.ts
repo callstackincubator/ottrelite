@@ -129,7 +129,7 @@ export default function ottrelitePlugin(): PluginObj {
 
         if (LOG_DEBUG) {
           console.log(
-            `[tracePlugin] Found directive "${traceDirective.value.value}" in ${locationDescription}, instrumenting component '${componentName}' lifecycle tracing.`
+            `[tracePlugin] Found directive "${traceDirective.value.value}" in ${locationDescription}, instrumenting function component '${componentName}' lifecycle tracing.`
           );
         }
 
@@ -240,14 +240,14 @@ export default function ottrelitePlugin(): PluginObj {
       Class(classPath, pluginPass) {
         for (const path of classPath.node.body.body) {
           if (!t.isClassMethod(path)) {
-            return;
+            continue;
           }
 
           const traceDirective = path.body.directives.find(({ value }) =>
             value.value.startsWith('use trace')
           );
 
-          if (!traceDirective) return;
+          if (!traceDirective) continue;
 
           // remove that directive
           path.body.directives = path.body.directives.filter(
@@ -265,6 +265,12 @@ export default function ottrelitePlugin(): PluginObj {
             traceDirective,
             locationDescription
           );
+
+          if (LOG_DEBUG) {
+            console.log(
+              `[tracePlugin] Found directive "${traceDirective.value.value}" in ${locationDescription}, instrumenting class component '${componentName}' lifecycle tracing.`
+            );
+          }
 
           (program as AugmentedProgramNode).__hasClassComponent = true;
 

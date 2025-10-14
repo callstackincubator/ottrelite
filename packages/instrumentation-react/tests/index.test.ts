@@ -395,6 +395,25 @@ describe('Ottrelite Babel Plugin', () => {
         expect(result).toContain(TRACE_COMPONENT_LIFECYCLE_HOC_NAME);
       });
 
+      test(`should add ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} import when use trace directive is found in a class component that has other paths than the render method`, () => {
+        const code = `
+          class MyComponent {
+            someMethod() {
+              console.log('doing something');
+            }
+
+            render() {
+              'use trace';
+              return <div>Hello</div>;
+            }
+          }
+        `;
+
+        const result = transformCode(code);
+        expect(result).toContain(CORE_PACKAGE_NAME);
+        expect(result).toContain(TRACE_COMPONENT_LIFECYCLE_HOC_NAME);
+      });
+
       test(`should not add duplicate import if ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} is already imported in a class component`, () => {
         const code = `
           import { ${TRACE_COMPONENT_LIFECYCLE_HOOK_NAME} } from '${CORE_PACKAGE_NAME}';
