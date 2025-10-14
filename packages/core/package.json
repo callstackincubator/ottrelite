@@ -1,6 +1,6 @@
 {
   "name": "@ottrelite/core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Extensible, unified tracing framework for React Native",
   "main": "lib/index",
   "module": "lib/index",
