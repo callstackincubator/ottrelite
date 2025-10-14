@@ -25,7 +25,7 @@
     "test": "jest --config ../../jest.config.ts",
     "test:watch": "jest --watch --config ../../jest.config.ts",
     "test:update-snapshots": "jest --updateSnapshot --config ../../jest.config.ts",
-    "publish:npm": "pnpm publish --access public",
+    "publish:npm": "pnpm publish --access public --no-git-checks",
     "publish:yalc": "yalc publish"
   },
   "keywords": [

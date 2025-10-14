@@ -35,7 +35,7 @@
     "typescript": "tsc",
     "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
     "build:watch": "tsc --watch",
-    "publish:npm": "pnpm publish --access public",
+    "publish:npm": "pnpm publish --access public --no-git-checks",
     "publish:yalc": "yalc publish"
   },
   "keywords": [
