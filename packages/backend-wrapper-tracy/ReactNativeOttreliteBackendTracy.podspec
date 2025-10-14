@@ -36,17 +36,13 @@ Pod::Spec.new do |s|
 
   project_dir = File.absolute_path("./ios/")
 
-  s.script_phase = {
-    :name => "Build Tracy client",
-    :execution_position => :before_compile,
-    :script => <<-SCRIPT
-      cd #{project_dir}
-      if [ ! -d tracy ]; then
-          echo "Cloning Tracy..."
-          git clone -b v0.12.2 https://github.com/wolfpld/tracy.git
-      fi
-    SCRIPT
-  }
+  s.prepare_command = <<-SCRIPT
+    cd #{project_dir}
+    if [ ! -d tracy ]; then
+      echo "Cloning Tracy..."
+      git clone --depth 1 -b v0.12.2 https://github.com/wolfpld/tracy.git
+    fi
+  SCRIPT
 
   load 'nitrogen/generated/ios/ReactNativeOttreliteBackendTracy+autolinking.rb'
   add_nitrogen_files(s)
