@@ -11,6 +11,7 @@ FetchContent_Declare(
     Tracy
     GIT_REPOSITORY https://github.com/wolfpld/tracy.git
     GIT_TAG        v0.12.2
+    GIT_SHALLOW    TRUE
 )
 FetchContent_MakeAvailable(Tracy)
 
