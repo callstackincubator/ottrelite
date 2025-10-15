@@ -4,17 +4,25 @@
   </picture>
 </a>
 
-<p align="center">
+<h3 align="center">
   <b>Ottrelite</b> - Unified, extensible, cross-language tracing toolkit for React Native ⚡️🔎
-</p>
+</h3>
 
 ---
 
-[![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
-[![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
-[![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
-[![npm downloads](https://img.shields.io/npm/dm/ottrelite.svg)](https://www.npmjs.com/package/ottrelite)
+<div align="center">
 
+  [![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
+  [![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
+  [![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
+
+  [![core npm downloads](https://img.shields.io/npm/dm/@ottrelite/core.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fcore)](https://www.npmjs.com/package/@ottrelite/core)
+  [![instrumentation-react npm downloads](https://img.shields.io/npm/dm/@ottrelite/instrumentation-react.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Finstrumentation-react)](https://www.npmjs.com/package/@ottrelite/instrumentation-react)
+  [![backend-platform npm downloads](https://img.shields.io/npm/dm/@ottrelite/backend-platform.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fbackend-platform)](https://www.npmjs.com/package/@ottrelite/backend-platform)
+  [![backend-wrapper-tracy npm downloads](https://img.shields.io/npm/dm/@ottrelite/backend-wrapper-tracy.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fbackend-wrapper-tracy)](https://www.npmjs.com/package/@ottrelite/backend-wrapper-tracy)
+  [![interop-otel npm downloads](https://img.shields.io/npm/dm/@ottrelite/interop-otel.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Finterop-otel)](https://www.npmjs.com/package/@ottrelite/interop-otel)
+
+</div>
 
 - [State of the project](#state-of-the-project)
   - [Development API](#development-api)

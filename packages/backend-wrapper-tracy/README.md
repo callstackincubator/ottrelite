@@ -2,6 +2,28 @@
 
 This plugin is a wrapper around the [open-source Tracy profiler](https://github.com/wolfpld/tracy) client, which brings tracing using Tracy to Ottrelite.
 
+<a href="https://www.callstack.com/open-source?utm_campaign=generic&utm_source=github&utm_medium=referral&utm_content=ottrelite" align="center">
+  <picture>
+    <img alt="Ottrelite" src="https://github.com/callstackincubator/ottrelite/blob/main/img/banner.jpg?raw=true">
+  </picture>
+</a>
+
+<h3 align="center">
+  <b>Ottrelite</b> - Unified, extensible, cross-language tracing toolkit for React Native ⚡️🔎
+</h3>
+
+---
+
+<div align="center">
+
+  [![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
+  [![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
+  [![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
+
+  [![backend-wrapper-tracy npm downloads](https://img.shields.io/npm/dm/@ottrelite/backend-wrapper-tracy.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fbackend-wrapper-tracy)](https://www.npmjs.com/package/@ottrelite/backend-wrapper-tracy)
+
+</div>
+
 ## Supported features
 
 | Feature                                       | Support level                                                              |

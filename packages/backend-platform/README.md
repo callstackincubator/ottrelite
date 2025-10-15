@@ -2,6 +2,28 @@
 
 This plugin is the platform-specific backend implementation for RN Ottrelite Core. On Android, it utilizes [ATrace](https://developer.android.com/ndk/reference/group/tracing) (Android tracing API), on iOS it utilizes the [OSSignposter API](https://developer.apple.com/documentation/os/ossignposter).
 
+<a href="https://www.callstack.com/open-source?utm_campaign=generic&utm_source=github&utm_medium=referral&utm_content=ottrelite" align="center">
+  <picture>
+    <img alt="Ottrelite" src="https://github.com/callstackincubator/ottrelite/blob/main/img/banner.jpg?raw=true">
+  </picture>
+</a>
+
+<h3 align="center">
+  <b>Ottrelite</b> - Unified, extensible, cross-language tracing toolkit for React Native ⚡️🔎
+</h3>
+
+---
+
+<div align="center">
+
+  [![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
+  [![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
+  [![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
+
+  [![backend-platform npm downloads](https://img.shields.io/npm/dm/@ottrelite/backend-platform.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fbackend-platform)](https://www.npmjs.com/package/@ottrelite/backend-platform)
+
+</div>
+
 ## Supported features
 
 | Feature                                       | Support level                                 |
