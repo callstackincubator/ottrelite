@@ -1,6 +1,6 @@
 {
   "name": "@ottrelite/instrumentation-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pluggable tracing framework for React Native plugin for Babel - autoinstrumention",
   "main": "lib/index",
   "module": "lib/index",
