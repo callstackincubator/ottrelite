@@ -207,92 +207,94 @@ tasks.register("buildAndInstallOpenSSL") {
 
     def openSSLTarFile = file("${temporaryDir}/${opensslTarName}")
 
-    reactNativeArchitectures().each { abi ->
-        def cmakeInstallDir = getCmakeInstallDir(abi)
-        if (new File(cmakeInstallDir, "lib/libssl.a").exists()) {
-            println("[@ottrelite/interop-otel] OpenSSL already built for ABI $abi, skipping build.")
-        } else {
-            println("[@ottrelite/interop-otel] Building OpenSSL using openssl_for_android for ABI $abi from ${openSSLForAndroidSourceDir} and writing to source dir...")
+    doLast {
+        reactNativeArchitectures().each { abi ->
+            def cmakeInstallDir = getCmakeInstallDir(abi)
+            if (new File(cmakeInstallDir, "lib/libssl.a").exists()) {
+                println("[@ottrelite/interop-otel] OpenSSL already built, skipping build.")
+            } else {
+                println("[@ottrelite/interop-otel] Building OpenSSL using openssl_for_android for ABI $abi from ${openSSLForAndroidSourceDir} and writing to source dir...")
 
-            // 1. Clean Git repo
-            exec {
-                workingDir openSSLForAndroidSourceDir
-                commandLine "git", "reset", "--hard", "HEAD"
-            }
-            exec {
-                workingDir openSSLForAndroidSourceDir
-                commandLine "git", "clean", "-fd"
-            }
+                // 1. Clean Git repo
+                exec {
+                    workingDir openSSLForAndroidSourceDir
+                    commandLine "git", "reset", "--hard", "HEAD"
+                }
+                exec {
+                    workingDir openSSLForAndroidSourceDir
+                    commandLine "git", "clean", "-fd"
+                }
 
-            // 2. Download & extract OpenSSL
-            def openSSLForAndroidSourceDirFile = file(openSSLForAndroidSourceDir)
-            if (!openSSLForAndroidSourceDirFile.exists()) {
-                println("[@ottrelite/interop-otel] Cloning openssl_for_android to ${openSSLForAndroidSourceDir}...")
-
+                // 2. Download & extract OpenSSL
+                def openSSLForAndroidSourceDirFile = file(openSSLForAndroidSourceDir)
                 if (!openSSLForAndroidSourceDirFile.exists()) {
-                    openSSLForAndroidSourceDirFile.mkdirs()
+                    println("[@ottrelite/interop-otel] Cloning openssl_for_android to ${openSSLForAndroidSourceDir}...")
 
-                    exec {
-                        commandLine "git", "clone", "--depth", "1", "https://github.com/217heidai/openssl_for_android.git", openSSLForAndroidSourceDir
+                    if (!openSSLForAndroidSourceDirFile.exists()) {
+                        openSSLForAndroidSourceDirFile.mkdirs()
+
+                        exec {
+                            commandLine "git", "clone", "--depth", "1", "https://github.com/217heidai/openssl_for_android.git", openSSLForAndroidSourceDir
+                        }
+                    } else {
+                        println("[@ottrelite/interop-otel] openssl_for_android already cloned in ${openSSLForAndroidSourceDir}")
+                    }
+                }
+
+                if (!openSSLSourceDirFile.exists()) {
+                    openSSLSourceDirFile.mkdirs()
+
+                    if (openSSLTarFile.exists()) {
+                        println("[@ottrelite/interop-otel] OpenSSL tarball already downloaded to ${openSSLTarFile.path}, skipping download.")
+                    }else{
+                        println("[@ottrelite/interop-otel] Downloading OpenSSL ${opensslVersion} to ${openSSLTarFile.path}...")
+                        new URL(opensslUrl).withInputStream { i ->
+                            openSSLTarFile.withOutputStream { it << i }
+                        }
+                    }
+
+                    println("[@ottrelite/interop-otel] Extracting OpenSSL from ${openSSLTarFile.path} to ${openSSLSourceDir}...")
+
+                    copy {
+                        from tarTree(openSSLTarFile.path)
+
+                        // below: actually, the script appends the openssl-${opensslVersion} directory by itself
+                        into openSSLSourceDirFile.parent
                     }
                 } else {
-                    println("[@ottrelite/interop-otel] openssl_for_android already cloned in ${openSSLForAndroidSourceDir}")
-                }
-            }
-
-            if (!openSSLSourceDirFile.exists()) {
-                openSSLSourceDirFile.mkdirs()
-
-                if (openSSLTarFile.exists()) {
-                    println("[@ottrelite/interop-otel] OpenSSL tarball already downloaded to ${openSSLTarFile.path}, skipping download.")
-                }else{
-                    println("[@ottrelite/interop-otel] Downloading OpenSSL ${opensslVersion} to ${openSSLTarFile.path}...")
-                    new URL(opensslUrl).withInputStream { i ->
-                        openSSLTarFile.withOutputStream { it << i }
-                    }
+                    println("[@ottrelite/interop-otel] OpenSSL already extracted to ${openSSLSourceDir}")
                 }
 
-                println("[@ottrelite/interop-otel] Extracting OpenSSL from ${openSSLTarFile.path} to ${openSSLSourceDir}...")
+                def symlinkTarget = new File(openSSLSourceDirFile.parent, "android-ndk-${android.ndkVersion}")
+                if (!symlinkTarget.exists()) {
+                    println("[@ottrelite/interop-otel] Symlinking the Android NDK for openssl_for_android to ${openSSLSourceDirFile.parent}...")
+                    Files.createSymbolicLink(symlinkTarget.toPath(), android.ndkDirectory.toPath())
+                } else {
+                    println("[@ottrelite/interop-otel] Symlink target ${symlinkTarget} already exists.")
+                }
+
+                // 3. Build OpenSSL
+                exec {
+                    commandLine "bash", new File(openSSLForAndroidSourceDir, "openssl_build_new.sh").path,
+                            "${android.defaultConfig.minSdkVersion.apiLevel}",
+                            "$abi",
+                            "$opensslVersion",
+                            "$android.ndkVersion"
+                }
+
+                // 4. Copy built files to cmake install dir
+                def openSSLForAndroidBuildDir = getOpenSSLForAndroidBuildDir(abi)
+
+                println("[@ottrelite/interop-otel] Copying OpenSSL build artifacts for ABI $abi from ${openSSLForAndroidBuildDir} to ${cmakeInstallDir}...")
 
                 copy {
-                    from tarTree(openSSLTarFile.path)
+                    from fileTree(openSSLForAndroidBuildDir) {
+                        include "include/**"
+                        include "lib/**"
+                    }
 
-                    // below: actually, the script appends the openssl-${opensslVersion} directory by itself
-                    into openSSLSourceDirFile.parent
+                    into cmakeInstallDir
                 }
-            } else {
-                println("[@ottrelite/interop-otel] OpenSSL already extracted to ${openSSLSourceDir}")
-            }
-
-            def symlinkTarget = new File(openSSLSourceDirFile.parent, "android-ndk-${android.ndkVersion}")
-            if (!symlinkTarget.exists()) {
-                println("[@ottrelite/interop-otel] Symlinking the Android NDK for openssl_for_android to ${openSSLSourceDirFile.parent}...")
-                Files.createSymbolicLink(symlinkTarget.toPath(), android.ndkDirectory.toPath())
-            } else {
-                println("[@ottrelite/interop-otel] Symlink target ${symlinkTarget} already exists.")
-            }
-
-            // 3. Build OpenSSL
-            exec {
-                commandLine "bash", new File(openSSLForAndroidSourceDir, "openssl_build_new.sh").path,
-                        "${android.defaultConfig.minSdkVersion.apiLevel}",
-                        "$abi",
-                        "$opensslVersion",
-                        "$android.ndkVersion"
-            }
-
-            // 4. Copy built files to cmake install dir
-            def openSSLForAndroidBuildDir = getOpenSSLForAndroidBuildDir(abi)
-
-            println("[@ottrelite/interop-otel] Copying OpenSSL build artifacts for ABI $abi from ${openSSLForAndroidBuildDir} to ${cmakeInstallDir}...")
-
-            copy {
-                from fileTree(openSSLForAndroidBuildDir) {
-                    include "include/**"
-                    include "lib/**"
-                }
-
-                into cmakeInstallDir
             }
         }
     }
@@ -533,6 +535,11 @@ tasks.register("buildAndInstallCppWrapper") {
         reactNativeArchitectures().each { abi ->
             def wrapperBuildDir = getWrapperBuildDir(abi)
             def cmakeInstallDir = getCmakeInstallDir(abi)
+
+            if (new File(cmakeInstallDir, "lib/libopentelemetry_common.a").exists()) {
+                println("[@ottrelite/interop-otel] C++ OTEL wrapper already built and installed to ${getCmakeInstallDir(abi)}, skipping build.")
+                return
+            }
 
             println("[@ottrelite/interop-otel] Building & installing artifacts for ABI $abi, this may take a while...")
 
