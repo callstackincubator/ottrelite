@@ -1,6 +1,6 @@
 {
   "name": "@ottrelite/interop-otel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Interoperability layer integrating Ottrelite with OTEL SDKs",
   "main": "lib/index",
   "module": "lib/index",
