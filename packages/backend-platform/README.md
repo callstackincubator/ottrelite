@@ -26,11 +26,14 @@ This plugin is the platform-specific backend implementation for RN Ottrelite Cor
 
 ## Supported features
 
-| Feature                                       | Support level                                 |
+| Feature                                       | Support level (compile-time)                  |
 | --------------------------------------------- | --------------------------------------------- |
 | synchronous traces (`{begin,end}Event`)       | Android: API level $\geqslant 23$ (Android M) |
 | asynchronous traces (`{begin,end}AsyncEvent`) | Android: API level $\geqslant 29$ (Android Q) |
 | counter events (`counterEvent`)               | Android: API level $\geqslant 29$ (Android Q) |
+
+> [!NOTE]
+> The support levels above mean that the application must be **compiled** with at least the given `minSdkVersion`. This is because those APIs are not available on older Android versions and therefore it is not possible to compile the native code against older SDKs.
 
 ## Use case coverage
 
