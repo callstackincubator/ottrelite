@@ -80,6 +80,16 @@ You can record and view traces in two ways:
 - using Android Studio's Profiler's 'Capture System Activities' option, as per the [documentation](https://developer.android.com/studio/profile); this method works both on physical devices & the Android emulator
 - using the `perfetto` CLI tool, which is distributed as part of the Android OS onboard most modern devices. More details can be found in the [documentation](https://perfetto.dev/docs/getting-started/system-tracing); the resulting file can be viewed in [Perfetto UI](https://ui.perfetto.dev/); this method works only on a physical device
 
+> [!NOTE]
+> Make sure that the app you are profiling is `profileable` by placing an [appropriate element](https://developer.android.com/guide/topics/manifest/profileable-element) within your `AndroidManifest.xml`'s `<application>` element: `<profileable android:shell="true" />`
+
+> [!NOTE]
+> If using the Perfetto CLI via the `record_android_trace` script, make sure to adjust the `--app` argument to match your app's package. We discovered that on some devices it is needed to set it, otherwise some userspace events may be missing. Some devices allow to pass an additional tracing category, `app`, which can also be considered in such cases. An example invocation might look like the following: `./record_android_trace --app=com.callstack.ottrelite.demo -o trace_file.perfetto-trace -t 40s -b 64mb sched freq idle am wm gfx view binder_driver hal dalvik camera input res memory rs app`.
+>
+> If your events are still missing, make sure your app is `profileable`.
+>
+> The Android Studio Profiler does not require any kind of configuration as the one described here and it should always work out of the box; it will also warn you in case your app is not `profileable`.
+
 ### iOS
 
 You can view the traces in Xcode Instruments, as per the [documentation](https://developer.apple.com/documentation/os/recording-performance-data#Review-Signposts-in-Instruments).
