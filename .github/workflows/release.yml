@@ -15,6 +15,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    environment: release-approval
     steps:
       - name: Checkout
         uses: actions/checkout@v4

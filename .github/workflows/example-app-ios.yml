@@ -11,7 +11,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   build-ios:
     name: Build iOS demo app
-    environment: manual-approval
+    environment: demo-app-build-approval
     runs-on: macos-latest
     steps:
       - name: Checkout
