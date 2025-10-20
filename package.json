@@ -22,7 +22,7 @@
     "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.29.6",
+    "react-native-nitro-modules": "0.30.2",
     "react-test-renderer": "19.0.0",
     "ts-jest": "^29.4.0",
     "turbo": "^1.13.4",

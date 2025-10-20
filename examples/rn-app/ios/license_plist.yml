@@ -27,10 +27,10 @@ rename:
   "@opentelemetry_resources@2.1.0": '@opentelemetry/resources'
   "@opentelemetry_core@2.1.0": '@opentelemetry/core'
   "@opentelemetry_sdk-trace-base@2.1.0": '@opentelemetry/sdk-trace-base'
-  "@ottrelite_backend-platform@0.0.1": '@ottrelite/backend-platform'
-  "@ottrelite_backend-wrapper-tracy@0.0.1": '@ottrelite/backend-wrapper-tracy'
-  "@ottrelite_core@0.0.1": '@ottrelite/core'
-  "@ottrelite_interop-otel@0.0.1": '@ottrelite/interop-otel'
+  "@ottrelite_backend-platform@0.1.1": '@ottrelite/backend-platform'
+  "@ottrelite_backend-wrapper-tracy@0.1.1": '@ottrelite/backend-wrapper-tracy'
+  "@ottrelite_core@0.1.1": '@ottrelite/core'
+  "@ottrelite_interop-otel@0.1.1": '@ottrelite/interop-otel'
   "@opentelemetry_sdk-metrics@2.0.1": '@opentelemetry/sdk-metrics'
   "@react-native-community_slider@5.0.1": '@react-native-community/slider'
   "@react-native-vector-icons_material-design-icons@12.3.0": '@react-native-vector-icons/material-design-icons'
@@ -381,7 +381,7 @@ rename:
   "xml2js@0.6.2": xml2js
   "sax@1.4.1": sax
   "xmlbuilder@11.0.1": xmlbuilder
-  "react-native-nitro-modules@0.29.6": react-native-nitro-modules
+  "react-native-nitro-modules@0.30.2": react-native-nitro-modules
   "react-native-paper@5.14.5": react-native-paper
   "@callstack_react-theme-provider@3.0.9": '@callstack/react-theme-provider'
   "deepmerge@3.3.0": deepmerge
@@ -503,20 +503,20 @@ manual:
     version: '2.1.0'
     source: open-telemetry/opentelemetry-js
     file: '../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
-  - name: '@ottrelite_backend-platform@0.0.1'
-    version: '0.0.1'
+  - name: '@ottrelite_backend-platform@0.1.1'
+    version: '0.1.1'
     source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/backend-platform/LICENSE'
-  - name: '@ottrelite_backend-wrapper-tracy@0.0.1'
-    version: '0.0.1'
+  - name: '@ottrelite_backend-wrapper-tracy@0.1.1'
+    version: '0.1.1'
     source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/backend-wrapper-tracy/LICENSE'
-  - name: '@ottrelite_core@0.0.1'
-    version: '0.0.1'
+  - name: '@ottrelite_core@0.1.1'
+    version: '0.1.1'
     source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/core/LICENSE'
-  - name: '@ottrelite_interop-otel@0.0.1'
-    version: '0.0.1'
+  - name: '@ottrelite_interop-otel@0.1.1'
+    version: '0.1.1'
     source: https://github.com/callstackincubator/ottrelite
     file: '../../../packages/interop-otel/LICENSE'
   - name: '@opentelemetry_sdk-metrics@2.0.1'
@@ -1352,7 +1352,7 @@ manual:
   - name: argparse@1.0.10
     version: '1.0.10'
     source: nodeca/argparse
-    file: '../../../node_modules/argparse/LICENSE'
+    file: '../../../node_modules/js-yaml/node_modules/argparse/LICENSE'
   - name: sprintf-js@1.0.3
     version: '1.0.3'
     source: https://github.com/alexei/sprintf.js
@@ -1404,7 +1404,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1917,8 +1917,8 @@ manual:
     version: '11.0.1'
     source: https://github.com/oozcitak/xmlbuilder-js
     file: '../../../node_modules/xml2js/node_modules/xmlbuilder/LICENSE'
-  - name: react-native-nitro-modules@0.29.6
-    version: '0.29.6'
+  - name: react-native-nitro-modules@0.30.2
+    version: '0.30.2'
     source: https://github.com/mrousavy/nitro
     body: MIT
   - name: react-native-paper@5.14.5
@@ -1940,7 +1940,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color

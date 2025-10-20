@@ -64,7 +64,7 @@
     "eslint": "^8.57.1",
     "jest": "^30.0.4",
     "nitro-codegen": "^0.27.2",
-    "react-native-nitro-modules": "0.29.6",
+    "react-native-nitro-modules": "0.30.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "@babel/runtime": "^7.25.0",
