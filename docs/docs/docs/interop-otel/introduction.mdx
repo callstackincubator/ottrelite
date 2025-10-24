@@ -119,10 +119,6 @@ registerInstrumentations({
 
 The C++ integration enables OpenTelemetry spans from C++ code to be visualized in Ottrelite's backends. When you register the JavaScript TracerProvider and MeterProvider, Ottrelite automatically configures the global C++ OpenTelemetry providers to use the same exporters and visualization backends.
 
-:::important
-C++ providers should only be registered once. Make sure all your JavaScript exporters are configured before calling `register()`.
-:::
-
 ### Options
 
 The `Ottrelite.install` method accepts C++ OTEL SDK configuration options:
