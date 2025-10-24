@@ -20,6 +20,10 @@ Ottrelite.install(yourBackendsOfChoice, {
 
 Once enabled, you'll automatically see traces for React Native's internal operations like module loading and other framework-level activities that are already instrumented in the React Native source code.
 
+:::note
+The features varies between platforms due to architectural constraints. On Android, you will see traces for both JavaScript and native Java/Kotlin operations. On iOS, you will only see traces for JavaScript operations.
+:::
+
 ### Seeing it in practice
 
 On both iOS and Android, the revived Systrace API will cause JS internals that are instrumented in RN source code to be traced, such as the `require()`s for modules required first time in a run.
