@@ -10,11 +10,11 @@ When building React Native apps, you often run into performance issues that are 
 - A screen takes 2 seconds to load, but which of the 15 functions in your component is the bottleneck?
 - Your complex form validation runs fast in dev but slow on device - which validation rule is the culprit?
 
-Existing solutions fall short because React Native's cross-platform nature creates unique debugging challenges. 
+React Native's cross-platform nature creates unique debugging opportunities that require specialized tools.
 
-Performance issues often span JavaScript, native modules, and platform-specific code, but current profiling tools are platform-specific and focus on their respective domains. While Chrome DevTools, Xcode Instruments, and Android Studio Profiler are excellent tools for their platforms, it can be challenging to get a unified view of performance across these boundaries.
+Performance issues in React Native apps often span JavaScript, native modules, and platform-specific code. While Chrome DevTools, Xcode Instruments, and Android Studio Profiler are excellent tools for their respective platforms, React Native developers need a solution that bridges these domains.
 
-Ottrelite solves this by providing a unified tracing API that works across all React Native languages and platforms, with flexible visualization backends that give you a complete picture of your app's performance.
+Ottrelite provides a unified tracing API that works across all React Native languages and platforms, with flexible visualization backends that give you a complete picture of your app's performance.
 
 ## The Solution
 
