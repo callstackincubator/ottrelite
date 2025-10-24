@@ -10,7 +10,7 @@ Ottrelite Core supports tracing across all major React Native development langua
 | --------------- | ---------------- |
 | C++ API         | ✅               |
 | JS API          | ✅               |
-| Swift API       | ⏳ (in progress) |
+| Swift API       | ⏳ (in progress, see [#4](https://github.com/callstackincubator/ottrelite/issues/4) for details) |
 | Java/Kotlin API | ✅               |
 
 ## Installation
@@ -60,19 +60,32 @@ import { Tab, Tabs } from 'rspress/theme';
 import { Ottrelite } from '@ottrelite/core';
 
 Ottrelite.beginEvent('MyEvent');
-// ... do some work ...
-Ottrelite.endEvent('MyEvent');
+// ...
+Ottrelite.endEvent();
 ```
 </Tab>
 <Tab label="C++">
 ```cpp title="index.cpp"
-// Your code here
+#include <ReactNativeOttrelite/Ottrelite.hpp>
+
+Ottrelite::beginEvent("MyEvent");
+// ...
+Ottrelite::endEvent();
+
 ```
 </Tab>
 <Tab label="Java">
-
 ```java title="index.java"
-// Your code here
+import com.callstack.ottrelite.OttreliteAndroid
+
+OttreliteAndroid.beginEvent("MyEvent")
+// ...
+OttreliteAndroid.endEvent()
+```
+</Tab>
+<Tab label="Kotlin">
+```kotlin title="index.kt"
+// tbd
 ```
 </Tab>
 </Tabs>
@@ -86,21 +99,28 @@ To record asynchronous traces, you can use the `Ottrelite.beginAsyncEvent()` and
 ```typescript title="index.ts"
 import { Ottrelite } from '@ottrelite/core';
 
-// begin an asynchronous event
 const token = Ottrelite.beginAsyncEvent('MyAsyncEvent');
-// ... do some work ...
+// ...
 Ottrelite.endAsyncEvent('MyAsyncEvent', token);
 ```
 </Tab>
 <Tab label="C++">
 ```cpp title="index.cpp"
-// Your code here
+#include <ReactNativeOttrelite/Ottrelite.hpp>
+
+const auto token = Ottrelite::beginAsyncEvent("MyAsyncEvent");
+// ...
+Ottrelite::endAsyncEvent("MyAsyncEvent", token);
 ```
 </Tab>
 <Tab label="Java">
 
 ```java title="index.java"
-// Your code here
+import com.callstack.ottrelite.OttreliteAndroid
+
+val token = OttreliteAndroid.beginAsyncEvent("MyAsyncEvent")
+// ...
+OttreliteAndroid.endAsyncEvent("MyAsyncEvent", token)
 ```
 </Tab>
 </Tabs>
@@ -114,23 +134,22 @@ To record counter events, you can use the `Ottrelite.counterEvent()` method. Thi
 ```typescript title="index.ts"
 import { Ottrelite } from '@ottrelite/core';
 
-Ottrelite.counterEvent('MyCounterEvent', 42);
-
-setTimeout(() => {
-  // update the value
-  Ottrelite.counterEvent('MyCounterEvent', 80);
-}, 1000);
+Ottrelite.counterEvent('MyCounter', 123.45);
 ```
 </Tab>
 <Tab label="C++">
 ```cpp title="index.cpp"
-// Your code here
+#include <ReactNativeOttrelite/Ottrelite.hpp>
+
+Ottrelite::counterEvent("MyCounter", 123.45);
 ```
 </Tab>
 <Tab label="Java">
 
 ```java title="index.java"
-// Your code here
+import com.callstack.ottrelite.OttreliteAndroid
+
+OttreliteAndroid.traceCounter("MyCounter", 123.45)
 ```
 </Tab>
 </Tabs>

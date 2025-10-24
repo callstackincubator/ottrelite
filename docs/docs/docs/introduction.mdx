@@ -22,28 +22,67 @@ Ottrelite has a **two-part architecture**: choose your **tracing API** and choos
 
 ### Tracing API
 
-The Tracing API provides a lightweight interface for React Native development that focuses on fast iteration during development. It supports both synchronous and asynchronous traces, counter events for monitoring metrics, and works across JavaScript, C++, Swift, and Java. 
+The Tracing API provides a lightweight interface for React Native development that focuses on fast iteration during development. It supports both synchronous and asynchronous traces, counter events for monitoring metrics, and works across JavaScript, C++, Swift, and Java.
+
+Below is an example of how to use the Tracing API in different languages to synchronous trace an event named `generateImage`.
 
 import { Tab, Tabs } from 'rspress/theme';
 
 <Tabs>
 <Tab label="JavaScript">
 ```typescript title="index.ts"
-// Your code here
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.beginEvent('generateImage', {
+	width: size.width.toString(),
+	height: size.height.toString(),
+});
+
+// ...
+
+Ottrelite.endEvent({
+  pixels: image.size().toString(),
+});
+
 ```
 </Tab>
 <Tab label="C++">
 ```cpp title="index.cpp"
-// Your code here
+#include <ReactNativeOttrelite/Ottrelite.hpp>
+
+Ottrelite::beginEvent("generateImage",
+			                 {{{"width", std::to_string(width)}, {"height", std::to_string(height)}}});
+
+// ...
+
+Ottrelite::endEvent({{{"pixels", std::to_string(image.size())}}});
+
+```
+</Tab>
+<Tab label="Kotlin">
+```kotlin title="index.kt"
+// tbd
 ```
 </Tab>
 <Tab label="Java">
-
 ```java title="index.java"
-// Your code here
+import com.callstack.ottrelite.OttreliteAndroid
+
+OttreliteAndroid.beginEvent("generateImage", mapOf(
+    "width" to width,
+    "height" to height
+))
+
+// ...
+
+OttreliteAndroid.endEvent(mapOf(
+    "pixels" to image.size()
+))
 ```
 </Tab>
 </Tabs>
+
+The API also allows you to trace asynchronous events as well as counter events. For details, see the [Tracing API documentation](/docs/core/introduction).
 
 :::tip
 **Already using OpenTelemetry?** 
