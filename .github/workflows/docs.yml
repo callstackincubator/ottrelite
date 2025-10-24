@@ -26,7 +26,7 @@ jobs:
       - name: Upload docs artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/doc_build
+          path: docs/build
 
   deploy-docs:
     permissions:
