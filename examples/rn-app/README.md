@@ -67,3 +67,5 @@ This is one way to run the app — you can also build it directly from Android S
 The final step is to trace the application using one of the available backends. This step varies depending on the backend you would like to use.
 
 The demonstrator application has all backends installed simultaneously, so you can record the trace from any backend of your choice. The correct way to do it is by following the steps of the backend, which is described in a given `README.md` file of the backends. You can find a list of available backends in the [root README](../../README.md) file.
+
+If using the Jaeger backend from [the example](../backend-jaeger/), remember to `adb forward tcp:4318 tcp:4318` for Android devices/emulators.
