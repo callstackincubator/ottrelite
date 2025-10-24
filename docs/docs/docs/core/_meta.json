@@ -1,17 +1,12 @@
 [
   {
     "type": "file",
-    "name": "quick-start.mdx",
-    "label": "Quick Start"
+    "name": "introduction.mdx",
+    "label": "Introduction"
   },
   {
     "type": "file",
     "name": "react-native-internals.mdx",
     "label": "React Native Internals"
-  },
-  {
-    "type": "file",
-    "name": "contributing.mdx",
-    "label": "Contributing"
   }
 ]

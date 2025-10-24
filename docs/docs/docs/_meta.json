@@ -26,7 +26,7 @@
   },
   {
     "type": "dir",
-    "name": "otel-interop",
-    "label": "OTEL Interoperability"
+    "name": "interop-otel",
+    "label": "Open Telemetry"
   }
 ]
