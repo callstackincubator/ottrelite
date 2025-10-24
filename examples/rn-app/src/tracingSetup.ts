@@ -1,9 +1,16 @@
-// install the Ottrelite Core & backend(s)
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
+import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 import { resourceFromAttributes } from '@opentelemetry/resources';
-import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
+import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -13,7 +20,6 @@ import { OttreliteBackendTracy } from '@ottrelite/backend-wrapper-tracy';
 import { Ottrelite } from '@ottrelite/core';
 import {
   DevSpanProcessorInterceptor,
-  OttreliteExporterOTLP,
   OttreliteMeterProvider,
   OttreliteTracerProvider,
 } from '@ottrelite/interop-otel';
@@ -25,6 +31,8 @@ import {
 } from 'react-native-device-info';
 
 import { name as appName } from '../app.json';
+
+const JAEGER_ENDPOINT_BASE = 'http://localhost:4318/v1';
 
 // initialize Ottrelite Development API
 Ottrelite.install(
@@ -53,14 +61,15 @@ const resource = resourceFromAttributes({
 // configure OpenTelemetry to use Ottrelite's OttreliteTracerProvider
 const tracerProvider = new OttreliteTracerProvider({
   spanProcessors: [
-    // optional step: configure Ottrelite's span processor (required for live tracing in dev)
     new DevSpanProcessorInterceptor(),
 
-    // optional step: configure Ottrelite's actual exporter using a preferred processor of choice
-    new SimpleSpanProcessor(
-      new OttreliteExporterOTLP({
-        endpoint: 'http://localhost:4318/v1/',
-      })
+    new BatchSpanProcessor(
+      new OTLPTraceExporter({
+        url: `${JAEGER_ENDPOINT_BASE}/traces`,
+      }),
+      {
+        scheduledDelayMillis: 500,
+      }
     ),
   ],
   resource,
@@ -82,11 +91,23 @@ registerInstrumentations({
 });
 
 // register the React Native tracer provider
-tracerProvider.register();
+tracerProvider.register({
+  propagator: new CompositePropagator({
+    propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
+  }),
+});
 
-// configure the OpenTelemetry MeterProvider to use Ottrelite's capabilities
+const metricExporter = new OTLPMetricExporter({
+  url: `${JAEGER_ENDPOINT_BASE}/metrics`,
+});
 const meterProvider = new OttreliteMeterProvider({
   resource,
+  readers: [
+    new PeriodicExportingMetricReader({
+      exporter: metricExporter,
+      exportIntervalMillis: 1000,
+    }),
+  ],
 });
 
 meterProvider.register();

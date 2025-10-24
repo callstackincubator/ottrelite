@@ -1,8 +1,7 @@
-/** @module @ottrelite/interop-otel */
-import { OttreliteInteropOTEL } from './OttreliteInteropOTEL';
+export * from './processor';
+export * from './logic';
+export * from './hooks';
+export * from './hoc';
 
-export * from './otel';
-export * from './types';
-
-export { OttreliteInteropOTEL };
-export default OttreliteInteropOTEL;
+export * from './OttreliteTracerProvider';
+export * from './OttreliteMeterProvider';

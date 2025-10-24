@@ -26,8 +26,6 @@ import {
   ATTR_TELEMETRY_SDK_VERSION,
 } from '@opentelemetry/semantic-conventions';
 
-import { ReactNativeOttreliteInteropOTELHybridObject } from '../ReactNativeOttreliteInteropOTELHybridObject';
-
 /**
  * {@link TracerProvider} implementation that pipes trace data to Ottrelite's Development API.
  */
@@ -61,7 +59,5 @@ export class OttreliteTracerProvider extends BasicTracerProvider {
     context.setGlobalContextManager(
       (config.contextManager ?? new StackContextManager()).enable()
     );
-
-    ReactNativeOttreliteInteropOTELHybridObject.installGlobalOTELCPPTracerProvider();
   }
 }

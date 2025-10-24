@@ -1,6 +1,52 @@
 # BEGIN Generated NPM license entries
 rename:
   "@opentelemetry_api@1.9.0": '@opentelemetry/api'
+  "@opentelemetry_exporter-trace-otlp-grpc@0.207.0": '@opentelemetry/exporter-trace-otlp-grpc'
+  "@grpc_grpc-js@1.14.0": '@grpc/grpc-js'
+  "@grpc_proto-loader@0.8.0": '@grpc/proto-loader'
+  "lodash.camelcase@4.3.0": lodash.camelcase
+  "long@undefined": long
+  "protobufjs@7.5.4": protobufjs
+  "@protobufjs_aspromise@1.1.2": '@protobufjs/aspromise'
+  "@protobufjs_base64@1.1.2": '@protobufjs/base64'
+  "@protobufjs_codegen@2.0.4": '@protobufjs/codegen'
+  "@protobufjs_eventemitter@1.1.0": '@protobufjs/eventemitter'
+  "@protobufjs_fetch@1.1.0": '@protobufjs/fetch'
+  "@protobufjs_inquire@1.1.0": '@protobufjs/inquire'
+  "@protobufjs_float@1.0.2": '@protobufjs/float'
+  "@protobufjs_path@1.1.2": '@protobufjs/path'
+  "@protobufjs_pool@1.1.0": '@protobufjs/pool'
+  "@protobufjs_utf8@1.1.0": '@protobufjs/utf8'
+  "@types_node@24.1.0": '@types/node'
+  "undici-types@7.8.0": undici-types
+  "yargs@17.7.2": yargs
+  "cliui@8.0.1": cliui
+  "string-width@4.2.3": string-width
+  "emoji-regex@8.0.0": emoji-regex
+  "is-fullwidth-code-point@3.0.0": is-fullwidth-code-point
+  "strip-ansi@6.0.1": strip-ansi
+  "ansi-regex@5.0.1": ansi-regex
+  "wrap-ansi@7.0.0": wrap-ansi
+  "ansi-styles@4.3.0": ansi-styles
+  "color-convert@2.0.1": color-convert
+  "color-name@1.1.4": color-name
+  "escalade@3.2.0": escalade
+  "get-caller-file@2.0.5": get-caller-file
+  "require-directory@2.1.1": require-directory
+  "y18n@5.0.8": y18n
+  "yargs-parser@21.1.1": yargs-parser
+  "@js-sdsl_ordered-map@4.4.2": '@js-sdsl/ordered-map'
+  "@opentelemetry_core@2.2.0": '@opentelemetry/core'
+  "@opentelemetry_semantic-conventions@1.37.0": '@opentelemetry/semantic-conventions'
+  "@opentelemetry_otlp-exporter-base@0.207.0": '@opentelemetry/otlp-exporter-base'
+  "@opentelemetry_otlp-transformer@0.207.0": '@opentelemetry/otlp-transformer'
+  "@opentelemetry_api-logs@0.207.0": '@opentelemetry/api-logs'
+  "@opentelemetry_resources@2.2.0": '@opentelemetry/resources'
+  "@opentelemetry_sdk-logs@0.207.0": '@opentelemetry/sdk-logs'
+  "@opentelemetry_sdk-metrics@2.2.0": '@opentelemetry/sdk-metrics'
+  "@opentelemetry_sdk-trace-base@2.2.0": '@opentelemetry/sdk-trace-base'
+  "@opentelemetry_otlp-grpc-exporter-base@0.207.0": '@opentelemetry/otlp-grpc-exporter-base'
+  "@opentelemetry_exporter-trace-otlp-http@0.207.0": '@opentelemetry/exporter-trace-otlp-http'
   "@opentelemetry_instrumentation@0.203.0": '@opentelemetry/instrumentation'
   "@opentelemetry_api-logs@0.203.0": '@opentelemetry/api-logs'
   "import-in-the-middle@1.14.2": import-in-the-middle
@@ -19,7 +65,6 @@ rename:
   "supports-preserve-symlinks-flag@1.0.0": supports-preserve-symlinks-flag
   "@opentelemetry_instrumentation-fetch@0.203.0": '@opentelemetry/instrumentation-fetch'
   "@opentelemetry_core@2.0.1": '@opentelemetry/core'
-  "@opentelemetry_semantic-conventions@1.37.0": '@opentelemetry/semantic-conventions'
   "@opentelemetry_sdk-trace-web@2.0.1": '@opentelemetry/sdk-trace-web'
   "@opentelemetry_sdk-trace-base@2.0.1": '@opentelemetry/sdk-trace-base'
   "@opentelemetry_resources@2.0.1": '@opentelemetry/resources'
@@ -65,8 +110,6 @@ rename:
   "@react-navigation_native-stack@7.3.26": '@react-navigation/native-stack'
   "@react-navigation_elements@2.6.4": '@react-navigation/elements'
   "color@4.2.3": color
-  "color-convert@2.0.1": color-convert
-  "color-name@1.1.4": color-name
   "color-string@1.9.1": color-string
   "simple-swizzle@0.2.2": simple-swizzle
   "is-arrayish@0.3.2": is-arrayish
@@ -88,12 +131,9 @@ rename:
   "@types_istanbul-lib-coverage@2.0.6": '@types/istanbul-lib-coverage'
   "@types_istanbul-reports@3.0.4": '@types/istanbul-reports'
   "@types_istanbul-lib-report@3.0.3": '@types/istanbul-lib-report'
-  "@types_node@24.1.0": '@types/node'
-  "undici-types@7.8.0": undici-types
   "@types_yargs@17.0.33": '@types/yargs'
   "@types_yargs-parser@21.0.3": '@types/yargs-parser'
   "chalk@4.1.2": chalk
-  "ansi-styles@4.3.0": ansi-styles
   "supports-color@7.2.0": supports-color
   "has-flag@4.0.0": has-flag
   "@react-native_assets-registry@0.81.0": '@react-native/assets-registry'
@@ -115,19 +155,6 @@ rename:
   "loose-envify@1.4.0": loose-envify
   "js-tokens@4.0.0": js-tokens
   "nullthrows@1.1.1": nullthrows
-  "yargs@17.7.2": yargs
-  "cliui@8.0.1": cliui
-  "string-width@4.2.3": string-width
-  "emoji-regex@8.0.0": emoji-regex
-  "is-fullwidth-code-point@3.0.0": is-fullwidth-code-point
-  "strip-ansi@6.0.1": strip-ansi
-  "ansi-regex@5.0.1": ansi-regex
-  "wrap-ansi@7.0.0": wrap-ansi
-  "escalade@3.2.0": escalade
-  "get-caller-file@2.0.5": get-caller-file
-  "require-directory@2.1.1": require-directory
-  "y18n@5.0.8": y18n
-  "yargs-parser@21.1.1": yargs-parser
   "@react-native_community-cli-plugin@0.81.0": '@react-native/community-cli-plugin'
   "@react-native_dev-middleware@0.81.0": '@react-native/dev-middleware'
   "@isaacs_ttlcache@1.4.1": '@isaacs/ttlcache'
@@ -399,6 +426,188 @@ manual:
     version: '1.9.0'
     source: open-telemetry/opentelemetry-js
     file: '../../../node_modules/@opentelemetry/api/LICENSE'
+  - name: '@opentelemetry_exporter-trace-otlp-grpc@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/exporter-trace-otlp-grpc/LICENSE'
+  - name: '@grpc_grpc-js@1.14.0'
+    version: '1.14.0'
+    source: https://github.com/grpc/grpc-node/tree/master/packages/grpc-js
+    file: '../../../node_modules/@grpc/grpc-js/LICENSE'
+  - name: '@grpc_proto-loader@0.8.0'
+    version: '0.8.0'
+    source: https://github.com/grpc/grpc-node
+    file: '../../../node_modules/@grpc/proto-loader/LICENSE'
+  - name: lodash.camelcase@4.3.0
+    version: '4.3.0'
+    source: lodash/lodash
+    file: '../../../node_modules/lodash.camelcase/LICENSE'
+  - name: long@undefined
+    body: UNKNOWN
+  - name: protobufjs@7.5.4
+    version: '7.5.4'
+    source: protobufjs/protobuf.js
+    file: '../../../node_modules/protobufjs/LICENSE'
+  - name: '@protobufjs_aspromise@1.1.2'
+    version: '1.1.2'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/aspromise/LICENSE'
+  - name: '@protobufjs_base64@1.1.2'
+    version: '1.1.2'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/base64/LICENSE'
+  - name: '@protobufjs_codegen@2.0.4'
+    version: '2.0.4'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/codegen/LICENSE'
+  - name: '@protobufjs_eventemitter@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/eventemitter/LICENSE'
+  - name: '@protobufjs_fetch@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/fetch/LICENSE'
+  - name: '@protobufjs_inquire@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/inquire/LICENSE'
+  - name: '@protobufjs_float@1.0.2'
+    version: '1.0.2'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/float/LICENSE'
+  - name: '@protobufjs_path@1.1.2'
+    version: '1.1.2'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/path/LICENSE'
+  - name: '@protobufjs_pool@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/pool/LICENSE'
+  - name: '@protobufjs_utf8@1.1.0'
+    version: '1.1.0'
+    source: https://github.com/dcodeIO/protobuf.js
+    file: '../../../node_modules/@protobufjs/utf8/LICENSE'
+  - name: '@types_node@24.1.0'
+    version: '24.1.0'
+    source: https://github.com/DefinitelyTyped/DefinitelyTyped
+    file: '../../../node_modules/@types/node/LICENSE'
+  - name: undici-types@7.8.0
+    version: '7.8.0'
+    source: https://github.com/nodejs/undici
+    file: '../../../node_modules/undici-types/LICENSE'
+  - name: yargs@17.7.2
+    version: '17.7.2'
+    source: https://github.com/yargs/yargs
+    file: '../../../node_modules/yargs/LICENSE'
+  - name: cliui@8.0.1
+    version: '8.0.1'
+    source: yargs/cliui
+    body: ISC
+  - name: string-width@4.2.3
+    version: '4.2.3'
+    source: sindresorhus/string-width
+    file: '../../../node_modules/string-width/license'
+  - name: emoji-regex@8.0.0
+    version: '8.0.0'
+    source: https://github.com/mathiasbynens/emoji-regex
+    body: MIT
+  - name: is-fullwidth-code-point@3.0.0
+    version: '3.0.0'
+    source: sindresorhus/is-fullwidth-code-point
+    file: '../../../node_modules/is-fullwidth-code-point/license'
+  - name: strip-ansi@6.0.1
+    version: '6.0.1'
+    source: chalk/strip-ansi
+    file: '../../../node_modules/strip-ansi/license'
+  - name: ansi-regex@5.0.1
+    version: '5.0.1'
+    source: chalk/ansi-regex
+    file: '../../../node_modules/ansi-regex/license'
+  - name: wrap-ansi@7.0.0
+    version: '7.0.0'
+    source: chalk/wrap-ansi
+    file: '../../../node_modules/wrap-ansi/license'
+  - name: ansi-styles@4.3.0
+    version: '4.3.0'
+    source: chalk/ansi-styles
+    file: '../../../node_modules/ansi-styles/license'
+  - name: color-convert@2.0.1
+    version: '2.0.1'
+    source: Qix-/color-convert
+    file: '../../../node_modules/color-convert/LICENSE'
+  - name: color-name@1.1.4
+    version: '1.1.4'
+    source: https://github.com/colorjs/color-name
+    file: '../../../node_modules/color-name/LICENSE'
+  - name: escalade@3.2.0
+    version: '3.2.0'
+    source: lukeed/escalade
+    file: '../../../node_modules/escalade/license'
+  - name: get-caller-file@2.0.5
+    version: '2.0.5'
+    source: https://github.com/stefanpenner/get-caller-file
+    file: '../../../node_modules/get-caller-file/LICENSE.md'
+  - name: require-directory@2.1.1
+    version: '2.1.1'
+    source: https://github.com/troygoode/node-require-directory
+    file: '../../../node_modules/require-directory/LICENSE'
+  - name: y18n@5.0.8
+    version: '5.0.8'
+    source: yargs/y18n
+    file: '../../../node_modules/y18n/LICENSE'
+  - name: yargs-parser@21.1.1
+    version: '21.1.1'
+    source: https://github.com/yargs/yargs-parser
+    body: ISC
+  - name: '@js-sdsl_ordered-map@4.4.2'
+    version: '4.4.2'
+    source: https://github.com/js-sdsl/js-sdsl
+    file: '../../../node_modules/@js-sdsl/ordered-map/LICENSE'
+  - name: '@opentelemetry_core@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/core/LICENSE'
+  - name: '@opentelemetry_semantic-conventions@1.37.0'
+    version: '1.37.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
+  - name: '@opentelemetry_otlp-exporter-base@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/otlp-exporter-base/LICENSE'
+  - name: '@opentelemetry_otlp-transformer@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/otlp-transformer/LICENSE'
+  - name: '@opentelemetry_api-logs@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/api-logs/LICENSE'
+  - name: '@opentelemetry_resources@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/resources/LICENSE'
+  - name: '@opentelemetry_sdk-logs@0.207.0'
+    version: '0.207.0'
+    source: https://github.com/open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-logs/LICENSE'
+  - name: '@opentelemetry_sdk-metrics@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-metrics/LICENSE'
+  - name: '@opentelemetry_sdk-trace-base@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
+  - name: '@opentelemetry_otlp-grpc-exporter-base@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/otlp-grpc-exporter-base/LICENSE'
+  - name: '@opentelemetry_exporter-trace-otlp-http@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/exporter-trace-otlp-http/LICENSE'
   - name: '@opentelemetry_instrumentation@0.203.0'
     version: '0.203.0'
     source: https://github.com/open-telemetry/opentelemetry-js
@@ -406,7 +615,7 @@ manual:
   - name: '@opentelemetry_api-logs@0.203.0'
     version: '0.203.0'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/api-logs/LICENSE'
+    file: '../../../node_modules/@opentelemetry/instrumentation/node_modules/@opentelemetry/api-logs/LICENSE'
   - name: import-in-the-middle@1.14.2
     version: '1.14.2'
     source: https://github.com/nodejs/import-in-the-middle
@@ -470,11 +679,7 @@ manual:
   - name: '@opentelemetry_core@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/core/LICENSE'
-  - name: '@opentelemetry_semantic-conventions@1.37.0'
-    version: '1.37.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
+    file: '../../../node_modules/@opentelemetry/instrumentation-fetch/node_modules/@opentelemetry/core/LICENSE'
   - name: '@opentelemetry_sdk-trace-web@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
@@ -482,11 +687,11 @@ manual:
   - name: '@opentelemetry_sdk-trace-base@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
+    file: '../../../node_modules/@opentelemetry/sdk-trace-web/node_modules/@opentelemetry/sdk-trace-base/LICENSE'
   - name: '@opentelemetry_resources@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/resources/LICENSE'
+    file: '../../../node_modules/@opentelemetry/sdk-trace-web/node_modules/@opentelemetry/resources/LICENSE'
   - name: '@opentelemetry_instrumentation-xml-http-request@0.203.0'
     version: '0.203.0'
     source: open-telemetry/opentelemetry-js
@@ -522,7 +727,7 @@ manual:
   - name: '@opentelemetry_sdk-metrics@2.0.1'
     version: '2.0.1'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/sdk-metrics/LICENSE'
+    file: '../../../packages/interop-otel/node_modules/@opentelemetry/sdk-metrics/LICENSE'
   - name: '@react-native-community_slider@5.0.1'
     version: '5.0.1'
     source: https://github.com/callstack/react-native-slider
@@ -655,14 +860,6 @@ manual:
     version: '4.2.3'
     source: Qix-/color
     file: '../../../node_modules/color/LICENSE'
-  - name: color-convert@2.0.1
-    version: '2.0.1'
-    source: Qix-/color-convert
-    file: '../../../node_modules/color-convert/LICENSE'
-  - name: color-name@1.1.4
-    version: '1.1.4'
-    source: https://github.com/colorjs/color-name
-    file: '../../../node_modules/color-name/LICENSE'
   - name: color-string@1.9.1
     version: '1.9.1'
     source: Qix-/color-string
@@ -746,14 +943,6 @@ manual:
     version: '3.0.3'
     source: https://github.com/DefinitelyTyped/DefinitelyTyped
     file: '../../../node_modules/@types/istanbul-lib-report/LICENSE'
-  - name: '@types_node@24.1.0'
-    version: '24.1.0'
-    source: https://github.com/DefinitelyTyped/DefinitelyTyped
-    file: '../../../node_modules/@types/node/LICENSE'
-  - name: undici-types@7.8.0
-    version: '7.8.0'
-    source: https://github.com/nodejs/undici
-    file: '../../../node_modules/undici-types/LICENSE'
   - name: '@types_yargs@17.0.33'
     version: '17.0.33'
     source: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -766,10 +955,6 @@ manual:
     version: '4.1.2'
     source: chalk/chalk
     file: '../../../node_modules/chalk/license'
-  - name: ansi-styles@4.3.0
-    version: '4.3.0'
-    source: chalk/ansi-styles
-    file: '../../../node_modules/ansi-styles/license'
   - name: supports-color@7.2.0
     version: '7.2.0'
     source: chalk/supports-color
@@ -854,58 +1039,6 @@ manual:
     version: '1.1.1'
     source: https://github.com/zertosh/nullthrows
     file: '../../../node_modules/nullthrows/LICENSE'
-  - name: yargs@17.7.2
-    version: '17.7.2'
-    source: https://github.com/yargs/yargs
-    file: '../../../node_modules/yargs/LICENSE'
-  - name: cliui@8.0.1
-    version: '8.0.1'
-    source: yargs/cliui
-    body: ISC
-  - name: string-width@4.2.3
-    version: '4.2.3'
-    source: sindresorhus/string-width
-    file: '../../../node_modules/string-width/license'
-  - name: emoji-regex@8.0.0
-    version: '8.0.0'
-    source: https://github.com/mathiasbynens/emoji-regex
-    body: MIT
-  - name: is-fullwidth-code-point@3.0.0
-    version: '3.0.0'
-    source: sindresorhus/is-fullwidth-code-point
-    file: '../../../node_modules/is-fullwidth-code-point/license'
-  - name: strip-ansi@6.0.1
-    version: '6.0.1'
-    source: chalk/strip-ansi
-    file: '../../../node_modules/strip-ansi/license'
-  - name: ansi-regex@5.0.1
-    version: '5.0.1'
-    source: chalk/ansi-regex
-    file: '../../../node_modules/ansi-regex/license'
-  - name: wrap-ansi@7.0.0
-    version: '7.0.0'
-    source: chalk/wrap-ansi
-    file: '../../../node_modules/wrap-ansi/license'
-  - name: escalade@3.2.0
-    version: '3.2.0'
-    source: lukeed/escalade
-    file: '../../../node_modules/escalade/license'
-  - name: get-caller-file@2.0.5
-    version: '2.0.5'
-    source: https://github.com/stefanpenner/get-caller-file
-    file: '../../../node_modules/get-caller-file/LICENSE.md'
-  - name: require-directory@2.1.1
-    version: '2.1.1'
-    source: https://github.com/troygoode/node-require-directory
-    file: '../../../node_modules/require-directory/LICENSE'
-  - name: y18n@5.0.8
-    version: '5.0.8'
-    source: yargs/y18n
-    file: '../../../node_modules/y18n/LICENSE'
-  - name: yargs-parser@21.1.1
-    version: '21.1.1'
-    source: https://github.com/yargs/yargs-parser
-    body: ISC
   - name: '@react-native_community-cli-plugin@0.81.0'
     version: '0.81.0'
     source: https://github.com/facebook/react-native
@@ -1352,7 +1485,7 @@ manual:
   - name: argparse@1.0.10
     version: '1.0.10'
     source: nodeca/argparse
-    file: '../../../node_modules/js-yaml/node_modules/argparse/LICENSE'
+    file: '../../../node_modules/argparse/LICENSE'
   - name: sprintf-js@1.0.3
     version: '1.0.3'
     source: https://github.com/alexei/sprintf.js
@@ -1604,7 +1737,7 @@ manual:
   - name: camelcase@5.3.1
     version: '5.3.1'
     source: sindresorhus/camelcase
-    file: '../../../node_modules/camelcase/license'
+    file: '../../../node_modules/@istanbuljs/load-nyc-config/node_modules/camelcase/license'
   - name: find-up@4.1.0
     version: '4.1.0'
     source: sindresorhus/find-up

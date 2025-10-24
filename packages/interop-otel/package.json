@@ -12,19 +12,6 @@
     "src",
     "react-native.config.js",
     "lib",
-    "nitrogen",
-    "android/build.gradle",
-    "android/gradle.properties",
-    "android/CMakeLists.txt",
-    "android/src",
-    "cpp",
-    "ios/**/*.h",
-    "ios/**/*.m",
-    "ios/**/*.mm",
-    "ios/**/*.cpp",
-    "ios/**/*.swift",
-    "third_party",
-    "*.podspec",
     "README.md"
   ],
   "scripts": {
@@ -34,7 +21,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
     "typescript": "tsc",
-    "build": "nitro-codegen --logLevel=\"debug\" && pnpm run typescript",
+    "build": "pnpm run typescript",
     "build:watch": "tsc --watch",
     "publish:npm": "pnpm publish --access public --no-git-checks",
     "publish:yalc": "yalc publish"
@@ -52,7 +39,7 @@
     "type": "git",
     "url": "git+https://github.com/callstackincubator/ottrelite.git"
   },
-  "license": "(MIT AND Apache-2.0 AND BSD-3-Clause AND LicenseRef-Zlib AND LicenseRef-OpenSSL AND LicenseRef-Curl)",
+  "license": "(MIT AND Apache-2.0)",
   "bugs": {
     "url": "https://github.com/callstackincubator/ottrelite/issues"
   },
@@ -68,8 +55,6 @@
     "del-cli": "^6.0.0",
     "eslint": "^8.57.1",
     "jest": "^30.0.4",
-    "nitro-codegen": "^0.27.2",
-    "react-native-nitro-modules": "0.30.2",
     "typescript": "^5.8.3",
     "@ottrelite/core": "workspace:^",
     "react": "19.1.0",
@@ -86,7 +71,6 @@
     "@opentelemetry/sdk-trace-base": "~2.0.1",
     "react": ">=17",
     "react-native": ">=0.76",
-    "react-native-nitro-modules": ">=0.29",
     "@ottrelite/core": "workspace:~"
   }
 }

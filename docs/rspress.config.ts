@@ -40,7 +40,7 @@ export default defineConfig({
           'packages',
           'backend-wrapper-tracy',
           'src',
-          'index.ts',
+          'index.ts'
         ),
         path.join(
           __dirname,
@@ -48,7 +48,7 @@ export default defineConfig({
           'packages',
           'backend-platform',
           'src',
-          'index.ts',
+          'index.ts'
         ),
         path.join(
           __dirname,
@@ -56,7 +56,7 @@ export default defineConfig({
           'packages',
           'interop-otel',
           'src',
-          'index.ts',
+          'index.ts'
         ),
       ],
       outDir: 'api',

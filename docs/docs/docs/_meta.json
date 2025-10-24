@@ -21,7 +21,7 @@
   },
   {
     "type": "dir",
-    "name": "otel-interop",
+    "name": "interop-otel",
     "label": "OTEL Interoperability"
   }
 ]

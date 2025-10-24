@@ -1,6 +1,6 @@
 # @ottrelite/interop-otel
 
-This package provides an interoperability layer between Ottrelite and OTEL SDKs. To avoid confusion, this project is not affiliated and not part of OpenTelemetry.
+This package provides an interoperability layer between Ottrelite and OTEL JS SDKs. To avoid confusion, this project is not affiliated and not part of OpenTelemetry.
 
 <a href="https://www.callstack.com/open-source?utm_campaign=generic&utm_source=github&utm_medium=referral&utm_content=ottrelite" align="center">
   <picture>
