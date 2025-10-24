@@ -39,7 +39,9 @@ Ottrelite.install(
 To learn more about available backends, see the [backends](/docs/backends/introduction) section.
 
 :::tip
-In case of debugging performance problems, tracing usually makes sense only in **release** builds (used in a development environment, i.e., not in production). Debug builds are unoptimized (both the native and non-native sides) and therefore their performance may not be representative and could greatly differ from the performance of release builds.
+In case of debugging performance problems, tracing usually makes sense only in optimized builds, not debug builds. Debug builds are unoptimized (both native and JavaScript sides) and their performance may not be representative of production.
+
+**Recommended approach:** Create a separate build configuration specifically for performance profiling (e.g., "profiling" or "release-dev") instead of using the production release configuration. This ensures you get optimized performance characteristics while avoiding the risk of accidentally shipping tracing code to production.
 :::
 
 ## Features
