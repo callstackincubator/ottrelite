@@ -65,25 +65,18 @@ const resource = resourceFromAttributes({
   'os.version': getSystemVersion(),
 });
 
+// Configure the OpenTelemetry TracerProvider to use Ottrelite's capabilities
 const tracerProvider = new OttreliteTracerProvider({
   spanProcessors: [
-    // optional step: configure Ottrelite's span processor (required for live tracing in dev)
+    // Register the DevSpanProcessorInterceptor for live tracing in development
     new DevSpanProcessorInterceptor(),
-
-    // optional step: configure Ottrelite's actual exporter using a preferred processor of choice
-    new SimpleSpanProcessor(
-      new OttreliteExporterOTLP({
-        endpoint: 'http://localhost:4318/v1/',
-      })
-    ),
   ],
   resource,
 });
 
-// register the React Native tracer provider
 tracerProvider.register();
 
-// configure the OpenTelemetry MeterProvider to use Ottrelite's capabilities
+// Configure the OpenTelemetry MeterProvider to use Ottrelite's capabilities
 const meterProvider = new OttreliteMeterProvider({
   resource,
 });
