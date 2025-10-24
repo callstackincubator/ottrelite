@@ -84,6 +84,14 @@ const meterProvider = new OttreliteMeterProvider({
 meterProvider.register();
 ```
 
+:::important
+**Don't forget production exporters!** While `DevSpanProcessorInterceptor` provides live visualization during development, make sure to also add OpenTelemetry exporters to collect trace data for production monitoring and analysis.
+:::
+
+:::note
+Make sure to conditionally configure the OttreliteTracerProvider and OttreliteMeterProvider only if you are using Ottrelite's development backends. Production builds should not have any Ottrelite-specific configuration.
+:::
+
 ### Community Instrumentations
 
 Ottrelite integrates with the OpenTelemetry JavaScript API, allowing you to use the same community instrumentations as you would with standard OpenTelemetry JS. This enables automatic instrumentation of various APIs and frameworks.
