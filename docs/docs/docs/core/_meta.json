@@ -6,11 +6,6 @@
   },
   {
     "type": "file",
-    "name": "react-api.mdx",
-    "label": "React API"
-  },
-  {
-    "type": "file",
     "name": "react-native-internals.mdx",
     "label": "React Native Internals"
   },

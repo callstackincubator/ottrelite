@@ -1,12 +1,17 @@
 [
   {
     "type": "file",
-    "name": "backend-platform.mdx",
-    "label": "Platform Backend"
+    "name": "introduction.mdx",
+    "label": "Introduction"
   },
   {
     "type": "file",
-    "name": "backend-wrapper-tracy.mdx",
-    "label": "Tracy Wrapper Backend"
+    "name": "backend-platform.mdx",
+    "label": "Platform"
+  },
+  {
+    "type": "file",
+    "name": "backend-tracy.mdx",
+    "label": "Tracy"
   }
 ]

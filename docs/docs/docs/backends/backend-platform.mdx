@@ -1,5 +1,73 @@
-import Readme from '../../../../packages/backend-platform/README.md';
+# @ottrelite/backend-platform
 
-# Platform Backend
+This plugin is the platform-specific backend implementation for RN Ottrelite Core. On Android, it utilizes [ATrace](https://developer.android.com/ndk/reference/group/tracing) (Android tracing API), on iOS it utilizes the [OSSignposter API](https://developer.apple.com/documentation/os/ossignposter).
 
-<Readme />
+## When to use this backend?
+
+This backend is designed for **system-level analysis using familiar tools** that are already part of your development environment. It leverages the native profiling APIs built into Android and iOS platforms, allowing you to use the debugging tools you're already comfortable with.
+
+Use Platform Backend when you want:
+- **Familiar tooling** - Work with Android Studio Profiler and Xcode Instruments that you already know
+- **System-level insights** - Analyze app performance alongside system metrics and other processes
+- **No additional setup** - Uses built-in platform APIs without requiring external profiling tools
+
+:::important
+This backend is not designed for production use cases and should not be installed in production builds. See the [backends introduction](/docs/backends/introduction#production-builds) for guidance on excluding backends from production builds.
+:::
+
+## Supported features
+
+| Feature                                       | Android Support | iOS Support |
+| --------------------------------------------- | --------------- | ----------- |
+| synchronous traces (`{begin,end}Event`)       | API level ≥ 23 (Android M) | iOS 15+ |
+| asynchronous traces (`{begin,end}AsyncEvent`) | API level ≥ 29 (Android Q) | iOS 15+ |
+| counter events (`counterEvent`)               | API level ≥ 29 (Android Q) | iOS 15+ |
+
+:::note
+The support levels above mean that the application must be **compiled** with at least the given `minSdkVersion`. This is because those APIs are not available on older Android versions and therefore it is not possible to compile the native code against older SDKs.
+:::
+
+## Installation
+
+To use this package, you need to install it in your React Native project:
+
+```bash
+npm install @ottrelite/backend-platform
+```
+
+And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
+
+```typescript
+import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.install([OttreliteBackendPlatform]);
+```
+
+## Recording the trace
+
+### Android
+
+You can record and view traces in two ways:
+- using Android Studio's Profiler's 'Capture System Activities' option, as per the [documentation](https://developer.android.com/studio/profile); this method works both on physical devices & the Android emulator
+- using the `perfetto` CLI tool, which is distributed as part of the Android OS onboard most modern devices. More details can be found in the [documentation](https://perfetto.dev/docs/getting-started/system-tracing); the resulting file can be viewed in [Perfetto UI](https://ui.perfetto.dev/); this method works only on a physical device
+
+:::important
+Make sure that the app you are profiling is `profileable` by placing an [appropriate element](https://developer.android.com/guide/topics/manifest/profileable-element) within your `AndroidManifest.xml`'s `<application>` element: `<profileable android:shell="true" />`
+:::
+
+#### Perfetto CLI
+
+If using the Perfetto CLI via the `record_android_trace` script, make sure to adjust the `--app` argument to match your app's package. We discovered that on some devices it is needed to set it, otherwise some userspace events may be missing.
+
+Some devices allow to pass an additional tracing category, `app`, which can also be considered in such cases. An example invocation might look like the following: 
+
+```bash
+./record_android_trace --app=com.callstack.ottrelite.demo -o trace_file.perfetto-trace -t 40s -b 64mb sched freq idle am wm gfx view binder_driver hal dalvik camera input res memory rs app
+```
+
+### iOS
+
+You can view the traces in Xcode Instruments, as per the [documentation](https://developer.apple.com/documentation/os/recording-performance-data#Review-Signposts-in-Instruments).
+
+The traces will be signpost-ed using the `OSSignposter` API, using the default `OS_LOG_DEFAULT` logger.
