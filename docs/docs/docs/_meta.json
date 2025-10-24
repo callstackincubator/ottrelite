@@ -5,6 +5,11 @@
     "label": "Introduction"
   },
   {
+    "type": "file",
+    "name": "quick-start.mdx",
+    "label": "Quick Start"
+  },
+  {
     "type": "dir",
     "name": "core",
     "label": "Core"

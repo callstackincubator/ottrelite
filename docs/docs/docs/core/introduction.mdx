@@ -1,0 +1,134 @@
+# Ottrelite Core
+
+Ottrelite Core is the main tracing API that provides a lightweight, unified interface for performance instrumentation across all React Native platforms. It offers a simple set of methods to trace synchronous operations, asynchronous workflows, and counter metrics in your React Native applications.
+
+### Available platforms
+
+Ottrelite Core supports tracing across all major React Native development languages: 
+
+| Feature         | Status           |
+| --------------- | ---------------- |
+| C++ API         | ✅               |
+| JS API          | ✅               |
+| Swift API       | ⏳ (in progress) |
+| Java/Kotlin API | ✅               |
+
+## Installation
+
+First, install the package with:
+
+```bash
+npm install @ottrelite/core
+```
+
+## Configuring
+
+The quickest way to use Ottrelite is via the Tracing API.
+
+Before you use Ottrelite, you need to configure it by including the following `Ottrelite.install()` call in your entrypoint file (e.g. `index.js`):
+
+```javascript
+import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.install(
+  [OttreliteBackendPlatform],
+);
+```
+
+To learn more about available backends, see the [backends](/docs/backends/introduction) section.
+
+:::tip
+In case of debugging performance problems, tracing usually makes sense only in **release** builds (used in a development environment, i.e., not in production). Debug builds are unoptimized (both the native and non-native sides) and therefore their performance may not be representative and could greatly differ from the performance of release builds.
+:::
+
+## Features
+
+### Synchronous traces
+
+To record synchronous traces, you can use the `Ottrelite.beginEvent()` and `Ottrelite.endEvent()` methods. The `beginEvent` method starts a new event (imagine it is put on top of a stack), while the `endEvent` method ends the most recent event (analogy: popping it off the stack). The event name is a string that identifies the event.
+
+Events maintain a hierarchical structure, so you can nest them. If you begin a new event while another one is already in progress, the new event will be a child of the previous one.
+
+import { Tab, Tabs } from 'rspress/theme';
+
+<Tabs>
+<Tab label="JavaScript">
+```typescript title="index.ts"
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.beginEvent('MyEvent');
+// ... do some work ...
+Ottrelite.endEvent('MyEvent');
+```
+</Tab>
+<Tab label="C++">
+```cpp title="index.cpp"
+// Your code here
+```
+</Tab>
+<Tab label="Java">
+
+```java title="index.java"
+// Your code here
+```
+</Tab>
+</Tabs>
+
+### Asynchronous traces
+
+To record asynchronous traces, you can use the `Ottrelite.beginAsyncEvent()` and `Ottrelite.endAsyncEvent()` methods. The `beginAsyncEvent` method starts a new asynchronous event, while the `endAsyncEvent` method ends the most recent asynchronous event.
+
+<Tabs>
+<Tab label="JavaScript">
+```typescript title="index.ts"
+import { Ottrelite } from '@ottrelite/core';
+
+// begin an asynchronous event
+const token = Ottrelite.beginAsyncEvent('MyAsyncEvent');
+// ... do some work ...
+Ottrelite.endAsyncEvent('MyAsyncEvent', token);
+```
+</Tab>
+<Tab label="C++">
+```cpp title="index.cpp"
+// Your code here
+```
+</Tab>
+<Tab label="Java">
+
+```java title="index.java"
+// Your code here
+```
+</Tab>
+</Tabs>
+
+### Counter events
+
+To record counter events, you can use the `Ottrelite.counterEvent()` method. This method allows you to record a numeric value over time, which can be useful for tracking metrics such as performance counters.
+
+<Tabs>
+<Tab label="JavaScript">
+```typescript title="index.ts"
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.counterEvent('MyCounterEvent', 42);
+
+setTimeout(() => {
+  // update the value
+  Ottrelite.counterEvent('MyCounterEvent', 80);
+}, 1000);
+```
+</Tab>
+<Tab label="C++">
+```cpp title="index.cpp"
+// Your code here
+```
+</Tab>
+<Tab label="Java">
+
+```java title="index.java"
+// Your code here
+```
+</Tab>
+</Tabs>
