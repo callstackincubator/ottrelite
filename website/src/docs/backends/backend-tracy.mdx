@@ -2,27 +2,20 @@
 
 This plugin is a wrapper around the [open-source Tracy profiler](https://github.com/wolfpld/tracy) client, which brings tracing using Tracy to Ottrelite.
 
-<a href="https://www.callstack.com/open-source?utm_campaign=generic&utm_source=github&utm_medium=referral&utm_content=ottrelite" align="center">
-  <picture>
-    <img alt="Ottrelite" src="https://github.com/callstackincubator/ottrelite/blob/main/img/banner.jpg?raw=true">
-  </picture>
-</a>
+## When to use this backend?
 
-<h3 align="center">
-  <b>Ottrelite</b> - Unified, extensible, cross-language tracing toolkit for React Native ⚡️🔎
-</h3>
+The Tracy backend is designed for **real-time development profiling** and provides immediate visual feedback as your React Native app runs. Unlike the Platform backend which requires recording sessions and post-analysis, Tracy gives you live insights into your app's performance.
 
----
+Use Tracy when you want:
+- **Real-time feedback** - See performance data as it happens, perfect for iterative optimization
+- **Frame-by-frame analysis** - Detailed timing information for each frame of your app
+- **Cross-platform consistency** - Same profiling experience across iOS and Android
+- **Memory tracking** - Visual representation of memory usage patterns
+- **Interactive exploration** - Zoom, filter, and analyze traces dynamically
 
-<div align="center">
-
-  [![Release](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/release.yml)
-  [![Docs](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/docs.yml)
-  [![Build, lint & test (JS)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml/badge.svg)](https://github.com/callstackincubator/ottrelite/actions/workflows/build-lint-test.yml)
-
-  [![backend-wrapper-tracy npm downloads](https://img.shields.io/npm/dm/@ottrelite/backend-wrapper-tracy.svg?style=flat-square&label=NPM%20-%20%40ottrelite%2Fbackend-wrapper-tracy)](https://www.npmjs.com/package/@ottrelite/backend-wrapper-tracy)
-
-</div>
+:::info
+This backend is not designed for production use cases and should not be installed in production builds. See the [backends introduction](/docs/backends/introduction#production-builds) for guidance on excluding backends from production builds.
+:::
 
 ## Supported features
 
@@ -32,28 +25,13 @@ This plugin is a wrapper around the [open-source Tracy profiler](https://github.
 | asynchronous traces (`{begin,end}AsyncEvent`) | Unsupported (see [tracy#149](https://github.com/wolfpld/tracy/issues/149)) |
 | counter events (`counterEvent`)               | Supported                                                                  |
 
-## Use case coverage
-
-This backend is designed to cover development-time use cases, such as:
-
-- Profiling the app performance during development
-- Debugging performance issues
-
-This backend is not designed for production use cases and should not be installed in such builds - be sure to conditionally install it from JS when a feature flag is set, such as `isProfilingEnabled`. To exclude it from the binary at build time, you can use the `react-native.config.js` file to specify that it should only be included in debug builds as per the RN CLI documentation ([iOS](https://github.com/react-native-community/cli/blob/main/docs/dependencies.md#platformsiosconfigurations), [Android](https://github.com/react-native-community/cli/blob/main/docs/dependencies.md#platformsandroidbuildtypes)).
-
 ## Installation
 
 To use this package, you need to install it in your React Native project:
 
-```bash
-npm install @ottrelite/backend-wrapper-tracy
-# or
-yarn add @ottrelite/backend-wrapper-tracy
-# or
-pnpm add @ottrelite/backend-wrapper-tracy
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
 
-Additionally, for iOS run `pod install` in the `ios` directory.
+<PackageManagerTabs command="install @ottrelite/backend-wrapper-tracy" />
 
 And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
 
@@ -61,21 +39,18 @@ And register the backend with Ottrelite Core in your entrypoint file (e.g. `inde
 import { OttreliteBackendTracy } from '@ottrelite/backend-wrapper-tracy';
 import { Ottrelite } from '@ottrelite/core';
 
-// register the Tracy wrapper backend
-Ottrelite.install([OttreliteBackendTracy, ...]);
-
-import { AppRegistry } from 'react-native';
-import App from './src/App';
-import { name as appName } from './app.json';
-
-AppRegistry.registerComponent(appName, () => App);
+Ottrelite.install([OttreliteBackendTracy]);
 ```
 
+:::info
 Remember to give attribution to the Tracy Profiler in your application, as in the [last section](#additional-information).
+:::
 
 ## Recording the trace
 
-To record the trace, you must use the Tracy Profiler tool. For Windows, there are releases containg `.7z` archives with prebuilt binaries, for other platforms you must follow the [documentation](https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf) to build it yourself. In short, the instructions to build locally are as follows:
+To record the trace, you must use the Tracy Profiler tool. For Windows, there are releases containg `.7z` archives with prebuilt binaries, for other platforms you must follow the [documentation](https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf) to build it yourself. 
+
+In short, the instructions to build the Tracy Profiler tool locally are as follows:
 
 ```bash
 git clone -b v0.12.2 https://github.com/wolfpld/tracy

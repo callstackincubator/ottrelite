@@ -1,0 +1,31 @@
+# React Native Internals Autoinstrumentation
+
+React Native exports its own `Systrace` API, which supports synchronous, asynchronous and counter events. While this API is mostly used for development of RN itself, it is still exposed for production apps, but does nothing (i.e., calls are no-ops).
+
+Ottrelite can optionally define global variables that this `Systrace` API uses, effectively making these calls effective. For instance, if you launch the app, you will see a hierarchy of events related to `require()` invocations.
+
+:::info
+It is advised to use the `Ottrelite` API instead of the `Systrace` API, as the former is more flexible and provides a unified interface for all backends. The `Systrace` API is provided for compatibility with existing code that uses it.
+:::
+
+## Activating the Systrace API
+
+To enable React Native's internal tracing, pass the `reviveSystraceAPI: true` option when installing Ottrelite. This activates the global variables that React Native's `Systrace` API depends on, making internal framework calls visible in your traces.
+
+```typescript
+Ottrelite.install(yourBackendsOfChoice, {
+  reviveSystraceAPI: true,
+});
+```
+
+Once enabled, you'll automatically see traces for React Native's internal operations like module loading and other framework-level activities that are already instrumented in the React Native source code.
+
+:::note
+The features varies between platforms due to architectural constraints. On Android, you will see traces for both JavaScript and native Java/Kotlin operations. On iOS, you will only see traces for JavaScript operations.
+:::
+
+### Seeing it in practice
+
+On both iOS and Android, the revived Systrace API will cause JS internals that are instrumented in RN source code to be traced, such as the `require()`s for modules required first time in a run.
+
+[todo - add image]

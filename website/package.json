@@ -1,0 +1,19 @@
+{
+  "name": "@ottrelite/docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rspress build",
+    "lint": "eslint .",
+    "dev": "rspress dev",
+    "preview": "rspress preview"
+  },
+  "dependencies": {
+    "@callstack/rspress-preset": "~0.4.5",
+    "@rspress/core": "2.0.0-beta.34",
+    "@rspress/plugin-typedoc": "2.0.0-beta.34"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10"
+  }
+}

@@ -58,7 +58,7 @@ pnpm add @ottrelite/backend-platform
 
 And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
 
-```javascript
+```typescript
 import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
 import { Ottrelite } from '@ottrelite/core';
 

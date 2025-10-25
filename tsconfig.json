@@ -23,5 +23,5 @@
     "verbatimModuleSyntax": true,
     "declaration": true
   },
-  "exclude": ["docs"]
+  "exclude": ["website"]
 }

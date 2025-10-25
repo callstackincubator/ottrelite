@@ -1,0 +1,148 @@
+# What is Ottrelite?
+
+Ottrelite is a performance debugging and tracing toolkit for React Native applications. It helps you **visualize and analyze the performance** of any code in your app - from screen renders and animations to business logic and data processing.
+
+## The Problem
+
+When building React Native apps, you often run into performance issues that are hard to debug:
+
+- Your app feels sluggish, but you don't know if it's the UI, business logic, or data processing
+- A screen takes 2 seconds to load, but which of the 15 functions in your component is the bottleneck?
+- Your complex form validation runs fast in dev but slow on device - which validation rule is the culprit?
+
+React Native's cross-platform nature creates unique debugging opportunities that require specialized tools.
+
+Performance issues in React Native apps often span JavaScript, native modules, and platform-specific code. While Chrome DevTools, Xcode Instruments, and Android Studio Profiler are excellent tools for their respective platforms, React Native developers need a solution that bridges these domains.
+
+Ottrelite provides a unified tracing API that works across all React Native languages and platforms, with flexible visualization backends that give you a complete picture of your app's performance.
+
+## The Solution
+
+Ottrelite has a **two-part architecture**: choose your **tracing API** and choose your **visualization backend**.
+
+### Tracing API
+
+The Tracing API provides a lightweight interface for React Native development that focuses on fast iteration during development. It supports both synchronous and asynchronous traces, counter events for monitoring metrics, and works across JavaScript, C++, Swift, and Java.
+
+Below is an example of how to use the Tracing API in different languages to synchronous trace an event named `generateImage`.
+
+import { Tab, Tabs } from '@rspress/core/theme';
+
+<Tabs>
+<Tab label="JavaScript">
+```typescript title="index.ts"
+import { Ottrelite } from '@ottrelite/core';
+
+Ottrelite.beginEvent('generateImage', {
+	width: size.width.toString(),
+	height: size.height.toString(),
+});
+
+// ...
+
+Ottrelite.endEvent({
+  pixels: image.size().toString(),
+});
+
+```
+</Tab>
+<Tab label="C++">
+```cpp title="index.cpp"
+#include <ReactNativeOttrelite/Ottrelite.hpp>
+
+Ottrelite::beginEvent("generateImage",
+			                 {{{"width", std::to_string(width)}, {"height", std::to_string(height)}}});
+
+// ...
+
+Ottrelite::endEvent({{{"pixels", std::to_string(image.size())}}});
+
+```
+</Tab>
+<Tab label="Java">
+```kotlin title="index.java"
+import com.callstack.ottrelite.OttreliteAndroid
+
+OttreliteAndroid.beginEvent("generateImage", mapOf(
+    "width" to width,
+    "height" to height
+))
+
+// ...
+
+OttreliteAndroid.endEvent(mapOf(
+    "pixels" to image.size()
+))
+```
+</Tab>
+</Tabs>
+
+The API also allows you to trace asynchronous events as well as counter events. For details, see the [Tracing API documentation](./core/introduction.mdx).
+
+:::tip
+**Already using OpenTelemetry?** 
+
+Your existing OTEL spans can automatically work with Ottrelite's visualization backends while maintaining your production monitoring setup. You can preview OTEL traces locally during development without needing a dedicated collector service. See the [OpenTelemetry Integration guide](./interop-otel/introduction.mdx) for setup details.
+:::
+
+:::note
+The Tracing API is automatically disabled in production builds, ensuring zero overhead in released apps.
+:::
+
+### Visualization Backend
+
+Visualization backends transform your trace data into actionable insights. Think of them as the "display layer" that takes your raw performance data and presents it in a way that helps you quickly identify bottlenecks and optimization opportunities.
+
+**Available Backends:**
+
+| Backend | Best For | What It Does |
+|---------|----------|--------------|
+| **Tracy** | Real-time development profiling | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support |
+| **Platform** | System-level analysis | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto |
+
+Each backend is designed for different development workflows - you can even use multiple backends simultaneously to get different perspectives on your app's performance.
+
+## When to Use Ottrelite
+
+Ottrelite shines during the **development and optimization phases** of React Native app development. It's specifically designed for scenarios where you need to understand exactly what's happening inside your code, rather than just monitoring high-level system metrics.
+
+Ottrelite is perfect for:
+
+- **Performance audits and optimization** - When you need to identify which specific functions or components are causing performance issues. Unlike general profiling tools, Ottrelite lets you trace your exact business logic and see precisely where time is being spent.
+
+- **Debugging complex React Native logic** - Whether it's investigating why a screen loads slowly, understanding render performance, or tracking down issues in data processing pipelines. The cross-platform nature means you can trace performance issues that span JavaScript, native modules, and platform-specific code.
+
+- **React Native internals exploration** - Ottrelite can automatically instrument React Native's internal operations, giving you visibility into framework-level performance without modifying React Native source code.
+
+## When not to use Ottrelite
+
+Ottrelite is designed for rich, detailed analysis during development, not lightweight production telemetry. For production monitoring, consider using OpenTelemetry instead. 
+
+You can still visualize your production data with Ottrelite's OpenTelemetry integration, which gives you both development-time visualization and production monitoring capabilities.
+
+## Alternatives
+
+While Ottrelite provides a unified tracing solution across React Native platforms, there are other tools you might consider depending on your specific needs:
+
+### React Native DevTools
+
+Use the standard Performance API (`performance.mark()`, `performance.measure()`) to instrument your React Native code, with results visible in React Native DevTools' Performance panel. 
+
+Use React Performance Tracks to visualize React work with four priority tracks: blocking (synchronous updates from user interactions), transition (background work initiated via `startTransition`), suspense (content revealing and fallback displays), and idle (lowest priority work that executes when no higher priority tasks exist).
+
+:::note
+This feature was recently announced and is currently available as a canary in the upcoming version of React Native. For more details, see the [Global Performance documentation](https://reactnative.dev/docs/next/global-performance).
+:::
+
+For React Native versions that don't yet support performance out of the box, you can use the `react-native-performance` package to preview your traces with Rozenite. This package also provides Objective-C and Java APIs for native-side tracing, though it's limited to a single backend visualization.
+
+**Best for:** React component performance analysis and standard web performance profiling workflows in React Native using familiar Chrome DevTools.
+
+### Native Platform Tools
+
+**Android Studio Profiler** and **Xcode Instruments** are powerful native profiling tools that come with your development environment:
+
+- **Android Studio Profiler** - CPU, memory, network, and energy profiling for Android apps
+- **Xcode Instruments** - Comprehensive performance analysis for iOS apps including Time Profiler, Allocations, and Leaks
+
+**Best for:** Platform-specific analysis, system-level debugging, and when you need deep native performance insights.
