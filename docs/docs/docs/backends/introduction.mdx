@@ -10,22 +10,24 @@ Think of backends as different "viewers" for the same performance data - some ex
 
 ## Available Backends
 
-| Backend | Package | Best For | What It Does |
-|---------|---------|----------|--------------|
-| **Platform** | `@ottrelite/backend-platform` | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
-| **Tracy** | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support |
+| Backend      | Package                            | Best For                                  | What It Does                                                                                        |
+| ------------ | ---------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Platform** | `@ottrelite/backend-platform`      | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
+| **Tracy**    | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling           | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support  |
 
 ### Platform Backend
 
 The Platform backend leverages native tracing APIs that you're likely already familiar with:
+
 - **Android**: Uses ATrace API, viewable in Android Studio Profiler or Perfetto
 - **iOS**: Uses OSSignposter API, viewable in Xcode Instruments
 
 This backend is ideal when you want to use the profiling tools built into your development environment.
 
-### Tracy Backend  
+### Tracy Backend
 
 The Tracy backend wraps the open-source Tracy profiler, providing real-time profiling capabilities:
+
 - Live trace visualization as your app runs
 - Frame-by-frame performance analysis
 - Memory tracking and visualization
@@ -35,7 +37,7 @@ This backend is perfect for iterative development where you want immediate feedb
 
 ## Production Builds
 
-Backends are designed for development use only and should not be included in production builds. 
+Backends are designed for development use only and should not be included in production builds.
 
 To exclude backends from production builds:
 
@@ -50,23 +52,14 @@ if (__DEV__ || isProfilingEnabled) {
 }
 ```
 
-2. **Build-time exclusion** - Use `react-native.config.js` to exclude backend packages from specific build types:
+2. Disable the Gradle plugin instrumenting RN internals for non-development variants (Android only) in your Gradle build script:
 
-```javascript
-module.exports = {
-  dependencies: {
-    '@ottrelite/backend-platform': {
-      platforms: {
-        android: {
-          buildTypes: ['debug'], // Only include in debug builds
-        },
-        ios: {
-          configurations: ['Debug'], // Only include in debug builds
-        },
-      },
-    },
-  },
-};
+```kotlin
+apply plugin: "com.callstack.ottrelite"
+
+ottreliteTracing {
+  rnInstrumentationVariants = ["debug"]
+}
 ```
 
 :::important

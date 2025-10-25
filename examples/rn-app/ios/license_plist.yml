@@ -1,11 +1,16 @@
 # BEGIN Generated NPM license entries
 rename:
   "@opentelemetry_api@1.9.0": '@opentelemetry/api'
-  "@opentelemetry_exporter-trace-otlp-grpc@0.207.0": '@opentelemetry/exporter-trace-otlp-grpc'
-  "@grpc_grpc-js@1.14.0": '@grpc/grpc-js'
-  "@grpc_proto-loader@0.8.0": '@grpc/proto-loader'
-  "lodash.camelcase@4.3.0": lodash.camelcase
-  "long@undefined": long
+  "@opentelemetry_exporter-metrics-otlp-http@0.207.0": '@opentelemetry/exporter-metrics-otlp-http'
+  "@opentelemetry_core@2.2.0": '@opentelemetry/core'
+  "@opentelemetry_semantic-conventions@1.37.0": '@opentelemetry/semantic-conventions'
+  "@opentelemetry_otlp-exporter-base@0.207.0": '@opentelemetry/otlp-exporter-base'
+  "@opentelemetry_otlp-transformer@0.207.0": '@opentelemetry/otlp-transformer'
+  "@opentelemetry_api-logs@0.207.0": '@opentelemetry/api-logs'
+  "@opentelemetry_resources@2.2.0": '@opentelemetry/resources'
+  "@opentelemetry_sdk-logs@0.207.0": '@opentelemetry/sdk-logs'
+  "@opentelemetry_sdk-metrics@2.2.0": '@opentelemetry/sdk-metrics'
+  "@opentelemetry_sdk-trace-base@2.2.0": '@opentelemetry/sdk-trace-base'
   "protobufjs@7.5.4": protobufjs
   "@protobufjs_aspromise@1.1.2": '@protobufjs/aspromise'
   "@protobufjs_base64@1.1.2": '@protobufjs/base64'
@@ -19,6 +24,11 @@ rename:
   "@protobufjs_utf8@1.1.0": '@protobufjs/utf8'
   "@types_node@24.1.0": '@types/node'
   "undici-types@7.8.0": undici-types
+  "long@undefined": long
+  "@opentelemetry_exporter-trace-otlp-grpc@0.207.0": '@opentelemetry/exporter-trace-otlp-grpc'
+  "@grpc_grpc-js@1.14.0": '@grpc/grpc-js'
+  "@grpc_proto-loader@0.8.0": '@grpc/proto-loader'
+  "lodash.camelcase@4.3.0": lodash.camelcase
   "yargs@17.7.2": yargs
   "cliui@8.0.1": cliui
   "string-width@4.2.3": string-width
@@ -36,15 +46,6 @@ rename:
   "y18n@5.0.8": y18n
   "yargs-parser@21.1.1": yargs-parser
   "@js-sdsl_ordered-map@4.4.2": '@js-sdsl/ordered-map'
-  "@opentelemetry_core@2.2.0": '@opentelemetry/core'
-  "@opentelemetry_semantic-conventions@1.37.0": '@opentelemetry/semantic-conventions'
-  "@opentelemetry_otlp-exporter-base@0.207.0": '@opentelemetry/otlp-exporter-base'
-  "@opentelemetry_otlp-transformer@0.207.0": '@opentelemetry/otlp-transformer'
-  "@opentelemetry_api-logs@0.207.0": '@opentelemetry/api-logs'
-  "@opentelemetry_resources@2.2.0": '@opentelemetry/resources'
-  "@opentelemetry_sdk-logs@0.207.0": '@opentelemetry/sdk-logs'
-  "@opentelemetry_sdk-metrics@2.2.0": '@opentelemetry/sdk-metrics'
-  "@opentelemetry_sdk-trace-base@2.2.0": '@opentelemetry/sdk-trace-base'
   "@opentelemetry_otlp-grpc-exporter-base@0.207.0": '@opentelemetry/otlp-grpc-exporter-base'
   "@opentelemetry_exporter-trace-otlp-http@0.207.0": '@opentelemetry/exporter-trace-otlp-http'
   "@opentelemetry_instrumentation@0.203.0": '@opentelemetry/instrumentation'
@@ -294,15 +295,15 @@ rename:
   "tmpl@1.0.5": tmpl
   "metro-runtime@0.83.1": metro-runtime
   "@babel_runtime@7.28.2": '@babel/runtime'
-  "metro-source-map@0.83.1": metro-source-map
+  "metro-source-map@0.83.3": metro-source-map
   "@babel_traverse--for-generate-function-map@7.28.4": '@babel/traverse--for-generate-function-map'
   "@babel_generator@7.28.3": '@babel/generator'
   "@babel_parser@7.28.4": '@babel/parser'
   "@babel_types@7.28.4": '@babel/types'
-  "metro-symbolicate@0.83.1": metro-symbolicate
+  "metro-symbolicate@0.83.3": metro-symbolicate
+  "ob1@0.83.3": ob1
   "source-map@0.5.7": source-map
   "vlq@1.0.1": vlq
-  "ob1@0.83.1": ob1
   "metro-transform-plugins@0.83.1": metro-transform-plugins
   "metro-transform-worker@0.83.1": metro-transform-worker
   "metro-minify-terser@0.83.1": metro-minify-terser
@@ -385,6 +386,8 @@ rename:
   "escape-string-regexp@2.0.0": escape-string-regexp
   "jest-mock@29.7.0": jest-mock
   "memoize-one@5.2.1": memoize-one
+  "metro-source-map@0.83.1": metro-source-map
+  "ob1@0.83.1": ob1
   "promise@8.3.0": promise
   "asap@2.0.6": asap
   "react-devtools-core@6.1.5": react-devtools-core
@@ -426,24 +429,46 @@ manual:
     version: '1.9.0'
     source: open-telemetry/opentelemetry-js
     file: '../../../node_modules/@opentelemetry/api/LICENSE'
-  - name: '@opentelemetry_exporter-trace-otlp-grpc@0.207.0'
+  - name: '@opentelemetry_exporter-metrics-otlp-http@0.207.0'
     version: '0.207.0'
     source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/exporter-trace-otlp-grpc/LICENSE'
-  - name: '@grpc_grpc-js@1.14.0'
-    version: '1.14.0'
-    source: https://github.com/grpc/grpc-node/tree/master/packages/grpc-js
-    file: '../../../node_modules/@grpc/grpc-js/LICENSE'
-  - name: '@grpc_proto-loader@0.8.0'
-    version: '0.8.0'
-    source: https://github.com/grpc/grpc-node
-    file: '../../../node_modules/@grpc/proto-loader/LICENSE'
-  - name: lodash.camelcase@4.3.0
-    version: '4.3.0'
-    source: lodash/lodash
-    file: '../../../node_modules/lodash.camelcase/LICENSE'
-  - name: long@undefined
-    body: UNKNOWN
+    file: '../../../node_modules/@opentelemetry/exporter-metrics-otlp-http/LICENSE'
+  - name: '@opentelemetry_core@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/core/LICENSE'
+  - name: '@opentelemetry_semantic-conventions@1.37.0'
+    version: '1.37.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
+  - name: '@opentelemetry_otlp-exporter-base@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/otlp-exporter-base/LICENSE'
+  - name: '@opentelemetry_otlp-transformer@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/otlp-transformer/LICENSE'
+  - name: '@opentelemetry_api-logs@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/api-logs/LICENSE'
+  - name: '@opentelemetry_resources@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/resources/LICENSE'
+  - name: '@opentelemetry_sdk-logs@0.207.0'
+    version: '0.207.0'
+    source: https://github.com/open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-logs/LICENSE'
+  - name: '@opentelemetry_sdk-metrics@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-metrics/LICENSE'
+  - name: '@opentelemetry_sdk-trace-base@2.2.0'
+    version: '2.2.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
   - name: protobufjs@7.5.4
     version: '7.5.4'
     source: protobufjs/protobuf.js
@@ -496,6 +521,24 @@ manual:
     version: '7.8.0'
     source: https://github.com/nodejs/undici
     file: '../../../node_modules/undici-types/LICENSE'
+  - name: long@undefined
+    body: UNKNOWN
+  - name: '@opentelemetry_exporter-trace-otlp-grpc@0.207.0'
+    version: '0.207.0'
+    source: open-telemetry/opentelemetry-js
+    file: '../../../node_modules/@opentelemetry/exporter-trace-otlp-grpc/LICENSE'
+  - name: '@grpc_grpc-js@1.14.0'
+    version: '1.14.0'
+    source: https://github.com/grpc/grpc-node/tree/master/packages/grpc-js
+    file: '../../../node_modules/@grpc/grpc-js/LICENSE'
+  - name: '@grpc_proto-loader@0.8.0'
+    version: '0.8.0'
+    source: https://github.com/grpc/grpc-node
+    file: '../../../node_modules/@grpc/proto-loader/LICENSE'
+  - name: lodash.camelcase@4.3.0
+    version: '4.3.0'
+    source: lodash/lodash
+    file: '../../../node_modules/lodash.camelcase/LICENSE'
   - name: yargs@17.7.2
     version: '17.7.2'
     source: https://github.com/yargs/yargs
@@ -564,42 +607,6 @@ manual:
     version: '4.4.2'
     source: https://github.com/js-sdsl/js-sdsl
     file: '../../../node_modules/@js-sdsl/ordered-map/LICENSE'
-  - name: '@opentelemetry_core@2.2.0'
-    version: '2.2.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/core/LICENSE'
-  - name: '@opentelemetry_semantic-conventions@1.37.0'
-    version: '1.37.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/semantic-conventions/LICENSE'
-  - name: '@opentelemetry_otlp-exporter-base@0.207.0'
-    version: '0.207.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/otlp-exporter-base/LICENSE'
-  - name: '@opentelemetry_otlp-transformer@0.207.0'
-    version: '0.207.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/otlp-transformer/LICENSE'
-  - name: '@opentelemetry_api-logs@0.207.0'
-    version: '0.207.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/api-logs/LICENSE'
-  - name: '@opentelemetry_resources@2.2.0'
-    version: '2.2.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/resources/LICENSE'
-  - name: '@opentelemetry_sdk-logs@0.207.0'
-    version: '0.207.0'
-    source: https://github.com/open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/sdk-logs/LICENSE'
-  - name: '@opentelemetry_sdk-metrics@2.2.0'
-    version: '2.2.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/sdk-metrics/LICENSE'
-  - name: '@opentelemetry_sdk-trace-base@2.2.0'
-    version: '2.2.0'
-    source: open-telemetry/opentelemetry-js
-    file: '../../../node_modules/@opentelemetry/sdk-trace-base/LICENSE'
   - name: '@opentelemetry_otlp-grpc-exporter-base@0.207.0'
     version: '0.207.0'
     source: open-telemetry/opentelemetry-js
@@ -1517,7 +1524,7 @@ manual:
   - name: camelcase@6.3.0
     version: '6.3.0'
     source: sindresorhus/camelcase
-    file: '../../../node_modules/metro-config/node_modules/camelcase/license'
+    file: '../../../node_modules/camelcase/license'
   - name: jest-get-type@29.6.3
     version: '29.6.3'
     source: https://github.com/jestjs/jest
@@ -1537,7 +1544,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1594,8 +1601,8 @@ manual:
     version: '7.28.2'
     source: https://github.com/babel/babel
     file: '../../../node_modules/@babel/runtime/LICENSE'
-  - name: metro-source-map@0.83.1
-    version: '0.83.1'
+  - name: metro-source-map@0.83.3
+    version: '0.83.3'
     source: https://github.com/facebook/metro
     body: MIT
   - name: '@babel_traverse--for-generate-function-map@7.28.4'
@@ -1614,22 +1621,22 @@ manual:
     version: '7.28.4'
     source: https://github.com/babel/babel
     file: '../../../node_modules/@babel/traverse--for-generate-function-map/node_modules/@babel/types/LICENSE'
-  - name: metro-symbolicate@0.83.1
-    version: '0.83.1'
+  - name: metro-symbolicate@0.83.3
+    version: '0.83.3'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: ob1@0.83.3
+    version: '0.83.3'
     source: https://github.com/facebook/metro
     body: MIT
   - name: source-map@0.5.7
     version: '0.5.7'
     source: http://github.com/mozilla/source-map
-    file: '../../../node_modules/metro-symbolicate/node_modules/source-map/LICENSE'
+    file: '../../../node_modules/metro/node_modules/source-map/LICENSE'
   - name: vlq@1.0.1
     version: '1.0.1'
     source: https://github.com/Rich-Harris/vlq
     file: '../../../node_modules/vlq/LICENSE'
-  - name: ob1@0.83.1
-    version: '0.83.1'
-    source: https://github.com/facebook/metro
-    body: MIT
   - name: metro-transform-plugins@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1958,6 +1965,14 @@ manual:
     version: '5.2.1'
     source: https://github.com/alexreardon/memoize-one
     file: '../../../node_modules/memoize-one/LICENSE'
+  - name: metro-source-map@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
+  - name: ob1@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
   - name: promise@8.3.0
     version: '8.3.0'
     source: https://github.com/then/promise
@@ -2073,7 +2088,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color
