@@ -1,67 +1,65 @@
 import * as path from 'node:path';
+import url from 'node:url';
 
-import { pluginCallstackTheme } from '@callstack/rspress-theme/plugin';
+import { withCallstackPreset } from '@callstack/rspress-preset';
+import { defineConfig } from '@rspress/core';
 import { pluginTypeDoc } from '@rspress/plugin-typedoc';
-import katex from 'rspress-plugin-katex';
-import { defineConfig } from 'rspress/config';
 
-export default defineConfig({
-  root: path.join(__dirname, 'docs'),
-  title: 'React Native Ottrelite',
-  description: 'React Native Ottrelite Documentation',
-  logoText: 'React Native Ottrelite',
-  icon: '/img/favicon.svg',
-  logoDark: '/img/logo-dark.png',
-  logoLight: '/img/logo-light.png',
-  themeConfig: {
-    socialLinks: [
-      {
-        icon: 'github',
-        mode: 'link',
-        content: 'https://github.com/callstackincubator/ottrelite',
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default withCallstackPreset(
+  {
+    context: __dirname,
+    docs: {
+      title: 'React Native Ottrelite',
+      description: 'React Native Ottrelite Documentation',
+      icon: '/img/favicon.svg',
+      logoDark: '/img/logo-dark.png',
+      logoLight: '/img/logo-light.png',
+      socials: {
+        github: 'https://github.com/callstackincubator/ottrelite',
       },
-    ],
-    footer: {
-      message: `Copyright © ${new Date().getFullYear()} Callstack Open Source`,
+      editUrl: 'https://github.com/callstackincubator/ottrelite/edit/main/docs',
+      rootUrl: 'https://oss.callstack.com/ottrelite/',
+      rootDir: 'docs',
     },
   },
-  markdown: {
-    checkDeadLinks: true,
-  },
-  base: '/ottrelite/',
-  plugins: [
-    pluginCallstackTheme(),
-    pluginTypeDoc({
-      entryPoints: [
-        path.join(__dirname, '..', 'packages', 'core', 'src', 'index.ts'),
-        path.join(
-          __dirname,
-          '..',
-          'packages',
-          'backend-wrapper-tracy',
-          'src',
-          'index.ts'
-        ),
-        path.join(
-          __dirname,
-          '..',
-          'packages',
-          'backend-platform',
-          'src',
-          'index.ts'
-        ),
-        path.join(
-          __dirname,
-          '..',
-          'packages',
-          'interop-otel',
-          'src',
-          'index.ts'
-        ),
-      ],
-      outDir: 'api',
-    }),
-    // @ts-ignore-next-line -- katex has invalid typings
-    katex(),
-  ],
-});
+  defineConfig({
+    base: '/ottrelite/',
+    outDir: 'build',
+    plugins: [
+      // @ts-ignore-next-line -- typedoc plugin has invalid typings
+      pluginTypeDoc({
+        entryPoints: [
+          path.join(__dirname, '..', 'packages', 'core', 'src', 'index.ts'),
+          path.join(
+            __dirname,
+            '..',
+            'packages',
+            'backend-wrapper-tracy',
+            'src',
+            'index.ts'
+          ),
+          path.join(
+            __dirname,
+            '..',
+            'packages',
+            'backend-platform',
+            'src',
+            'index.ts'
+          ),
+          path.join(
+            __dirname,
+            '..',
+            'packages',
+            'interop-otel',
+            'src',
+            'index.ts'
+          ),
+        ],
+        outDir: 'api',
+      }),
+    ],
+  })
+);

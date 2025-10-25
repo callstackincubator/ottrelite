@@ -10,10 +10,9 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@callstack/rspress-theme": "^0.3.1",
-    "@rspress/plugin-typedoc": "2.0.0-beta.21",
-    "rspress": "2.0.0-beta.21",
-    "rspress-plugin-katex": "^0.3.0"
+    "@rspress/plugin-typedoc": "2.0.0-beta.34",
+    "@rspress/core": "2.0.0-beta.34",
+    "@callstack/rspress-preset": "~0.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

@@ -2,7 +2,7 @@
 pageType: home
 
 hero:
-  name: RN Ottrelite
+  name: Ottrelite
   text: Backend-agnostic React Native observability
   actions:
     - theme: brand
@@ -20,13 +20,17 @@ hero:
       dark: /img/logo-dark.png
     alt: Ottrelite logo
 features:
-  - title: Unified API
-    details: All functionalities are accessible through a single API in all languages for developing in React Native.
-    icon: 📦
-  - title: Pluggable
-    details: The sink for traces can be dynamically loaded. It's possible to implement a custom backend, there is no vendor lock-in.
+  - title: Cross-Platform Tracing
+    details: Single API that works across JavaScript, C++, Swift, and Java - trace performance issues spanning React Native's entire stack.
+    icon: 🌐
+  - title: Real-Time Profiling
+    details: Live trace visualization with Tracy backend for frame-by-frame analysis.
+    icon: ⚡
+    icon: 🛠️
+  - title: Multiple Backends
+    details: Choose your visualization backend - Tracy for real-time profiling, Platform for system-level analysis, or OpenTelemetry integration.
     icon: 🔌
-  - title: Single data sink
-    details: 'The same API is provided both to JS/TS & native languages: Kotlin, Java, C++, Swift, Objective-C.'
-    icon: 📑
+  - title: OpenTelemetry Integration
+    details: Preview your existing OTEL spans with Ottrelite's visualization backends while maintaining your production monitoring setup.
+    icon: 📊
 ---

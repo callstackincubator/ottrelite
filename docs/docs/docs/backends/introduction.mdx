@@ -1,0 +1,74 @@
+# Visualization Backends
+
+Visualization backends are the "display layer" of Ottrelite that transform your trace data into actionable insights. They take raw performance data from your React Native app and present it in different tools and formats to help you quickly identify bottlenecks and optimization opportunities.
+
+## What are Backends?
+
+Backends in Ottrelite are plugins that handle how and where your tracing data is visualized. Each backend connects to different profiling tools and provides unique perspectives on your app's performance. You can use multiple backends simultaneously to get comprehensive insights from different angles.
+
+Think of backends as different "viewers" for the same performance data - some excel at real-time analysis, others integrate with tools you're already familiar with, and some provide specialized visualizations for specific use cases.
+
+## Available Backends
+
+| Backend | Package | Best For | What It Does |
+|---------|---------|----------|--------------|
+| **Platform** | `@ottrelite/backend-platform` | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
+| **Tracy** | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support |
+
+### Platform Backend
+
+The Platform backend leverages native tracing APIs that you're likely already familiar with:
+- **Android**: Uses ATrace API, viewable in Android Studio Profiler or Perfetto
+- **iOS**: Uses OSSignposter API, viewable in Xcode Instruments
+
+This backend is ideal when you want to use the profiling tools built into your development environment.
+
+### Tracy Backend  
+
+The Tracy backend wraps the open-source Tracy profiler, providing real-time profiling capabilities:
+- Live trace visualization as your app runs
+- Frame-by-frame performance analysis
+- Memory tracking and visualization
+- Cross-platform consistency
+
+This backend is perfect for iterative development where you want immediate feedback on performance changes.
+
+## Production Builds
+
+Backends are designed for development use only and should not be included in production builds. 
+
+To exclude backends from production builds:
+
+1. **Conditional installation** - Install backends only when a development feature flag is set:
+
+```typescript
+import { Ottrelite } from '@ottrelite/core';
+
+if (__DEV__ || isProfilingEnabled) {
+  const { OttreliteBackendPlatform } = require('@ottrelite/backend-platform');
+  Ottrelite.install([OttreliteBackendPlatform]);
+}
+```
+
+2. **Build-time exclusion** - Use `react-native.config.js` to exclude backend packages from specific build types:
+
+```javascript
+module.exports = {
+  dependencies: {
+    '@ottrelite/backend-platform': {
+      platforms: {
+        android: {
+          buildTypes: ['debug'], // Only include in debug builds
+        },
+        ios: {
+          configurations: ['Debug'], // Only include in debug builds
+        },
+      },
+    },
+  },
+};
+```
+
+:::important
+If you've created a separate optimized configuration for performance profiling (as recommended in the [installation guide](/docs/core/introduction#configuring)), make sure to include that configuration in your build-time exclusion list as well to prevent it from being shipped to production.
+:::

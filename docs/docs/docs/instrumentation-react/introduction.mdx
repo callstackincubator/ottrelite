@@ -1,0 +1,174 @@
+# Ottrelite Instrumentation for React
+
+Ottrelite Instrumentation for React provides two main ways to add performance tracing to your React applications:
+
+1. **React Hooks API** - Manual instrumentation using React hooks like `useComponentRenderTracing`
+2. **Babel Plugin** - Automatic instrumentation using the `"use trace"` directive
+
+:::note
+If you're using a recent version of React Native, consider using [React Performance Tracks](/docs/introduction#react-native-devtools) instead.
+
+React Performance Tracks offer significantly more features compared to Ottrelite's basic render time tracking, including:
+
+- **Scheduler tracking** with 4 priority levels (Blocking, Transition, Suspense, Idle)
+- **Detailed render phases** (Update, Render, Commit, Effects) with flamegraph visualization
+- **Cascading update detection** to identify performance regressions
+- **Component-level insights** with render and effect durations
+- **Props change inspection** to identify unnecessary renders
+- **Integration with browser DevTools** alongside network requests, JavaScript execution, and event loop activity
+
+Ottrelite serves as an alternative solution for those who haven't upgraded to the latest React Native version yet.
+:::
+
+## Installation
+
+First, ensure you are already using `@ottrelite/core`. Then, add this package:
+
+```bash
+npm install @ottrelite/instrumentation-react
+```
+
+## Features
+
+### React Hooks API
+
+The React API provides hooks that allow you to manually instrument your components. The main hook is `useComponentRenderTracing`, which traces a component's render lifecycle.
+
+#### `useComponentRenderTracing`
+
+This hook traces a component's render lifecycle (i.e., any - first or subsequent - render).
+
+```typescript
+function MyComponent() {
+  const { markJSRenderEnd } = useComponentRenderTracing("MyComponent");
+
+  // Your component logic here...
+
+  const contents = <View>{/* ... */}</View>;
+
+  markJSRenderEnd();
+
+  return contents;
+}
+```
+
+The hook **must** be called first in the component to mark the JS logic start time undelayed. Any components you render & return **must** first be stored in a variable, and returned **after** calling the hook's returned `markJSRenderEnd` function.
+
+:::important
+The traced span starts after the JS render logic finishes and ends after the component is rendered to the tree. Additionally, the JS render execution time is measured and reported as a `jsLogicDuration` attribute within the span.
+:::
+
+### Babel Plugin for Automatic Instrumentation
+
+The Babel plugin automatically instruments React components and hooks using the `"use trace"` directive. This provides a convenient way to add tracing without manually calling hooks.
+
+#### Setting up the Babel Plugin
+
+Add the plugin to your Babel configuration. If you are using a `babel.config.js` file:
+
+```javascript
+module.exports = {
+  ...,
+  plugins: ['module:@ottrelite/instrumentation-react'],
+  ...
+};
+```
+
+#### Using the "use trace" Directive
+
+Add the `"use trace"` directive as the first line in functions you want to instrument:
+
+- **Function components**: First line of the component function body
+- **Class components**: First line of the `render` method body
+- **Hooks**: First line of the hook function body
+
+The directive schema is `"use trace [API] [Name]"` where:
+
+- `[API]` (default: `dev`) - Either `dev` (Ottrelite Development API) or `otel` (OpenTelemetry JS SDK)
+- `[Name]` (optional) - Custom name for the tracer; if not provided, the function/component name is used
+
+#### Functions
+
+```typescript
+export function MyFunction() {
+    "use trace";
+    // Your  logic here
+});
+```
+
+#### Function Components
+
+```typescript
+import { memo } from 'react';
+
+export const MyComponent = memo(function MyComponent() {
+    "use trace";
+    
+    // Your component logic here
+    
+    return <div>Hello World</div>;
+});
+```
+
+:::note
+As seen in the examples above, the components are wrapped in `memo` to prevent unnecessary re-renders. This is a common practice in React to optimize performance, but it is not compulsory - the instrumentation would still work without it. However, in such case, it would be expected that most likely the instrumentation would produce many entries, for invocations of the component which didn't actually result in an update to the shadow tree.
+:::
+
+When using `memo()`, you must either:
+1. Use a named function: `memo(function MyComponent() { ... })`
+2. Provide an explicit name: `"use trace dev MyComponent"`
+
+:::important
+Anonymous functions without explicit names will result in an error.
+:::
+
+#### Class Components
+
+```typescript
+import { Component } from 'react';
+
+export class MyClassComponent extends Component {
+  render() {
+    'use trace';
+    
+    // Your render logic here
+    
+    return <div>Hello World</div>;
+  }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    // only rerender if props, state, or context have changed
+    return (
+      !_.isEqual(this.props, nextProps) ||
+      !_.isEqual(this.state, nextState) ||
+      !_.isEqual(this.context, nextContext)
+    );
+  }
+}
+```
+
+:::note
+As seen in the example above, the component includes an explicit implementation of `shouldComponentUpdate` to prevent unnecessary re-renders. This is a common practice in React to optimize performance, but it is not compulsory - the instrumentation would still work without it. However, in such case, it would be expected that most likely the instrumentation would produce many entries, for invocations of the component which didn't actually result in an update to the shadow tree.
+:::
+
+#### Tracer Name Resolution
+
+The tracer name is determined in the following priority order:
+
+| Declaration style / context                         | Name                                     |
+| --------------------------------------------------- | ---------------------------------------- |
+| Explicit name from the string after `"use trace"`   | The passed string                        |
+| component with `displayName` or `name`              | `displayName` or `name` property         |
+| named function/class                                | Name of the function/class               |
+| arrow function                                      | Name of the assignment target identifier |
+| anonymous function/class                            | Name of the assignment target identifier |
+
+Both `[API]` and `[Name]` parameters are optional. The shortest form is `"use trace"` which is equivalent to `"use trace dev <resolved component name>"`.
+
+:::tip
+If you pass only one parameter, it will be treated as `[API]` first; if the value doesn't match the API options, it will be treated as the `[Name]` parameter.
+:::
+
+:::tip
+Components wrapped in `memo()` or class components with `shouldComponentUpdate` are recommended to prevent unnecessary re-renders and reduce noise in tracing data.
+:::

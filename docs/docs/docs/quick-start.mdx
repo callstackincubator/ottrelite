@@ -1,0 +1,96 @@
+# Quick Start
+
+Get up and running with Ottrelite in just a few minutes. Ottrelite needs two components to work: a **tracing API** and a **visualization backend**.
+
+## Prerequisites
+
+Ottrelite requires `react-native-nitro-modules` to be installed in your project. If you don't have it yet, install it first:
+
+```bash
+npm install react-native-nitro-modules
+```
+
+For detailed setup instructions, consult the [react-native-nitro-modules documentation](https://nitro.margelo.com).
+
+## Step 1: Install the Tracing API
+
+Install the core Ottrelite package:
+
+```bash
+npm install @ottrelite/core
+```
+
+Add a sample trace anywhere in your app to test the setup:
+
+```typescript
+import { Ottrelite } from '@ottrelite/core';
+
+// Wrap any code you want to measure
+Ottrelite.beginEvent('MyEvent');
+// ... do some work ...
+Ottrelite.endEvent();
+```
+
+## Step 2: Install a Visualization Backend
+
+Choose a backend to visualize your traces. For this quick start, we'll use the Platform backend, which integrates with Android Studio Profiler and Xcode Instruments.
+
+```bash
+npm install @ottrelite/backend-platform
+```
+
+Configure Ottrelite to use the backend:
+
+```typescript
+import { Ottrelite } from '@ottrelite/core';
+import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
+
+Ottrelite.install([OttreliteBackendPlatform]);
+```
+
+:::tip
+You can install multiple backends simultaneously to get different perspectives on your app's performance:
+
+```typescript
+Ottrelite.install([
+  OttreliteBackendPlatform,
+  OttreliteBackendTracy
+]);
+```
+:::
+
+## Step 3: Record and View Traces
+
+Each backend provides different ways to record and view traces:
+
+### Android Studio Profiler
+1. Open your project in Android Studio
+2. Run your React Native app
+3. Open the Profiler tab (View → Tool Windows → Profiler)
+4. Start a CPU recording session
+5. Trigger the code with your traces
+6. Stop recording and view the traces
+
+### Xcode Instruments
+1. Build and run your iOS app
+2. Open Instruments (Xcode → Open Developer Tool → Instruments)
+3. Choose the "os_signpost" instrument
+4. Start recording and trigger your traced code
+5. View the hierarchical traces with timing information
+
+:::note
+For detailed backend-specific instructions, consult the individual backend documentation in the [Backends](/docs/backends) section.
+:::
+
+:::tip
+For real-time profiling, consider using the Tracy backend. Unlike Android Studio Profiler and Xcode Instruments, Tracy is a real-time profiler that can give you a frame-by-frame analysis of your app's performance without having to wait for the trace to be recorded.
+:::
+
+## Next Steps
+
+Now that you have basic tracing working:
+
+- **[Learn about tracing methods](/docs/api/overview)** - Explore synchronous, asynchronous, and counter events
+- **[Trace React components](/docs/instrumentation-react/overview)** - Automatically instrument component lifecycle
+- **[Explore available backends](/docs/backends/overview)** - Try Tracy for real-time profiling or OpenTelemetry integration
+- **[Explore OpenTelemetry integration](/docs/otel-interop/overview)** - Visualize your existing OpenTelemetry setup with Ottrelite's backends
