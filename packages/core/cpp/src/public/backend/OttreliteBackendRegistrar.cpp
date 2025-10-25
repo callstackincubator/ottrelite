@@ -29,9 +29,9 @@ namespace ottrelite::backend
             counterBackends_.insert(counterBackend);
         }
 
-        logger_.debug() << "Currently registered: " << syncBackends_.size() << " sync-capable backends, "
-                        << asyncBackends_.size() << " async-capable backends, " << counterBackends_.size()
-                        << "counter-capable backends, total " << backends.size() << " backends";
+        logger_.debug() << "Currently registered: " << syncBackends_.size() << " sync-capable backend(s), "
+                        << asyncBackends_.size() << " async-capable backend(s), " << counterBackends_.size()
+                        << " counter-capable backend(s), total: " << backends.size() << " backends";
     }
 
     void OttreliteBackendRegistrar::unregisterBackend(const std::shared_ptr<BaseOttreliteBackend> &backend)

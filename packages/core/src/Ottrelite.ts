@@ -63,7 +63,7 @@ export class Ottrelite {
         'ReactNativeOttrelite'
       );
 
-    Ottrelite.setEnabled(options.enabled || options.enabled === undefined);
+    Ottrelite._setEnabled(options.enabled || options.enabled === undefined);
 
     // @ts-ignore-next-line - this method must NOT be generated in C++ code by nitro codegen,
     // as it should accept the jsi::Runtime instance; thus, it's not typed on the HybridObject
@@ -76,7 +76,7 @@ export class Ottrelite {
     );
 
     console.log(
-      `[Ottrelite] Installed Ottrelite with ${Ottrelite.listInstalledBackends().length} backend(s), with enabled-state: ${Ottrelite.isEnabled() ? 'enabled' : 'disabled'}.`
+      `[Ottrelite] Installed Ottrelite with ${Ottrelite._listInstalledBackends().length} backend(s), with enabled-state: ${Ottrelite.isEnabled() ? 'enabled' : 'disabled'}.`
     );
 
     this.wasInstallCalled = true;
@@ -108,6 +108,10 @@ export class Ottrelite {
   static setEnabled(enabled: boolean): void {
     Ottrelite.assertInstallCalled();
 
+    Ottrelite._setEnabled(enabled);
+  }
+
+  protected static _setEnabled(enabled: boolean): void {
     Ottrelite.enabled = enabled;
     Ottrelite.hybridObject.setEnabled(enabled);
   }
@@ -210,6 +214,10 @@ export class Ottrelite {
   static listInstalledBackends(): OttreliteBackendInfo[] {
     Ottrelite.assertInstallCalled();
 
+    return Ottrelite._listInstalledBackends();
+  }
+
+  protected static _listInstalledBackends(): OttreliteBackendInfo[] {
     return Ottrelite.hybridObject.listInstalledBackends();
   }
 

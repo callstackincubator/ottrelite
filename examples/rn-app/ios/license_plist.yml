@@ -1524,7 +1524,7 @@ manual:
   - name: camelcase@6.3.0
     version: '6.3.0'
     source: sindresorhus/camelcase
-    file: '../../../node_modules/camelcase/license'
+    file: '../../../node_modules/metro-config/node_modules/camelcase/license'
   - name: jest-get-type@29.6.3
     version: '29.6.3'
     source: https://github.com/jestjs/jest
@@ -2088,7 +2088,7 @@ manual:
   - name: react-is@16.13.1
     version: '16.13.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/react-is/LICENSE'
+    file: '../../../node_modules/hoist-non-react-statics/node_modules/react-is/LICENSE'
   - name: color@3.2.1
     version: '3.2.1'
     source: Qix-/color

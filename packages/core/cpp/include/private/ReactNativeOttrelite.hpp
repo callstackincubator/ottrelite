@@ -129,6 +129,6 @@ namespace margelo::nitro::ottrelite
         static logging::Logger logger_;
 
         std::pair<bool, MaybeEventArgsMap> validateEventArgsObj(const jsi::Value &args) const;
-        void reviveSystraceAPI();
+        void reviveSystraceAPI(bool enable);
     };
 } // namespace margelo::nitro::ottrelite

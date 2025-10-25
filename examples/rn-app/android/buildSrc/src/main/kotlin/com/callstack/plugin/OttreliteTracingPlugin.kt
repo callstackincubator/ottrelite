@@ -34,11 +34,24 @@ class OttreliteTracingPlugin : Plugin<Project> {
 
         val androidComponents = project.extensions.getByType(AndroidComponentsExtension::class.java)
 
+        extension.rnInstrumentationVariants.get().let { instrumentedVariantsWhitelist ->
+            val description =
+                if (instrumentedVariantsWhitelist.isEmpty()) {
+                    "all variants"
+                } else {
+                    "variants: ${instrumentedVariantsWhitelist.joinToString(", ")}"
+                }
+            project.logger.lifecycle(
+                "[OttreliteTracing] Configuration will instrument $description"
+            )
+        }
+
         androidComponents.onVariants { variant ->
             val variantName = variant.name
             val shouldInstrument = shouldInstrumentVariant(variantName, extension)
+
             if (shouldInstrument) {
-                project.logger.lifecycle("OttreliteTracing: Enabling instrumentation for variant '$variantName'")
+                project.logger.lifecycle("[OttreliteTracing] Enabling instrumentation for variant '$variantName'")
 
                 variant.instrumentation.transformClassesWith(
                     OttreliteClassVisitorFactory::class.java,
@@ -51,7 +64,7 @@ class OttreliteTracingPlugin : Plugin<Project> {
                     FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS
                 )
             } else {
-                project.logger.lifecycle("OttreliteTracing: Skipping instrumentation for variant '$variantName'")
+                project.logger.lifecycle("[OttreliteTracing] Skipping instrumentation for variant '$variantName'")
             }
         }
     }
@@ -61,6 +74,7 @@ class OttreliteTracingPlugin : Plugin<Project> {
         extension: OttreliteTracingExtension
     ): Boolean {
         val rnInstrumentationVariants = extension.rnInstrumentationVariants.get()
+
         // if enabled variants are specified, only instrument those
         if (rnInstrumentationVariants.isNotEmpty()) {
             return rnInstrumentationVariants.contains(variantName)

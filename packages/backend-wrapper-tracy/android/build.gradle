@@ -43,7 +43,7 @@ final def logPrefix = "[${packageName}] "
 
 def logLifecycle = { msg -> logger.lifecycle("${logPrefix}${msg}") }
 
-logLifecycle("[${packageName}] 📃 Ottrelite Backend - Wrapper for Tracy v${packageVersion} 📃")
+logLifecycle("📃 Ottrelite Backend - Wrapper for Tracy v${packageVersion} 📃")
 
 android {
     namespace "com.callstack.ottrelite.backend.tracy"

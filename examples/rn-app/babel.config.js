@@ -3,7 +3,15 @@ module.exports = {
   plugins: ['module:@ottrelite/instrumentation-react'],
   env: {
     production: {
-      plugins: ['react-native-paper/babel'],
+      plugins: [
+        'react-native-paper/babel',
+        [
+          'transform-inline-environment-variables',
+          {
+            include: ['DISABLE_TRACING'],
+          },
+        ],
+      ],
     },
   },
 };

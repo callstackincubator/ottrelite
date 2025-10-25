@@ -9,11 +9,15 @@ export interface OttreliteOptions {
    * and will call the `Ottrelite` API methods under the hood.
    *
    * @see https://reactnative.dev/docs/systrace
+   *
+   * @default true
    */
   reviveSystraceAPI?: boolean;
 
   /**
    * If set to `true`, Ottrelite will be enabled; if set to `false`, Ottrelite will be disabled.
+   *
+   * This does not impact the `reviveSystraceAPI` option.
    *
    * @default true
    */

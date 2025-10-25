@@ -4,7 +4,8 @@ apply plugin: "com.callstack.ottrelite"
 apply plugin: "com.facebook.react"
 
 ottreliteTracing {
-  rnInstrumentationVariants = ["debug", "profiling"]
+    // only instrument RN internals tracing in profiling build variant
+    rnInstrumentationVariants = ["profiling"]
 }
 
 /**
@@ -100,6 +101,12 @@ android {
     }
     buildTypes {
         debug {
+            signingConfig signingConfigs.debug
+        }
+        profiling {
+            initWith release
+            matchingFallbacks = ["debug", "release"]
+            debuggable = true
             signingConfig signingConfigs.debug
         }
         release {

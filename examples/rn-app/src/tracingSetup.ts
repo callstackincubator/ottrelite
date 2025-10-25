@@ -34,13 +34,20 @@ import { name as appName } from '../app.json';
 
 const JAEGER_ENDPOINT_BASE = 'http://localhost:4318/v1';
 
+const shouldNotTrace = process.env.DISABLE_TRACING === 'true';
+
+console.log(
+  `Demo application is running with DISABLE_TRACING set to ${shouldNotTrace}`
+);
+
 // initialize Ottrelite Development API
 Ottrelite.install(
   // below: list of development backends to install
   [OttreliteBackendPlatform, OttreliteBackendTracy],
   // below: optional configuration options
   {
-    reviveSystraceAPI: true, // if set to true, the RN Systrace API will be revived & configured to call Ottrelite's methods
+    reviveSystraceAPI: !shouldNotTrace, // if set to true, the RN Systrace API will be revived & configured to call Ottrelite's methods
+    enabled: !shouldNotTrace, // if set to false, Ottrelite will be disabled at runtime - any call to its tracing APIs will be a no-op
   }
 );
 
