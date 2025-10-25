@@ -103,6 +103,11 @@ namespace margelo::nitro::ottrelite
         void configure(const OttreliteOptions &options) override;
 
         /**
+         * \copydoc ::ottrelite::Ottrelite::setEnabled
+         */
+        void setEnabled(bool enabled) override;
+
+        /**
          * Inherited method called by Nitro Modules base code that registers hybrid methods interacting directly with
          * JSI.
          */

@@ -1,5 +1,9 @@
-import { ReactNativeOttreliteHybridObject } from './ReactNativeOttreliteHybridObject';
-import type { OttreliteOptions } from './specs/ReactNativeOttrelite.nitro';
+import { NitroModules } from 'react-native-nitro-modules';
+
+import type {
+  OttreliteOptions,
+  ReactNativeOttrelite,
+} from './specs/ReactNativeOttrelite.nitro';
 import type { OttreliteBackend } from './types/OttreliteBackend';
 import type { OttreliteBackendInfo } from './types/OttreliteBackendInfo';
 import type { StackTraceEntry } from './types/StackTraceEntry';
@@ -9,6 +13,13 @@ const devBundleExtractFileUrlRegex =
 
 export class Ottrelite {
   private static wasInstallCalled: boolean = false;
+
+  /**
+   * Indicates whether Ottrelite is enabled or not.
+   */
+  private static enabled: boolean = false;
+
+  static hybridObject: ReactNativeOttrelite;
 
   private static safelyIterateBackendsList(
     backends: OttreliteBackend[],
@@ -20,7 +31,7 @@ export class Ottrelite {
         callback(backend);
       } else {
         console.warn(
-          `Ottrelite: Backend at index ${i} does not have an install() method - ignoring.`
+          `[Ottrelite] Backend at index ${i} does not have an install() method - ignoring.`
         );
       }
       i++;
@@ -39,7 +50,7 @@ export class Ottrelite {
    */
   static install(
     backends: OttreliteBackend[] = [],
-    options: OttreliteOptions = {}
+    options: OttreliteOptions = { enabled: true }
   ) {
     if (this.wasInstallCalled) {
       throw new Error(
@@ -47,17 +58,58 @@ export class Ottrelite {
       );
     }
 
+    Ottrelite.hybridObject =
+      NitroModules.createHybridObject<ReactNativeOttrelite>(
+        'ReactNativeOttrelite'
+      );
+
+    Ottrelite.setEnabled(options.enabled || options.enabled === undefined);
+
     // @ts-ignore-next-line - this method must NOT be generated in C++ code by nitro codegen,
     // as it should accept the jsi::Runtime instance; thus, it's not typed on the HybridObject
-    ReactNativeOttreliteHybridObject.install();
+    Ottrelite.hybridObject.install();
 
-    ReactNativeOttreliteHybridObject.configure(options);
+    Ottrelite.hybridObject.configure(options);
 
     Ottrelite.safelyIterateBackendsList(backends, (backend) =>
       backend.install()
     );
 
+    console.log(
+      `[Ottrelite] Installed Ottrelite with ${Ottrelite.listInstalledBackends().length} backend(s), with enabled-state: ${Ottrelite.isEnabled() ? 'enabled' : 'disabled'}.`
+    );
+
     this.wasInstallCalled = true;
+  }
+
+  /**
+   * Asserts that Ottrelite.install() has been called; throws an error if not.
+   */
+  protected static assertInstallCalled() {
+    if (!Ottrelite.wasInstallCalled) {
+      throw new Error(
+        'Ottrelite.install() must be called before using any other Ottrelite methods.'
+      );
+    }
+  }
+
+  /**
+   * Checks whether Ottrelite is enabled.
+   * @returns true if Ottrelite is enabled, false otherwise.
+   */
+  static isEnabled(): boolean {
+    return Ottrelite.enabled;
+  }
+
+  /**
+   * Sets the enabled state of Ottrelite.
+   * @param enabled whether to enable Ottrelite.
+   */
+  static setEnabled(enabled: boolean): void {
+    Ottrelite.assertInstallCalled();
+
+    Ottrelite.enabled = enabled;
+    Ottrelite.hybridObject.setEnabled(enabled);
   }
 
   /**
@@ -71,7 +123,11 @@ export class Ottrelite {
     eventName: string,
     additionalArgs?: Record<string, string>
   ) {
-    ReactNativeOttreliteHybridObject.beginEvent(
+    if (!Ottrelite.isEnabled()) return;
+
+    Ottrelite.assertInstallCalled();
+
+    Ottrelite.hybridObject.beginEvent(
       eventName,
       Ottrelite.getJsStackTrace(),
       additionalArgs
@@ -82,7 +138,11 @@ export class Ottrelite {
    * Ends tracing a previously started event in a given frame using the synchronous API.
    */
   static endEvent(additionalArgs?: Record<string, string>): void {
-    ReactNativeOttreliteHybridObject.endEvent(additionalArgs);
+    if (!Ottrelite.isEnabled()) return;
+
+    Ottrelite.assertInstallCalled();
+
+    Ottrelite.hybridObject.endEvent(additionalArgs);
   }
 
   /**
@@ -98,7 +158,11 @@ export class Ottrelite {
     eventName: string,
     additionalArgs?: Record<string, string>
   ): number {
-    return ReactNativeOttreliteHybridObject.beginAsyncEvent(
+    if (!Ottrelite.isEnabled()) return -1;
+
+    Ottrelite.assertInstallCalled();
+
+    return Ottrelite.hybridObject.beginAsyncEvent(
       eventName,
       Ottrelite.getJsStackTrace(),
       additionalArgs
@@ -117,11 +181,11 @@ export class Ottrelite {
     token: number,
     additionalArgs?: Record<string, string>
   ): void {
-    ReactNativeOttreliteHybridObject.endAsyncEvent(
-      eventName,
-      token,
-      additionalArgs
-    );
+    if (!Ottrelite.isEnabled()) return;
+
+    Ottrelite.assertInstallCalled();
+
+    Ottrelite.hybridObject.endAsyncEvent(eventName, token, additionalArgs);
   }
 
   /**
@@ -131,7 +195,11 @@ export class Ottrelite {
    * @param value The numerical value of the counter event
    */
   static counterEvent(eventName: string, value: number): void {
-    ReactNativeOttreliteHybridObject.counterEvent(eventName, value);
+    if (!Ottrelite.isEnabled()) return;
+
+    Ottrelite.assertInstallCalled();
+
+    Ottrelite.hybridObject.counterEvent(eventName, value);
   }
 
   /**
@@ -140,7 +208,9 @@ export class Ottrelite {
    * @return List of details of installed backends
    */
   static listInstalledBackends(): OttreliteBackendInfo[] {
-    return ReactNativeOttreliteHybridObject.listInstalledBackends();
+    Ottrelite.assertInstallCalled();
+
+    return Ottrelite.hybridObject.listInstalledBackends();
   }
 
   private static getJsStackTrace(): StackTraceEntry[] {

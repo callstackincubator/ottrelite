@@ -80,6 +80,11 @@ namespace margelo::nitro::ottrelite
         }
     }
 
+    void ReactNativeOttrelite::setEnabled(const bool enabled)
+    {
+        ::ottrelite::Ottrelite::setEnabled(enabled);
+    }
+
     void ReactNativeOttrelite::reviveSystraceAPI()
     {
         logger_.debug("reviveSystraceAPI() - setting tracing globals");
