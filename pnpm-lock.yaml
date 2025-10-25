@@ -470,6 +470,9 @@ importers:
       '@rspress/plugin-typedoc':
         specifier: 2.0.0-beta.34
         version: 2.0.0-beta.34(@rspress/core@2.0.0-beta.34(@types/react@19.1.13))(typescript@5.8.3)
+      '@rspress/theme-default':
+        specifier: ^2.0.0-beta.34
+        version: 2.0.0-beta.34(@types/react@19.1.13)
     devDependencies:
       '@types/node':
         specifier: ^24.0.10
@@ -2263,6 +2266,10 @@ packages:
 
   '@rspress/shared@2.0.0-beta.34':
     resolution: {integrity: sha512-kFvrJIF7ftQFFzQyJiTwkxmdoVXwSeBoEsAQDmOJ2WZJwXvtzkvFbJJjdzC21N3qNyYOqHlx+jGzZowYjZuBhA==}
+
+  '@rspress/theme-default@2.0.0-beta.34':
+    resolution: {integrity: sha512-ZnW9oWEA3+lH0nh71bOOncLDiosZRutRXlXSnkjSMJGacBjGITFQc+ECc1E11+tcpIIt0NiWikx7/PeXXjBmAA==}
+    engines: {node: '>=18.0.0'}
 
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
@@ -9167,6 +9174,7 @@ snapshots:
       '@rspress/mdx-rs': 0.6.6
       '@rspress/runtime': 2.0.0-beta.34
       '@rspress/shared': 2.0.0-beta.34
+      '@rspress/theme-default': 2.0.0-beta.34(@types/react@19.1.13)
       '@shikijs/rehype': 3.13.0
       '@types/unist': 3.0.3
       '@unhead/react': 2.0.19(react@19.2.0)
@@ -9270,6 +9278,26 @@ snapshots:
       gray-matter: 4.0.3
       lodash-es: 4.17.21
       unified: 11.0.5
+
+  '@rspress/theme-default@2.0.0-beta.34(@types/react@19.1.13)':
+    dependencies:
+      '@mdx-js/react': 3.1.1(@types/react@19.1.13)(react@19.2.0)
+      '@rspress/runtime': 2.0.0-beta.34
+      '@rspress/shared': 2.0.0-beta.34
+      '@unhead/react': 2.0.19(react@19.2.0)
+      body-scroll-lock: 4.0.0-beta.0
+      copy-to-clipboard: 3.3.3
+      flexsearch: 0.7.43
+      github-slugger: 2.0.0
+      hast-util-to-jsx-runtime: 2.3.6
+      lodash-es: 4.17.21
+      nprogress: 0.2.0
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      shiki: 3.13.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
 
   '@selderee/plugin-htmlparser2@0.11.0':
     dependencies:
