@@ -5,24 +5,6 @@ import com.android.build.api.instrumentation.InstrumentationScope
 import com.android.build.api.variant.AndroidComponentsExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.provider.SetProperty
-
-open class OttreliteTracingExtension(project: Project) {
-    /**
-     * Set of variant names where tracing should be enabled.
-     * If empty, tracing will be applied to all variants.
-     *
-     * Example usage in build.gradle:
-     * ```
-     * ottreliteTracing {
-     *     rnInstrumentationVariants = ["debug", "profiling"]
-     * }
-     * ```
-     */
-    val rnInstrumentationVariants: SetProperty<String> =
-        project.objects.setProperty(String::class.java)
-            .convention(emptySet())
-}
 
 class OttreliteTracingPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -76,11 +58,8 @@ class OttreliteTracingPlugin : Plugin<Project> {
         val rnInstrumentationVariants = extension.rnInstrumentationVariants.get()
 
         // if enabled variants are specified, only instrument those
-        if (rnInstrumentationVariants.isNotEmpty()) {
-            return rnInstrumentationVariants.contains(variantName)
-        }
-
-        // otherwise, instrument all variants
-        return true
+        return if (rnInstrumentationVariants.isNotEmpty()) {
+            rnInstrumentationVariants.contains(variantName)
+        } else true
     }
 }
