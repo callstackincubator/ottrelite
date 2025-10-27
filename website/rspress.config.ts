@@ -20,9 +20,10 @@ export default withCallstackPreset(
       socials: {
         github: 'https://github.com/callstackincubator/ottrelite',
       },
-      editUrl: 'https://github.com/callstackincubator/ottrelite/edit/main/docs',
+      editUrl:
+        'https://github.com/callstackincubator/ottrelite/edit/main/website',
       rootUrl: 'https://oss.callstack.com/ottrelite/',
-      rootDir: 'docs',
+      rootDir: 'src',
     },
   },
   defineConfig({

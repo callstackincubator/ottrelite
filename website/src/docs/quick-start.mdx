@@ -6,9 +6,9 @@ Get up and running with Ottrelite in just a few minutes. Ottrelite needs two com
 
 Ottrelite requires `react-native-nitro-modules` to be installed in your project. If you don't have it yet, install it first:
 
-```bash
-npm install react-native-nitro-modules
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install react-native-nitro-modules" />
 
 For detailed setup instructions, consult the [react-native-nitro-modules documentation](https://nitro.margelo.com).
 
@@ -16,9 +16,7 @@ For detailed setup instructions, consult the [react-native-nitro-modules documen
 
 Install the core Ottrelite package:
 
-```bash
-npm install @ottrelite/core
-```
+<PackageManagerTabs command="install @ottrelite/core" />
 
 Add a sample trace anywhere in your app to test the setup:
 
@@ -35,9 +33,7 @@ Ottrelite.endEvent();
 
 Choose a backend to visualize your traces. For this quick start, we'll use the Platform backend, which integrates with Android Studio Profiler and Xcode Instruments.
 
-```bash
-npm install @ottrelite/backend-platform
-```
+<PackageManagerTabs command="install @ottrelite/backend-platform" />
 
 Configure Ottrelite to use the backend:
 
@@ -79,7 +75,7 @@ Each backend provides different ways to record and view traces:
 5. View the hierarchical traces with timing information
 
 :::note
-For detailed backend-specific instructions, consult the individual backend documentation in the [Backends](/docs/backends) section.
+For detailed backend-specific instructions, consult the individual backend documentation in the [Backends](./backends/introduction.mdx) section.
 :::
 
 :::tip
@@ -90,7 +86,7 @@ For real-time profiling, consider using the Tracy backend. Unlike Android Studio
 
 Now that you have basic tracing working:
 
-- **[Learn about tracing methods](/docs/api/overview)** - Explore synchronous, asynchronous, and counter events
-- **[Trace React components](/docs/instrumentation-react/overview)** - Automatically instrument component lifecycle
-- **[Explore available backends](/docs/backends/overview)** - Try Tracy for real-time profiling or OpenTelemetry integration
-- **[Explore OpenTelemetry integration](/docs/otel-interop/overview)** - Visualize your existing OpenTelemetry setup with Ottrelite's backends
+- **[Learn about tracing methods](./core/introduction.mdx)** - Explore synchronous, asynchronous, and counter events
+- **[Trace React components](./instrumentation-react/introduction.mdx)** - Automatically instrument component lifecycle
+- **[Explore available backends](./backends/introduction.mdx)** - Try Tracy for real-time profiling or OpenTelemetry integration
+- **[Explore OpenTelemetry integration](./interop-otel/introduction.mdx)** - Visualize your existing OpenTelemetry setup with Ottrelite's backends

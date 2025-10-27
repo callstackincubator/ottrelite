@@ -18,11 +18,7 @@
     "eslint-plugin-ft-flow": "^3.0.11",
     "eslint-plugin-prettier": "^5.5.1",
     "jest": "^30.0.4",
-    "nitro-codegen": "^0.27.2",
     "prettier": "^3.6.2",
-    "react": "19.1.0",
-    "react-native": "^0.81.0",
-    "react-native-nitro-modules": "0.30.2",
     "react-test-renderer": "19.0.0",
     "ts-jest": "^29.4.0",
     "turbo": "^1.13.4",
@@ -34,7 +30,7 @@
   "scripts": {
     "build": "pnpm run -r build",
     "build:watch": "pnpm run -r --parallel build:watch",
-    "build:docs": "pnpm -F @ottrelite/docs run build:docs",
+    "build:docs": "pnpm -F @ottrelite/docs run build",
     "lint": "pnpm run -r lint",
     "typecheck": "pnpm run -r typecheck",
     "test": "pnpm run -r test",
@@ -45,7 +41,6 @@
     "changeset": "npx changeset",
     "example:android": "pnpm -F @ottrelite/example run android",
     "example:ios": "pnpm -F @ottrelite/example run ios",
-    "postinstall": "npx lefthook install && (pnpm run build || exit 0;)",
     "pod:install": "cd examples/rn-app && pod install",
     "publish:npm": "pnpm -r publish:npm",
     "publish:yalc": "pnpm -r publish:yalc"

@@ -17,9 +17,9 @@ Ottrelite Core supports tracing across all major React Native development langua
 
 First, install the package with:
 
-```bash
-npm install @ottrelite/core
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install @ottrelite/core" />
 
 ## Configuring
 
@@ -27,7 +27,7 @@ The quickest way to use Ottrelite is via the Tracing API.
 
 Before you use Ottrelite, you need to configure it by including the following `Ottrelite.install()` call in your entrypoint file (e.g. `index.js`):
 
-```javascript
+```typescript
 import { OttreliteBackendPlatform } from '@ottrelite/backend-platform';
 import { Ottrelite } from '@ottrelite/core';
 
@@ -52,7 +52,7 @@ To record synchronous traces, you can use the `Ottrelite.beginEvent()` and `Ottr
 
 Events maintain a hierarchical structure, so you can nest them. If you begin a new event while another one is already in progress, the new event will be a child of the previous one.
 
-import { Tab, Tabs } from 'rspress/theme';
+import { Tab, Tabs } from '@rspress/core/theme';
 
 <Tabs>
 <Tab label="JavaScript">
@@ -75,7 +75,7 @@ Ottrelite::endEvent();
 ```
 </Tab>
 <Tab label="Java">
-```java title="index.java"
+```kotlin title="index.java"
 import com.callstack.ottrelite.OttreliteAndroid
 
 OttreliteAndroid.beginEvent("MyEvent")
@@ -115,7 +115,7 @@ Ottrelite::endAsyncEvent("MyAsyncEvent", token);
 </Tab>
 <Tab label="Java">
 
-```java title="index.java"
+```kotlin title="index.java"
 import com.callstack.ottrelite.OttreliteAndroid
 
 val token = OttreliteAndroid.beginAsyncEvent("MyAsyncEvent")
@@ -146,7 +146,7 @@ Ottrelite::counterEvent("MyCounter", 123.45);
 </Tab>
 <Tab label="Java">
 
-```java title="index.java"
+```kotlin title="index.java"
 import com.callstack.ottrelite.OttreliteAndroid
 
 OttreliteAndroid.traceCounter("MyCounter", 123.45)

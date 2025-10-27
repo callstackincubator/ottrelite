@@ -24,9 +24,9 @@ Ottrelite serves as an alternative solution for those who haven't upgraded to th
 
 First, ensure you are already using `@ottrelite/core`. Then, add this package:
 
-```bash
-npm install @ottrelite/instrumentation-react
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install @ottrelite/instrumentation-react" />
 
 ## Features
 
@@ -54,7 +54,7 @@ function MyComponent() {
 
 The hook **must** be called first in the component to mark the JS logic start time undelayed. Any components you render & return **must** first be stored in a variable, and returned **after** calling the hook's returned `markJSRenderEnd` function.
 
-:::important
+:::info
 The traced span starts after the JS render logic finishes and ends after the component is rendered to the tree. Additionally, the JS render execution time is measured and reported as a `jsLogicDuration` attribute within the span.
 :::
 
@@ -66,7 +66,7 @@ The Babel plugin automatically instruments React components and hooks using the 
 
 Add the plugin to your Babel configuration. If you are using a `babel.config.js` file:
 
-```javascript
+```typescript
 module.exports = {
   ...,
   plugins: ['module:@ottrelite/instrumentation-react'],
@@ -118,7 +118,7 @@ When using `memo()`, you must either:
 1. Use a named function: `memo(function MyComponent() { ... })`
 2. Provide an explicit name: `"use trace dev MyComponent"`
 
-:::important
+:::info
 Anonymous functions without explicit names will result in an error.
 :::
 

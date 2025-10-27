@@ -57,7 +57,7 @@ Additionally, for iOS run `pod install` in the `ios` directory.
 
 And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
 
-```javascript
+```typescript
 import { OttreliteBackendTracy } from '@ottrelite/backend-wrapper-tracy';
 import { Ottrelite } from '@ottrelite/core';
 

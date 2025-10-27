@@ -15,26 +15,6 @@ Think of backends as different "viewers" for the same performance data - some ex
 | **Platform** | `@ottrelite/backend-platform`      | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
 | **Tracy**    | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling           | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support  |
 
-### Platform Backend
-
-The Platform backend leverages native tracing APIs that you're likely already familiar with:
-
-- **Android**: Uses ATrace API, viewable in Android Studio Profiler or Perfetto
-- **iOS**: Uses OSSignposter API, viewable in Xcode Instruments
-
-This backend is ideal when you want to use the profiling tools built into your development environment.
-
-### Tracy Backend
-
-The Tracy backend wraps the open-source Tracy profiler, providing real-time profiling capabilities:
-
-- Live trace visualization as your app runs
-- Frame-by-frame performance analysis
-- Memory tracking and visualization
-- Cross-platform consistency
-
-This backend is perfect for iterative development where you want immediate feedback on performance changes.
-
 ## Production Builds
 
 Backends are designed for development use only and should not be included in production builds.
@@ -62,6 +42,6 @@ ottreliteTracing {
 }
 ```
 
-:::important
+:::info
 If you've created a separate optimized configuration for performance profiling (as recommended in the [installation guide](/docs/core/introduction#configuring)), make sure to include that configuration in your build-time exclusion list as well to prevent it from being shipped to production.
 :::

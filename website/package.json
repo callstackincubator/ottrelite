@@ -3,19 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:docs": "rspress build",
-    "lint": "biome check --write",
+    "build": "rspress build",
+    "lint": "eslint .",
     "dev": "rspress dev",
-    "format": "biome format --write",
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/plugin-typedoc": "2.0.0-beta.34",
+    "@callstack/rspress-preset": "~0.4.5",
     "@rspress/core": "2.0.0-beta.34",
-    "@callstack/rspress-preset": "~0.4.3"
+    "@rspress/plugin-typedoc": "2.0.0-beta.34",
+    "@rspress/theme-default": "^2.0.0-beta.34"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
     "@types/node": "^24.0.10"
   }
 }

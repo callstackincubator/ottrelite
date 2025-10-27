@@ -26,7 +26,7 @@ The Tracing API provides a lightweight interface for React Native development th
 
 Below is an example of how to use the Tracing API in different languages to synchronous trace an event named `generateImage`.
 
-import { Tab, Tabs } from 'rspress/theme';
+import { Tab, Tabs } from '@rspress/core/theme';
 
 <Tabs>
 <Tab label="JavaScript">
@@ -59,13 +59,8 @@ Ottrelite::endEvent({{{"pixels", std::to_string(image.size())}}});
 
 ```
 </Tab>
-<Tab label="Kotlin">
-```kotlin title="index.kt"
-// tbd
-```
-</Tab>
 <Tab label="Java">
-```java title="index.java"
+```kotlin title="index.java"
 import com.callstack.ottrelite.OttreliteAndroid
 
 OttreliteAndroid.beginEvent("generateImage", mapOf(
@@ -82,12 +77,12 @@ OttreliteAndroid.endEvent(mapOf(
 </Tab>
 </Tabs>
 
-The API also allows you to trace asynchronous events as well as counter events. For details, see the [Tracing API documentation](/docs/core/introduction).
+The API also allows you to trace asynchronous events as well as counter events. For details, see the [Tracing API documentation](./core/introduction.mdx).
 
 :::tip
 **Already using OpenTelemetry?** 
 
-Your existing OTEL spans can automatically work with Ottrelite's visualization backends while maintaining your production monitoring setup. You can preview OTEL traces locally during development without needing a dedicated collector service. See the [OpenTelemetry Integration guide](./otel-interop/quick-start.mdx) for setup details.
+Your existing OTEL spans can automatically work with Ottrelite's visualization backends while maintaining your production monitoring setup. You can preview OTEL traces locally during development without needing a dedicated collector service. See the [OpenTelemetry Integration guide](./interop-otel/introduction.mdx) for setup details.
 :::
 
 :::note
@@ -111,13 +106,13 @@ Each backend is designed for different development workflows - you can even use 
 
 Ottrelite shines during the **development and optimization phases** of React Native app development. It's specifically designed for scenarios where you need to understand exactly what's happening inside your code, rather than just monitoring high-level system metrics.
 
-**Ottrelite is perfect for:**
+Ottrelite is perfect for:
 
-**Performance audits and optimization** - When you need to identify which specific functions or components are causing performance issues. Unlike general profiling tools, Ottrelite lets you trace your exact business logic and see precisely where time is being spent.
+- **Performance audits and optimization** - When you need to identify which specific functions or components are causing performance issues. Unlike general profiling tools, Ottrelite lets you trace your exact business logic and see precisely where time is being spent.
 
-**Debugging complex React Native logic** - Whether it's investigating why a screen loads slowly, understanding render performance, or tracking down issues in data processing pipelines. The cross-platform nature means you can trace performance issues that span JavaScript, native modules, and platform-specific code.
+- **Debugging complex React Native logic** - Whether it's investigating why a screen loads slowly, understanding render performance, or tracking down issues in data processing pipelines. The cross-platform nature means you can trace performance issues that span JavaScript, native modules, and platform-specific code.
 
-**React Native internals exploration** - Ottrelite can automatically instrument React Native's internal operations, giving you visibility into framework-level performance without modifying React Native source code.
+- **React Native internals exploration** - Ottrelite can automatically instrument React Native's internal operations, giving you visibility into framework-level performance without modifying React Native source code.
 
 ## When not to use Ottrelite
 
@@ -151,11 +146,3 @@ For React Native versions that don't yet support performance out of the box, you
 - **Xcode Instruments** - Comprehensive performance analysis for iOS apps including Time Profiler, Allocations, and Leaks
 
 **Best for:** Platform-specific analysis, system-level debugging, and when you need deep native performance insights.
-
-### When to Choose Ottrelite
-
-Ottrelite excels when you need:
-- **Cross-platform consistency** - Same tracing API across JavaScript, C++, Swift, and Java
-- **Custom business logic tracing** - Instrument your specific application code, not just React internals
-- **Multi-language performance analysis** - Trace performance issues spanning JavaScript and native code
-- **Development-focused workflows** - Real-time feedback and development-optimized visualization

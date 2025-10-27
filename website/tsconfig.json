@@ -14,7 +14,7 @@
     "allowImportingTsExtensions": true
   },
   "include": [
-    "docs",
+    "src",
     "rspress.config.ts",
     "../packages/core/src/",
     "../packages/backend-wrapper-tracy/src/",

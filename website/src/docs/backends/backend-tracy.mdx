@@ -13,7 +13,7 @@ Use Tracy when you want:
 - **Memory tracking** - Visual representation of memory usage patterns
 - **Interactive exploration** - Zoom, filter, and analyze traces dynamically
 
-:::important
+:::info
 This backend is not designed for production use cases and should not be installed in production builds. See the [backends introduction](/docs/backends/introduction#production-builds) for guidance on excluding backends from production builds.
 :::
 
@@ -29,9 +29,9 @@ This backend is not designed for production use cases and should not be installe
 
 To use this package, you need to install it in your React Native project:
 
-```bash
-npm install @ottrelite/backend-wrapper-tracy
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install @ottrelite/backend-wrapper-tracy" />
 
 And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
 
@@ -42,7 +42,7 @@ import { Ottrelite } from '@ottrelite/core';
 Ottrelite.install([OttreliteBackendTracy]);
 ```
 
-:::important
+:::info
 Remember to give attribution to the Tracy Profiler in your application, as in the [last section](#additional-information).
 :::
 

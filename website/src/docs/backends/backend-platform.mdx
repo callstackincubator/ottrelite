@@ -11,7 +11,7 @@ Use Platform Backend when you want:
 - **System-level insights** - Analyze app performance alongside system metrics and other processes
 - **No additional setup** - Uses built-in platform APIs without requiring external profiling tools
 
-:::important
+:::info
 This backend is not designed for production use cases and should not be installed in production builds. See the [backends introduction](/docs/backends/introduction#production-builds) for guidance on excluding backends from production builds.
 :::
 
@@ -31,9 +31,9 @@ The support levels above mean that the application must be **compiled** with at 
 
 To use this package, you need to install it in your React Native project:
 
-```bash
-npm install @ottrelite/backend-platform
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install @ottrelite/backend-platform" />
 
 And register the backend with Ottrelite Core in your entrypoint file (e.g. `index.js`):
 
@@ -52,7 +52,7 @@ You can record and view traces in two ways:
 - using Android Studio's Profiler's 'Capture System Activities' option, as per the [documentation](https://developer.android.com/studio/profile); this method works both on physical devices & the Android emulator
 - using the `perfetto` CLI tool, which is distributed as part of the Android OS onboard most modern devices. More details can be found in the [documentation](https://perfetto.dev/docs/getting-started/system-tracing); the resulting file can be viewed in [Perfetto UI](https://ui.perfetto.dev/); this method works only on a physical device
 
-:::important
+:::info
 Make sure that the app you are profiling is `profileable` by placing an [appropriate element](https://developer.android.com/guide/topics/manifest/profileable-element) within your `AndroidManifest.xml`'s `<application>` element: `<profileable android:shell="true" />`
 :::
 

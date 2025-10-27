@@ -15,9 +15,9 @@ The integration works by providing Ottrelite-compatible TracerProvider and Meter
 
 ## Installation
 
-```bash
-npm install @ottrelite/interop-otel
-```
+import { PackageManagerTabs } from '@rspress/core/theme';
+
+<PackageManagerTabs command="install @ottrelite/interop-otel" />
 
 ## Available classes
 
@@ -84,7 +84,7 @@ const meterProvider = new OttreliteMeterProvider({
 meterProvider.register();
 ```
 
-:::important
+:::info
 **Don't forget production exporters!** While `DevSpanProcessorInterceptor` provides live visualization during development, make sure to also add OpenTelemetry exporters to collect trace data for production monitoring and analysis.
 :::
 
