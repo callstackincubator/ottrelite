@@ -295,15 +295,15 @@ rename:
   "tmpl@1.0.5": tmpl
   "metro-runtime@0.83.1": metro-runtime
   "@babel_runtime@7.28.2": '@babel/runtime'
-  "metro-source-map@0.83.3": metro-source-map
+  "metro-source-map@0.83.1": metro-source-map
   "@babel_traverse--for-generate-function-map@7.28.4": '@babel/traverse--for-generate-function-map'
   "@babel_generator@7.28.3": '@babel/generator'
   "@babel_parser@7.28.4": '@babel/parser'
   "@babel_types@7.28.4": '@babel/types'
-  "metro-symbolicate@0.83.3": metro-symbolicate
-  "ob1@0.83.3": ob1
+  "metro-symbolicate@0.83.1": metro-symbolicate
   "source-map@0.5.7": source-map
   "vlq@1.0.1": vlq
+  "ob1@0.83.1": ob1
   "metro-transform-plugins@0.83.1": metro-transform-plugins
   "metro-transform-worker@0.83.1": metro-transform-worker
   "metro-minify-terser@0.83.1": metro-minify-terser
@@ -386,8 +386,6 @@ rename:
   "escape-string-regexp@2.0.0": escape-string-regexp
   "jest-mock@29.7.0": jest-mock
   "memoize-one@5.2.1": memoize-one
-  "metro-source-map@0.83.1": metro-source-map
-  "ob1@0.83.1": ob1
   "promise@8.3.0": promise
   "asap@2.0.6": asap
   "react-devtools-core@6.1.5": react-devtools-core
@@ -1524,7 +1522,7 @@ manual:
   - name: camelcase@6.3.0
     version: '6.3.0'
     source: sindresorhus/camelcase
-    file: '../../../node_modules/metro-config/node_modules/camelcase/license'
+    file: '../../../node_modules/camelcase/license'
   - name: jest-get-type@29.6.3
     version: '29.6.3'
     source: https://github.com/jestjs/jest
@@ -1544,7 +1542,7 @@ manual:
   - name: react-is@18.3.1
     version: '18.3.1'
     source: https://github.com/facebook/react
-    file: '../../../node_modules/pretty-format/node_modules/react-is/LICENSE'
+    file: '../../../node_modules/react-is/LICENSE'
   - name: metro-file-map@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1601,8 +1599,8 @@ manual:
     version: '7.28.2'
     source: https://github.com/babel/babel
     file: '../../../node_modules/@babel/runtime/LICENSE'
-  - name: metro-source-map@0.83.3
-    version: '0.83.3'
+  - name: metro-source-map@0.83.1
+    version: '0.83.1'
     source: https://github.com/facebook/metro
     body: MIT
   - name: '@babel_traverse--for-generate-function-map@7.28.4'
@@ -1621,22 +1619,22 @@ manual:
     version: '7.28.4'
     source: https://github.com/babel/babel
     file: '../../../node_modules/@babel/traverse--for-generate-function-map/node_modules/@babel/types/LICENSE'
-  - name: metro-symbolicate@0.83.3
-    version: '0.83.3'
-    source: https://github.com/facebook/metro
-    body: MIT
-  - name: ob1@0.83.3
-    version: '0.83.3'
+  - name: metro-symbolicate@0.83.1
+    version: '0.83.1'
     source: https://github.com/facebook/metro
     body: MIT
   - name: source-map@0.5.7
     version: '0.5.7'
     source: http://github.com/mozilla/source-map
-    file: '../../../node_modules/metro/node_modules/source-map/LICENSE'
+    file: '../../../node_modules/metro-symbolicate/node_modules/source-map/LICENSE'
   - name: vlq@1.0.1
     version: '1.0.1'
     source: https://github.com/Rich-Harris/vlq
     file: '../../../node_modules/vlq/LICENSE'
+  - name: ob1@0.83.1
+    version: '0.83.1'
+    source: https://github.com/facebook/metro
+    body: MIT
   - name: metro-transform-plugins@0.83.1
     version: '0.83.1'
     source: https://github.com/facebook/metro
@@ -1965,14 +1963,6 @@ manual:
     version: '5.2.1'
     source: https://github.com/alexreardon/memoize-one
     file: '../../../node_modules/memoize-one/LICENSE'
-  - name: metro-source-map@0.83.1
-    version: '0.83.1'
-    source: https://github.com/facebook/metro
-    body: MIT
-  - name: ob1@0.83.1
-    version: '0.83.1'
-    source: https://github.com/facebook/metro
-    body: MIT
   - name: promise@8.3.0
     version: '8.3.0'
     source: https://github.com/then/promise
