@@ -13,5 +13,5 @@ build/
 !.vscode/extensions.json
 .idea
 
-docs/api/*
-!docs/api
+src/api/*
+!src/api

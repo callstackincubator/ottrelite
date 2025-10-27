@@ -103,6 +103,11 @@ namespace margelo::nitro::ottrelite
         void configure(const OttreliteOptions &options) override;
 
         /**
+         * \copydoc ::ottrelite::Ottrelite::setEnabled
+         */
+        void setEnabled(bool enabled) override;
+
+        /**
          * Inherited method called by Nitro Modules base code that registers hybrid methods interacting directly with
          * JSI.
          */
@@ -124,6 +129,6 @@ namespace margelo::nitro::ottrelite
         static logging::Logger logger_;
 
         std::pair<bool, MaybeEventArgsMap> validateEventArgsObj(const jsi::Value &args) const;
-        void reviveSystraceAPI();
+        void reviveSystraceAPI(bool enable);
     };
 } // namespace margelo::nitro::ottrelite

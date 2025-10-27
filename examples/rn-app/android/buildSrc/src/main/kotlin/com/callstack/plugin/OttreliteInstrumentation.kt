@@ -1,6 +1,9 @@
 package com.callstack.plugin
 
-import com.android.build.api.instrumentation.*
+import com.android.build.api.instrumentation.AsmClassVisitorFactory
+import com.android.build.api.instrumentation.ClassContext
+import com.android.build.api.instrumentation.ClassData
+import com.android.build.api.instrumentation.InstrumentationParameters
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.objectweb.asm.ClassVisitor
@@ -53,7 +56,7 @@ abstract class OttreliteClassVisitorFactory :
                         (access and Opcodes.ACC_STATIC) != 0
 
                 if (isTargetMethod && replacementDescriptor != null) {
-                    println("Modifying method: $className.$name$descriptor")
+                    println("[OttreliteInstrumentation] Modifying method: $className.$name$descriptor")
 
                     // Return a new MethodVisitor that will replace the method's body.
                     return replacementDescriptor.methodVisitorType.getMethodVisitor(

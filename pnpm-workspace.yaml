@@ -8,6 +8,7 @@ nodeLinker: hoisted
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@evilmartians/lefthook'
+  - '@shopify/react-native-skia'
   - core-js
   - esbuild
   - nitro-codegen

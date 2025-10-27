@@ -9,8 +9,6 @@ import { MeterProvider } from '@opentelemetry/sdk-metrics';
 import { instrumentationScopeId } from '@opentelemetry/sdk-metrics/build/src/utils';
 import Ottrelite from '@ottrelite/core';
 
-import { ReactNativeOttreliteInteropOTELHybridObject } from '../ReactNativeOttreliteInteropOTELHybridObject';
-
 /**
  * {@link IMeterProvider} implementation that pipes metrics data to Ottrelite's Development API.
  */
@@ -176,7 +174,5 @@ export class OttreliteMeterProvider
 
   register() {
     metrics.setGlobalMeterProvider(this);
-
-    ReactNativeOttreliteInteropOTELHybridObject.installGlobalOTELCPPMeterProvider();
   }
 }

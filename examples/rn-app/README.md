@@ -6,8 +6,18 @@ This is a demonstrator application for the Ottrelite project, showcasing how to 
 - [Getting Started](#getting-started)
   - [Step 1: Start Metro](#step-1-start-metro)
   - [Step 2: Build and run the app](#step-2-build-and-run-the-app)
+    - [Build types](#build-types)
+      - [Debug build](#debug-build)
+      - [Release build](#release-build)
+      - [Profiling build](#profiling-build)
     - [Android](#android)
+      - [Debug build](#debug-build-1)
+      - [Release build](#release-build-1)
+      - [Profiling build](#profiling-build-1)
     - [iOS](#ios)
+      - [Debug build](#debug-build-2)
+      - [Release build](#release-build-2)
+      - [Profiling build](#profiling-build-2)
   - [Step 3: Trace the application](#step-3-trace-the-application)
 
 ---
@@ -30,10 +40,55 @@ pnpm start
 
 With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-### Android
+### Build types
+
+
+#### Debug build
+
+The `debug` build variant (Android) or `Debug` configuration (iOS) will build the app in debug mode, with tracing enabled by default.
 
 ```sh
 pnpm android
+```
+
+#### Release build
+
+The `release` build variant (Android) or `Release` configuration (iOS) will build the app in release mode with the env var `DISABLE_TRACING` set to `true`, causing Ottrelite tracing to be disabled at runtime.
+
+**Please note** that disabling of tracing at runtime happens only via `pnpm {android,ios}:release` script, not if building from Android Studio or Xcode, in which case tracing will be disabled. This is just the exemplary setup for this demo, in a usual case you'd likely want the inverted logic, in which case tracing is disabled by default and you only enable it when the env var is set instead. Handling of this env var is done by Babel plugin `transform-inline-environment-variables` and the `pnpm {android,ios}:release` script which passes the proper value of `DISABLE_TRACING` env var.
+
+```sh
+pnpm android:release
+```
+
+#### Profiling build
+
+The `profiling` build variant (Android) or `Profiling` configuration (iOS) inherits everything from the `release` build variant and will build the app in profiling mode. This is the perfect mode that gives reliable performance behaviour after all compile-time optimizations.
+
+```sh
+pnpm android:profiling
+```
+
+### Android
+
+The script [`android/app/build.gradle`](android/app/build.gradle) configures Ottrelite's Gradle plugin to inject tracing instrumentation for RN internals only for the `profiling` variant.
+
+#### Debug build
+
+```sh
+pnpm android
+```
+
+#### Release build
+
+```sh
+pnpm android:release
+```
+
+#### Profiling build
+
+```sh
+pnpm android:profiling
 ```
 
 ### iOS
@@ -54,13 +109,25 @@ bundle exec pod install
 
 For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
+#### Debug build
+
 ```sh
 pnpm ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### Release build
 
-This is one way to run the app — you can also build it directly from Android Studio or Xcode.
+```sh
+pnpm ios:release
+```
+
+#### Profiling build
+
+```sh
+pnpm ios:profiling
+```
+
+If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
 
 ## Step 3: Trace the application
 

@@ -1,1 +1,0 @@
-export { OttreliteExporterOTLP } from './OttreliteExporterOTLP';

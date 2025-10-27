@@ -9,10 +9,19 @@ export interface OttreliteOptions {
    * and will call the `Ottrelite` API methods under the hood.
    *
    * @see https://reactnative.dev/docs/systrace
+   *
+   * @default true
    */
   reviveSystraceAPI?: boolean;
 
-  // TODO: add a enable boolean flag, on by default
+  /**
+   * If set to `true`, Ottrelite will be enabled; if set to `false`, Ottrelite will be disabled.
+   *
+   * This does not impact the `reviveSystraceAPI` option.
+   *
+   * @default true
+   */
+  enabled?: boolean;
 }
 
 export interface ReactNativeOttrelite
@@ -42,4 +51,6 @@ export interface ReactNativeOttrelite
   counterEvent(eventName: string, value: number): void;
 
   listInstalledBackends(): OttreliteBackendInfo[];
+
+  setEnabled(enabled: boolean): void;
 }

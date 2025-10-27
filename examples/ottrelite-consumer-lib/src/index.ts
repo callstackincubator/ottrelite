@@ -5,27 +5,31 @@ import type { NitroOttreliteConsumerLibPlatform } from './specs/NitroOttreliteCo
 
 export type { NitroOttreliteConsumerLib } from './specs/NitroOttreliteConsumerLib';
 
-const NitroOttreliteConsumerLibHybridObject =
-  NitroModules.createHybridObject<NitroOttreliteConsumerLibCpp>(
-    'NitroOttreliteConsumerLibCpp'
-  );
-
-const NitroOttreliteConsumerLibPlatformHybridObject =
-  NitroModules.createHybridObject<NitroOttreliteConsumerLibPlatform>(
-    'NitroOttreliteConsumerLibPlatform'
-  );
-
 export class CppConsumerLib {
+  static hybridObject: NitroOttreliteConsumerLibCpp;
   static generateImage(width: number, height: number): number[] {
-    return NitroOttreliteConsumerLibHybridObject.generateImage(width, height);
+    if (!this.hybridObject) {
+      this.hybridObject =
+        NitroModules.createHybridObject<NitroOttreliteConsumerLibCpp>(
+          'NitroOttreliteConsumerLibCpp'
+        );
+    }
+
+    return this.hybridObject.generateImage(width, height);
   }
 }
 
 export class PlatformConsumerLib {
+  static hybridObject: NitroOttreliteConsumerLibPlatform;
+
   static generateImage(width: number, height: number): number[] {
-    return NitroOttreliteConsumerLibPlatformHybridObject.generateImage(
-      width,
-      height
-    );
+    if (!this.hybridObject) {
+      this.hybridObject =
+        NitroModules.createHybridObject<NitroOttreliteConsumerLibPlatform>(
+          'NitroOttreliteConsumerLibPlatform'
+        );
+    }
+
+    return this.hybridObject.generateImage(width, height);
   }
 }

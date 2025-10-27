@@ -107,6 +107,26 @@ namespace ottrelite
          */
         static std::vector<OttreliteBackendInfo> listInstalledBackends();
 
+        /**
+         * Enables or disables Ottrelite native part. If disabled, all trace / counter functionalities are a no-op.
+         *
+         * @param enabled Whether to enable or disable Ottrelite native part
+         */
+        static void setEnabled(bool enabled)
+        {
+            Ottrelite::enabled_ = enabled;
+        }
+
+        /**
+         * Indicates whether Ottrelite native part is enabled or not.
+         *
+         * @return True if enabled, false otherwise
+         */
+        static bool isEnabled()
+        {
+            return Ottrelite::enabled_;
+        }
+
       protected:
         /**
          * Converts a JavaScript stack trace to "external" (CPP-API) representation.
@@ -116,6 +136,11 @@ namespace ottrelite
          */
         static std::vector<backend::structures::NonCppStackTraceEntry> convertJSStackTraceToExternalRepr(
             const std::vector<StackTraceEntry> &stackTrace);
+
+        /**
+         * Indicates whether Ottrelite native part is enabled or not.
+         */
+        static bool enabled_;
 
         static logging::Logger logger_;
         static utils::CircularToken uniqueTokenGenerator_;

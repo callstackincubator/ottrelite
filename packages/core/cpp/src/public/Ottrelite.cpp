@@ -122,4 +122,5 @@ namespace ottrelite
 
     logging::Logger Ottrelite::logger_{"Ottrelite"};
     utils::CircularToken Ottrelite::uniqueTokenGenerator_;
+    bool Ottrelite::enabled_{true};
 } // namespace ottrelite

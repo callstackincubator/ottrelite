@@ -10,14 +10,14 @@ Think of backends as different "viewers" for the same performance data - some ex
 
 ## Available Backends
 
-| Backend | Package | Best For | What It Does |
-|---------|---------|----------|--------------|
-| **Platform** | `@ottrelite/backend-platform` | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
-| **Tracy** | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support |
+| Backend      | Package                            | Best For                                  | What It Does                                                                                        |
+| ------------ | ---------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Platform** | `@ottrelite/backend-platform`      | System-level analysis with familiar tools | Integrates with Android Studio Profiler, Xcode Instruments, and Perfetto using native platform APIs |
+| **Tracy**    | `@ottrelite/backend-wrapper-tracy` | Real-time development profiling           | Frame-by-frame analysis with live trace visualization, memory tracking, and cross-platform support  |
 
 ## Production Builds
 
-Backends are designed for development use only and should not be included in production builds. 
+Backends are designed for development use only and should not be included in production builds.
 
 To exclude backends from production builds:
 
@@ -32,23 +32,14 @@ if (__DEV__ || isProfilingEnabled) {
 }
 ```
 
-2. **Build-time exclusion** - Use `react-native.config.js` to exclude backend packages from specific build types:
+2. Disable the Gradle plugin instrumenting RN internals for non-development variants (Android only) in your Gradle build script:
 
-```typescript
-module.exports = {
-  dependencies: {
-    '@ottrelite/backend-platform': {
-      platforms: {
-        android: {
-          buildTypes: ['debug'], // Only include in debug builds
-        },
-        ios: {
-          configurations: ['Debug'], // Only include in debug builds
-        },
-      },
-    },
-  },
-};
+```kotlin
+apply plugin: "com.callstack.ottrelite"
+
+ottreliteTracing {
+  rnInstrumentationVariants = ["debug", "profiling"]
+}
 ```
 
 :::info

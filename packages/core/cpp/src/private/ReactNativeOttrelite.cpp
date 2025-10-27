@@ -74,15 +74,19 @@ namespace margelo::nitro::ottrelite
 
     void ReactNativeOttrelite::configure(const OttreliteOptions &options)
     {
-        if (options.reviveSystraceAPI)
-        {
-            reviveSystraceAPI();
-        }
+        reviveSystraceAPI(options.reviveSystraceAPI.value_or(true));
     }
 
-    void ReactNativeOttrelite::reviveSystraceAPI()
+    void ReactNativeOttrelite::setEnabled(const bool enabled)
     {
-        logger_.debug("reviveSystraceAPI() - setting tracing globals");
+        ::ottrelite::Ottrelite::setEnabled(enabled);
+    }
+
+    void ReactNativeOttrelite::reviveSystraceAPI(const bool enable)
+    {
+        logger_.debug("reviveSystraceAPI() - setting tracing globals, RN Systrace enabled-status (reviveSystraceAPI) "
+                      "configured to be ")
+            << (enable ? "enabled" : "disabled");
 
         try
         {
@@ -108,7 +112,13 @@ namespace margelo::nitro::ottrelite
             *runtimePtr_, "nativeTraceBeginSection",
             jsi::Function::createFromHostFunction(
                 *runtimePtr_, jsi::PropNameID::forAscii(*runtimePtr_, "nativeTraceBeginSection"), 3,
-                [this](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args, size_t count) -> jsi::Value {
+                [this, enable](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args,
+                               size_t count) -> jsi::Value {
+                    if (!enable)
+                    {
+                        return jsi::Value::undefined();
+                    }
+
                     // args is of shape: [TRACE_TAG, eventName, additionalArgs]
                     // TRACE_TAG should be TRACE_TAG_REACT_APPS (integer) and is unused as
                     // well
@@ -141,8 +151,13 @@ namespace margelo::nitro::ottrelite
             *runtimePtr_, "nativeTraceEndSection",
             jsi::Function::createFromHostFunction(
                 *runtimePtr_, jsi::PropNameID::forAscii(*runtimePtr_, "nativeTraceEndSection"), 2,
-                [this]([[maybe_unused]] jsi::Runtime &runtime, [[maybe_unused]] const jsi::Value &,
-                       [[maybe_unused]] const jsi::Value *args, [[maybe_unused]] size_t count) -> jsi::Value {
+                [this, enable]([[maybe_unused]] jsi::Runtime &runtime, [[maybe_unused]] const jsi::Value &,
+                               [[maybe_unused]] const jsi::Value *args, [[maybe_unused]] size_t count) -> jsi::Value {
+                    if (!enable)
+                    {
+                        return jsi::Value::undefined();
+                    }
+
                     // args is of shape: [TRACE_TAG, additionalArgs]
                     // TRACE_TAG should be TRACE_TAG_REACT_APPS (integer) and is unused as
                     // well
@@ -173,7 +188,13 @@ namespace margelo::nitro::ottrelite
             *runtimePtr_, "nativeTraceBeginAsyncSection",
             jsi::Function::createFromHostFunction(
                 *runtimePtr_, jsi::PropNameID::forAscii(*runtimePtr_, "nativeTraceBeginAsyncSection"), 4,
-                [this](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args, size_t count) -> jsi::Value {
+                [this, enable](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args,
+                               size_t count) -> jsi::Value {
+                    if (!enable)
+                    {
+                        return jsi::Value::undefined();
+                    }
+
                     // args is of shape: [TRACE_TAG, eventName, externalToken, additionalArgs]
                     // TRACE_TAG should be TRACE_TAG_REACT_APPS (integer) and is unused
                     // as well; externalToken is a Systrace.js-managed token that needs to be mapped to an internal
@@ -216,8 +237,13 @@ namespace margelo::nitro::ottrelite
             *runtimePtr_, "nativeTraceEndAsyncSection",
             jsi::Function::createFromHostFunction(
                 *runtimePtr_, jsi::PropNameID::forAscii(*runtimePtr_, "nativeTraceEndAsyncSection"), 4,
-                [this]([[maybe_unused]] jsi::Runtime &runtime, [[maybe_unused]] const jsi::Value &,
-                       [[maybe_unused]] const jsi::Value *args, [[maybe_unused]] size_t count) -> jsi::Value {
+                [this, enable]([[maybe_unused]] jsi::Runtime &runtime, [[maybe_unused]] const jsi::Value &,
+                               [[maybe_unused]] const jsi::Value *args, [[maybe_unused]] size_t count) -> jsi::Value {
+                    if (!enable)
+                    {
+                        return jsi::Value::undefined();
+                    }
+
                     // args is of shape: [TRACE_TAG, eventName, externalToken, additionalArgs]
                     // TRACE_TAG should be TRACE_TAG_REACT_APPS (integer) and is unused
                     // as well; externalToken is a Systrace.js-managed token that needs to be mapped to an internal
@@ -263,7 +289,13 @@ namespace margelo::nitro::ottrelite
             *runtimePtr_, "nativeTraceCounter",
             jsi::Function::createFromHostFunction(
                 *runtimePtr_, jsi::PropNameID::forAscii(*runtimePtr_, "nativeTraceCounter"), 3,
-                [](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args, size_t count) -> jsi::Value {
+                [enable](jsi::Runtime &runtime, const jsi::Value &, const jsi::Value *args,
+                         size_t count) -> jsi::Value {
+                    if (!enable)
+                    {
+                        return jsi::Value::undefined();
+                    }
+
                     // args is of shape: [TRACE_TAG, eventName, value]; the token is discarded,
                     // Ottrelite has its own token system; TRACE_TAG should be
                     // TRACE_TAG_REACT_APPS (integer) and is unused as well
