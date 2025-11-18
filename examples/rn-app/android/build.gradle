@@ -17,7 +17,7 @@ buildscript {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
-        classpath("com.callstack.ottrelite:com.callstack.ottrelite.gradle.plugin:0.1.0")
+        classpath("com.callstack:ottrelite-plugin:0.1.0")
     }
 }
 
