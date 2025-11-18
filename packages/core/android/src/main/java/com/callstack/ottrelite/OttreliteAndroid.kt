@@ -7,6 +7,11 @@ object OttreliteAndroid {
     }
 
     @JvmStatic
+    fun beginAsyncEvent(eventName: String, argsMap: Map<String, Any>) {
+        OttreliteBridge.nativeBeginAsyncEvent(eventName, argsMap)
+    }
+
+    @JvmStatic
     fun endAsyncEvent(eventName: String, cookie: Int) {
         OttreliteBridge.nativeEndAsyncEvent(eventName, cookie.toDouble(), emptyMap())
     }
@@ -31,12 +36,22 @@ object OttreliteAndroid {
     }
 
     @JvmStatic
+    fun beginEvent(sectionName: String, argsMap: Map<String, Any>) {
+        OttreliteBridge.nativeBeginEvent(sectionName, argsMap)
+    }
+
+    @JvmStatic
     fun endEvent() {
         OttreliteBridge.nativeEndEvent(emptyMap())
     }
 
     @JvmStatic
-    fun traceCounter(counterName: String, counterValue: Int) {
+    fun counterEvent(counterName: String, counterValue: Int) {
         OttreliteBridge.nativeCounterEvent(counterName, counterValue.toDouble())
+    }
+
+    @JvmStatic
+    fun counterEvent(counterName: String, counterValue: Double) {
+        OttreliteBridge.nativeCounterEvent(counterName, counterValue)
     }
 }
