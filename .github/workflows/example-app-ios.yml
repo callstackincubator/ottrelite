@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           submodules: 'true'
 
@@ -27,7 +27,7 @@ jobs:
 
       - name: Restore Cocoapods
         id: cocoapods-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: |
             **/ios/Pods
@@ -37,7 +37,7 @@ jobs:
 
       - name: Restore interop-otel/third_party/
         id: interop-otel-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: |
             packages/interop-otel/third_party
@@ -49,7 +49,7 @@ jobs:
           pod install
 
       - name: Cache Cocoapods
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: |
             **/ios/Pods
@@ -60,7 +60,7 @@ jobs:
           pnpm run ios:release
 
       - name: Cache interop-otel/third_party/
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: |
             packages/interop-otel/third_party
