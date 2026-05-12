@@ -19,6 +19,8 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+        with:
+          cache: 'false'
 
       - name: Build docs
         run: pnpm run build:docs

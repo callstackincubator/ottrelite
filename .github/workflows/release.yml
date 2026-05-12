@@ -22,6 +22,8 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+        with:
+          cache: 'false'
 
       - name: Create release PR or publish to npm
         id: changesets
