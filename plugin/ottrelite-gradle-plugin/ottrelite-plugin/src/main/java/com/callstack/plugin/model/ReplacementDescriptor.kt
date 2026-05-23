@@ -1,4 +1,4 @@
-package com.callstack.plugin
+package com.callstack.plugin.model
 
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
